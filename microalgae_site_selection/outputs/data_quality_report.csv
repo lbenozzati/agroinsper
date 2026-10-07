@@ -1,0 +1,2 @@
+severity,country,metric_id,message
+warning,Chile,pe_sugar_production,Missing value - excluded from its sub-criterion (weights re-normalised) and penalised in Data Confidence; not set to zero.

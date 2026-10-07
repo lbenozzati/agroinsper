@@ -1,0 +1,13 @@
+# Tested with Python 3.13 (minimum supported: 3.10)
+pandas>=2.2
+numpy>=1.26
+matplotlib>=3.8
+geopandas>=1.0
+shapely>=2.0
+pyproj>=3.6
+pyogrio>=0.7
+plotly>=6.0
+# Optional: only needed for --plotly-static (requires Chrome + internet)
+kaleido>=1.0
+# Tests
+pytest>=8.0

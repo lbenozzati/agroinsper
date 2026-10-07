@@ -1,0 +1,32 @@
+country,iso3,metric_id,raw_value,unit,reference_year,source_name,source_url,date_accessed,value_type,confidence,notes
+<Country>,<ISO3>,meta_display_lat,,,,,,,reported|estimate|proxy|missing,High|Medium|Low,metadata
+<Country>,<ISO3>,meta_display_lon,,,,,,,reported|estimate|proxy|missing,High|Medium|Low,metadata
+<Country>,<ISO3>,meta_port_lat,,,,,,,reported|estimate|proxy|missing,High|Medium|Low,metadata
+<Country>,<ISO3>,meta_port_lon,,,,,,,reported|estimate|proxy|missing,High|Medium|Low,metadata
+<Country>,<ISO3>,meta_corbion_manufacturing,,,,,,,reported|estimate|proxy|missing,High|Medium|Low,metadata
+<Country>,<ISO3>,meta_biomar_manufacturing,,,,,,,reported|estimate|proxy|missing,High|Medium|Low,metadata
+<Country>,<ISO3>,pe_sugar_production,,,,,,,reported|estimate|proxy|missing,High|Medium|Low,Domestic sugar production (Mt); method=log
+<Country>,<ISO3>,pe_sugar_cost_position,,,,,,,reported|estimate|proxy|missing,High|Medium|Low,Sugar cost position (rubric); method=qualitative; allowed 0/2.5/5/7.5/10
+<Country>,<ISO3>,pe_electricity_price,,,,,,,reported|estimate|proxy|missing,High|Medium|Low,Business electricity price (USD/kWh); method=linear
+<Country>,<ISO3>,pe_renewable_share_electricity,,,,,,,reported|estimate|proxy|missing,High|Medium|Low,Renewable share of electricity (%); method=linear
+<Country>,<ISO3>,pe_steam_biomass_cogeneration,,,,,,,reported|estimate|proxy|missing,High|Medium|Low,Steam / biomass cogeneration (rubric); method=qualitative; allowed 0/2.5/5/7.5/10
+<Country>,<ISO3>,pe_water_stress,,,,,,,reported|estimate|proxy|missing,High|Medium|Low,"Water stress, SDG 6.4.2 (%); method=linear"
+<Country>,<ISO3>,pe_industrial_water_wastewater_infra,,,,,,,reported|estimate|proxy|missing,High|Medium|Low,Industrial water & effluent infrastructure (rubric); method=qualitative; allowed 0/2.5/5/7.5/10
+<Country>,<ISO3>,pe_gdp_per_capita,,,,,,,reported|estimate|proxy|missing,High|Medium|Low,"GDP per capita (USD, labour-cost proxy); method=linear"
+<Country>,<ISO3>,pe_construction_epc_capability,,,,,,,reported|estimate|proxy|missing,High|Medium|Low,Construction / EPC capability (rubric); method=qualitative; allowed 0/2.5/5/7.5/10
+<Country>,<ISO3>,ma_aquafeed_volume,,,,,,,reported|estimate|proxy|missing,High|Medium|Low,Aquafeed volume (Mt); method=log
+<Country>,<ISO3>,ma_premium_species,,,,,,,reported|estimate|proxy|missing,High|Medium|Low,Premium / DHA-intensive species (rubric); method=qualitative; allowed 0/2.5/5/7.5/10
+<Country>,<ISO3>,ma_lpi_score,,,,,,,reported|estimate|proxy|missing,High|Medium|Low,World Bank LPI 2023 (1-5); method=linear
+<Country>,<ISO3>,ma_biomar_customer_proximity,,,,,,,reported|estimate|proxy|missing,High|Medium|Low,BioMar / customer proximity (rubric); method=qualitative; allowed 0/2.5/5/7.5/10
+<Country>,<ISO3>,cr_existing_manufacturing,,,,,,,reported|estimate|proxy|missing,High|Medium|Low,Existing Corbion manufacturing (rubric); method=qualitative; allowed 0/2.5/5/7.5/10
+<Country>,<ISO3>,cr_fermentation_talent,,,,,,,reported|estimate|proxy|missing,High|Medium|Low,Fermentation talent (rubric); method=qualitative; allowed 0/2.5/5/7.5/10
+<Country>,<ISO3>,cr_commercial_innovation_presence,,,,,,,reported|estimate|proxy|missing,High|Medium|Low,Commercial / innovation presence (rubric); method=qualitative; allowed 0/2.5/5/7.5/10
+<Country>,<ISO3>,ri_product_approvals,,,,,,,reported|estimate|proxy|missing,High|Medium|Low,Approval to SELL AlgaPrime (rubric); method=qualitative; allowed 0/2.5/5/7.5/10
+<Country>,<ISO3>,ri_local_production_permitting,,,,,,,reported|estimate|proxy|missing,High|Medium|Low,Ability to BUILD/OPERATE locally (rubric); method=qualitative; allowed 0/2.5/5/7.5/10
+<Country>,<ISO3>,ri_corporate_tax_rate,,,,,,,reported|estimate|proxy|missing,High|Medium|Low,Statutory corporate tax rate (%); method=linear
+<Country>,<ISO3>,ri_investment_incentives,,,,,,,reported|estimate|proxy|missing,High|Medium|Low,Investment incentives (rubric); method=qualitative; allowed 0/2.5/5/7.5/10
+<Country>,<ISO3>,ri_trade_fdi_access,,,,,,,reported|estimate|proxy|missing,High|Medium|Low,Trade agreements & FDI openness (rubric); method=qualitative; allowed 0/2.5/5/7.5/10
+<Country>,<ISO3>,sr_local_competition_overcapacity,,,,,,,reported|estimate|proxy|missing,High|Medium|Low,Local competition / overcapacity (rubric); method=qualitative; allowed 0/2.5/5/7.5/10
+<Country>,<ISO3>,sr_ip_protection,,,,,,,reported|estimate|proxy|missing,High|Medium|Low,IP protection - USTR Special 301 status (rubric); method=qualitative; allowed 0/2.5/5/7.5/10
+<Country>,<ISO3>,sr_sovereign_rating_notch,,,,,,,reported|estimate|proxy|missing,High|Medium|Low,"S&P sovereign rating (notch, 1 = AAA); method=linear"
+<Country>,<ISO3>,sr_political_trade_policy_risk,,,,,,,reported|estimate|proxy|missing,High|Medium|Low,Political / trade-policy risk (rubric); method=qualitative; allowed 0/2.5/5/7.5/10

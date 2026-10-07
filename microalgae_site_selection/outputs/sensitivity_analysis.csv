@@ -1,0 +1,9 @@
+country,score | Base Case,rank | Base Case,score | Lowest-Cost Production,rank | Lowest-Cost Production,score | Asian Market Expansion,rank | Asian Market Expansion,best_rank,worst_rank,score_min,score_max,score_range,scenarios_in_top3,robust_top3
+Brazil,7.082,1,7.502,1,6.671,2,1,2,6.671,7.502,0.831,3,True
+Thailand,6.883,2,6.88,2,6.74,1,1,2,6.74,6.883,0.142,3,True
+China,5.635,3,5.529,3,5.994,4,3,4,5.529,5.994,0.465,2,False
+Vietnam,5.615,4,5.132,5,6.061,3,3,5,5.132,6.061,0.928,1,False
+India,5.569,5,5.528,4,5.707,5,4,5,5.528,5.707,0.179,0,False
+Chile,5.156,6,4.589,8,5.575,6,6,8,4.589,5.575,0.986,0,False
+Indonesia,5.119,7,4.749,7,5.353,7,7,7,4.749,5.353,0.604,0,False
+Mexico,5.006,8,4.91,6,4.833,8,6,8,4.833,5.006,0.174,0,False
