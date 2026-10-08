@@ -1186,6 +1186,84 @@ def create_clean_map(results: pd.DataFrame, meta: pd.DataFrame, output_dir: Path
         log.info("Saved outputs/%s", name)
 
 
+def create_soft_map(results: pd.DataFrame, meta: pd.DataFrame, output_dir: Path) -> None:
+    """Minimal light version of the map: blurred pale continents, soft grey bubbles, score only.
+
+    Bubble area and grey depth both grow with the Base Case score (darker = better).
+    Layers are rendered separately so that land and bubbles can be blurred while the
+    numbers stay sharp. Writes a white-background PNG and a transparent one.
+    """
+    import io
+    import geopandas as gpd
+    import matplotlib.pyplot as plt
+    from PIL import Image, ImageFilter
+    from pyproj import Transformer
+
+    crs = "ESRI:54030"
+    world = gpd.read_file(WORLD_GEOJSON)
+    world = world[world["NAME"] != "Antarctica"].to_crs(crs)
+    to_rob = Transformer.from_crs("EPSG:4326", crs, always_xy=True)
+    df = results.join(meta[["meta_display_lat", "meta_display_lon"]])
+    xs, ys = to_rob.transform(df["meta_display_lon"].values, df["meta_display_lat"].values)
+    scores = df["score"].values
+    lo, hi = scores.min(), scores.max()
+    t = (scores - lo) / (hi - lo if hi > lo else 1)
+    grey = 0.93 - 0.17 * t  # 0.93 (weakest) -> 0.76 (best)
+    sizes = BUBBLE_PT2_PER_POINT * 1.15 * scores
+    _, y0 = to_rob.transform(0, -47)
+    _, y1 = to_rob.transform(0, 57)
+    xc, _ = to_rob.transform(17, 0)
+    width_in, height_in = 16.0, 7.2
+    half_w = (y1 - y0) * width_in / height_in / 2
+
+    def layer(draw, blur: float) -> Image.Image:
+        fig = plt.figure(figsize=(width_in, height_in))
+        fig.patch.set_alpha(0.0)
+        ax = fig.add_axes([0, 0, 1, 1])
+        ax.set_axis_off()
+        ax.patch.set_alpha(0.0)
+        ax.set_xlim(xc - half_w, xc + half_w)
+        ax.set_ylim(y0, y1)
+        ax.set_aspect("equal", adjustable="box")
+        draw(fig, ax)
+        buf = io.BytesIO()
+        fig.savefig(buf, dpi=FIG_DPI, transparent=True)
+        plt.close(fig)
+        img = Image.open(io.BytesIO(buf.getvalue())).convert("RGBA")
+        return img.filter(ImageFilter.GaussianBlur(blur)) if blur else img
+
+    land = layer(lambda f, a: world.plot(ax=a, color=(0.80, 0.80, 0.84, 0.17), linewidth=0), blur=10)
+    bubbles = layer(lambda f, a: a.scatter(xs, ys, s=sizes, c=[(g, g, g + 0.02, 0.85) for g in grey],
+                                           linewidths=0), blur=3)
+
+    def draw_labels(fig, ax):
+        fig.canvas.draw()
+        renderer = fig.canvas.get_renderer()
+        texts, boxes = [], []
+        for k in range(len(df)):
+            txt = ax.text(0, 0, f"{scores[k]:.1f}", fontsize=14, fontweight="semibold",
+                          color=(0.70, 0.69, 0.74))
+            b = txt.get_window_extent(renderer)
+            texts.append(txt)
+            boxes.append((b.width, b.height))
+        centers = ax.transData.transform(np.column_stack([xs, ys]))
+        radii_px = np.sqrt(sizes / math.pi) * fig.dpi / 72 + 6
+        placement = place_labels(fig, ax, centers, radii_px, boxes, list(np.argsort(-scores)))
+        inv = ax.transData.inverted()
+        for k, txt in enumerate(texts):
+            x0p, y0p, x1p, y1p = placement[k]["rect"]
+            txt.set_position(inv.transform((x0p, (y0p + y1p) / 2)))
+            txt.set_ha("left")
+            txt.set_va("center")
+
+    labels = layer(draw_labels, blur=0)
+    composed = Image.alpha_composite(Image.alpha_composite(land, bubbles), labels)
+    composed.save(output_dir / "microalgae_bubble_map_soft_transparent.png")
+    white = Image.new("RGBA", composed.size, (255, 255, 255, 255))
+    Image.alpha_composite(white, composed).convert("RGB").save(output_dir / "microalgae_bubble_map_soft.png")
+    log.info("Saved outputs/microalgae_bubble_map_soft.png and _soft_transparent.png")
+
+
 def _draw_map_legend(fig, cmap) -> None:
     """Bottom legend strip: size, colour, outlines, star - no boxes."""
     y = 0.085
@@ -1700,6 +1778,7 @@ def run(data_path: Path = DEFAULT_DATA, output_dir: Path = DEFAULT_OUTPUT, plotl
         setup_matplotlib()
         create_bubble_map(results, meta, output_dir, plotly_static)
         create_clean_map(results, meta, output_dir)
+        create_soft_map(results, meta, output_dir)
         create_ranking_chart(results, output_dir)
         create_score_contribution_chart(results, contributions, output_dir)
         create_sensitivity_chart(sensitivity, output_dir)
