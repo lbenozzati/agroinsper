@@ -857,6 +857,93 @@ def _create_bubble_map_matplotlib(results: pd.DataFrame, meta: pd.DataFrame, pat
     return directions
 
 
+def create_clean_map(results: pd.DataFrame, meta: pd.DataFrame, output_dir: Path) -> None:
+    """Slide-insert version of the map: transparent background, no title, legend or notes.
+
+    White bubbles whose opacity (and area) grow with the Base Case score, so a
+    brighter white means a better location; only the #1 country is highlighted
+    (thick outline + dashed ring, as in the slide's dashed boxes). Writes one
+    version with country/score labels and one with bubbles only.
+    """
+    import geopandas as gpd
+    import matplotlib.pyplot as plt
+    from pyproj import Transformer
+
+    crs = "ESRI:54030"  # Robinson
+    world = gpd.read_file(WORLD_GEOJSON)
+    world = world[world["NAME"] != "Antarctica"].to_crs(crs)
+    to_rob = Transformer.from_crs("EPSG:4326", crs, always_xy=True)
+    df = results.join(meta[["iso3", "meta_display_lat", "meta_display_lon"]])
+    xs, ys = to_rob.transform(df["meta_display_lon"].values, df["meta_display_lat"].values)
+    scores = df["score"].values
+    lo, hi = scores.min(), scores.max()
+    alpha = 0.30 + 0.70 * (scores - lo) / (hi - lo if hi > lo else 1)  # weakest 30% -> best 100% white
+    sizes = BUBBLE_PT2_PER_POINT * 1.15 * scores
+    best = df["rank"].values == 1
+    _, y0 = to_rob.transform(0, -47)
+    _, y1 = to_rob.transform(0, 57)
+    xc, _ = to_rob.transform(17, 0)
+    width_in, height_in = 16.0, 7.2
+
+    for with_labels in (True, False):
+        fig = plt.figure(figsize=(width_in, height_in))
+        fig.patch.set_alpha(0.0)
+        ax = fig.add_axes([0, 0, 1, 1])
+        ax.set_axis_off()
+        ax.patch.set_alpha(0.0)
+        focus = world["ISO_A3"].isin(df["iso3"])
+        # Land as translucent white so it sits on any part of the slide gradient.
+        world[~focus].plot(ax=ax, color=(1, 1, 1, 0.06), edgecolor=(1, 1, 1, 0.14), linewidth=0.35)
+        world[focus].plot(ax=ax, color=(1, 1, 1, 0.13), edgecolor=(1, 1, 1, 0.30), linewidth=0.6)
+        half_w = (y1 - y0) * width_in / height_in / 2
+        ax.set_xlim(xc - half_w, xc + half_w)
+        ax.set_ylim(y0, y1)
+        ax.set_aspect("equal", adjustable="box")
+
+        order = np.argsort(-sizes)
+        colors = [(1, 1, 1, a) for a in alpha]
+        ax.scatter(xs[order], ys[order], s=sizes[order], c=[colors[i] for i in order],
+                   edgecolors=[(1, 1, 1, min(1.0, a + 0.2)) for a in alpha[order]],
+                   linewidths=[3.2 if best[i] else 0.8 for i in order], zorder=5)
+        ring = (2 * (np.sqrt(sizes / math.pi) + 7)) ** 2
+        ax.scatter(xs[best], ys[best], s=ring[best], facecolors="none", edgecolors="white",
+                   linewidths=1.3, linestyles=(0, (3, 2.5)), zorder=4)
+
+        if with_labels:
+            fig.canvas.draw()
+            renderer = fig.canvas.get_renderer()
+            names, vals, boxes = [], [], []
+            for k, (country, row) in enumerate(df.iterrows()):
+                bold = best[k]
+                t1 = ax.text(0, 0, country, fontsize=15 if bold else 13,
+                             fontweight="bold" if bold else "semibold", color="white", zorder=8)
+                t2 = ax.text(0, 0, f"{row['score']:.1f}", fontsize=17 if bold else 14, fontweight="bold",
+                             color="white" if bold else PALETTE["text_secondary"], zorder=8)
+                b1, b2 = t1.get_window_extent(renderer), t2.get_window_extent(renderer)
+                names.append(t1)
+                vals.append(t2)
+                boxes.append((max(b1.width, b2.width), b1.height + b2.height))
+            centers = ax.transData.transform(np.column_stack([xs, ys]))
+            radii_px = np.sqrt(sizes / math.pi) * fig.dpi / 72 + 3
+            placement = place_labels(fig, ax, centers, radii_px, boxes, list(np.argsort(-scores)))
+            inv = ax.transData.inverted()
+            for k in range(len(df)):
+                x0p, y0p, x1p, _ = placement[k]["rect"]
+                d = placement[k]["direction"]
+                ha = "left" if "right" in d else ("right" if "left" in d else "center")
+                xa = {"left": x0p, "right": x1p, "center": (x0p + x1p) / 2}[ha]
+                ymid = y0p + boxes[k][1] - names[k].get_window_extent(renderer).height
+                for t, va in ((names[k], "bottom"), (vals[k], "top")):
+                    t.set_position(inv.transform((xa, ymid)))
+                    t.set_ha(ha)
+                    t.set_va(va)
+
+        name = "microalgae_bubble_map_clean.png" if with_labels else "microalgae_bubble_map_clean_nolabels.png"
+        fig.savefig(output_dir / name, dpi=FIG_DPI, transparent=True)
+        plt.close(fig)
+        log.info("Saved outputs/%s", name)
+
+
 def _draw_map_legend(fig, cmap) -> None:
     """Bottom legend strip: size, colour, outlines, star - no boxes."""
     y = 0.085
@@ -1259,6 +1346,7 @@ def run(data_path: Path = DEFAULT_DATA, output_dir: Path = DEFAULT_OUTPUT, plotl
     if make_charts:
         setup_matplotlib()
         create_bubble_map(results, meta, output_dir, plotly_static)
+        create_clean_map(results, meta, output_dir)
         create_ranking_chart(results, output_dir)
         create_score_contribution_chart(results, contributions, output_dir)
         create_sensitivity_chart(sensitivity, output_dir)
