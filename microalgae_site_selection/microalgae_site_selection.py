@@ -877,7 +877,7 @@ def create_clean_map(results: pd.DataFrame, meta: pd.DataFrame, output_dir: Path
     xs, ys = to_rob.transform(df["meta_display_lon"].values, df["meta_display_lat"].values)
     scores = df["score"].values
     lo, hi = scores.min(), scores.max()
-    alpha = 0.30 + 0.70 * (scores - lo) / (hi - lo if hi > lo else 1)  # weakest 30% -> best 100% white
+    alpha = 0.55 + 0.45 * (scores - lo) / (hi - lo if hi > lo else 1)  # weakest 55% -> best 100% white
     sizes = BUBBLE_PT2_PER_POINT * 1.15 * scores
     best = df["rank"].values == 1
     _, y0 = to_rob.transform(0, -47)
@@ -893,8 +893,8 @@ def create_clean_map(results: pd.DataFrame, meta: pd.DataFrame, output_dir: Path
         ax.patch.set_alpha(0.0)
         focus = world["ISO_A3"].isin(df["iso3"])
         # Land as translucent white so it sits on any part of the slide gradient.
-        world[~focus].plot(ax=ax, color=(1, 1, 1, 0.06), edgecolor=(1, 1, 1, 0.14), linewidth=0.35)
-        world[focus].plot(ax=ax, color=(1, 1, 1, 0.13), edgecolor=(1, 1, 1, 0.30), linewidth=0.6)
+        world[~focus].plot(ax=ax, color=(1, 1, 1, 0.16), edgecolor=(1, 1, 1, 0.32), linewidth=0.4)
+        world[focus].plot(ax=ax, color=(1, 1, 1, 0.26), edgecolor=(1, 1, 1, 0.55), linewidth=0.7)
         half_w = (y1 - y0) * width_in / height_in / 2
         ax.set_xlim(xc - half_w, xc + half_w)
         ax.set_ylim(y0, y1)
