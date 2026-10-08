@@ -1,9 +1,9 @@
 country,score | Base Case,rank | Base Case,score | Lowest-Cost Production,rank | Lowest-Cost Production,score | Asian Market Expansion,rank | Asian Market Expansion,best_rank,worst_rank,score_min,score_max,score_range,scenarios_in_top3,robust_top3
-Brazil,7.082,1,7.502,1,6.671,2,1,2,6.671,7.502,0.831,3,True
-Thailand,6.883,2,6.88,2,6.74,1,1,2,6.74,6.883,0.142,3,True
-China,5.635,3,5.529,3,5.994,4,3,4,5.529,5.994,0.465,2,False
-Vietnam,5.615,4,5.132,5,6.061,3,3,5,5.132,6.061,0.928,1,False
-India,5.569,5,5.528,4,5.707,5,4,5,5.528,5.707,0.179,0,False
-Chile,5.156,6,4.589,8,5.575,6,6,8,4.589,5.575,0.986,0,False
-Indonesia,5.119,7,4.749,7,5.353,7,7,7,4.749,5.353,0.604,0,False
-Mexico,5.006,8,4.91,6,4.833,8,6,8,4.833,5.006,0.174,0,False
+Brazil,7.15,1,7.584,1,6.737,1,1,1,6.737,7.584,0.847,3,True
+Thailand,6.764,2,6.798,2,6.679,2,2,2,6.679,6.798,0.119,3,True
+China,5.576,3,5.486,4,5.906,3,3,4,5.486,5.906,0.421,2,False
+India,5.549,4,5.502,3,5.691,5,3,5,5.502,5.691,0.189,1,False
+Vietnam,5.316,5,4.911,6,5.734,4,4,6,4.911,5.734,0.823,0,False
+Mexico,5.111,6,4.99,5,4.988,8,5,8,4.988,5.111,0.123,0,False
+Chile,4.957,7,4.363,8,5.364,6,6,8,4.363,5.364,1.001,0,False
+Indonesia,4.802,8,4.513,7,4.999,7,7,8,4.513,4.999,0.485,0,False

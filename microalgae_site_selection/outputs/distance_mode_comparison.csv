@@ -1,0 +1,9 @@
+country,score | export_only,rank | export_only,score | include_domestic,rank | include_domestic
+Brazil,7.15,1,7.15,1
+Thailand,6.764,2,6.764,2
+China,5.576,3,5.635,3
+India,5.549,4,5.549,4
+Vietnam,5.316,5,5.369,5
+Mexico,5.111,6,5.111,6
+Chile,4.957,7,5.006,7
+Indonesia,4.802,8,4.802,8

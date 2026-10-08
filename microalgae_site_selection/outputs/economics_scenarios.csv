@@ -1,0 +1,12 @@
+scenario,Brazil – Orindiúva expansion,Brazil – greenfield,Thailand – greenfield (BOI),gap_TH_minus_BR_expansion
+Base,3492.7,4129.7,4275.3,782.7
+BRL depreciates 25% (7.00),3159.5,3730.6,4275.3,1115.9
+BRL appreciates 25% (4.20),4040.1,4785.5,4275.3,235.2
+THB depreciates 10% (36.1),3492.7,4129.7,4041.9,549.3
+THB appreciates 10% (29.6),3492.7,4129.7,4561.8,1069.1
+Brazil country risk +200 bp,3764.5,4490.3,4275.3,510.9
+Thailand country risk +200 bp,3492.7,4129.7,4537.6,1044.9
+Thailand: BOI fully effective (QRTC offsets top-up),3492.7,4129.7,4242.9,750.2
+Thailand: no BOI holiday (20% from year 1),3492.7,4129.7,4287.6,794.9
+Thailand sugar at 25 THB/kg (+3 THB proposal + drought),3492.7,4129.7,4645.3,1152.6
+Brazil sugar at export parity high (USD 550/t),3866.0,4503.1,4275.3,409.3

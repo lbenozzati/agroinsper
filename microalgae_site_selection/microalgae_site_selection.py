@@ -32,12 +32,14 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-SEED = 42  # no stochastic step is used; fixed for reproducibility of any future one
+SEED = 42  # fixed seed for the Monte Carlo simulation
 np.random.seed(SEED)
 
 BASE_DIR = Path(__file__).resolve().parent
 DEFAULT_DATA = BASE_DIR / "raw_country_data.csv"
 DEFAULT_OUTPUT = BASE_DIR / "outputs"
+DEFAULT_RATINGS = BASE_DIR / "rubric_ratings.csv"  # optional extra raters for rubric metrics
+V1_DATA = BASE_DIR / "archive" / "raw_country_data_v1.csv"  # data before the v2 corrections
 FONT_DIR = BASE_DIR / "assets" / "fonts"
 WORLD_GEOJSON = BASE_DIR / "assets" / "geo" / "ne_110m_admin_0_countries.geojson"
 # Plotly base-map topojson (sane-topojson, MIT) embedded so the HTML also works offline.
@@ -170,6 +172,19 @@ META_METRICS = [
     "meta_display_lat", "meta_display_lon", "meta_port_lat", "meta_port_lon",
     "meta_corbion_manufacturing", "meta_biomar_manufacturing",
 ]
+
+# Distance metric: "export_only" (default) averages the distance to the priority markets
+# OTHER than the country itself, so China, Vietnam and Chile are not rewarded twice for being
+# their own market (market size is already scored); "include_domestic" counts the home market
+# as 0 km (v1 behaviour, kept for comparison).
+DISTANCE_MODES = ("export_only", "include_domestic")
+DEFAULT_DISTANCE_MODE = "export_only"
+
+# Monte Carlo noise by confidence level: lognormal sigma for quantitative raw values and the
+# probability that a rubric score is one level (2.5) off in either direction.
+MC_QUANT_SIGMA = {"High": 0.05, "Medium": 0.15, "Low": 0.30}
+MC_RUBRIC_SHIFT_PROB = {"High": 0.10, "Medium": 0.25, "Low": 0.40}
+MC_DEFAULT_SIMS = 5000
 
 # Priority markets named in the investment thesis; equal weight each.
 PRIORITY_MARKETS = {
@@ -378,26 +393,35 @@ def country_metadata(df: pd.DataFrame) -> pd.DataFrame:
     return meta
 
 
-def add_derived_metrics(df: pd.DataFrame) -> pd.DataFrame:
+def add_derived_metrics(df: pd.DataFrame, distance_mode: str = DEFAULT_DISTANCE_MODE) -> pd.DataFrame:
     """Append the distance-to-priority-markets metric computed from port coordinates.
 
     Mean great-circle distance from the country's main export port to Shanghai,
-    Ho Chi Minh City and Puerto Montt; the domestic market counts as 0 km. It is a
-    transparent freight proxy (sea routes are longer than great circles).
+    Ho Chi Minh City and Puerto Montt (a transparent freight proxy; sea routes are
+    longer). ``export_only`` leaves the country's own market out of the average,
+    ``include_domestic`` counts it as 0 km (v1).
     """
+    if distance_mode not in DISTANCE_MODES:
+        raise DataValidationError(f"distance_mode must be one of {DISTANCE_MODES}")
     meta = country_metadata(df)
     rows = []
     for country, m in meta.iterrows():
-        dists = []
+        dists = {}
         for iso, (_, lat, lon) in PRIORITY_MARKETS.items():
-            dists.append(0.0 if m["iso3"] == iso else haversine_km(m["meta_port_lat"], m["meta_port_lon"], lat, lon))
+            if m["iso3"] == iso:
+                if distance_mode == "include_domestic":
+                    dists[iso] = 0.0
+                continue
+            dists[iso] = haversine_km(m["meta_port_lat"], m["meta_port_lon"], lat, lon)
+        label = ("export markets only (own market excluded)" if distance_mode == "export_only"
+                 else "domestic market = 0 km")
         rows.append(dict(
             country=country, iso3=m["iso3"], metric_id="ma_distance_priority_markets",
-            raw_value=round(float(np.mean(dists)), 0), unit="km (mean great-circle)", reference_year=2026,
-            source_name="Derived: great-circle distance from main port to Shanghai, Ho Chi Minh City and Puerto Montt "
-                        "(domestic market = 0 km)",
+            raw_value=round(float(np.mean(list(dists.values()))), 0), unit="km (mean great-circle)",
+            reference_year=2026,
+            source_name=f"Derived: great-circle distance from main port to priority markets; {label}",
             source_url="", date_accessed="", value_type="proxy", confidence="Medium",
-            notes=" / ".join(f"{PRIORITY_MARKETS[i][0]}: {d:,.0f} km" for i, d in zip(PRIORITY_MARKETS, dists))))
+            notes=" / ".join(f"{PRIORITY_MARKETS[i][0]}: {d:,.0f} km" for i, d in dists.items())))
     return pd.concat([df, pd.DataFrame(rows)], ignore_index=True)
 
 
@@ -415,10 +439,14 @@ def normalize_metric(values: pd.Series, spec: MetricSpec) -> pd.Series:
     if spec.method == "qualitative":
         return x.clip(0, 10)
     worst, best = float(spec.worst), float(spec.best)
+    non_positive = x <= 0  # e.g. an explicit zero production: worst score, not missing
     if spec.method == "log":
         x = np.log10(x.where(x > 0))
         worst, best = math.log10(worst), math.log10(best)
-    return (10 * (x - worst) / (best - worst)).clip(0, 10)
+    score = (10 * (x - worst) / (best - worst)).clip(0, 10)
+    if spec.method == "log":
+        score[non_positive] = 0.0
+    return score
 
 
 def score_metrics(df: pd.DataFrame) -> pd.DataFrame:
@@ -597,6 +625,220 @@ def run_sensitivity_analysis(criterion_scores: pd.DataFrame,
     table["scenarios_in_top3"] = (table[rank_cols] <= 3).sum(axis=1)
     table["robust_top3"] = table["scenarios_in_top3"] == len(scenarios)
     return table.sort_values(f"rank | {BASE_SCENARIO}")
+
+
+def apply_rubric_ratings(df: pd.DataFrame, ratings_path: Path | None = DEFAULT_RATINGS
+                         ) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Combine several raters' rubric scores and measure their agreement.
+
+    The score already in ``raw_country_data.csv`` counts as rater ``analyst_v1``.
+    Extra raters (Corbion, AgroInsper, local experts...) go in ``rubric_ratings.csv``
+    with columns ``country, metric_id, rater, score[, notes]``. The model then uses
+    the median per country/metric and reports, per metric and overall: number of
+    raters, exact agreement, agreement within one rubric level (2.5) and
+    Krippendorff's alpha (interval). With a single rater nothing changes.
+    """
+    rubric_ids = [m.metric_id for m in METRICS if m.method == "qualitative"]
+    base = df[df["metric_id"].isin(rubric_ids) & df["raw_value"].notna()][["country", "metric_id", "raw_value"]]
+    ratings = base.rename(columns={"raw_value": "score"}).assign(rater="analyst_v1")
+    if ratings_path is not None and Path(ratings_path).exists():
+        extra = pd.read_csv(ratings_path, dtype={"country": str, "metric_id": str, "rater": str})
+        missing_cols = {"country", "metric_id", "rater", "score"} - set(extra.columns)
+        if missing_cols:
+            raise DataValidationError(f"{Path(ratings_path).name} lacks columns {sorted(missing_cols)}")
+        extra = extra.dropna(subset=["score"])
+        extra["score"] = pd.to_numeric(extra["score"], errors="raise")
+        bad = ~extra["score"].apply(lambda v: any(abs(v - l) < TOLERANCE for l in QUALITATIVE_LEVELS))
+        if bad.any():
+            raise DataValidationError(f"Ratings off the 0/2.5/5/7.5/10 scale: {extra[bad].to_dict('records')}")
+        unknown = set(extra["metric_id"]) - set(rubric_ids)
+        if unknown:
+            raise DataValidationError(f"Ratings for non-rubric metrics: {sorted(unknown)}")
+        ratings = pd.concat([ratings, extra[["country", "metric_id", "rater", "score"]]], ignore_index=True)
+    if ratings.duplicated(["country", "metric_id", "rater"]).any():
+        raise DataValidationError("A rater scored the same country/metric twice")
+
+    n_raters = ratings["rater"].nunique()
+    out = df.copy()
+    if n_raters > 1:
+        med = ratings.groupby(["country", "metric_id"])["score"].median()
+        for (country, metric_id), value in med.items():
+            mask = (out["country"] == country) & (out["metric_id"] == metric_id)
+            out.loc[mask, "raw_value"] = value
+            out.loc[mask, "notes"] = out.loc[mask, "notes"].astype(str) + f" | median of {n_raters} raters"
+
+    def _agreement(grp: pd.DataFrame) -> dict:
+        units = [u["score"].values for _, u in grp.groupby(["country", "metric_id"]) if len(u) > 1]
+        if not units:
+            return dict(n_raters=grp["rater"].nunique(), units_with_2plus=0, exact_agreement_pct=np.nan,
+                        within_one_level_pct=np.nan, krippendorff_alpha_interval=np.nan)
+        exact = np.mean([np.ptp(u) < TOLERANCE for u in units])
+        within = np.mean([np.ptp(u) <= 2.5 + TOLERANCE for u in units])
+        within_pairs = [(a - b) ** 2 for u in units for i, a in enumerate(u) for b in u[i + 1:]]
+        pooled = np.concatenate(units)
+        all_pairs = [(a - b) ** 2 for i, a in enumerate(pooled) for b in pooled[i + 1:]]
+        d_e = np.mean(all_pairs) if all_pairs else np.nan
+        alpha = 1 - np.mean(within_pairs) / d_e if d_e and d_e > 0 else np.nan
+        return dict(n_raters=grp["rater"].nunique(), units_with_2plus=len(units),
+                    exact_agreement_pct=round(100 * exact, 1), within_one_level_pct=round(100 * within, 1),
+                    krippendorff_alpha_interval=round(alpha, 3) if pd.notna(alpha) else np.nan)
+
+    rows = [dict(metric_id=mid, **_agreement(g)) for mid, g in ratings.groupby("metric_id")]
+    rows.append(dict(metric_id="ALL_RUBRICS", **_agreement(ratings)))
+    agreement = pd.DataFrame(rows)
+    log.info("Rubric raters: %d (%s)", n_raters, ", ".join(sorted(ratings["rater"].unique())))
+    return out, agreement
+
+
+def write_ratings_template(df: pd.DataFrame, output_dir: Path) -> None:
+    """Template for additional raters, pre-listing every country x rubric metric."""
+    rubric_ids = [m.metric_id for m in METRICS if m.method == "qualitative"]
+    rows = []
+    for rater in ["corbion", "agroinsper", "local_expert"]:
+        for country in sorted(df["country"].unique()):
+            for mid in rubric_ids:
+                rows.append(dict(country=country, metric_id=mid, rater=rater, score="",
+                                 notes="0 / 2.5 / 5 / 7.5 / 10 per methodology_and_sources.md section 5"))
+    pd.DataFrame(rows).to_csv(output_dir / "rubric_ratings_template.csv", index=False)
+
+
+def prepare_data(data_path: Path, distance_mode: str = DEFAULT_DISTANCE_MODE,
+                 ratings_path: Path | None = DEFAULT_RATINGS) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+    """Load, validate, merge raters and add derived metrics. Returns (data, quality, agreement)."""
+    raw = load_country_data(data_path)
+    quality = validate_input_data(raw)
+    raw, agreement = apply_rubric_ratings(raw, ratings_path)
+    return add_derived_metrics(raw, distance_mode), quality, agreement
+
+
+def score_pipeline(data: pd.DataFrame, weights: dict[str, float] | None = None) -> pd.DataFrame:
+    """Deterministic scores for one data set: criterion scores + score + rank."""
+    metric_scores = score_metrics(data)
+    crit = calculate_criterion_scores(calculate_subcriterion_scores(metric_scores))
+    score, _ = calculate_country_score(crit, weights)
+    out = crit.copy()
+    out["score"] = score
+    out["rank"] = rank_scores(score)
+    return out
+
+
+def run_monte_carlo(data: pd.DataFrame, n_sims: int = MC_DEFAULT_SIMS, seed: int = SEED,
+                    weights: dict[str, float] | None = None) -> pd.DataFrame:
+    """Simulate data uncertainty and report how stable each country's rank is.
+
+    Each simulation perturbs every metric according to its confidence level:
+    quantitative raw values get multiplicative lognormal noise (sigma 5% / 15% / 30%
+    for High / Medium / Low) and rubric scores move one level (2.5) up or down with
+    probability 10% / 25% / 40%. Missing values stay missing. Weights are held at the
+    scenario values, so the simulation isolates data uncertainty from weighting choices.
+    """
+    weights = weights or SCENARIOS[BASE_SCENARIO]
+    rng = np.random.default_rng(seed)
+    ms = score_metrics(data)
+    countries = sorted(ms["country"].unique())
+    metric_ids = list(METRIC_INDEX)
+    raw = ms.pivot(index="country", columns="metric_id", values="raw_value").loc[countries, metric_ids].values
+    conf = ms.pivot(index="country", columns="metric_id", values="confidence").loc[countries, metric_ids].values
+    n_c, n_m = raw.shape
+    qual = np.array([METRIC_INDEX[m].method == "qualitative" for m in metric_ids])
+
+    sigma = np.vectorize(lambda c: MC_QUANT_SIGMA.get(c, 0.30))(conf)
+    p_shift = np.vectorize(lambda c: MC_RUBRIC_SHIFT_PROB.get(c, 0.40))(conf)
+    sims = np.repeat(raw[None, :, :], n_sims, axis=0)
+    noise = np.exp(rng.normal(0.0, 1.0, sims.shape) * sigma[None])
+    u = rng.random(sims.shape)
+    shift = np.where(u < p_shift[None] / 2, -2.5, np.where(u < p_shift[None], 2.5, 0.0))
+    sims = np.where(qual[None, None, :], np.clip(sims + shift, 0, 10), sims * noise)
+
+    # Vectorised normalisation (same formulas as normalize_metric).
+    scores = np.empty_like(sims)
+    for j, mid in enumerate(metric_ids):
+        spec = METRIC_INDEX[mid]
+        x = sims[:, :, j]
+        if spec.method == "qualitative":
+            scores[:, :, j] = np.clip(x, 0, 10)
+            continue
+        worst, best = float(spec.worst), float(spec.best)
+        with np.errstate(divide="ignore", invalid="ignore"):
+            if spec.method == "log":
+                xs = np.where(x > 0, np.log10(np.where(x > 0, x, 1.0)), -np.inf)
+                worst, best = math.log10(worst), math.log10(best)
+            else:
+                xs = x
+            val = np.clip(10 * (xs - worst) / (best - worst), 0, 10)
+        scores[:, :, j] = np.where(np.isnan(x), np.nan, val)
+
+    # Aggregate: metric -> sub-criterion -> criterion -> score (missing re-weighted).
+    w_metric = np.array([METRIC_INDEX[m].weight for m in metric_ids])
+    subs = list(SUBCRITERIA)
+    sub_idx = np.array([subs.index(METRIC_INDEX[m].subcriterion) for m in metric_ids])
+    sub_scores = np.full((n_sims, n_c, len(subs)), np.nan)
+    for k in range(len(subs)):
+        cols = sub_idx == k
+        sc = scores[:, :, cols]
+        w = np.where(np.isnan(sc), 0.0, w_metric[cols])
+        tot = w.sum(axis=2)
+        with np.errstate(invalid="ignore"):
+            sub_scores[:, :, k] = np.where(tot > 0, np.nansum(sc * w, axis=2) / np.where(tot > 0, tot, 1), np.nan)
+    crits = list(CRITERIA)
+    crit_scores = np.full((n_sims, n_c, len(crits)), np.nan)
+    for k, c in enumerate(crits):
+        cols = np.array([SUBCRITERIA[sname][0] == c for sname in subs])
+        sw = np.array([SUBCRITERIA[sname][2] for sname in subs])[cols]
+        sc = sub_scores[:, :, cols]
+        w = np.where(np.isnan(sc), 0.0, sw)
+        tot = w.sum(axis=2)
+        crit_scores[:, :, k] = np.nansum(sc * w, axis=2) / np.where(tot > 0, tot, 1)
+    cw = np.array([weights[c] for c in crits])
+    total = (crit_scores * cw).sum(axis=2) / cw.sum()
+
+    ranks = (-total).argsort(axis=1).argsort(axis=1) + 1
+    out = pd.DataFrame({
+        "country": countries,
+        "score_mean": total.mean(axis=0),
+        "score_p5": np.percentile(total, 5, axis=0),
+        "score_p95": np.percentile(total, 95, axis=0),
+        "rank_median": np.median(ranks, axis=0),
+        "rank_p5": np.percentile(ranks, 5, axis=0),
+        "rank_p95": np.percentile(ranks, 95, axis=0),
+        "p_rank1": (ranks == 1).mean(axis=0),
+        "p_top3": (ranks <= 3).mean(axis=0),
+    }).set_index("country")
+    pair = {}
+    for a in countries:
+        for b in countries:
+            if a < b:
+                pair[f"P({a} > {b})"] = float((total[:, countries.index(a)] > total[:, countries.index(b)]).mean())
+    out.attrs["pairwise"] = pair
+    out.attrs["n_sims"] = n_sims
+    return out.sort_values("score_mean", ascending=False)
+
+
+def thesis_weight_sweep(criterion_scores: pd.DataFrame, criterion: str,
+                        grid: np.ndarray | None = None) -> pd.DataFrame:
+    """Scores as one criterion's weight moves, other weights rescaled pro rata from Base Case."""
+    grid = np.round(np.arange(0.05, 0.6001, 0.01), 2) if grid is None else grid
+    base = SCENARIOS[BASE_SCENARIO]
+    rows = []
+    for w in grid:
+        others = {c: v for c, v in base.items() if c != criterion}
+        k = (1 - w) / sum(others.values())
+        weights = {c: v * k for c, v in others.items()} | {criterion: w}
+        score, _ = calculate_country_score(criterion_scores, weights)
+        rows.append(pd.Series(score, name=w))
+    out = pd.DataFrame(rows)
+    out.index.name = f"weight_{criterion}"
+    return out
+
+
+def find_breakeven(sweep: pd.DataFrame, a: str, b: str) -> float | None:
+    """Smallest swept weight at which country b's score reaches country a's (linear interpolation)."""
+    diff = (sweep[a] - sweep[b]).values
+    w = sweep.index.values
+    for i in range(1, len(diff)):
+        if np.sign(diff[i]) != np.sign(diff[i - 1]):
+            return float(w[i - 1] + (w[i] - w[i - 1]) * diff[i - 1] / (diff[i - 1] - diff[i]))
+    return None
 
 
 # --------------------------------------------------------------------------- #
@@ -1231,6 +1473,80 @@ def create_sensitivity_chart(sensitivity: pd.DataFrame, output_dir: Path) -> Non
     plt.close(fig)
 
 
+def create_thesis_chart(sweeps: dict[str, pd.DataFrame], results: pd.DataFrame, output_dir: Path) -> None:
+    """Score vs weight of Market Access and of Production Economics (thesis choice)."""
+    import matplotlib.pyplot as plt
+
+    fig = new_slide_figure(False)
+    draw_header(fig, "Which Thesis Decides Brazil vs Thailand?",
+                "Base Case score as one criterion's weight changes (other weights rescaled pro rata)")
+    top = list(results.sort_values("rank").index[:5])
+    panels = [("market_access", "Market Access weight (Asia thesis)"),
+              ("production_economics", "Production Economics weight (cost thesis)")]
+    for k, (crit, label) in enumerate(panels):
+        ax = fig.add_axes([0.06 + k * 0.48, 0.16, 0.40, 0.62])
+        _plain_axes(ax)
+        sweep = sweeps[crit]
+        span = sweep[top].values.max() - sweep[top].values.min()
+        ends = sorted(((sweep[c].iloc[-1], c) for c in top))
+        label_y, last = {}, -np.inf
+        for yv, c in ends:  # nudge end labels apart (min gap 5% of range)
+            label_y[c] = max(yv, last + 0.05 * span)
+            last = label_y[c]
+        for c in top:
+            hi = c in ("Brazil", "Thailand")
+            color = {"Brazil": PALETTE["text"], "Thailand": PALETTE["low_risk"]}.get(c, PALETTE["silver"])
+            ax.plot(sweep.index * 100, sweep[c], color=color, linewidth=3 if hi else 1.4, alpha=1 if hi else 0.6)
+            ax.text(sweep.index[-1] * 100 + 0.8, label_y[c], c, va="center", fontsize=11,
+                    fontweight="bold" if hi else "regular", color=color)
+        base_w = SCENARIOS[BASE_SCENARIO][crit] * 100
+        ax.axvline(base_w, color=PALETTE["silver"], linestyle=(0, (3, 3)), linewidth=1)
+        ax.text(base_w, ax.get_ylim()[1], " Base Case", fontsize=10, color=PALETTE["text_secondary"], va="top")
+        be = find_breakeven(sweep, "Brazil", "Thailand")
+        if be is not None:
+            ax.axvline(be * 100, color=PALETTE["low_risk"], linewidth=1.4)
+            ax.text(be * 100, ax.get_ylim()[0], f" Thailand = Brazil at {be:.0%}", fontsize=11,
+                    color=PALETTE["text"], va="bottom", fontweight="semibold")
+        ax.set_xlabel(label, fontsize=12, color=PALETTE["text"])
+        ax.tick_params(labelsize=10)
+        ax.grid(axis="y", color=PALETTE["text"], alpha=0.10)
+        ax.set_xlim(sweep.index[0] * 100, sweep.index[-1] * 100 + 9)
+    draw_source_note(fig)
+    save_figure(fig, output_dir / "thesis_weight_sweep.png")
+    plt.close(fig)
+
+
+def create_monte_carlo_chart(mc_v1: pd.DataFrame, mc_v2: pd.DataFrame, output_dir: Path) -> None:
+    """P(top 3) before and after the data corrections."""
+    import matplotlib.pyplot as plt
+
+    order = mc_v2.sort_values("p_top3", ascending=True).index
+    fig = new_slide_figure(False)
+    draw_header(fig, "How Often Each Country Lands in the Top 3",
+                f"Monte Carlo on data uncertainty ({mc_v2.attrs.get('n_sims', 0):,} runs, Base Case weights): "
+                "v1 data vs corrected v2 data")
+    ax = fig.add_axes([0.16, 0.13, 0.70, 0.68])
+    _plain_axes(ax)
+    y = np.arange(len(order))
+    ax.barh(y + 0.2, mc_v1.loc[order, "p_top3"] * 100, height=0.36, color=PALETTE["silver"], label="v1 data")
+    ax.barh(y - 0.2, mc_v2.loc[order, "p_top3"] * 100, height=0.36, color=PALETTE["low_risk"], label="v2 data")
+    for yi, c in zip(y, order):
+        ax.text(-1.5, yi, c, ha="right", va="center", fontsize=14)
+        ax.text(mc_v2.loc[c, "p_top3"] * 100 + 1, yi - 0.2, f"{mc_v2.loc[c, 'p_top3']:.0%}", va="center",
+                fontsize=12, fontweight="bold")
+        ax.text(mc_v1.loc[c, "p_top3"] * 100 + 1, yi + 0.2, f"{mc_v1.loc[c, 'p_top3']:.0%}", va="center",
+                fontsize=10, color=PALETTE["text_secondary"])
+    ax.set_xlim(0, 108)
+    ax.set_yticks([])
+    ax.set_xticks([0, 25, 50, 75, 100])
+    ax.set_xticklabels(["0%", "25%", "50%", "75%", "100%"], fontsize=10)
+    ax.grid(axis="x", color=PALETTE["text"], alpha=0.10)
+    ax.legend(loc="lower right", frameon=False, fontsize=12, labelcolor=PALETTE["text_secondary"])
+    draw_source_note(fig)
+    save_figure(fig, output_dir / "monte_carlo_top3.png")
+    plt.close(fig)
+
+
 def create_ranking_table(results: pd.DataFrame, output_dir: Path) -> None:
     """Slide-style table image with the full ranking and criterion scores."""
     import matplotlib.pyplot as plt
@@ -1316,12 +1632,12 @@ def export_results(output_dir: Path, results: pd.DataFrame, metric_scores: pd.Da
 # --------------------------------------------------------------------------- #
 
 def run(data_path: Path = DEFAULT_DATA, output_dir: Path = DEFAULT_OUTPUT, plotly_static: bool = False,
-        make_charts: bool = True) -> pd.DataFrame:
+        make_charts: bool = True, distance_mode: str = DEFAULT_DISTANCE_MODE,
+        ratings_path: Path | None = DEFAULT_RATINGS, mc_sims: int = MC_DEFAULT_SIMS,
+        compare_path: Path | None = V1_DATA) -> pd.DataFrame:
     """Run the full pipeline and return the Base Case results table."""
     validate_weights()
-    raw = load_country_data(data_path)
-    quality = validate_input_data(raw)
-    data = add_derived_metrics(raw)
+    data, quality, agreement = prepare_data(data_path, distance_mode, ratings_path)
     meta = country_metadata(data)
 
     metric_scores = score_metrics(data)
@@ -1343,6 +1659,43 @@ def run(data_path: Path = DEFAULT_DATA, output_dir: Path = DEFAULT_OUTPUT, plotl
 
     output_dir.mkdir(parents=True, exist_ok=True)
     export_results(output_dir, results, metric_scores, sub_scores, sensitivity, quality)
+    agreement.to_csv(output_dir / "rubric_rater_agreement.csv", index=False)
+    write_ratings_template(data, output_dir)
+
+    # Thesis: weight at which Thailand overtakes Brazil.
+    sweeps = {c: thesis_weight_sweep(criterion_scores, c) for c in ("market_access", "production_economics")}
+    be_rows = []
+    for crit, sweep in sweeps.items():
+        be = find_breakeven(sweep, "Brazil", "Thailand") if {"Brazil", "Thailand"} <= set(sweep) else None
+        be_rows.append(dict(criterion=crit, base_case_weight=SCENARIOS[BASE_SCENARIO][crit],
+                            breakeven_weight_thailand_equals_brazil=None if be is None else round(be, 3)))
+        sweep.round(4).to_csv(output_dir / f"thesis_sweep_{crit}.csv")
+    pd.DataFrame(be_rows).to_csv(output_dir / "thesis_breakeven.csv", index=False)
+
+    # Distance-mode sensitivity (circularity check).
+    alt_mode = [m for m in DISTANCE_MODES if m != distance_mode][0]
+    alt_data, _, _ = prepare_data(data_path, alt_mode, ratings_path)
+    alt = score_pipeline(alt_data)
+    dist_cmp = pd.DataFrame({f"score | {distance_mode}": results["score"], f"rank | {distance_mode}": results["rank"],
+                             f"score | {alt_mode}": alt["score"], f"rank | {alt_mode}": alt["rank"]})
+    dist_cmp.sort_values(f"rank | {distance_mode}").round(3).to_csv(output_dir / "distance_mode_comparison.csv")
+
+    # Monte Carlo before/after the data corrections.
+    mc = run_monte_carlo(data, mc_sims)
+    mc.round(4).to_csv(output_dir / "monte_carlo_results.csv")
+    pd.Series(mc.attrs["pairwise"]).round(4).to_csv(output_dir / "monte_carlo_pairwise.csv", header=["probability"])
+    mc_v1 = None
+    if compare_path is not None and Path(compare_path).exists():
+        v1_data, _, _ = prepare_data(compare_path, "include_domestic", None)
+        v1 = score_pipeline(v1_data)
+        mc_v1 = run_monte_carlo(v1_data, mc_sims)
+        cmp = pd.DataFrame({"score_v1": v1["score"], "rank_v1": v1["rank"],
+                            "score_v2": results["score"], "rank_v2": results["rank"],
+                            "p_top3_v1": mc_v1["p_top3"], "p_top3_v2": mc["p_top3"],
+                            "p_rank1_v1": mc_v1["p_rank1"], "p_rank1_v2": mc["p_rank1"]})
+        cmp["score_change"] = cmp["score_v2"] - cmp["score_v1"]
+        cmp.sort_values("rank_v2").round(4).to_csv(output_dir / "version_comparison.csv")
+
     if make_charts:
         setup_matplotlib()
         create_bubble_map(results, meta, output_dir, plotly_static)
@@ -1351,8 +1704,12 @@ def run(data_path: Path = DEFAULT_DATA, output_dir: Path = DEFAULT_OUTPUT, plotl
         create_score_contribution_chart(results, contributions, output_dir)
         create_sensitivity_chart(sensitivity, output_dir)
         create_ranking_table(results, output_dir)
+        create_thesis_chart(sweeps, results, output_dir)
+        if mc_v1 is not None:
+            create_monte_carlo_chart(mc_v1, mc, output_dir)
     summary = results.sort_values("rank")[["rank", "score", "strategic_risk", "viability_flag", "data_confidence"]]
     log.info("Base Case ranking:\n%s", summary.round(2).to_string())
+    log.info("Monte Carlo (%d runs):\n%s", mc_sims, mc[["score_mean", "p_rank1", "p_top3"]].round(3).to_string())
     return results
 
 
@@ -1363,10 +1720,18 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--plotly-static", action="store_true",
                         help="also try a Plotly/Kaleido PNG (needs Chrome and internet for map data)")
     parser.add_argument("--no-charts", action="store_true", help="only compute and export CSVs")
+    parser.add_argument("--distance-mode", choices=DISTANCE_MODES, default=DEFAULT_DISTANCE_MODE,
+                        help="export_only (default) excludes each country's own market from the distance metric")
+    parser.add_argument("--ratings", type=Path, default=DEFAULT_RATINGS,
+                        help="optional CSV with additional rubric raters (country, metric_id, rater, score)")
+    parser.add_argument("--mc-sims", type=int, default=MC_DEFAULT_SIMS, help="Monte Carlo simulations")
+    parser.add_argument("--compare", type=Path, default=V1_DATA,
+                        help="earlier data file to compare against (v1); pass a missing path to skip")
     args = parser.parse_args(argv)
     logging.basicConfig(level=logging.INFO, format="%(levelname)s | %(message)s")
     try:
-        run(args.data, args.output_dir, args.plotly_static, not args.no_charts)
+        run(args.data, args.output_dir, args.plotly_static, not args.no_charts, args.distance_mode,
+            args.ratings, args.mc_sims, args.compare)
     except (DataValidationError, FileNotFoundError) as exc:
         log.error("%s", exc)
         return 1

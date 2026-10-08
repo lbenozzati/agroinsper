@@ -1,6 +1,6 @@
 # Metodologia e fontes: localização de nova unidade de DHA de microalgas (Corbion)
 
-*Versão 1.0 · dados acessados em 07/10/2026 · gerado com `microalgae_site_selection.py`*
+*Versão 2.0 · dados acessados em 07–08/10/2026 · gerado com `microalgae_site_selection.py` e `brazil_thailand_economics.py`*
 
 > **Status dos resultados.** O ranking abaixo é real no sentido de que todo número sai do arquivo
 > `raw_country_data.csv` por fórmula reprodutível. Porém **cerca de 65% do peso do score vem de
@@ -8,6 +8,22 @@
 > fontes secundárias, porque os portais institucionais (World Bank API, FAO, OECD, Corbion.com) não
 > puderam ser acessados diretamente neste ambiente. Use o resultado como **triagem estruturada para
 > discussão**, não como decisão de investimento. A seção 9 lista o que precisa de diligência.
+
+## 0. O que mudou na versão 2
+
+| Tema | v1 | v2 |
+|---|---|---|
+| Aquafeed | Definições e anos misturados (2014–2025, capacidade no Chile) | Volume comercial de ração aquícola 2024–2025 para todos; hierarquia de fontes: associação nacional > USDA > Alltech > derivado. Tailândia 0,41 → 1,05 Mt (TFMA); Indonésia 3,25 → 1,84 Mt (GPMT); México 0,18 → 0,40 Mt (CONAFAB); Chile 1,5 Mt de capacidade → 1,29 Mt estimado pela produção |
+| Açúcar | USDA mai/2025; Indonésia em açúcar branco; Vietnã de fonte secundária; Chile ausente | Uma única fonte: USDA mai/2026, safra 2025/26, raw value. Chile = **0 explícito** a partir de 2026/27 (a Iansa encerrou a compra de beterraba) |
+| Eletricidade do Brasil | Snapshot dez/2025 (0,159) | Média 2023–25 (0,131), mesma base dos demais |
+| Estresse hídrico | 2018 para sete países e 2021 para o Brasil | 2018 para todos (série 2021+ inacessível para os oito) |
+| LPI do México | 2,9 (fonte secundária) | 2,9 **confirmado** na tabela do World Bank (rank 66). O valor 3,0 é uma subdimensão. A flag Review se mantém |
+| Concorrência | 10 para todos os países sem produtor local | Regra aplicada a todos: Tailândia, Vietnã e Indonésia vão para 7,5 (importações chinesas com tarifa zero via ACFTA/RCEP; na Tailândia há só pesquisa no BIOTEC). Brasil e México continuam em 10 |
+| Distância | Mercado doméstico = 0 km (viés circular para China, Vietnã e Chile) | `export_only`: só os mercados prioritários de exportação; a versão anterior roda como comparação |
+| Rubricas | Um avaliador | Suporte a vários avaliadores (`rubric_ratings.csv`): mediana, concordância exata, ±1 nível e alfa de Krippendorff |
+| Incerteza | Só cenários de peso | + Monte Carlo sobre os dados (v1 vs v2), ponto de virada da tese e módulo de custo e retorno Brasil vs Tailândia |
+
+Todas as alterações estão em `data_change_log.csv`; os dados v1 estão preservados em `archive/raw_country_data_v1.csv`.
 
 ---
 
@@ -151,76 +167,163 @@ Escala geral: 0 = Highly unfavorable · 2,5 = Unfavorable · 5 = Neutral or mixe
 | Infraestrutura logística mínima | LPI < 2,5 ou ausente | LPI < 3,0 |
 | Investimento estrangeiro | Comércio/IED = 0 | — |
 
-## 8. Resultados
+## 8. Resultados (v2)
 
 ### 8.1 Ranking Base Case
 
 | # | País | Score | PE | MA | CR | RI | SR* | Viabilidade | Data conf. | % do score com baixa confiança |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 1 | Brazil | **7,08** | 8,2 | 4,7 | 9,4 | 5,6 | 7,2 | Pass | 64 | 8% |
-| 2 | Thailand | **6,88** | 6,6 | 5,6 | 7,5 | 7,3 | 7,8 | Pass | 59 | 22% |
-| 3 | China | **5,63** | 5,7 | 8,7 | 4,4 | 6,7 | 2,6 | Pass | 71 | 0% |
-| 4 | Vietnam | 5,61 | 5,1 | 7,6 | 1,2 | 6,7 | 6,8 | Pass | 51 | 41% |
-| 5 | India | 5,57 | 6,2 | 6,3 | 3,8 | 4,4 | 6,2 | Review (estresse hídrico 66%) | 55 | 28% |
-| 6 | Chile | 5,16 | 4,0 | 6,8 | 1,2 | 6,6 | 7,2 | Review (sem base doméstica de açúcar) | 52 | 30% |
-| 7 | Indonesia | 5,12 | 5,0 | 5,5 | 1,2 | 5,8 | 7,4 | Pass | 51 | 37% |
-| 8 | Mexico | 5,01 | 4,2 | 3,2 | 5,6 | 5,0 | 7,7 | Review (LPI 2,9) | 58 | 30% |
+| 1 | Brazil | **7,15** | 8,4 | 4,8 | 9,4 | 5,6 | 7,2 | Pass | 64 | 8% |
+| 2 | Thailand | **6,76** | 6,6 | 6,2 | 7,5 | 7,3 | 6,6 | Pass | 60 | 15% |
+| 3 | China | **5,58** | 5,7 | 8,4 | 4,4 | 6,7 | 2,6 | Pass | 70 | 0% |
+| 4 | India | 5,55 | 6,1 | 6,3 | 3,8 | 4,4 | 6,2 | Review (estresse hídrico 66%) | 55 | 28% |
+| 5 | Vietnam | 5,32 | 5,1 | 7,4 | 1,2 | 6,7 | 5,6 | Pass | 53 | 36% |
+| 6 | Mexico | 5,11 | 4,2 | 3,7 | 5,6 | 5,0 | 7,7 | Review (LPI 2,9) | 59 | 21% |
+| 7 | Chile | 4,96 | 3,5 | 6,5 | 1,2 | 6,6 | 7,2 | Review (sem base doméstica de açúcar) | 56 | 24% |
+| 8 | Indonesia | 4,80 | 5,0 | 5,1 | 1,2 | 5,8 | 6,2 | Pass | 54 | 30% |
 
-\*SR: 10 = menor risco estratégico.
+\*SR: 10 = menor risco estratégico. v1 → v2: Brasil +0,07; Tailândia −0,12 (concorrência importada);
+Vietnã −0,30; Indonésia −0,32; Chile −0,20 (açúcar = 0); México +0,10.
 
-### 8.2 Sensibilidade
+### 8.2 Sensibilidade aos pesos
 
 | País | Base Case | Lowest-Cost Production | Asian Market Expansion | Melhor/pior posição | Variação do score | No top 3 |
 |---|---|---|---|---|---|---|
-| Brazil | 7,08 (#1) | 7,50 (#1) | 6,67 (#2) | 1 / 2 | 0,83 | 3 de 3, **robusto** |
-| Thailand | 6,88 (#2) | 6,88 (#2) | 6,74 (#1) | 1 / 2 | 0,14 | 3 de 3, **robusto** |
-| China | 5,63 (#3) | 5,53 (#3) | 5,99 (#4) | 3 / 4 | 0,47 | 2 de 3 |
-| Vietnam | 5,61 (#4) | 5,13 (#5) | 6,06 (#3) | 3 / 5 | 0,93 | 1 de 3 |
-| India | 5,57 (#5) | 5,53 (#4) | 5,71 (#5) | 4 / 5 | 0,18 | 0 |
-| Chile | 5,16 (#6) | 4,59 (#8) | 5,57 (#6) | 6 / 8 | 0,99 | 0 |
-| Indonesia | 5,12 (#7) | 4,75 (#7) | 5,35 (#7) | 7 / 7 | 0,60 | 0 |
-| Mexico | 5,01 (#8) | 4,91 (#6) | 4,83 (#8) | 6 / 8 | 0,17 | 0 |
+| Brazil | 7,15 (#1) | 7,58 (#1) | 6,74 (#1) | 1 / 1 | 0,85 | 3 de 3, **robusto** |
+| Thailand | 6,76 (#2) | 6,80 (#2) | 6,68 (#2) | 2 / 2 | 0,12 | 3 de 3, **robusto** |
+| China | 5,58 (#3) | 5,49 (#4) | 5,91 (#3) | 3 / 4 | 0,42 | 2 de 3 |
+| India | 5,55 (#4) | 5,50 (#3) | 5,69 (#5) | 3 / 5 | 0,19 | 1 de 3 |
+| Vietnam | 5,32 (#5) | 4,91 (#6) | 5,73 (#4) | 4 / 6 | 0,82 | 0 de 3 |
+| Mexico | 5,11 (#6) | 4,99 (#5) | 4,99 (#8) | 5 / 8 | 0,12 | 0 de 3 |
+| Chile | 4,96 (#7) | 4,36 (#8) | 5,36 (#6) | 6 / 8 | 1,00 | 0 de 3 |
+| Indonesia | 4,80 (#8) | 4,51 (#7) | 5,00 (#7) | 7 / 8 | 0,48 | 0 de 3 |
 
-**Leitura:** só Brasil e Tailândia ficam no top 3 nos três cenários. A terceira posição é
-estatisticamente indistinta: China, Vietnã e Índia estão a menos de 0,07 ponto entre si no Base
-Case, bem dentro da incerteza das rubricas.
+### 8.3 Tese: em que peso a Tailândia passa o Brasil
+
+Os demais pesos são reescalados proporcionalmente a partir do Base Case (`thesis_breakeven.csv`).
+- **Market Access ≥ 37%** (Base Case 20%; cenário asiático 30%): a Tailândia empata com o Brasil.
+- **Production Economics ≤ 11%** (Base Case 30%): idem.
+
+Ou seja, só uma tese explicitamente "Ásia acima de tudo" inverte a ordem. Com os pesos definidos
+pelo comitê, o Brasil fica em 1º em todos os cenários testados.
+
+### 8.4 Monte Carlo sobre os dados (5.000 rodadas, pesos do Base Case)
+
+As métricas variam conforme a confiança. Valores quantitativos recebem ruído lognormal de σ 5%,
+15% ou 30% (High, Medium, Low). Rubricas sobem ou descem um nível com probabilidade de 10%, 25% ou 40%.
+
+| País | P(1º) v1 | P(1º) v2 | P(top 3) v1 | P(top 3) v2 | Score médio v2 (P5–P95) |
+|---|---|---|---|---|---|
+| Brazil | 71% | **83%** | 100% | 100% | 7,05 (6,70–7,36) |
+| Thailand | 29% | 17% | 100% | 100% | 6,75 (6,32–7,18) |
+| China | 0% | 0% | 39% | **46%** | 5,59 (5,27–5,92) |
+| India | 0% | 0% | 31% | **40%** | 5,55 (5,09–6,02) |
+| Vietnam | 0% | 0% | 28% | **12%** | 5,32 (4,90–5,76) |
+| Mexico | 0% | 0% | 0% | 1% | 5,06 |
+| Chile | 0% | 0% | 2% | 0% | 4,95 |
+| Indonesia | 0% | 0% | 0% | 0% | 4,82 |
+
+A correção dos dados reforçou Brasil e Tailândia e reduziu o Vietnã. A 3ª vaga segue indefinida
+entre China (46%) e Índia (40%). O teste de distância sem viés circular quase não muda o ranking:
+a China perde 0,06 e o Chile 0,05 (`distance_mode_comparison.csv`).
+
+### 8.5 Custo e retorno: Brasil vs Tailândia (`brazil_thailand_economics.py`)
+
+Métrica: **preço mínimo de venda (MSP)**, o preço do produto que dá VPL = 0 ao WACC real em USD de
+cada país. Não se assume preço de mercado. A unidade tem 20 kt/ano de biomassa com cerca de 30% de DHA.
+
+| Caso | Capex | Custo caixa/t | MSP/t | MSP por kg DHA | WACC real |
+|---|---|---|---|---|---|
+| Brasil – expansão de Orindiúva | US$ 132 mi | US$ 2.417 | **US$ 3.493** | US$ 11,6 | 8,1% |
+| Brasil – greenfield | US$ 176 mi | US$ 2.702 | US$ 4.130 | US$ 13,8 | 8,1% |
+| Tailândia – greenfield (BOI) | US$ 160 mi | US$ 3.225 | US$ 4.275 | US$ 14,3 | 7,0% |
+
+- **O que explica a diferença** (tornado de MSP Tailândia − Brasil, base +US$ 783/t):
+  - preço do açúcar (+409 a +1.150);
+  - fator brownfield (+507 a +1.058);
+  - fator de localização do capex;
+  - consumo de açúcar por kg;
+  - spread soberano.
+
+  Frete, mão de obra e vapor movem a diferença em menos de US$ 160/t.
+- **Monte Carlo (5.000 rodadas):** P(expansão Brasil mais barata que Tailândia) = **99,9%**.
+  P(Brasil greenfield mais barato que Tailândia) = **66%**. Ou seja, a vantagem do Brasil vem
+  principalmente de ser **expansão**; numa comparação greenfield contra greenfield, o resultado é
+  quase empate.
+- **Câmbio e risco-país (`economics_scenarios.csv`):**
+  - Real −25% (R$ 7,00): diferença sobe para +1.116.
+  - Real +25% (R$ 4,20): diferença cai para +235.
+  - Baht ±10%: diferença vai de +549 a +1.069.
+  - Risco-Brasil +200 bp: diferença cai para +511.
+  - Açúcar tailandês a 25 THB/kg: diferença sobe para +1.153.
+  - Açúcar brasileiro a US$ 550/t: diferença cai para +409.
+- **Impostos efetivos:**
+  - **Brasil:** 34% (o Pillar Two não muda nada, porque a alíquota já é maior que 15%). Há ainda um
+    vazamento estimado de 1,5% dos custos em créditos de ICMS/PIS/COFINS não recuperados. A
+    reforma tributária (CBS/IBS a partir de 2027, com imunidade às exportações) deve reduzir esse
+    vazamento.
+  - **Tailândia:** a isenção BOI de 8 anos fica limitada a **15% pelo Pillar Two**. A Corbion fatura
+    €1.267 mi, acima do limite de €750 mi, e o Decreto de Top-Up Tax vigora desde 2025. O crédito
+    reembolsável (QRTC) proposto pelo BOI devolveria esse benefício.
+  - O efeito no MSP é pequeno: cerca de US$ 30/t entre isenção plena e piso de 15%.
+- **Limitação:** o capex por tonelada, os coeficientes de processo (açúcar, energia e vapor por
+  kg), o quadro de pessoal e os fatores de localização e brownfield são **premissas**, marcadas
+  como tal. Os valores absolutos de MSP são indicativos; a **diferença** entre os países é mais
+  robusta, porque as premissas de processo são compartilhadas.
 
 ## 9. Limitações e diligência necessária
 
-1. **Rubricas** respondem por 65,5% do peso efetivo (incluindo o status USTR convertido em nota). Elas devem ser validadas com
-   a gestão da Corbion e com especialistas locais, especialmente: concorrência local, permissões e
-   incentivos.
-2. **Coleta indireta.** Os portais primários (World Bank, FAO, OECD, Corbion.com) estavam bloqueados
-   no ambiente de coleta. Os valores vieram de PDFs oficiais citados em buscas, de espelhos no GitHub
-   (OWID/Ember, datasets/gdp) ou de agregadores (IndexMundi, World Population Review, TradingEconomics).
-   É preciso conferir cada valor marcado *Medium/Low* na fonte primária.
-3. **Volumes de aquafeed** usam definições e anos diferentes (CFIA 2024, USDA 2025, Alltech 2025,
-   consultoria 2023, estimativa acadêmica 2020, dado de 2014 para o México e capacidade instalada para
-   o Chile). Isso afeta sobretudo Tailândia (provavelmente subestimada), México e Indonésia.
-4. **Estresse hídrico** é de 2018 para sete países e de 2021 (arredondado) para o Brasil. A média
-   nacional esconde bacias críticas (Chile central, Bajío no México, norte da China).
-5. **Eletricidade:** o Brasil usa um snapshot de dezembro/2025; os demais, a média 2023–2025. Para
-   a Índia, as fontes divergem (0,07 a 0,12 USD/kWh).
-6. **Produção de açúcar:** usa a safra USDA de maio/2025 para manter uma única vintage (a Índia foi
-   revisada para 30 Mt em nov/2025). A Indonésia está em açúcar branco, não em raw value. O Vietnã
-   vem de fonte secundária. O Chile está ausente.
-7. **Concorrência na China:** as capacidades vêm de relatório de mercado, não de demonstrações
-   auditadas (CABIO, SSE 688089; Runke). O paralelo com o PLA (utilização abaixo de 40%) é analógico.
-   É necessário levantar a capacidade de biomassa de DHA para aquafeed e a curva de preços.
-8. **Aprovações:** a aprovação GACC para vender na China **não** equivale a licença para fabricar
-   localmente. Também é preciso verificar se o registro GACC está vinculado à planta brasileira: se
-   estiver, uma nova planta em outro país precisaria de novo registro para exportar à China.
-   Registros para Vietnã, Índia e Indonésia não foram encontrados.
-9. **Brasil = expansão brownfield.** O primeiro lugar reflete a ampliação de Orindiúva (ativos,
-   equipe, licenças). Isso **aumenta a concentração geográfica** do suprimento: um único país, safra
-   de cana e câmbio do real. Esse risco de concentração não está no modelo e deve ser ponderado pelo
-   comitê de investimento.
-10. **Tailândia** é a melhor opção greenfield e de diversificação, mas: o volume de aquafeed é de baixa
-    confiança, o preço do açúcar sofre com secas, há instabilidade política e o tier exato de
-    incentivo BOI para DHA de algas precisa ser confirmado.
-11. A distância aos mercados é grande-círculo (proxy), não rota marítima nem frete cotado.
+1. **Rubricas:** respondem por 65,5% do peso efetivo. A estrutura para vários avaliadores existe
+   (`outputs/rubric_ratings_template.csv`). Falta coletar as notas da Corbion, da AgroInsper e de
+   especialistas locais e checar a concordância (`rubric_rater_agreement.csv`; alfa ≥ 0,67 como
+   referência mínima).
+2. **Coleta indireta:** os portais primários continuam inacessíveis neste ambiente. Situação de cada
+   correção pedida:
+   - LPI do México: verificado.
+   - Eletricidade do Brasil: corrigida.
+   - Açúcar: padronizado em USDA mai/2026.
+   - Aquafeed: padronizado em 2024–25. O Chile segue estimado pela produção.
+   - Estresse hídrico: valores de 2021+ não obtidos; padronizado em 2018.
+   - Demais valores *Medium/Low*: ainda precisam de conferência na fonte primária.
+3. **México (incerteza menor):** o valor de açúcar foi lido de uma tabela USDA cujo alinhamento de
+   colunas não foi verificado; o aquafeed vem de uma nota de imprensa da CONAFAB.
+4. **Concorrência na China:** capacidades não auditadas (CABIO, SSE 688089; Runke). É preciso
+   levantar a capacidade de biomassa de DHA para aquafeed e a curva de preços.
+5. **Aprovações:** é preciso verificar se o registro GACC está vinculado à planta brasileira. Se
+   estiver, uma planta nova na Tailândia precisaria de novo registro para exportar à China.
+6. **Concentração:** a expansão em Orindiúva concentra o suprimento num só país, numa só safra de
+   cana e numa só moeda. O modelo não captura esse risco.
+7. **Distância:** usa grande-círculo; o frete cotado entra só no módulo de economia (faixas indicativas).
+8. **Economia:** os parâmetros de processo e capex são premissas e devem ser substituídos por dados
+   da Corbion e cotações de EPC. Ver `due_diligence_brazil_thailand.md`.
 
 ## 10. Fontes
+
+**Adicionadas na v2:** USDA FAS Sugar: World Markets and Trade (mai/2026) https://www.fas.usda.gov/data/sugar-world-markets-and-trade-05282026 ·
+USDA China Sugar Annual 2026 https://www.fas.usda.gov/data/gain/2026/04/china-sugar-annual ·
+Emol – radiografia da beterraba (Iansa) https://www.emol.com/noticias/Economia/2026/05/11/1199512/radiografia-remolacha-chile.html ·
+Aqua Culture Asia Pacific – Aquafeeds in 2025 https://aquaasiapac.com/2026/06/30/aquafeeds-in-2025-disrupted-by-tariffs/ ·
+Sindirações 2025 (Band) https://www.band.com.br/agro/noticias/producao-de-racoes-para-animais-tem-alta-de-28-em-2025-aponta-sindicato-202512051209 ·
+CONAFAB acuacultura https://www.liderempresarial.com/conafab-destaca-el-crecimiento-del-6-en-la-acuacultura-mexicana/ ·
+SeafoodSource – Chile salmon exports 2025 https://www.seafoodsource.com/news/supply-trade/chile-s-salmon-exports-surpass-usd-6-5-billion-in-2025 ·
+World Bank LPI 2023 (documento) https://documents1.worldbank.org/curated/en/099042123145531599/pdf/P17146804a6a570ac0a4f80895e320dda1e.pdf ·
+CEPEA açúcar cristal https://cepea.org.br/br/diarias-de-mercado/acucar-cepea-indicador-tem-nova-alta.aspx ·
+Preço de açúcar tailandês (Bangkok Post / Pattaya Mail) https://www.pattayamail.com/thailandnews/sugar-price-hike-canceled-after-pm-flags-impact-on-households-and-retailers-525552 ·
+Intratec gás natural Tailândia https://www.intratec.us/solutions/energy-prices-markets/commodity/natural-gas-price-thailand ·
+UFF Engevista – cogeração de bagaço https://periodicos.uff.br/engevista/article/view/9103/6576 ·
+Bank of Thailand salário manufatura (Trading Economics) https://tradingeconomics.com/thailand/wages-in-manufacturing ·
+IBGE PNAD 2025 (Exame) https://exame.com/brasil/rendimento-medio-do-brasileiro-chega-a-r-3-367-maior-valor-da-historia/ ·
+Damodaran country risk https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/ctryprem.html e ERP jan/2026 https://www.bvresources.com/articles/bvwire/damodaran-posts-his-first-data-update-for-2026 ·
+Thailand Top-Up Tax Decree (Forvis Mazars) https://www.forvismazars.com/th/en/insights/doing-business-in-thailand/tax/global-minimum-tax-top-up-tax ·
+Brazil Lei 15.079/2024 (Trench Rossi) https://www.trenchrossi.com/en/legal-alerts/brazil-law-15079-establishing-the-oecd-pillar-two-global-minimum-tax-in-brazil-qdmtt-has-been-approved/ ·
+Corbion FY2025 (receita €1.267,4 mi) https://millingmea.com/corbion-reports-strong-2025-results-with-26-7-organic-growth-in-adjusted-ebitda/ ·
+Fed FX 2025 https://fred.stlouisfed.org/series/AEXBZUS e https://fred.stlouisfed.org/series/AEXTHUS ·
+Veramaris US$ 200 mi https://www.seafoodsource.com/news/aquaculture/veramaris-opens-usd-200-million-algal-oil-facility ·
+Solazyme 10-K 2014 https://www.sec.gov/Archives/edgar/data/1311230/000155566715000031/solazyme10k2014-12x31.htm ·
+Fretes: https://agorafreight.net/shipping-quotes/fcl-from-santos-to-shanghai/ , https://www.sino-shipping.com/freight-china-chile/ ·
+NatureWorks Nakhon Sawan https://renewable-carbon.eu/news/?p=179603 · IEAT BCG estate https://washingtondc.thaiembassy.org/en/content/thailand-builds-industrial-estate-for-bio-green-ci
+
+**Fontes da v1:**
 
 Todas acessadas em 07/10/2026. A fonte de cada valor está no `raw_country_data.csv`.
 
