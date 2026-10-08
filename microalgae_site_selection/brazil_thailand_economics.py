@@ -92,9 +92,9 @@ def case_parameters(df: pd.DataFrame, case: str, column: str = "") -> dict[str, 
 @dataclass
 class CaseResult:
     capex: float
-    cost_lines: dict[str, float]  # USD per t product at steady state
+    cost_lines: dict[str, float]
     wacc_real: float
-    msp: float  # USD per t product
+    msp: float
     msp_per_kg_dha: float
     pv_tax_share: float
 
@@ -145,7 +145,7 @@ def evaluate(p: dict[str, float], fx_factor: float = 1.0, holiday_floor: float |
     fixed = (lines["labour"] + lines["maintenance_overhead"]) * p["capacity"] * p["utilisation_steady"]
     variable_per_t = cash_cost - lines["labour"] - lines["maintenance_overhead"]
     disc_capex = capex * (p["construction_split_y1"] + (1 - p["construction_split_y1"]) / (1 + r))
-    t_op = np.arange(years) + 2  # operations start after two build years
+    t_op = np.arange(years) + 2
     disc = 1 / (1 + r) ** t_op
 
     def npv(price: float) -> tuple[float, float]:
@@ -153,7 +153,7 @@ def evaluate(p: dict[str, float], fx_factor: float = 1.0, holiday_floor: float |
         ebitda = revenue - variable_per_t * q - fixed
         taxable = ebitda - dep
         loss_cf, tax = 0.0, np.zeros(years)
-        for i in range(years):  # simple loss carry-forward
+        for i in range(years):
             base = taxable[i] - loss_cf
             tax[i] = max(0.0, base) * rates[i]
             loss_cf = max(0.0, -base)
@@ -164,7 +164,7 @@ def evaluate(p: dict[str, float], fx_factor: float = 1.0, holiday_floor: float |
         return float((cf * disc).sum() - disc_capex), float((tax * disc).sum())
 
     lo, hi = 0.0, 50_000.0
-    for _ in range(45):  # bisection on price (precision < USD 0.01/t)
+    for _ in range(45):
         mid = (lo + hi) / 2
         if npv(mid)[0] > 0:
             hi = mid
@@ -295,10 +295,6 @@ def summarize_mc(sims: pd.DataFrame) -> pd.DataFrame:
     return out
 
 
-# --------------------------------------------------------------------------- #
-# Charts (same visual identity as the site-selection model)                   #
-# --------------------------------------------------------------------------- #
-
 GROUPS = {
     "Sugar": ["cost_sugar"],
     "Energy & steam": ["cost_electricity", "cost_steam"],
@@ -307,7 +303,7 @@ GROUPS = {
     "Freight to customers": ["cost_freight"],
     "Capital recovery & income tax": ["capital_and_tax_per_t"],
 }
-GROUP_COLORS = list(ms.CRITERION_COLORS.values())  # validated 5-colour order
+GROUP_COLORS = list(ms.CRITERION_COLORS.values())
 
 
 def chart_cost_breakdown(res: pd.DataFrame, output_dir: Path) -> None:

@@ -32,24 +32,20 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-SEED = 42  # fixed seed for the Monte Carlo simulation
+SEED = 42
 np.random.seed(SEED)
 
 BASE_DIR = Path(__file__).resolve().parent
 DEFAULT_DATA = BASE_DIR / "raw_country_data.csv"
 DEFAULT_OUTPUT = BASE_DIR / "outputs"
-DEFAULT_RATINGS = BASE_DIR / "rubric_ratings.csv"  # optional extra raters for rubric metrics
-V1_DATA = BASE_DIR / "archive" / "raw_country_data_v1.csv"  # data before the v2 corrections
+DEFAULT_RATINGS = BASE_DIR / "rubric_ratings.csv"
+V1_DATA = BASE_DIR / "archive" / "raw_country_data_v1.csv"
 FONT_DIR = BASE_DIR / "assets" / "fonts"
 WORLD_GEOJSON = BASE_DIR / "assets" / "geo" / "ne_110m_admin_0_countries.geojson"
-# Plotly base-map topojson (sane-topojson, MIT) embedded so the HTML also works offline.
 PLOTLY_TOPOJSON = BASE_DIR / "assets" / "geo" / "plotly_world_110m.topojson.json"
 
 log = logging.getLogger("site_selection")
 
-# --------------------------------------------------------------------------- #
-# Model definition                                                            #
-# --------------------------------------------------------------------------- #
 
 CRITERIA: dict[str, str] = {
     "production_economics": "Production Economics",
@@ -72,9 +68,7 @@ SCENARIOS: dict[str, dict[str, float]] = {
 }
 BASE_SCENARIO = "Base Case"
 
-# Sub-criterion weights inside each criterion (must sum to 1 per criterion).
 SUBCRITERIA: dict[str, tuple[str, str, float]] = {
-    # id: (criterion, label, weight within criterion)
     "pe_sugar": ("production_economics", "Sugar / glucose cost and availability", 0.35),
     "pe_energy": ("production_economics", "Electricity, renewable energy and steam", 0.30),
     "pe_water": ("production_economics", "Industrial water and waste treatment", 0.20),
@@ -110,7 +104,7 @@ class MetricSpec:
 
     metric_id: str
     subcriterion: str
-    weight: float  # within sub-criterion
+    weight: float
     method: str
     label: str
     higher_is_better: bool = True
@@ -120,7 +114,6 @@ class MetricSpec:
 
 
 METRICS: list[MetricSpec] = [
-    # Production economics
     MetricSpec("pe_sugar_production", "pe_sugar", 0.5, "log", "Domestic sugar production (Mt)",
                True, worst=0.5, best=40.0, valid_range=(0, 300)),
     MetricSpec("pe_sugar_cost_position", "pe_sugar", 0.5, "qualitative", "Sugar cost position (rubric)"),
@@ -135,7 +128,6 @@ METRICS: list[MetricSpec] = [
     MetricSpec("pe_gdp_per_capita", "pe_labor", 0.6, "linear", "GDP per capita (USD, labour-cost proxy)",
                False, worst=18000.0, best=2000.0, valid_range=(0, 200000)),
     MetricSpec("pe_construction_epc_capability", "pe_labor", 0.4, "qualitative", "Construction / EPC capability (rubric)"),
-    # Market access
     MetricSpec("ma_aquafeed_volume", "ma_aquafeed", 1.0, "log", "Aquafeed volume (Mt)",
                True, worst=0.1, best=25.0, valid_range=(0, 100)),
     MetricSpec("ma_premium_species", "ma_species", 1.0, "qualitative", "Premium / DHA-intensive species (rubric)"),
@@ -145,18 +137,15 @@ METRICS: list[MetricSpec] = [
                "Mean distance to China, Vietnam, Chile (km, derived)",
                False, worst=15000.0, best=3000.0, valid_range=(0, 25000)),
     MetricSpec("ma_biomar_customer_proximity", "ma_customers", 1.0, "qualitative", "BioMar / customer proximity (rubric)"),
-    # Corbion readiness
     MetricSpec("cr_existing_manufacturing", "cr_assets", 1.0, "qualitative", "Existing Corbion manufacturing (rubric)"),
     MetricSpec("cr_fermentation_talent", "cr_talent", 1.0, "qualitative", "Fermentation talent (rubric)"),
     MetricSpec("cr_commercial_innovation_presence", "cr_commercial", 1.0, "qualitative", "Commercial / innovation presence (rubric)"),
-    # Regulation & incentives
     MetricSpec("ri_product_approvals", "ri_approvals", 0.6, "qualitative", "Approval to SELL AlgaPrime (rubric)"),
     MetricSpec("ri_local_production_permitting", "ri_approvals", 0.4, "qualitative", "Ability to BUILD/OPERATE locally (rubric)"),
     MetricSpec("ri_corporate_tax_rate", "ri_tax", 0.5, "linear", "Statutory corporate tax rate (%)",
                False, worst=35.0, best=15.0, valid_range=(0, 60)),
     MetricSpec("ri_investment_incentives", "ri_tax", 0.5, "qualitative", "Investment incentives (rubric)"),
     MetricSpec("ri_trade_fdi_access", "ri_trade", 1.0, "qualitative", "Trade agreements & FDI openness (rubric)"),
-    # Strategic risk (high score = LOW risk)
     MetricSpec("sr_local_competition_overcapacity", "sr_competition", 1.0, "qualitative", "Local competition / overcapacity (rubric)"),
     MetricSpec("sr_ip_protection", "sr_ip", 1.0, "qualitative", "IP protection - USTR Special 301 status (rubric)"),
     MetricSpec("sr_sovereign_rating_notch", "sr_country", 0.5, "linear", "S&P sovereign rating (notch, 1 = AAA)",
@@ -165,7 +154,6 @@ METRICS: list[MetricSpec] = [
 ]
 METRIC_INDEX = {m.metric_id: m for m in METRICS}
 
-# Metrics computed by the script rather than read from the CSV.
 DERIVED_METRICS = {"ma_distance_priority_markets"}
 
 META_METRICS = [
@@ -173,20 +161,13 @@ META_METRICS = [
     "meta_corbion_manufacturing", "meta_biomar_manufacturing",
 ]
 
-# Distance metric: "export_only" (default) averages the distance to the priority markets
-# OTHER than the country itself, so China, Vietnam and Chile are not rewarded twice for being
-# their own market (market size is already scored); "include_domestic" counts the home market
-# as 0 km (v1 behaviour, kept for comparison).
 DISTANCE_MODES = ("export_only", "include_domestic")
 DEFAULT_DISTANCE_MODE = "export_only"
 
-# Monte Carlo noise by confidence level: lognormal sigma for quantitative raw values and the
-# probability that a rubric score is one level (2.5) off in either direction.
 MC_QUANT_SIGMA = {"High": 0.05, "Medium": 0.15, "Low": 0.30}
 MC_RUBRIC_SHIFT_PROB = {"High": 0.10, "Medium": 0.25, "Low": 0.40}
 MC_DEFAULT_SIMS = 5000
 
-# Priority markets named in the investment thesis; equal weight each.
 PRIORITY_MARKETS = {
     "CHN": ("Shanghai", 31.23, 121.47),
     "VNM": ("Ho Chi Minh City", 10.76, 106.79),
@@ -202,9 +183,6 @@ REQUIRED_COLUMNS = ["country", "iso3", "metric_id", "raw_value", "unit", "refere
                     "source_name", "source_url", "date_accessed", "value_type", "confidence", "notes"]
 TOLERANCE = 1e-9
 
-# --------------------------------------------------------------------------- #
-# Visual identity (sampled from the reference slide)                          #
-# --------------------------------------------------------------------------- #
 
 PALETTE = {
     "bg_left": "#000E38", "bg_center": "#060216", "bg_right": "#2E0133",
@@ -213,15 +191,13 @@ PALETTE = {
     "high_risk": "#8C2F78", "border": "#E7E3EA",
     "land": "#0C1640", "land_edge": "#27306A", "land_focus": "#16215A",
 }
-# Criterion colours: validated with the dataviz palette checker on #060216
-# (adjacent CVD dE >= 25, normal-vision dE >= 29); segments are also direct-labelled.
 CRITERION_COLORS = {
     "production_economics": "#3A52C8", "market_access": "#9FB0FA",
     "corbion_readiness": "#A8327F", "regulation_incentives": "#D5D2DA",
     "strategic_risk": "#5C3C9E",
 }
 FONT_FAMILY = "Montserrat"
-FIG_SIZE = (16, 9)  # inches -> 3840 x 2160 px at 240 dpi
+FIG_SIZE = (16, 9)
 FIG_DPI = 240
 TITLE = "Best Locations for a New Microalgae Production Unit"
 SUBTITLE = ("Weighted assessment of production economics, market access, execution readiness, "
@@ -233,10 +209,6 @@ SOURCE_NOTE = (
     "methodology_and_sources.md. Accessed Oct 2026."
 )
 
-
-# --------------------------------------------------------------------------- #
-# Data loading and validation                                                 #
-# --------------------------------------------------------------------------- #
 
 class DataValidationError(ValueError):
     """Raised when input data or model weights violate a hard rule."""
@@ -372,10 +344,6 @@ def validate_input_data(df: pd.DataFrame) -> pd.DataFrame:
     return report
 
 
-# --------------------------------------------------------------------------- #
-# Derived metrics and normalisation                                           #
-# --------------------------------------------------------------------------- #
-
 def haversine_km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
     """Great-circle distance in km."""
     p1, p2 = math.radians(lat1), math.radians(lat2)
@@ -439,7 +407,7 @@ def normalize_metric(values: pd.Series, spec: MetricSpec) -> pd.Series:
     if spec.method == "qualitative":
         return x.clip(0, 10)
     worst, best = float(spec.worst), float(spec.best)
-    non_positive = x <= 0  # e.g. an explicit zero production: worst score, not missing
+    non_positive = x <= 0
     if spec.method == "log":
         x = np.log10(x.where(x > 0))
         worst, best = math.log10(worst), math.log10(best)
@@ -453,7 +421,6 @@ def score_metrics(df: pd.DataFrame) -> pd.DataFrame:
     """Return the long metric table with raw values, normalised scores and weights."""
     data = df[df["metric_id"].isin(METRIC_INDEX)].copy()
     countries = sorted(df["country"].unique())
-    # Make absent metric rows explicit as missing so they are visible in outputs.
     full = pd.MultiIndex.from_product([countries, list(METRIC_INDEX)], names=["country", "metric_id"])
     data = data.set_index(["country", "metric_id"]).reindex(full).reset_index()
     data["value_type"] = data["value_type"].fillna("missing")
@@ -477,10 +444,6 @@ def score_metrics(df: pd.DataFrame) -> pd.DataFrame:
         * r["weight_in_subcriterion"], axis=1)
     return data
 
-
-# --------------------------------------------------------------------------- #
-# Aggregation                                                                 #
-# --------------------------------------------------------------------------- #
 
 def calculate_subcriterion_scores(metric_scores: pd.DataFrame) -> pd.DataFrame:
     """Weighted average of metric scores per sub-criterion.
@@ -568,12 +531,10 @@ def assess_viability(df: pd.DataFrame, metric_scores: pd.DataFrame) -> pd.DataFr
     out = []
     for country, r in raw.iterrows():
         fails, reviews = [], []
-        # 1. Legal possibility to produce and export
         if r.get("ri_local_production_permitting") == 0:
             fails.append("No legal route to build/operate a plant")
         elif r.get("ri_local_production_permitting", np.nan) <= 2.5:
             reviews.append("Local production permitting unfavourable")
-        # 2. Water and energy at industrial scale
         ws = r.get("pe_water_stress")
         if pd.isna(ws):
             reviews.append("Water-stress data missing")
@@ -586,19 +547,16 @@ def assess_viability(df: pd.DataFrame, metric_scores: pd.DataFrame) -> pd.DataFr
             reviews.append("Electricity price missing")
         elif ep >= 0.25:
             reviews.append(f"Very high power price ({ep:.2f} USD/kWh)")
-        # 3. Fermentable feedstock
         if r.get("pe_sugar_cost_position") == 0:
             fails.append("No viable fermentable feedstock")
         sp = r.get("pe_sugar_production")
         if pd.isna(sp) or sp < 1.0:
             reviews.append("No/small domestic sugar base - feedstock must be imported")
-        # 4. Minimum logistics
         lpi = r.get("ma_lpi_score")
         if pd.isna(lpi) or lpi < 2.5:
             fails.append("Logistics below minimum (LPI < 2.5 or missing)")
         elif lpi < 3.0:
             reviews.append(f"Weak logistics (LPI {lpi:.1f})")
-        # 5. Foreign investment possible
         if r.get("ri_trade_fdi_access") == 0:
             fails.append("Foreign investment effectively closed")
         flag = "Fail" if fails else ("Review" if reviews else "Pass")
@@ -750,7 +708,6 @@ def run_monte_carlo(data: pd.DataFrame, n_sims: int = MC_DEFAULT_SIMS, seed: int
     shift = np.where(u < p_shift[None] / 2, -2.5, np.where(u < p_shift[None], 2.5, 0.0))
     sims = np.where(qual[None, None, :], np.clip(sims + shift, 0, 10), sims * noise)
 
-    # Vectorised normalisation (same formulas as normalize_metric).
     scores = np.empty_like(sims)
     for j, mid in enumerate(metric_ids):
         spec = METRIC_INDEX[mid]
@@ -768,7 +725,6 @@ def run_monte_carlo(data: pd.DataFrame, n_sims: int = MC_DEFAULT_SIMS, seed: int
             val = np.clip(10 * (xs - worst) / (best - worst), 0, 10)
         scores[:, :, j] = np.where(np.isnan(x), np.nan, val)
 
-    # Aggregate: metric -> sub-criterion -> criterion -> score (missing re-weighted).
     w_metric = np.array([METRIC_INDEX[m].weight for m in metric_ids])
     subs = list(SUBCRITERIA)
     sub_idx = np.array([subs.index(METRIC_INDEX[m].subcriterion) for m in metric_ids])
@@ -841,10 +797,6 @@ def find_breakeven(sweep: pd.DataFrame, a: str, b: str) -> float | None:
     return None
 
 
-# --------------------------------------------------------------------------- #
-# Visual helpers                                                              #
-# --------------------------------------------------------------------------- #
-
 def setup_matplotlib() -> None:
     """Register Montserrat (bundled, OFL) and set slide-like defaults."""
     import matplotlib
@@ -915,12 +867,8 @@ def save_figure(fig, path: Path, transparent: bool = False) -> None:
     log.info("Saved %s", path.relative_to(BASE_DIR) if path.is_relative_to(BASE_DIR) else path)
 
 
-# --------------------------------------------------------------------------- #
-# Bubble map                                                                  #
-# --------------------------------------------------------------------------- #
-
-BUBBLE_PT2_PER_POINT = 300.0  # marker area (pt^2) per score point -> area proportional to score
-LABEL_DIRECTIONS = [  # (name, dx, dy) unit offsets; order = placement preference
+BUBBLE_PT2_PER_POINT = 300.0
+LABEL_DIRECTIONS = [
     ("right", 1, 0), ("left", -1, 0), ("top", 0, 1), ("bottom", 0, -1),
     ("top right", 0.75, 0.75), ("top left", -0.75, 0.75),
     ("bottom right", 0.75, -0.75), ("bottom left", -0.75, -0.75),
@@ -1001,7 +949,7 @@ def _create_bubble_map_matplotlib(results: pd.DataFrame, meta: pd.DataFrame, pat
     from matplotlib.lines import Line2D
     from pyproj import Transformer
 
-    crs = "ESRI:54030"  # Robinson
+    crs = "ESRI:54030"
     world = gpd.read_file(WORLD_GEOJSON)
     world = world[world["NAME"] != "Antarctica"].to_crs(crs)
     to_rob = Transformer.from_crs("EPSG:4326", crs, always_xy=True)
@@ -1013,8 +961,6 @@ def _create_bubble_map_matplotlib(results: pd.DataFrame, meta: pd.DataFrame, pat
     focus = world["ISO_A3"].isin(meta["iso3"])
     world[~focus].plot(ax=ax, color=PALETTE["land"], edgecolor=PALETTE["land_edge"], linewidth=0.35)
     world[focus].plot(ax=ax, color=PALETTE["land_focus"], edgecolor="#3B4685", linewidth=0.6)
-    # Vertical extent is fixed; horizontal extent follows the 16:9 axes so the
-    # map fills the frame without distortion.
     _, y0 = to_rob.transform(0, -47)
     _, y1 = to_rob.transform(0, 57)
     xc, _ = to_rob.transform(17, 0)
@@ -1031,10 +977,9 @@ def _create_bubble_map_matplotlib(results: pd.DataFrame, meta: pd.DataFrame, pat
     cmap, norm = risk_colormap(), Normalize(0, 10)
     top3 = df["rank"] <= 3
     corbion = df["meta_corbion_manufacturing"] == 1
-    # Base edge: subtle; Corbion: white; Top 3: thick white (+ dashed ring below).
     edge_c = np.where(corbion | top3, PALETTE["text"], PALETTE["border"])
     edge_w = np.where(top3, 3.6, np.where(corbion, 1.8, 0.6))
-    draw_order = np.argsort(-sizes)  # small bubbles on top
+    draw_order = np.argsort(-sizes)
     ax.scatter(xs[draw_order], ys[draw_order], s=sizes[draw_order],
                c=cmap(norm(df["strategic_risk"].values[draw_order])),
                edgecolors=edge_c[draw_order], linewidths=edge_w[draw_order], alpha=0.95, zorder=5)
@@ -1043,7 +988,6 @@ def _create_bubble_map_matplotlib(results: pd.DataFrame, meta: pd.DataFrame, pat
     ax.scatter(xs[top3.values], ys[top3.values], s=ring[top3.values], facecolors="none",
                edgecolors=PALETTE["text"], linewidths=1.1, linestyles=(0, (3, 2.5)), zorder=4)
 
-    # BioMar star at the upper-right rim of the bubble.
     from matplotlib.transforms import offset_copy
     for k, (x, y) in enumerate(zip(xs, ys)):
         if df["meta_biomar_manufacturing"].iloc[k] == 1:
@@ -1052,7 +996,6 @@ def _create_bubble_map_matplotlib(results: pd.DataFrame, meta: pd.DataFrame, pat
             ax.scatter([x], [y], s=190, marker="*", color=PALETTE["text_secondary"],
                        edgecolors=PALETTE["bg_center"], linewidths=0.6, transform=tr, zorder=7)
 
-    # Labels: name (semibold) over score (bold); top 3 carry their rank.
     fig.canvas.draw()
     renderer = fig.canvas.get_renderer()
     names, scores_txt, sizes_px = [], [], []
@@ -1083,7 +1026,7 @@ def _create_bubble_map_matplotlib(results: pd.DataFrame, meta: pd.DataFrame, pat
         scores_txt[k].set_position(inv.transform((xa, ymid)))
         scores_txt[k].set_ha(ha)
         scores_txt[k].set_va("top")
-        if placement[k]["tier"] > 0:  # leader line for displaced labels
+        if placement[k]["tier"] > 0:
             cx, cy = centers[k]
             tx = min(max(cx, x0p), x1p)
             ty = min(max(cy, y0p), y1p)
@@ -1111,7 +1054,7 @@ def create_clean_map(results: pd.DataFrame, meta: pd.DataFrame, output_dir: Path
     import matplotlib.pyplot as plt
     from pyproj import Transformer
 
-    crs = "ESRI:54030"  # Robinson
+    crs = "ESRI:54030"
     world = gpd.read_file(WORLD_GEOJSON)
     world = world[world["NAME"] != "Antarctica"].to_crs(crs)
     to_rob = Transformer.from_crs("EPSG:4326", crs, always_xy=True)
@@ -1119,7 +1062,7 @@ def create_clean_map(results: pd.DataFrame, meta: pd.DataFrame, output_dir: Path
     xs, ys = to_rob.transform(df["meta_display_lon"].values, df["meta_display_lat"].values)
     scores = df["score"].values
     lo, hi = scores.min(), scores.max()
-    alpha = 0.55 + 0.45 * (scores - lo) / (hi - lo if hi > lo else 1)  # weakest 55% -> best 100% white
+    alpha = 0.55 + 0.45 * (scores - lo) / (hi - lo if hi > lo else 1)
     sizes = BUBBLE_PT2_PER_POINT * 1.15 * scores
     best = df["rank"].values == 1
     _, y0 = to_rob.transform(0, -47)
@@ -1134,7 +1077,6 @@ def create_clean_map(results: pd.DataFrame, meta: pd.DataFrame, output_dir: Path
         ax.set_axis_off()
         ax.patch.set_alpha(0.0)
         focus = world["ISO_A3"].isin(df["iso3"])
-        # Land as translucent white so it sits on any part of the slide gradient.
         world[~focus].plot(ax=ax, color=(1, 1, 1, 0.16), edgecolor=(1, 1, 1, 0.32), linewidth=0.4)
         world[focus].plot(ax=ax, color=(1, 1, 1, 0.26), edgecolor=(1, 1, 1, 0.55), linewidth=0.7)
         half_w = (y1 - y0) * width_in / height_in / 2
@@ -1208,7 +1150,7 @@ def create_soft_map(results: pd.DataFrame, meta: pd.DataFrame, output_dir: Path)
     scores = df["score"].values
     lo, hi = scores.min(), scores.max()
     t = (scores - lo) / (hi - lo if hi > lo else 1)
-    grey = 0.93 - 0.17 * t  # 0.93 (weakest) -> 0.76 (best)
+    grey = 0.93 - 0.17 * t
     sizes = BUBBLE_PT2_PER_POINT * 1.15 * scores
     _, y0 = to_rob.transform(0, -47)
     _, y1 = to_rob.transform(0, 57)
@@ -1270,7 +1212,6 @@ def _draw_map_legend(fig, cmap) -> None:
     txt = dict(color=PALETTE["text_secondary"], fontsize=10, va="center")
     head = dict(color=PALETTE["text"], fontsize=10.5, fontweight="semibold", va="center")
 
-    # 1) Size (same pt^2-per-point scale as the map)
     fig.text(0.03, y + 0.046, "Bubble area = overall score (Base Case, 0–10)", **head)
     lax = fig.add_axes([0.03, y - 0.032, 0.22, 0.05])
     lax.set_axis_off()
@@ -1281,7 +1222,6 @@ def _draw_map_legend(fig, cmap) -> None:
                     edgecolors=PALETTE["silver"], linewidths=1.0, clip_on=False)
         lax.text(xpos + 0.085 + 0.009 * val, 0.5, f"{val}", **txt)
 
-    # 2) Colour
     fig.text(0.30, y + 0.046, "Bubble colour = strategic risk", **head)
     cax = fig.add_axes([0.30, y - 0.004, 0.18, 0.016])
     cax.imshow(np.linspace(10, 0, 256)[None, :], aspect="auto", cmap=cmap, vmin=0, vmax=10)
@@ -1291,7 +1231,6 @@ def _draw_map_legend(fig, cmap) -> None:
              ha="center")
     fig.text(0.48, y - 0.028, "Higher risk", color=PALETTE["text_secondary"], fontsize=9.5, va="center", ha="right")
 
-    # 3) Outlines and star, one per line
     kax = fig.add_axes([0.55, y - 0.05, 0.25, 0.10])
     kax.set_axis_off()
     kax.set_xlim(0, 1)
@@ -1314,7 +1253,6 @@ def _create_bubble_map_plotly(results: pd.DataFrame, meta: pd.DataFrame, directi
     import plotly.graph_objects as go
 
     df = results.join(meta)
-    # Plotted as risk level (10 - Strategic Risk score) so the colour bar reads low -> high risk left to right.
     colorscale = [[0.0, PALETTE["low_risk"]], [0.5, PALETTE["mid_risk"]], [1.0, PALETTE["high_risk"]]]
     max_px = 70
     sizeref = 2.0 * 10 / max_px ** 2
@@ -1383,7 +1321,7 @@ def _create_bubble_map_plotly(results: pd.DataFrame, meta: pd.DataFrame, directi
                           align="left", font=dict(size=10, color=PALETTE["silver"]))])
     body = fig.to_html(full_html=False, include_plotlyjs=True, config={"displaylogo": False, "responsive": True})
     geo_assets = ""
-    if PLOTLY_TOPOJSON.exists():  # plotly.js reads window.PlotlyGeoAssets before fetching from its CDN
+    if PLOTLY_TOPOJSON.exists():
         geo_assets = ("<script>window.PlotlyGeoAssets={topojson:{world_110m:"
                       + PLOTLY_TOPOJSON.read_text(encoding="utf-8") + "}};</script>")
     html = f"""<!doctype html>
@@ -1404,13 +1342,9 @@ def _create_bubble_map_plotly(results: pd.DataFrame, meta: pd.DataFrame, directi
             fig.update_layout(paper_bgcolor=PALETTE["bg_center"])
             fig.write_image(output_dir / "microalgae_bubble_map_plotly.png", width=1920, height=1080, scale=2)
             log.info("Saved Plotly static image (Kaleido).")
-        except Exception as exc:  # Kaleido needs Chrome and internet access for map topojson
+        except Exception as exc:
             log.warning("Plotly static export failed (%s); Matplotlib PNGs remain the static deliverables.", exc)
 
-
-# --------------------------------------------------------------------------- #
-# Complementary charts                                                        #
-# --------------------------------------------------------------------------- #
 
 def _plain_axes(ax) -> None:
     for side in ["top", "right", "left", "bottom"]:
@@ -1568,7 +1502,7 @@ def create_thesis_chart(sweeps: dict[str, pd.DataFrame], results: pd.DataFrame, 
         span = sweep[top].values.max() - sweep[top].values.min()
         ends = sorted(((sweep[c].iloc[-1], c) for c in top))
         label_y, last = {}, -np.inf
-        for yv, c in ends:  # nudge end labels apart (min gap 5% of range)
+        for yv, c in ends:
             label_y[c] = max(yv, last + 0.05 * span)
             last = label_y[c]
         for c in top:
@@ -1656,10 +1590,6 @@ def create_ranking_table(results: pd.DataFrame, output_dir: Path) -> None:
     plt.close(fig)
 
 
-# --------------------------------------------------------------------------- #
-# Export                                                                      #
-# --------------------------------------------------------------------------- #
-
 def write_template(output_dir: Path) -> None:
     """Blank template listing every metric needed to add a country."""
     rows = []
@@ -1705,10 +1635,6 @@ def export_results(output_dir: Path, results: pd.DataFrame, metric_scores: pd.Da
     log.info("CSV outputs written to %s", output_dir)
 
 
-# --------------------------------------------------------------------------- #
-# Orchestration                                                               #
-# --------------------------------------------------------------------------- #
-
 def run(data_path: Path = DEFAULT_DATA, output_dir: Path = DEFAULT_OUTPUT, plotly_static: bool = False,
         make_charts: bool = True, distance_mode: str = DEFAULT_DISTANCE_MODE,
         ratings_path: Path | None = DEFAULT_RATINGS, mc_sims: int = MC_DEFAULT_SIMS,
@@ -1740,7 +1666,6 @@ def run(data_path: Path = DEFAULT_DATA, output_dir: Path = DEFAULT_OUTPUT, plotl
     agreement.to_csv(output_dir / "rubric_rater_agreement.csv", index=False)
     write_ratings_template(data, output_dir)
 
-    # Thesis: weight at which Thailand overtakes Brazil.
     sweeps = {c: thesis_weight_sweep(criterion_scores, c) for c in ("market_access", "production_economics")}
     be_rows = []
     for crit, sweep in sweeps.items():
@@ -1750,7 +1675,6 @@ def run(data_path: Path = DEFAULT_DATA, output_dir: Path = DEFAULT_OUTPUT, plotl
         sweep.round(4).to_csv(output_dir / f"thesis_sweep_{crit}.csv")
     pd.DataFrame(be_rows).to_csv(output_dir / "thesis_breakeven.csv", index=False)
 
-    # Distance-mode sensitivity (circularity check).
     alt_mode = [m for m in DISTANCE_MODES if m != distance_mode][0]
     alt_data, _, _ = prepare_data(data_path, alt_mode, ratings_path)
     alt = score_pipeline(alt_data)
@@ -1758,7 +1682,6 @@ def run(data_path: Path = DEFAULT_DATA, output_dir: Path = DEFAULT_OUTPUT, plotl
                              f"score | {alt_mode}": alt["score"], f"rank | {alt_mode}": alt["rank"]})
     dist_cmp.sort_values(f"rank | {distance_mode}").round(3).to_csv(output_dir / "distance_mode_comparison.csv")
 
-    # Monte Carlo before/after the data corrections.
     mc = run_monte_carlo(data, mc_sims)
     mc.round(4).to_csv(output_dir / "monte_carlo_results.csv")
     pd.Series(mc.attrs["pairwise"]).round(4).to_csv(output_dir / "monte_carlo_pairwise.csv", header=["probability"])
