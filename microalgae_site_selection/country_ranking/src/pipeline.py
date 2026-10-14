@@ -34,8 +34,8 @@ def run_plant(n_mc: int | None = None, charts: bool = True) -> dict:
                 "(EUA: moinho de milho/dextrose em Blair-NE). Fonte: plant_country_ranking.csv / plant_inputs_long.csv.")
         C.heatmap(tab, CRIT_SHORT_PLANT, w, P.OUT / "plant_heatmap.png",
                   "Melhor país para a nova unidade de DHA de microalgas",
-                  "Score por critério (0–10) e score final ponderado 30/20/15/15/20 · 12 países, 35 métricas", note,
-                  extra_cols={"Gate": tab.gate.map({"Pass": "✓", "Review": "rev.", "Fail": "✗"}),
+                  f"Score por critério (0–10) e score final ponderado 30/20/15/15/20 · {len(tab)} países, {len(model.metrics)} métricas", note,
+                  extra_cols={"Gate": tab.gate.map({"Pass": "ok", "Review": "rev.", "Fail": "falha"}),
                               "v2": tab.v2_rank.map(lambda x: "" if pd.isna(x) else f"{int(x)}º")})
         C.contributions(res["contributions"].div(1), {k: v.replace("\n", " ") for k, v in CRIT_SHORT_PLANT.items()},
                         list(tab.index), P.OUT / "plant_contributions.png",

@@ -3,7 +3,7 @@
 # Every country is assessed at ONE reference site next to a real sugar mill (USA: corn wet mill/dextrose),
 # because the plant buys sugar, steam and power from the mill.
 seed: 42
-mc_sims: 3000
+mc_sims: 1000
 dirichlet_draws: 4000
 base_scenario: Base Case
 criteria:
@@ -48,7 +48,7 @@ metrics:
   pe_manufacturing_wage:        {sub: pe_labour, weight: 0.50, method: linear, worst: 4500, best: 250, label: "Salário médio na indústria (US$/mês)"}
   pe_construction_epc_capability: {sub: pe_labour, weight: 0.50, method: rubric, label: "Capacidade de construção/EPC (rubrica)"}
   # --- Market access
-  ma_transit_days_weighted:     {sub: ma_proximity, weight: 1.0, method: linear, worst: 30, best: 8, label: "Trânsito porta a porta ponderado pela demanda (dias, derivado)"}
+  ma_transit_days_weighted:     {sub: ma_proximity, weight: 1.0, method: linear, worst: 35, best: 10, label: "Trânsito porta a porta ponderado pela demanda (dias, derivado)"}
   ma_lpi_score:                 {sub: ma_logistics, weight: 0.50, method: linear, worst: 2.5, best: 4.0, label: "LPI 2023 (1-5)"}
   ma_lsci:                      {sub: ma_logistics, weight: 0.50, method: log, worst: 5, best: 150, label: "Conectividade marítima UNCTAD LSCI"}
   ma_fta_demand_share:          {sub: ma_trade, weight: 1.0, method: linear, worst: 0.0, best: 0.8, label: "Demanda prioritária coberta por acordo comercial (fração, derivado)"}

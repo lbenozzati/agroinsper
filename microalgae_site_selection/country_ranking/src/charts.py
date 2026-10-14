@@ -68,7 +68,7 @@ def heatmap(tab: pd.DataFrame, crit_labels: dict, weights: dict, path: Path, tit
     mat = tab[cols].to_numpy(dtype=float)
     fig = slide(title, subtitle, note)
     n = len(tab)
-    ax = fig.add_axes([0.20, 0.10, 0.62, 0.72])
+    ax = fig.add_axes([0.20, 0.08, 0.62, 0.68])
     ax.imshow(mat, cmap=SEQ, vmin=0, vmax=10, aspect="auto")
     for i in range(n):
         for j in range(len(cols)):
@@ -82,7 +82,7 @@ def heatmap(tab: pd.DataFrame, crit_labels: dict, weights: dict, path: Path, tit
     ax.tick_params(length=0)
     for s in ax.spines.values():
         s.set_visible(False)
-    ax2 = fig.add_axes([0.83, 0.10, 0.07, 0.72])
+    ax2 = fig.add_axes([0.83, 0.08, 0.07, 0.68])
     ax2.imshow(tab[["score"]].to_numpy(dtype=float), cmap=SEQ, vmin=0, vmax=10, aspect="auto")
     for i, v in enumerate(tab["score"]):
         ax2.text(0, i, fmt(v, 2), ha="center", va="center", fontsize=13, fontweight="bold",
@@ -96,9 +96,9 @@ def heatmap(tab: pd.DataFrame, crit_labels: dict, weights: dict, path: Path, tit
     if extra_cols:
         for k, (label, series) in enumerate(extra_cols.items()):
             x = 0.915 + k * 0.045
-            fig.text(x, 0.835, label, fontsize=9.5, color=INK2, ha="center")
+            fig.text(x, 0.77, label, fontsize=9.5, color=INK2, ha="center")
             for i, c in enumerate(tab.index):
-                y = 0.82 - (i + 0.5) * 0.72 / n
+                y = 0.76 - (i + 0.5) * 0.68 / n
                 fig.text(x, y, str(series.get(c, "")), fontsize=10, color=INK2, ha="center", va="center")
     save(fig, path)
 
@@ -142,6 +142,14 @@ def rank_probability(tab: pd.DataFrame, path: Path, title: str, subtitle: str, n
     save(fig, path)
 
 
+LABEL_OFFSETS = {  # (dx, dy, ha) in degrees, to keep labels apart in crowded regions
+    "Thailand": (-6, -1, "right"), "Vietnam": (2, -5, "left"), "China": (5, 3, "left"), "Philippines": (5, 0, "left"),
+    "Ecuador": (-5, 1, "right"), "Peru": (-5, -2, "right"), "India": (-4, 0, "right"), "Indonesia": (0, -5, "center"),
+    "Norway": (4, 3, "left"), "United Kingdom": (-4, 0, "right"), "Faroe Islands": (-4, 2, "right"),
+    "Iceland": (0, 4, "center"), "Germany": (4, 2, "left"), "France": (-4, -1, "right"), "Spain": (-4, -2, "right"),
+    "Italy": (4, -2, "left"), "Poland": (4, 2, "left"), "Bangladesh": (2, 4, "left")}
+
+
 def bubble_map(tab: pd.DataFrame, path: Path, title: str, subtitle: str, note: str, extent=(-130, 160, -50, 65),
                points: dict | None = None):
     """Bubble area proportional to score (triage, not NPV); only the leader is highlighted."""
@@ -164,8 +172,13 @@ def bubble_map(tab: pd.DataFrame, path: Path, title: str, subtitle: str, note: s
         size = (r.score / 10) ** 2 * 2600
         ax.scatter(lon, lat, s=size, color=INK if c == leader else BLUE, alpha=0.9 if c == leader else 0.55,
                    edgecolor=INK, linewidth=0.8, zorder=5)
-        ax.text(lon, lat - 4 - np.sqrt(size) / 9, f"{int(r['rank'])}. {PT.get(c, c)}  {fmt(r.score, 2)}",
-                ha="center", va="top", fontsize=10.5, color=INK, zorder=6, fontweight="bold" if c == leader else None)
+        if c in LABEL_OFFSETS:
+            dx, dy, ha = LABEL_OFFSETS[c]
+            tx, ty, va = lon + dx, lat + dy, "center"
+        else:
+            tx, ty, ha, va = lon, lat - 4 - np.sqrt(size) / 9, "center", "top"
+        ax.text(tx, ty, f"{int(r['rank'])}. {PT.get(c, c)}  {fmt(r.score, 2)}", ha=ha, va=va, fontsize=10.5,
+                color=INK, zorder=6, fontweight="bold" if c == leader else None)
     ax.set_xlim(extent[0], extent[1])
     ax.set_ylim(extent[2], extent[3])
     ax.axis("off")

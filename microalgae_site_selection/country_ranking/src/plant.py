@@ -108,10 +108,11 @@ def conf_of(data, country, metric) -> str:
     return r.confidence.iloc[0] if len(r) else "Low"
 
 
-def market_weights() -> pd.Series:
-    """Priority-market weights = serviceable algal-DHA demand (SAM, t DHA) in 2030 from the market study."""
+def market_weights(basis: str = "sam_dha_t") -> pd.Series:
+    """Priority-market weights = serviceable algal-DHA demand (SAM, t DHA) in 2030 from the market study.
+    basis="tam_dha_t" (technical DHA need, shrimp-heavier) is the sensitivity case."""
     seg = pd.read_csv(PARENT / "market_expansion" / "outputs" / "segments_by_year_base.csv")
-    w = seg[seg.year == 2030].groupby("country").sam_dha_t.sum()
+    w = seg[seg.year == 2030].groupby("country")[basis].sum()
     return w / w.sum()
 
 
@@ -255,6 +256,13 @@ def run(n_mc: int | None = None, n_dir: int | None = None) -> dict:
     dr = S.dirichlet_ranks(crit, base_w, n_dir or cfg["dirichlet_draws"], cfg["seed"])
     mc = S.monte_carlo(model, values, conf, n_mc or cfg["mc_sims"], cfg["seed"])
     gt = gates(data, cfg)
+    # sensitivity: transit weighted by TAM (technical DHA need) instead of SAM
+    wt = market_weights("tam_dha_t")
+    v_tam = values.copy()
+    for c in COUNTRIES:
+        tt = tm[tm.origin == c].set_index("market").door_to_door_days
+        v_tam.loc[c, "ma_transit_days_weighted"] = float((tt.reindex(wt.index) * wt).sum())
+    s_tam, _, _ = S.aggregate(model, S.metric_scores(model, v_tam.apply(pd.to_numeric, errors="coerce")))
     v2 = pd.read_csv(PARENT / "v3" / "data" / "raw" / "frozen_v2" / "v2_country_scores.csv").set_index("country")
     ref = data[data.metric_id == "ref_mill_name"].set_index("country").raw_value
     xc = data[data.metric_id == "xc_reference_variable_cost"].set_index("country").raw_value
@@ -262,6 +270,8 @@ def run(n_mc: int | None = None, n_dir: int | None = None) -> dict:
     tab = pd.DataFrame({
         "rank": rk, "score": score.round(3), **{c: crit[c].round(2) for c in model.criteria},
         **{f"rank_{n.split()[0].lower()}": S.rank(s) for n, s in scen.items()},
+        "transit_days_tam_weighted": v_tam["ma_transit_days_weighted"].astype(float).round(1),
+        "rank_tam_market_weights": S.rank(s_tam),
         "score_quant_only": q.round(3), "rank_quant_only": S.rank(q),
         "score_if_missing_0": lo.round(3), "score_if_missing_10": hi.round(3),
         **cov, **dr.round(4), **mc.round(4), "gate": gt.gate, "gate_reasons": gt.gate_reasons,

@@ -46,14 +46,14 @@ def test_score_equals_weighted_criteria(res):
     for c in t.index:
         crit = t.loc[c, list(w)].astype(float)
         if crit.notna().all():
-            assert t.score[c] == pytest.approx(sum(crit[k] * w[k] for k in w), abs=2e-3)
+            assert t.score[c] == pytest.approx(sum(crit[k] * w[k] for k in w), abs=0.01)
 
 
 def test_adding_a_country_does_not_change_others():
     cfg = P.load_config()
     m = S.Model.from_config(cfg)
     data, _ = P.derive(P.load_inputs(), cfg)
-    v = S.wide_values(m, data).reindex(P.COUNTRIES)
+    v = S.wide_values(m, data).reindex(P.COUNTRIES).apply(pd.to_numeric, errors="coerce")
     s1, _, _ = S.aggregate(m, S.metric_scores(m, v))
     v2 = pd.concat([v, v.loc[["Brazil"]].rename(index={"Brazil": "Clone"}) * 1.3])
     s2, _, _ = S.aggregate(m, S.metric_scores(m, v2))

@@ -48,6 +48,8 @@ def plant_memo(res: dict) -> None:
              f"{pct(t.p_rank1_data[a])} e no top 3 em {pct(t.p_top3_data[a])}.")
     sc = ", ".join(f"{n}: {PT.get(t[f'rank_{n.split()[0].lower()}'].idxmin())}" for n in model.scenarios)
     L.append(f"- **1º lugar por cenário de pesos:** {sc}.")
+    L.append(f"- **Mercados ponderados pela necessidade técnica de DHA (TAM, mais camarão asiático) em vez do SAM:** "
+             f"1º = {PT.get(t.rank_tam_market_weights.idxmin())}; {PT.get(b, b)} fica em {int(t.rank_tam_market_weights[b])}º.")
     L.append(f"- **Só com métricas quantitativas** (sem rubricas): 1º = {PT.get(t.rank_quant_only.idxmin())}; "
              f"{PT.get(a, a)} fica em {int(t.rank_quant_only[a])}º.")
     gate_rev = [PT.get(c, c) for c in order if t.gate[c] != "Pass"]
@@ -100,7 +102,7 @@ def plant_memo(res: dict) -> None:
     L.append("## 6. Testes de robustez\n")
     for _, r in rob.iterrows():
         L.append(f"- Limites das escalas ×{r.goalpost_stretch}: {int(r.countries_changing_rank)} países mudam de posição; "
-                 f"top 3 = {r.top3}; 1º inalterado: {'sim' if r.top1_unchanged else 'não'}.")
+                 f"top 3 = {', '.join(PT.get(x.strip(), x.strip()) for x in r.top3.split(','))}; 1º inalterado: {'sim' if r.top1_unchanged else 'não'}.")
     pe_cr = corr.loc["production_economics", "corbion_readiness"]
     L.append(f"- Correlação entre Economia de produção e Prontidão Corbion nos 12 países: {fmt(pe_cr, 2)} (v2: 0,76).")
     xc = t.xc_variable_cost_usd_kg_dha.dropna().sort_values()

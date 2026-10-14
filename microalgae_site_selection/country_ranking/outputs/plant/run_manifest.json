@@ -1,0 +1,20 @@
+{
+  "run_date": "2026-10-14",
+  "commit": "a629876",
+  "mc_sims": 1000,
+  "countries": [
+    "Brazil",
+    "Thailand",
+    "United States",
+    "Mexico",
+    "Ecuador",
+    "India",
+    "China",
+    "Peru",
+    "Vietnam",
+    "Chile",
+    "Indonesia",
+    "Philippines"
+  ],
+  "metrics": 34
+}
