@@ -1,0 +1,16 @@
+leader,challenger,criterion,base_weight,weight_where_challenger_overtakes
+Brazil,Thailand,production_economics,0.3,
+Brazil,Thailand,market_access,0.2,
+Brazil,Thailand,corbion_readiness,0.15,
+Brazil,Thailand,regulation_incentives,0.15,0.297
+Brazil,Thailand,strategic_risk,0.2,
+Brazil,United States,production_economics,0.3,0.059000000000000004
+Brazil,United States,market_access,0.2,0.624
+Brazil,United States,corbion_readiness,0.15,
+Brazil,United States,regulation_incentives,0.15,0.424
+Brazil,United States,strategic_risk,0.2,
+Brazil,Mexico,production_economics,0.3,
+Brazil,Mexico,market_access,0.2,0.66
+Brazil,Mexico,corbion_readiness,0.15,
+Brazil,Mexico,regulation_incentives,0.15,0.936
+Brazil,Mexico,strategic_risk,0.2,0.935

@@ -1,0 +1,5 @@
+country,metric_id,raw_value,unit,reference_year,source_name,source_url,date_accessed,value_type,confidence,notes
+Chile,sr_fx_usd_2020,792.2,CLP/USD,2020,"Banco Central de Chile annual average (analyst knowledge, not re-verified this session)",,2026-10-14,estimate,Low,fallback used only because research row was missing
+Indonesia,sr_fx_usd_2020,14582.0,IDR/USD,2020,"Bank Indonesia JISDOR annual average (analyst knowledge, not re-verified)",,2026-10-14,estimate,Low,fallback used only because research row was missing
+Peru,sr_fx_usd_2025,3.7,PEN/USD,2025,"BCRP approximate 2025 average (analyst knowledge, not re-verified)",,2026-10-14,estimate,Low,fallback used only because research row was missing
+Chile,pe_sugar_consumption,0.75,Mt raw value,2025/26,"USDA FAS PSD order of magnitude (analyst knowledge, not re-verified)",,2026-10-14,estimate,Low,fallback used only because research row was missing

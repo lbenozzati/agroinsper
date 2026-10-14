@@ -1,0 +1,31 @@
+# Origin and market ports. links = waypoints the port connects to (checked so legs do not cross land).
+# inland_days = truck/rail from the reference mill (origin) or to the feed mills (market).
+origins:
+  Brazil:       {ports: {Santos: [[-46.33, -23.96], [w_atl_s]]}, inland_days: 1.0, note: "Orindiúva -> Santos ~600 km truck"}
+  Thailand:     {ports: {Laem Chabang: [[100.88, 13.08], [w_gulf_thai]]}, inland_days: 1.0, note: "Nakhon Sawan -> Laem Chabang ~350 km"}
+  China:        {ports: {Fangchenggang: [[108.35, 21.6], [w_scs_s, w_scs_n]]}, inland_days: 1.0, note: "Guangxi cane belt -> Fangchenggang/Qinzhou"}
+  India:        {ports: {Nhava Sheva: [[72.95, 18.95], [w_arabian]], Visakhapatnam: [[83.3, 17.7], [w_bengal]]}, inland_days: 1.5, note: "Maharashtra/UP mills -> JNPT or Vizag"}
+  Vietnam:      {ports: {Cai Mep: [[107.03, 10.5], [w_scs_s]]}, inland_days: 0.5, note: "Tay Ninh -> Cai Mep ~120 km"}
+  Indonesia:    {ports: {Surabaya: [[112.73, -7.2], [w_java, w_lombok]]}, inland_days: 0.5, note: "East Java mills -> Tanjung Perak"}
+  Chile:        {ports: {San Vicente: [[-73.13, -36.73], [w_pac_se, w_pac_chile_n]]}, inland_days: 0.5, note: "Biobío site -> San Vicente/Talcahuano"}
+  Mexico:       {ports: {Veracruz: [[-96.13, 19.2], [w_gulf_mex, w_yucatan]], Manzanillo: [[-104.3, 19.05], [w_pac_mex]]}, inland_days: 1.0, note: "Veracruz cane belt; Manzanillo ~2 days by rail"}
+  United States: {ports: {Houston: [[-95.0, 29.7], [w_gulf_mex]], Tacoma: [[-122.4, 47.27], [w_pac_us, w_pac_n]]}, inland_days: 2.5, note: "Blair NE -> Houston or Tacoma by rail (~2-3 days)"}
+  Ecuador:      {ports: {Guayaquil: [[-79.9, -2.2], [w_galapagos, w_panama_p, w_pac_chile_n]]}, inland_days: 0.5, note: "Guayas mills -> Guayaquil/Posorja"}
+  Peru:         {ports: {Salaverry: [[-79.0, -8.2], [w_galapagos, w_pac_chile_n]]}, inland_days: 0.5, note: "Chicama valley -> Salaverry; most boxes transship at Callao (+1 day)"}
+  Philippines:  {ports: {Iloilo: [[122.57, 10.7], [w_visayas]]}, inland_days: 0.5, note: "Negros -> Iloilo/Bacolod feeder; transship Manila (+2 days)"}
+markets:
+  Norway:         {port: [[5.3, 60.4], [w_north_sea, w_scot_n]], inland_days: 0.5}
+  Chile:          {port: [[-72.94, -41.47], [w_pac_se]], inland_days: 0.5}
+  United Kingdom: {port: [[-5.0, 56.6], [w_scot_n, w_irish_w]], inland_days: 0.5}
+  Australia:      {port: [[147.3, -42.9], [w_tasman, w_aus_s]], inland_days: 0.5}
+  Ecuador:        {port: [[-79.9, -2.2], [w_galapagos, w_panama_p, w_pac_chile_n]], inland_days: 0.5}
+  India:          {port: [[83.3, 17.7], [w_bengal]], inland_days: 0.5}
+  Vietnam:        {port: [[107.03, 10.5], [w_scs_s]], inland_days: 0.5}
+  Indonesia:      {port: [[112.73, -7.2], [w_java, w_lombok]], inland_days: 0.5}
+  Thailand:       {port: [[100.88, 13.08], [w_gulf_thai]], inland_days: 0.5}
+  China:          {port: [[113.5, 22.2], [w_scs_n, w_scs_s]], inland_days: 0.5}
+  United States:  {port: [[-95.0, 29.7], [w_gulf_mex]], alt_port: [[-118.2, 33.7], [w_pac_us, w_pac_mex]], inland_days: 2.0}
+  European Union: {port: [[4.0, 51.95], [w_channel, w_north_sea]], inland_days: 1.0}
+transshipment_days: {Peru: 1.0, Philippines: 2.0}
+speed_knots: 15
+port_days_per_call: 2.0

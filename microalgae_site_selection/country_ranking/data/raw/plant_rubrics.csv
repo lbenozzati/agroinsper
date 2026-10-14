@@ -1,0 +1,136 @@
+country,metric_id,raw_value,unit,reference_year,source_name,source_url,date_accessed,value_type,confidence,notes
+Brazil,pe_steam_biomass_cogeneration,10.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,Usina Moema: 89 MW bagasse cogeneration; steam already supplied to AlgaPrime plant (v2 basis).
+Thailand,pe_steam_biomass_cogeneration,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,KTIS group 85 MW bagasse cogeneration at Nakhon Sawan; steam supply to a third party NOT verified.
+China,pe_steam_biomass_cogeneration,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,Guangxi cane mills burn bagasse; cogeneration MW for the East Asia Sugar cluster not found.
+India,pe_steam_biomass_cogeneration,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,"Balrampur unit 27 MW cogeneration; season ~150 days, off-season steam needs auxiliary boiler."
+Vietnam,pe_steam_biomass_cogeneration,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,"TTC AgriS Tây Ninh 26 MW (planned); small mill, seasonal."
+Indonesia,pe_steam_biomass_cogeneration,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,"PG Djatiroto ~20 MW; old state mill, efficiency unknown."
+Chile,pe_steam_biomass_cogeneration,2.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,Iansa San Carlos becomes a refinery of imported raw sugar: no bagasse; steam from fossil boilers.
+Mexico,pe_steam_biomass_cogeneration,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,Ingenio Pánuco ~40 MW; seasonal (Nov-May).
+United States,pe_steam_biomass_cogeneration,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,Blair corn wet mill runs year-round with gas/biogas utilities; reliable steam but not biomass-based.
+Ecuador,pe_steam_biomass_cogeneration,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,"Ingenio San Carlos 77 MW, exports ~140 GWh/season to the grid; seasonal (Jun-Dec)."
+Peru,pe_steam_biomass_cogeneration,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,Casa Grande: coastal cane harvested year-round (advantage) but cogeneration MW not found.
+Philippines,pe_steam_biomass_cogeneration,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,Victorias 40 MW (~25 MW exported); milling season Oct-May only.
+Brazil,pe_industrial_water_wastewater_infra,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Thailand,pe_industrial_water_wastewater_infra,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+China,pe_industrial_water_wastewater_infra,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+India,pe_industrial_water_wastewater_infra,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Vietnam,pe_industrial_water_wastewater_infra,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Indonesia,pe_industrial_water_wastewater_infra,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Chile,pe_industrial_water_wastewater_infra,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Mexico,pe_industrial_water_wastewater_infra,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+United States,pe_industrial_water_wastewater_infra,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,Industrial campus with permitted water and wastewater (Blair); NPDES permits routine.
+Ecuador,pe_industrial_water_wastewater_infra,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,Mill uses river water; industrial effluent infrastructure site-dependent.
+Peru,pe_industrial_water_wastewater_infra,2.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,Desert coast; irrigation water allocated by ANA; effluent options limited.
+Philippines,pe_industrial_water_wastewater_infra,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,Mill-scale water rights; effluent treatment site-dependent.
+Brazil,pe_construction_epc_capability,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Thailand,pe_construction_epc_capability,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+China,pe_construction_epc_capability,10.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+India,pe_construction_epc_capability,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Vietnam,pe_construction_epc_capability,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Indonesia,pe_construction_epc_capability,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Chile,pe_construction_epc_capability,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Mexico,pe_construction_epc_capability,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+United States,pe_construction_epc_capability,10.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,"Deep biotech/fermentation EPC base (Veramaris Blair, ADM, Cargill campuses); high cost scored separately."
+Ecuador,pe_construction_epc_capability,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,Limited specialised EPC; would import process contractors.
+Peru,pe_construction_epc_capability,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,Mining-led EPC capability; little bioprocess experience.
+Philippines,pe_construction_epc_capability,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,General industrial EPC; little fermentation experience.
+Brazil,ma_biomar_customer_proximity,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Thailand,ma_biomar_customer_proximity,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+China,ma_biomar_customer_proximity,10.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+India,ma_biomar_customer_proximity,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Vietnam,ma_biomar_customer_proximity,10.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Indonesia,ma_biomar_customer_proximity,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Chile,ma_biomar_customer_proximity,10.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Mexico,ma_biomar_customer_proximity,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+United States,ma_biomar_customer_proximity,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,"Pet food majors nearby (Mars, Purina plants in the Midwest); no salmon/shrimp feed anchors."
+Ecuador,ma_biomar_customer_proximity,10.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,"BioMar, Skretting, Cargill and Vitapro shrimp-feed mills in Guayas; world's #1 shrimp exporter."
+Peru,ma_biomar_customer_proximity,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,Vitapro (Nicovita) HQ; 1-3 days to Ecuador shrimp and Chile salmon feed mills.
+Philippines,ma_biomar_customer_proximity,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,Regional shrimp/milkfish feed; anchors are in Vietnam/Thailand.
+Brazil,cr_existing_manufacturing,10.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,Operating AlgaPrime plant (Orindiúva) + Campos/Araucária sites.
+Thailand,cr_existing_manufacturing,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,Rayong lactic acid/PLA (not DHA).
+China,cr_existing_manufacturing,2.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2: sales office/innovation centre only.
+India,cr_existing_manufacturing,2.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2: office only.
+Vietnam,cr_existing_manufacturing,0.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,none
+Indonesia,cr_existing_manufacturing,0.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,none
+Chile,cr_existing_manufacturing,0.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,none
+Mexico,cr_existing_manufacturing,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2: Corbion manufacturing (bakery/ingredients).
+United States,cr_existing_manufacturing,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,Corbion lactic acid plant at the Blair campus + Lenexa HQ; not a DHA plant.
+Ecuador,cr_existing_manufacturing,0.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,none
+Peru,cr_existing_manufacturing,0.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,none
+Philippines,cr_existing_manufacturing,0.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,none
+Brazil,cr_fermentation_talent,10.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Thailand,cr_fermentation_talent,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+China,cr_fermentation_talent,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+India,cr_fermentation_talent,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Vietnam,cr_fermentation_talent,2.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Indonesia,cr_fermentation_talent,2.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Chile,cr_fermentation_talent,2.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Mexico,cr_fermentation_talent,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+United States,cr_fermentation_talent,10.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,Largest industrial-fermentation workforce; Corbion and Veramaris staff at Blair.
+Ecuador,cr_fermentation_talent,2.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,Cane ethanol only.
+Peru,cr_fermentation_talent,2.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,Cane ethanol only.
+Philippines,cr_fermentation_talent,2.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,Small ethanol distilleries.
+Brazil,cr_commercial_innovation_presence,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Thailand,cr_commercial_innovation_presence,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+China,cr_commercial_innovation_presence,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+India,cr_commercial_innovation_presence,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Vietnam,cr_commercial_innovation_presence,2.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Indonesia,cr_commercial_innovation_presence,2.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Chile,cr_commercial_innovation_presence,2.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Mexico,cr_commercial_innovation_presence,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+United States,cr_commercial_innovation_presence,10.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,Corbion Americas HQ (Lenexa) and R&D.
+Ecuador,cr_commercial_innovation_presence,2.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,Served via distributors.
+Peru,cr_commercial_innovation_presence,2.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,Served via distributors.
+Philippines,cr_commercial_innovation_presence,2.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,Served from regional office.
+Brazil,ri_local_production_permitting,10.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2: plant licensed and operating.
+Thailand,ri_local_production_permitting,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+China,ri_local_production_permitting,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+India,ri_local_production_permitting,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Vietnam,ri_local_production_permitting,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Indonesia,ri_local_production_permitting,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Chile,ri_local_production_permitting,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Mexico,ri_local_production_permitting,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+United States,ri_local_production_permitting,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,Air/water permits routine for an existing biorefinery campus; GMO strain rules (EPA TSCA) apply.
+Ecuador,ri_local_production_permitting,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,Environmental licence (MAATE) case by case.
+Peru,ri_local_production_permitting,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,SENACE/EIA required; water licence via ANA.
+Philippines,ri_local_production_permitting,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,ECC from DENR; PEZA/BOI registration.
+Brazil,ri_investment_incentives,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Thailand,ri_investment_incentives,10.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2: BOI
+China,ri_investment_incentives,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+India,ri_investment_incentives,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Vietnam,ri_investment_incentives,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Indonesia,ri_investment_incentives,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Chile,ri_investment_incentives,2.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Mexico,ri_investment_incentives,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+United States,ri_investment_incentives,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,State/local abatements (Nebraska ImagiNE Act); no federal incentive for DHA.
+Ecuador,ri_investment_incentives,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,New-investment incentives exist but legal stability is low.
+Peru,ri_investment_incentives,2.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,Few incentives outside special zones.
+Philippines,ri_investment_incentives,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,CREATE MORE: income tax holiday + enhanced deductions.
+Brazil,ri_trade_fdi_access,2.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,"v2: Mercosur, few FTAs with Asia."
+Thailand,ri_trade_fdi_access,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+China,ri_trade_fdi_access,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+India,ri_trade_fdi_access,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Vietnam,ri_trade_fdi_access,10.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Indonesia,ri_trade_fdi_access,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Chile,ri_trade_fdi_access,10.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Mexico,ri_trade_fdi_access,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+United States,ri_trade_fdi_access,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,"Open to FDI, but 2025-26 tariff policy volatility and retaliation risk for exports."
+Ecuador,ri_trade_fdi_access,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,"FTAs with EU, UK, EFTA, China (2024); dollarised."
+Peru,ri_trade_fdi_access,10.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,"One of the widest FTA networks (US, EU, China, UK, EFTA, CPTPP)."
+Philippines,ri_trade_fdi_access,5.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,ASEAN/RCEP; Constitution limits foreign land ownership.
+Brazil,sr_local_competition_overcapacity,10.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,Corbion is the only producer.
+Thailand,sr_local_competition_overcapacity,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2: Chinese algal DHA imports.
+China,sr_local_competition_overcapacity,0.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,"5 domestic algal DHA producers (Cabio, Huison, ...) with overcapacity."
+India,sr_local_competition_overcapacity,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Vietnam,sr_local_competition_overcapacity,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Indonesia,sr_local_competition_overcapacity,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Chile,sr_local_competition_overcapacity,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+Mexico,sr_local_competition_overcapacity,10.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Medium,v2
+United States,sr_local_competition_overcapacity,2.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,Veramaris (dsm-firmenich/Evonik) algal oil plant on the same Blair campus; dsm legacy plants.
+Ecuador,sr_local_competition_overcapacity,10.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,No producer.
+Peru,sr_local_competition_overcapacity,10.0,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,No producer.
+Philippines,sr_local_competition_overcapacity,7.5,rubric 0-10,2026,"Analyst rubric (country_ranking/README.md, rubric definitions)",,2026-10-14,estimate,Low,No producer; Chinese imports.
+Vietnam,ri_tax_holiday_years,10.0,years,2026,Analyst adjustment of research value (tax incentive structure),,2026-10-14,estimate,Low,4 yrs exempt + 9 yrs at 50% (10%) for high-tech/large projects; with QDMTT the 15% floor binds for the whole 10-year window
+Vietnam,ri_incentive_rate,10.0,%,2026,Analyst adjustment of research value (tax incentive structure),,2026-10-14,estimate,Low,Reduced rate during incentive period
+Thailand,ri_incentive_rate,0.0,%,2026,Analyst adjustment of research value (tax incentive structure),,2026-10-14,estimate,Low,BOI exemption; 15% floor applies (QDMTT enacted)

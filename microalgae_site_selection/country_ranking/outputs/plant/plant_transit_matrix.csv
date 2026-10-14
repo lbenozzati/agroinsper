@@ -1,0 +1,145 @@
+origin,market,origin_port,sea_nm,door_to_door_days
+Brazil,Norway,Santos,5936,22.0
+Brazil,Chile,Santos,4212,17.2
+Brazil,United Kingdom,Santos,5789,21.6
+Brazil,Australia,Santos,10044,33.4
+Brazil,Ecuador,Santos,5870,21.8
+Brazil,India,Santos,10165,33.7
+Brazil,Vietnam,Santos,9801,32.7
+Brazil,Indonesia,Santos,9160,30.9
+Brazil,Thailand,Santos,10199,33.8
+Brazil,China,Santos,10548,34.8
+Brazil,United States,Santos,6158,24.1
+Brazil,European Union,Santos,5496,21.3
+Thailand,Norway,Laem Chabang,9720,32.5
+Thailand,Chile,Laem Chabang,11558,37.6
+Thailand,United Kingdom,Laem Chabang,9573,32.1
+Thailand,Australia,Laem Chabang,5484,20.7
+Thailand,Ecuador,Laem Chabang,11461,37.3
+Thailand,India,Laem Chabang,2629,12.8
+Thailand,Vietnam,Laem Chabang,452,6.8
+Thailand,Indonesia,Laem Chabang,1775,10.4
+Thailand,Thailand,Laem Chabang,0,1.5
+Thailand,China,Laem Chabang,1698,10.2
+Thailand,United States,Laem Chabang,8253,29.9
+Thailand,European Union,Laem Chabang,9280,31.8
+China,Norway,Fangchenggang,9982,33.2
+China,Chile,Fangchenggang,10558,34.8
+China,United Kingdom,Fangchenggang,9836,32.8
+China,Australia,Fangchenggang,5747,21.5
+China,Ecuador,Fangchenggang,10460,34.6
+China,India,Fangchenggang,2891,13.5
+China,Vietnam,Fangchenggang,1213,8.9
+China,Indonesia,Fangchenggang,2038,11.2
+China,Thailand,Fangchenggang,1611,10.0
+China,China,Fangchenggang,0,1.5
+China,United States,Fangchenggang,7253,27.1
+China,European Union,Fangchenggang,9542,32.5
+India,Norway,Nhava Sheva,6720,24.7
+India,Chile,Nhava Sheva,11692,38.5
+India,United Kingdom,Nhava Sheva,6574,24.3
+India,Australia,Visakhapatnam,5526,21.4
+India,Ecuador,Nhava Sheva,10581,35.4
+India,India,Visakhapatnam,0,2.0
+India,Vietnam,Visakhapatnam,2231,12.2
+India,Indonesia,Visakhapatnam,2315,12.4
+India,Thailand,Visakhapatnam,2629,13.3
+India,China,Visakhapatnam,2978,14.3
+India,United States,Visakhapatnam,9533,34.0
+India,European Union,Nhava Sheva,6280,23.9
+Vietnam,Norway,Cai Mep,9322,30.9
+Vietnam,Chile,Cai Mep,11160,36.0
+Vietnam,United Kingdom,Cai Mep,9175,30.5
+Vietnam,Australia,Cai Mep,5086,19.1
+Vietnam,Ecuador,Cai Mep,11063,35.7
+Vietnam,India,Cai Mep,2231,11.2
+Vietnam,Vietnam,Cai Mep,0,1.0
+Vietnam,Indonesia,Cai Mep,1377,8.8
+Vietnam,Thailand,Cai Mep,452,6.3
+Vietnam,China,Cai Mep,1300,8.6
+Vietnam,United States,Cai Mep,7855,28.3
+Vietnam,European Union,Cai Mep,8882,30.2
+Indonesia,Norway,Surabaya,9406,31.1
+Indonesia,Chile,Surabaya,10607,34.5
+Indonesia,United Kingdom,Surabaya,9260,30.7
+Indonesia,Australia,Surabaya,4446,17.3
+Indonesia,Ecuador,Surabaya,10510,34.2
+Indonesia,India,Surabaya,2315,11.4
+Indonesia,Vietnam,Surabaya,1377,8.8
+Indonesia,Indonesia,Surabaya,0,1.0
+Indonesia,Thailand,Surabaya,1775,9.9
+Indonesia,China,Surabaya,2125,10.9
+Indonesia,United States,Surabaya,8598,30.4
+Indonesia,European Union,Surabaya,8966,30.4
+Chile,Norway,San Vicente,8176,27.7
+Chile,Chile,San Vicente,0,1.0
+Chile,United Kingdom,San Vicente,7753,26.5
+Chile,Australia,San Vicente,6792,23.9
+Chile,Ecuador,San Vicente,2107,10.9
+Chile,India,San Vicente,12203,38.9
+Chile,Vietnam,San Vicente,11371,36.6
+Chile,Indonesia,San Vicente,10819,35.1
+Chile,Thailand,San Vicente,11770,37.7
+Chile,China,San Vicente,10660,34.6
+Chile,United States,San Vicente,4681,19.5
+Chile,European Union,San Vicente,7926,27.5
+Mexico,Norway,Veracruz,5267,20.1
+Mexico,Chile,Veracruz,5433,20.6
+Mexico,United Kingdom,Veracruz,4844,19.0
+Mexico,Australia,Manzanillo,9611,32.2
+Mexico,Ecuador,Veracruz,2468,12.4
+Mexico,India,Manzanillo,10766,35.4
+Mexico,Vietnam,Manzanillo,9088,30.7
+Mexico,Indonesia,Manzanillo,9109,30.8
+Mexico,Thailand,Manzanillo,9486,31.8
+Mexico,China,Manzanillo,8376,28.8
+Mexico,United States,Veracruz,875,9.4
+Mexico,European Union,Veracruz,5153,20.3
+United States,Norway,Houston,5168,21.4
+United States,Chile,Houston,5539,22.4
+United States,United Kingdom,Houston,4745,20.2
+United States,Australia,Houston,10596,36.4
+United States,Ecuador,Houston,2574,14.2
+United States,India,Tacoma,8802,31.5
+United States,Vietnam,Tacoma,7124,26.8
+United States,Indonesia,Tacoma,7867,28.9
+United States,Thailand,Tacoma,7522,27.9
+United States,China,Tacoma,6413,24.8
+United States,United States,Houston,0,4.5
+United States,European Union,Houston,5053,21.5
+Ecuador,Norway,Guayaquil,6069,21.9
+Ecuador,Chile,Guayaquil,2965,13.2
+Ecuador,United Kingdom,Guayaquil,5646,20.7
+Ecuador,Australia,Guayaquil,8022,27.3
+Ecuador,Ecuador,Guayaquil,0,1.0
+Ecuador,India,Guayaquil,11918,38.1
+Ecuador,Vietnam,Guayaquil,11063,35.7
+Ecuador,Indonesia,Guayaquil,10510,34.2
+Ecuador,Thailand,Guayaquil,11461,36.8
+Ecuador,China,Guayaquil,10351,33.8
+Ecuador,United States,Guayaquil,2574,13.7
+Ecuador,European Union,Guayaquil,5819,21.7
+Peru,Norway,Salaverry,7052,25.6
+Peru,Chile,Salaverry,2601,13.2
+Peru,United Kingdom,Salaverry,6629,24.4
+Peru,Australia,Salaverry,7658,27.3
+Peru,Ecuador,Salaverry,419,7.2
+Peru,India,Salaverry,12711,41.3
+Peru,Vietnam,Salaverry,11239,37.2
+Peru,Indonesia,Salaverry,10687,35.7
+Peru,Thailand,Salaverry,11638,38.3
+Peru,China,Salaverry,10528,35.2
+Peru,United States,Salaverry,3557,17.4
+Peru,European Union,Salaverry,6802,25.4
+Philippines,Norway,Iloilo,10834,37.1
+Philippines,Chile,Iloilo,9936,34.6
+Philippines,United Kingdom,Iloilo,10688,36.7
+Philippines,Australia,Iloilo,5256,21.6
+Philippines,Ecuador,Iloilo,9839,34.3
+Philippines,India,Iloilo,3743,17.4
+Philippines,Vietnam,Iloilo,2070,12.8
+Philippines,Indonesia,Iloilo,1719,11.8
+Philippines,Thailand,Iloilo,2468,13.9
+Philippines,China,Iloilo,1359,10.8
+Philippines,United States,Iloilo,6976,27.9
+Philippines,European Union,Iloilo,10395,36.4

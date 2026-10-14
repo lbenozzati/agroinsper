@@ -1,0 +1,84 @@
+# Prompt 1 – which COUNTRY is best for Corbion's next AlgaPrime DHA fermentation plant.
+# Criterion weights kept from v2 (30/20/15/15/20) as decided by the user on 2026-10-14.
+# Every country is assessed at ONE reference site next to a real sugar mill (USA: corn wet mill/dextrose),
+# because the plant buys sugar, steam and power from the mill.
+seed: 42
+mc_sims: 3000
+dirichlet_draws: 4000
+base_scenario: Base Case
+criteria:
+  production_economics: Production Economics
+  market_access: Market Access
+  corbion_readiness: Corbion Industrial Readiness
+  regulation_incentives: Regulation & Incentives
+  strategic_risk: Strategic Risk
+scenarios:
+  Base Case:              {production_economics: 0.30, market_access: 0.20, corbion_readiness: 0.15, regulation_incentives: 0.15, strategic_risk: 0.20}
+  Lowest-Cost Production: {production_economics: 0.40, market_access: 0.15, corbion_readiness: 0.20, regulation_incentives: 0.10, strategic_risk: 0.15}
+  Asian Market Expansion: {production_economics: 0.25, market_access: 0.30, corbion_readiness: 0.10, regulation_incentives: 0.15, strategic_risk: 0.20}
+subcriteria:
+  pe_sugar:        {criterion: production_economics, label: "Açúcar/glicose: preço, escala e excedente", weight: 0.35}
+  pe_energy:       {criterion: production_economics, label: "Energia elétrica, renovável e vapor da usina", weight: 0.30}
+  pe_water:        {criterion: production_economics, label: "Água (nacional e na bacia do site) e efluentes", weight: 0.20}
+  pe_labour:       {criterion: production_economics, label: "Mão de obra e construção", weight: 0.15}
+  ma_proximity:    {criterion: market_access, label: "Tempo de trânsito aos mercados de DHA (ponderado pela demanda)", weight: 0.40}
+  ma_logistics:    {criterion: market_access, label: "Qualidade logística e conectividade marítima", weight: 0.25}
+  ma_trade:        {criterion: market_access, label: "Acordos comerciais com os mercados prioritários", weight: 0.20}
+  ma_customers:    {criterion: market_access, label: "Fábricas de ração dos grandes clientes", weight: 0.15}
+  cr_assets:       {criterion: corbion_readiness, label: "Ativos industriais da Corbion no país", weight: 0.50}
+  cr_talent:       {criterion: corbion_readiness, label: "Base de fermentação industrial e talento", weight: 0.25}
+  cr_commercial:   {criterion: corbion_readiness, label: "Presença comercial / inovação", weight: 0.25}
+  ri_approvals:    {criterion: regulation_incentives, label: "Licença para vender e para construir/operar", weight: 0.40}
+  ri_tax:          {criterion: regulation_incentives, label: "Carga tributária efetiva e incentivos", weight: 0.30}
+  ri_trade_fdi:    {criterion: regulation_incentives, label: "Abertura a investimento estrangeiro", weight: 0.30}
+  sr_competition:  {criterion: strategic_risk, label: "Concorrência local de DHA de algas / excesso de capacidade", weight: 0.50}
+  sr_ip:           {criterion: strategic_risk, label: "Proteção de PI (cepa, processo)", weight: 0.10}
+  sr_country:      {criterion: strategic_risk, label: "Risco país (soberano, político, regulatório, cambial, climático)", weight: 0.40}
+metrics:
+  # --- Production economics
+  pe_sugar_price_domestic:      {sub: pe_sugar, weight: 0.45, method: linear, worst: 1000, best: 350, label: "Preço doméstico do açúcar (US$/t)"}
+  pe_sugar_production:          {sub: pe_sugar, weight: 0.25, method: log, worst: 0.5, best: 40, label: "Produção de açúcar (Mt)"}
+  pe_sugar_self_sufficiency:    {sub: pe_sugar, weight: 0.30, method: linear, worst: 0.3, best: 2.0, label: "Produção / consumo de açúcar (derivado)"}
+  pe_electricity_price:         {sub: pe_energy, weight: 0.35, method: linear, worst: 0.25, best: 0.06, label: "Eletricidade industrial (US$/kWh)"}
+  pe_renewable_share_electricity: {sub: pe_energy, weight: 0.15, method: linear, worst: 10, best: 90, label: "Renováveis na eletricidade (%)"}
+  pe_steam_biomass_cogeneration: {sub: pe_energy, weight: 0.50, method: rubric, label: "Vapor/bagaço da usina de referência (rubrica)"}
+  pe_water_stress:              {sub: pe_water, weight: 0.30, method: linear, worst: 80, best: 5, label: "Estresse hídrico nacional SDG 6.4.2 (%)"}
+  pe_basin_water_stress:        {sub: pe_water, weight: 0.40, method: linear, worst: 4, best: 0, label: "Estresse hídrico na bacia do site (Aqueduct, 0-5)"}
+  pe_industrial_water_wastewater_infra: {sub: pe_water, weight: 0.30, method: rubric, label: "Infraestrutura de água e efluentes (rubrica)"}
+  pe_manufacturing_wage:        {sub: pe_labour, weight: 0.50, method: linear, worst: 4500, best: 250, label: "Salário médio na indústria (US$/mês)"}
+  pe_construction_epc_capability: {sub: pe_labour, weight: 0.50, method: rubric, label: "Capacidade de construção/EPC (rubrica)"}
+  # --- Market access
+  ma_transit_days_weighted:     {sub: ma_proximity, weight: 1.0, method: linear, worst: 30, best: 8, label: "Trânsito porta a porta ponderado pela demanda (dias, derivado)"}
+  ma_lpi_score:                 {sub: ma_logistics, weight: 0.50, method: linear, worst: 2.5, best: 4.0, label: "LPI 2023 (1-5)"}
+  ma_lsci:                      {sub: ma_logistics, weight: 0.50, method: log, worst: 5, best: 150, label: "Conectividade marítima UNCTAD LSCI"}
+  ma_fta_demand_share:          {sub: ma_trade, weight: 1.0, method: linear, worst: 0.0, best: 0.8, label: "Demanda prioritária coberta por acordo comercial (fração, derivado)"}
+  ma_feed_majors_plants:        {sub: ma_customers, weight: 0.50, method: linear, worst: 0, best: 8, label: "Fábricas de BioMar/Skretting/Cargill/Mowi (nº)"}
+  ma_biomar_customer_proximity: {sub: ma_customers, weight: 0.50, method: rubric, label: "Proximidade de clientes-âncora (rubrica)"}
+  # --- Corbion readiness (Corbion-specific only: the mill's steam/sugar are scored in Production Economics)
+  cr_existing_manufacturing:    {sub: cr_assets, weight: 1.0, method: rubric, label: "Fábricas da Corbion no país (rubrica)"}
+  cr_ethanol_production:        {sub: cr_talent, weight: 0.50, method: log, worst: 0.1, best: 50, label: "Produção de etanol (bi L, proxy de fermentação)"}
+  cr_fermentation_talent:       {sub: cr_talent, weight: 0.50, method: rubric, label: "Talento em fermentação (rubrica)"}
+  cr_commercial_innovation_presence: {sub: cr_commercial, weight: 1.0, method: rubric, label: "Presença comercial/inovação da Corbion (rubrica)"}
+  # --- Regulation & incentives
+  ri_algaprime_approval:        {sub: ri_approvals, weight: 0.40, method: linear, worst: 0, best: 1, label: "AlgaPrime aprovado para venda como ração (0/0,5/1)"}
+  ri_local_production_permitting: {sub: ri_approvals, weight: 0.35, method: rubric, label: "Facilidade de licenciar e operar a planta (rubrica)"}
+  ri_construction_permit_days:  {sub: ri_approvals, weight: 0.25, method: linear, worst: 300, best: 60, label: "Alvará de construção (dias, Doing Business 2020)"}
+  ri_effective_tax_10y:         {sub: ri_tax, weight: 0.70, method: linear, worst: 35, best: 15, label: "Alíquota efetiva 10 anos c/ incentivo e piso de 15% GloBE (%, derivado)"}
+  ri_investment_incentives:     {sub: ri_tax, weight: 0.30, method: rubric, label: "Incentivos ao investimento além do IR (rubrica)"}
+  # OECD FDI index dropped: only 3 of 12 countries reachable this session (portal blocked) - kept as gate input only
+  ri_trade_fdi_access:          {sub: ri_trade_fdi, weight: 1.0, method: rubric, label: "Abertura comercial e a IED (rubrica)"}
+  # --- Strategic risk (10 = lowest risk)
+  sr_local_competition_overcapacity: {sub: sr_competition, weight: 1.0, method: rubric, label: "Concorrência local de DHA de algas (rubrica)"}
+  sr_ip_special301:             {sub: sr_ip, weight: 1.0, method: mapped, label: "USTR Special 301 2026 (0/5/10)"}
+  sr_sovereign_rating_notch:    {sub: sr_country, weight: 0.30, method: linear, worst: 16, best: 1, label: "Rating soberano S&P (notch, 1 = AAA)"}
+  sr_wgi_political_stability:   {sub: sr_country, weight: 0.20, method: linear, worst: 5, best: 90, label: "WGI estabilidade política (percentil)"}
+  sr_wgi_regulatory_quality:    {sub: sr_country, weight: 0.20, method: linear, worst: 10, best: 90, label: "WGI qualidade regulatória (percentil)"}
+  sr_fx_volatility:             {sub: sr_country, weight: 0.15, method: linear, worst: 15, best: 0, label: "Volatilidade cambial anual 2020-25 vs USD (%, derivado)"}
+  sr_ndgain:                    {sub: sr_country, weight: 0.15, method: linear, worst: 35, best: 70, label: "ND-GAIN (resiliência climática)"}
+gates:
+  sugar_min_mt: 1.0
+  basin_stress_review: 4.0
+  national_stress_review: 50
+  lpi_review: 3.0
+  lpi_fail: 2.5
+  fdi_fail: 0.6
