@@ -1,0 +1,108 @@
+# Prompt 2 – which COUNTRIES are best for Corbion to grow AlgaPrime DHA sales, per niche and overall.
+# Same five criteria for every niche (comparable scores); metrics differ by niche.
+seed: 42
+mc_sims: 600
+dirichlet_draws: 4000
+base_scenario: Base Case
+criteria:
+  size_growth: Tamanho e crescimento
+  value: Valor e disposição a pagar
+  access: Acesso a clientes e posição competitiva
+  regulatory: Regulação e acesso comercial
+  risk: Risco país e biológico
+scenarios:
+  Base Case:     {size_growth: 0.30, value: 0.20, access: 0.20, regulatory: 0.15, risk: 0.15}
+  Consolidação:  {size_growth: 0.20, value: 0.20, access: 0.35, regulatory: 0.15, risk: 0.10}
+  Crescimento:   {size_growth: 0.40, value: 0.20, access: 0.10, regulatory: 0.15, risk: 0.15}
+# DHA technical need per kg of feed (g), from market_expansion nutrition_requirements.csv:
+# sum(stage share x EPA+DHA target x DHA share). Used for the derived DHA-need metric and the overall weights.
+dha_g_per_kg_feed: {salmon: 5.3, shrimp: 2.7, pet: 0.33}
+risk_common:
+  subcriteria:
+    rk_country: {criterion: risk, label: "Risco país", weight: 0.65}
+    rk_bio:     {criterion: risk, label: "Risco biológico/de produção", weight: 0.35}
+  metrics:
+    sr_sovereign_rating_notch:  {sub: rk_country, weight: 0.35, method: linear, worst: 16, best: 1, label: "Rating soberano S&P (notch)"}
+    sr_wgi_political_stability: {sub: rk_country, weight: 0.20, method: linear, worst: 5, best: 90, label: "WGI estabilidade política (pct)"}
+    sr_wgi_regulatory_quality:  {sub: rk_country, weight: 0.25, method: linear, worst: 10, best: 90, label: "WGI qualidade regulatória (pct)"}
+    sr_fx_volatility:           {sub: rk_country, weight: 0.20, method: linear, worst: 15, best: 0, label: "Volatilidade cambial 2020-25 (%)"}
+niches:
+  salmon:
+    label: Salmão
+    countries: [Norway, Chile, United Kingdom, Faroe Islands, Canada, Iceland, Australia, New Zealand, Turkey, United States]
+    subcriteria:
+      sz_volume:  {criterion: size_growth, label: "Volume de produção e necessidade de DHA", weight: 0.65}
+      sz_growth:  {criterion: size_growth, label: "Crescimento", weight: 0.35}
+      vl_price:   {criterion: value, label: "Valor do produto final", weight: 0.60}
+      vl_premium: {criterion: value, label: "Exigência de certificação/sustentabilidade", weight: 0.40}
+      ac_adopt:   {criterion: access, label: "Adoção documentada de DHA de algas", weight: 0.40}
+      ac_feed:    {criterion: access, label: "Fábricas de ração dos grandes clientes", weight: 0.35}
+      ac_rel:     {criterion: access, label: "Relacionamento Corbion/canal", weight: 0.25}
+      rg_tariff:  {criterion: regulatory, label: "Tarifa de importação do ingrediente", weight: 0.50}
+      rg_reg:     {criterion: regulatory, label: "Registro do ingrediente", weight: 0.50}
+    metrics:
+      sal_production_t:         {sub: sz_volume, weight: 0.50, method: log, worst: 5000, best: 1500000, label: "Produção de salmonídeos (t)"}
+      dha_need_t:               {sub: sz_volume, weight: 0.50, method: log, worst: 30, best: 10000, label: "Necessidade técnica de DHA (t, derivado)"}
+      sal_growth_5y_cagr:       {sub: sz_growth, weight: 0.40, method: linear, worst: -3, best: 8, label: "CAGR 5 anos (%)"}
+      sal_growth_outlook_2030:  {sub: sz_growth, weight: 0.60, method: linear, worst: -2, best: 6, label: "Crescimento esperado até 2030 (%/ano)"}
+      sal_price_usd_kg:         {sub: vl_price, weight: 1.0, method: linear, worst: 4, best: 12, label: "Preço do salmão (US$/kg)"}
+      sal_certification_share:  {sub: vl_premium, weight: 1.0, method: linear, worst: 0, best: 80, label: "Produção certificada ASC (%)"}
+      sal_algal_dha_adoption:   {sub: ac_adopt, weight: 1.0, method: linear, worst: 0, best: 1, label: "Adoção de DHA de algas (0/0,5/1)"}
+      sal_feed_suppliers:       {sub: ac_feed, weight: 1.0, method: linear, worst: 0, best: 4, label: "BioMar/Skretting/Cargill/Mowi com fábrica (nº)"}
+      sal_relationship:         {sub: ac_rel, weight: 1.0, method: rubric, label: "Relacionamento Corbion/canal (rubrica)"}
+      sal_market_access_tariff: {sub: rg_tariff, weight: 1.0, method: linear, worst: 15, best: 0, label: "Tarifa MFN do ingrediente (%)"}
+      sal_registration:          {sub: rg_reg, weight: 1.0, method: rubric, label: "Facilidade de registro (rubrica)"}
+      sal_mortality_pct:        {sub: rk_bio, weight: 1.0, method: linear, worst: 25, best: 5, label: "Mortalidade no mar (%)"}
+  shrimp:
+    label: Camarão
+    countries: [Ecuador, India, Vietnam, Indonesia, China, Thailand, Brazil, Mexico, Saudi Arabia, Philippines, Bangladesh, Honduras]
+    subcriteria:
+      sz_volume:  {criterion: size_growth, label: "Volume de produção e necessidade de DHA", weight: 0.65}
+      sz_growth:  {criterion: size_growth, label: "Crescimento", weight: 0.35}
+      vl_price:   {criterion: value, label: "Valor do produto final (exportação)", weight: 0.45}
+      vl_intens:  {criterion: value, label: "Intensificação e larvicultura (uso de DHA)", weight: 0.55}
+      ac_adopt:   {criterion: access, label: "Adoção documentada de DHA de algas", weight: 0.40}
+      ac_feed:    {criterion: access, label: "Fábricas de ração dos grandes clientes", weight: 0.35}
+      ac_rel:     {criterion: access, label: "Relacionamento Corbion/canal", weight: 0.25}
+      rg_tariff:  {criterion: regulatory, label: "Tarifa de importação do ingrediente", weight: 0.50}
+      rg_reg:     {criterion: regulatory, label: "Registro do ingrediente", weight: 0.50}
+    metrics:
+      shr_production_t:            {sub: sz_volume, weight: 0.50, method: log, worst: 20000, best: 2000000, label: "Produção de camarão (t)"}
+      dha_need_t:                  {sub: sz_volume, weight: 0.50, method: log, worst: 30, best: 10000, label: "Necessidade técnica de DHA (t, derivado)"}
+      shr_growth_5y_cagr:          {sub: sz_growth, weight: 0.40, method: linear, worst: -3, best: 12, label: "CAGR 5 anos (%)"}
+      shr_growth_outlook:          {sub: sz_growth, weight: 0.60, method: linear, worst: -2, best: 8, label: "Crescimento esperado até 2030 (%/ano)"}
+      shr_export_price_usd_kg:     {sub: vl_price, weight: 1.0, method: linear, worst: 3, best: 9, label: "Preço de exportação (US$/kg)"}
+      shr_intensive_share:         {sub: vl_intens, weight: 0.50, method: linear, worst: 0, best: 80, label: "Produção intensiva (%)"}
+      shr_hatchery_pl_billion:     {sub: vl_intens, weight: 0.50, method: log, worst: 1, best: 300, label: "Pós-larvas (bilhões/ano)"}
+      shr_algal_dha_adoption:      {sub: ac_adopt, weight: 1.0, method: linear, worst: 0, best: 1, label: "Adoção de DHA de algas (0/0,5/1)"}
+      shr_feed_suppliers:          {sub: ac_feed, weight: 1.0, method: linear, worst: 0, best: 6, label: "Grandes fabricantes de ração com fábrica (nº)"}
+      shr_relationship:            {sub: ac_rel, weight: 1.0, method: rubric, label: "Relacionamento Corbion/canal (rubrica)"}
+      shr_import_tariff:           {sub: rg_tariff, weight: 1.0, method: linear, worst: 20, best: 0, label: "Tarifa MFN do ingrediente (%)"}
+      shr_feed_ingredient_regulation: {sub: rg_reg, weight: 1.0, method: linear, worst: 0, best: 1, label: "Facilidade de registro (0/0,5/1)"}
+      shr_disease_risk:            {sub: rk_bio, weight: 1.0, method: linear, worst: 5, best: 1, label: "Pressão de doenças (1-5)"}
+  pet:
+    label: Pet food
+    countries: [United States, Brazil, China, Germany, France, United Kingdom, Italy, Spain, Poland, Japan, Canada, Mexico, Argentina, Australia, Thailand]
+    subcriteria:
+      sz_volume:  {criterion: size_growth, label: "Volume e valor do mercado", weight: 0.65}
+      sz_growth:  {criterion: size_growth, label: "Crescimento", weight: 0.35}
+      vl_premium: {criterion: value, label: "Premiumização", weight: 0.55}
+      vl_claims:  {criterion: value, label: "Demanda por ômega-3/DHA", weight: 0.45}
+      ac_adopt:   {criterion: access, label: "Adoção documentada de DHA de algas", weight: 0.40}
+      ac_feed:    {criterion: access, label: "Fábricas dos grandes fabricantes", weight: 0.35}
+      ac_rel:     {criterion: access, label: "Relacionamento Corbion/canal", weight: 0.25}
+      rg_tariff:  {criterion: regulatory, label: "Tarifa de importação do ingrediente", weight: 0.50}
+      rg_reg:     {criterion: regulatory, label: "Registro do ingrediente", weight: 0.50}
+    metrics:
+      pet_food_production_t:   {sub: sz_volume, weight: 0.40, method: log, worst: 100000, best: 10000000, label: "Produção de pet food (t)"}
+      pet_market_value_usd_bn: {sub: sz_volume, weight: 0.30, method: log, worst: 0.5, best: 60, label: "Mercado de pet food (US$ bi)"}
+      dha_need_t:              {sub: sz_volume, weight: 0.30, method: log, worst: 30, best: 10000, label: "Necessidade técnica de DHA (t, derivado)"}
+      pet_growth_5y_cagr:      {sub: sz_growth, weight: 1.0, method: linear, worst: 0, best: 12, label: "CAGR 5 anos (%)"}
+      pet_premium_share:       {sub: vl_premium, weight: 1.0, method: linear, worst: 10, best: 60, label: "Participação premium (%)"}
+      pet_omega3_claims:       {sub: vl_claims, weight: 1.0, method: linear, worst: 1, best: 5, label: "Demanda por ômega-3 (1-5)"}
+      pet_algal_dha_adoption:  {sub: ac_adopt, weight: 1.0, method: linear, worst: 0, best: 1, label: "Adoção de DHA de algas (0/0,5/1)"}
+      pet_manufacturers:       {sub: ac_feed, weight: 1.0, method: linear, worst: 0, best: 20, label: "Fábricas dos grandes fabricantes (nº)"}
+      pet_relationship:        {sub: ac_rel, weight: 1.0, method: rubric, label: "Relacionamento Corbion/canal (rubrica)"}
+      pet_import_tariff:       {sub: rg_tariff, weight: 1.0, method: linear, worst: 20, best: 0, label: "Tarifa MFN do ingrediente (%)"}
+      pet_ingredient_regulation: {sub: rg_reg, weight: 1.0, method: linear, worst: 0, best: 1, label: "Facilidade de registro (0/0,5/1)"}
+      pet_market_risk:      {sub: rk_bio, weight: 1.0, method: rubric, label: "Risco de mercado/recall/canal (rubrica)"}
