@@ -1,0 +1,312 @@
+{
+ "base_year": 2026,
+ "end_year": 2035,
+ "dha_fraction": 0.36,
+ "dha_yield": 0.075,
+ "recovery": 0.95,
+ "kwh_per_t": 3000.0,
+ "steam_per_t": 6.0,
+ "water_per_t": 50.0,
+ "nutrients": 300.0,
+ "packaging": 60.0,
+ "oee": 0.85,
+ "ramp1": 0.5,
+ "ramp2": 0.8,
+ "module_t": 10000.0,
+ "capex_intensity": 9000.0,
+ "share": {
+  "fermentation": 0.35,
+  "downstream": 0.2,
+  "utilities": 0.15,
+  "effluent": 0.08,
+  "buildings": 0.07,
+  "epc_owner": 0.15
+ },
+ "bf_utilities": 0.5,
+ "bf_buildings": 0.4,
+ "bf_owner": 0.6,
+ "cont_gf": 0.2,
+ "cont_bf": 0.15,
+ "import_share": 0.4,
+ "maint_pct": 0.03,
+ "ins_pct": 0.006,
+ "wc_pct": 0.2,
+ "dep_years": 10.0,
+ "g": 0.01,
+ "economic_life": 20,
+ "price_dha": 25.0,
+ "price_mult": {
+  "SALMON": 1.0,
+  "SHRIMP_AM": 0.9,
+  "SHRIMP_ASIA": 0.9,
+  "CHINA": 0.85,
+  "PET": 1.15
+ },
+ "passthrough": 0.4,
+ "fish_oil_base": 4500.0,
+ "fish_oil": 4500.0,
+ "infl_usd": 0.025,
+ "globe_rate": 0.15,
+ "sbie_pay": 0.092,
+ "sbie_asset": 0.072,
+ "transit_rate": 0.1,
+ "outage_prob": 0.02,
+ "outage_dur": 0.5,
+ "asia_capture_br": 0.7,
+ "asia_capture_hub": 0.95,
+ "west_capture_th": 0.85,
+ "hub": {
+  "capex": 6000000.0,
+  "opex": 1500000.0,
+  "handling": 30.0,
+  "capex_year": 2027
+ },
+ "staged_trigger_util": 0.8,
+ "th_trigger_t": 2500.0,
+ "decision_year": 2029,
+ "asia_regions": [
+  "SHRIMP_ASIA",
+  "CHINA"
+ ],
+ "regions": [
+  "SALMON",
+  "SHRIMP_AM",
+  "SHRIMP_ASIA",
+  "CHINA",
+  "PET"
+ ],
+ "capex_override": {},
+ "capex_mult": {
+  "BR": 1.0,
+  "TH": 1.0
+ },
+ "delay": {},
+ "outage": {},
+ "fx_shock": {
+  "BR": 0.0,
+  "TH": 0.0
+ },
+ "country": {
+  "BR": {
+   "wacc": 0.10214439999999997,
+   "cit": 0.34,
+   "nol_cap": 0.3,
+   "holiday": 0,
+   "globe_applies": 0,
+   "qrtc": 0.0,
+   "leak": 0.015,
+   "duty": 0.05,
+   "labour": 25900.0
+  },
+  "TH": {
+   "wacc": 0.09117399999999999,
+   "cit": 0.2,
+   "nol_cap": 1.0,
+   "holiday": 8,
+   "globe_applies": 1,
+   "qrtc": 0.0,
+   "leak": 0.003,
+   "duty": 0.0,
+   "labour": 11900.0
+  }
+ },
+ "sites": {
+  "BR_ORI_EXP": {
+   "country": "BR",
+   "brownfield": true,
+   "sugar": 370.0,
+   "sugar_local": 0.3,
+   "elec": 0.1,
+   "steam": 9.0,
+   "water": 0.6,
+   "headcount": 45.0,
+   "qa": 300000.0,
+   "loc": 1.05,
+   "conn": 1000000.0,
+   "land": 0.0,
+   "capex_local": 0.5,
+   "first_capex": 2026,
+   "build": 2,
+   "gacc_delay": 0
+  },
+  "BR_GF_GO": {
+   "country": "BR",
+   "brownfield": false,
+   "sugar": 395.0,
+   "sugar_local": 0.3,
+   "elec": 0.11,
+   "steam": 12.0,
+   "water": 0.6,
+   "headcount": 100.0,
+   "qa": 1000000.0,
+   "loc": 1.05,
+   "conn": 8000000.0,
+   "land": 2000000.0,
+   "capex_local": 0.5,
+   "first_capex": 2028,
+   "build": 2,
+   "gacc_delay": 2
+  },
+  "TH_NSN": {
+   "country": "TH",
+   "brownfield": false,
+   "sugar": 560.0,
+   "sugar_local": 0.9,
+   "elec": 0.12,
+   "steam": 20.0,
+   "water": 0.8,
+   "headcount": 100.0,
+   "qa": 1000000.0,
+   "loc": 1.0,
+   "conn": 6000000.0,
+   "land": 3000000.0,
+   "capex_local": 0.5,
+   "first_capex": 2028,
+   "build": 2,
+   "gacc_delay": 2
+  },
+  "TH_RYG": {
+   "country": "TH",
+   "brownfield": false,
+   "sugar": 650.0,
+   "sugar_local": 0.9,
+   "elec": 0.125,
+   "steam": 35.0,
+   "water": 1.0,
+   "headcount": 90.0,
+   "qa": 800000.0,
+   "loc": 1.0,
+   "conn": 4000000.0,
+   "land": 4000000.0,
+   "capex_local": 0.5,
+   "first_capex": 2028,
+   "build": 2,
+   "gacc_delay": 2
+  }
+ },
+ "freight": {
+  "BR": {
+   "SALMON": {
+    "usd": 140.0,
+    "days": 25.0
+   },
+   "SHRIMP_AM": {
+    "usd": 140.0,
+    "days": 20.0
+   },
+   "SHRIMP_ASIA": {
+    "usd": 105.0,
+    "days": 50.0
+   },
+   "CHINA": {
+    "usd": 88.0,
+    "days": 45.0
+   },
+   "PET": {
+    "usd": 140.0,
+    "days": 25.0
+   }
+  },
+  "TH": {
+   "SALMON": {
+    "usd": 190.0,
+    "days": 40.0
+   },
+   "SHRIMP_AM": {
+    "usd": 190.0,
+    "days": 35.0
+   },
+   "SHRIMP_ASIA": {
+    "usd": 63.0,
+    "days": 7.0
+   },
+   "CHINA": {
+    "usd": 65.0,
+    "days": 10.0
+   },
+   "PET": {
+    "usd": 165.0,
+    "days": 30.0
+   }
+  }
+ },
+ "scenario_weights": {
+  "stress": {
+   "contracted": 1.0,
+   "qualified_pipeline": 0.3,
+   "unqualified_potential": 0.0
+  },
+  "base": {
+   "contracted": 1.0,
+   "qualified_pipeline": 0.6,
+   "unqualified_potential": 0.25
+  },
+  "upside": {
+   "contracted": 1.0,
+   "qualified_pipeline": 0.9,
+   "unqualified_potential": 0.5
+  }
+ },
+ "demand": {
+  "SALMON": {
+   "2026": 0.0,
+   "2027": 0.0,
+   "2028": 780.0000600000001,
+   "2029": 1002.8570550000001,
+   "2030": 1225.71423,
+   "2031": 1448.571405,
+   "2032": 1671.428655,
+   "2033": 1894.28565,
+   "2034": 2117.142915,
+   "2035": 2340.0
+  },
+  "SHRIMP_AM": {
+   "2026": 0.0,
+   "2027": 0.0,
+   "2028": 224.00002124999997,
+   "2029": 329.14285875,
+   "2030": 434.2857225,
+   "2031": 539.4285600000001,
+   "2032": 644.5714425,
+   "2033": 749.71428,
+   "2034": 854.8571625,
+   "2035": 960.0
+  },
+  "SHRIMP_ASIA": {
+   "2026": 0.0,
+   "2027": 0.0,
+   "2028": 337.499985,
+   "2029": 530.35711875,
+   "2030": 723.21429,
+   "2031": 916.07146875,
+   "2032": 1108.92853125,
+   "2033": 1301.7857099999999,
+   "2034": 1494.6428812499998,
+   "2035": 1687.500015
+  },
+  "CHINA": {
+   "2026": 0.0,
+   "2027": 0.0,
+   "2028": 181.5,
+   "2029": 328.4285775,
+   "2030": 475.35715500000003,
+   "2031": 622.2857325,
+   "2032": 769.2142674999999,
+   "2033": 916.1428450000001,
+   "2034": 1063.0714225,
+   "2035": 1210.0
+  },
+  "PET": {
+   "2026": 0.0,
+   "2027": 0.0,
+   "2028": 340.0,
+   "2029": 443.2142675,
+   "2030": 546.4285775000001,
+   "2031": 649.642845,
+   "2032": 752.857155,
+   "2033": 856.0714225,
+   "2034": 959.2857325000001,
+   "2035": 1062.5
+  }
+ }
+}

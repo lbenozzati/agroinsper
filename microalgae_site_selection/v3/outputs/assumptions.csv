@@ -1,0 +1,145 @@
+assumption_id,parameter,scope,unit,base,low,high,value_type,source_id,note
+A001,dha_fraction_sku,global,kg DHA per kg SKU (P3 powder),0.36,0.35,0.4,derived,S011,Spec minimum 35%; base assumes assay slightly above minimum. Replace with Corbion assay distribution.
+A002,dha_yield_on_sugar,global,kg DHA per kg sucrose fed,0.075,0.055,0.1,assumption,S027,Lab fed-batch upper bound 0.111 g/g glucose (=0.117 g/g sucrose). Industrial derate assumed; NOT observed plant data.
+A003,downstream_recovery,global,fraction of DHA recovered to SKU,0.95,0.92,0.98,assumption,,Drying/handling losses and off-spec.
+A004,electricity_kwh_per_t,global,kWh per t SKU,3000.0,2000.0,5000.0,assumption,,"Aeration, agitation, cooling, drying."
+A005,steam_t_per_t,global,t steam per t SKU,6.0,4.0,10.0,assumption,,"Sterilisation, evaporation, drying."
+A006,water_m3_per_t,global,m3 per t SKU,50.0,30.0,80.0,assumption,,Process + cooling make-up; effluent priced with water tariff.
+A007,nutrients_usd_per_t,global,USD2026 per t SKU,300.0,200.0,450.0,assumption,,"N source, salts, antifoam, antioxidant."
+A008,packaging_usd_per_t,global,USD2026 per t SKU,60.0,40.0,90.0,assumption,,Bagged powder (P3). Suspension/oil SKUs not modelled.
+A009,oee,global,fraction of nameplate,0.85,0.75,0.92,assumption,,Uptime x yield x quality at steady state.
+A010,rampup_year1,global,fraction of steady state,0.5,0.4,0.6,assumption,,
+A011,rampup_year2,global,fraction of steady state,0.8,0.7,0.9,assumption,,
+A012,module_capacity_t,global,t SKU per year nameplate,10000.0,5000.0,20000.0,assumption,,"Module size is a decision variable, not a Corbion disclosure; EUR 50m capacity is undisclosed."
+A020,capex_intensity_greenfield,global,USD2026 per t/yr nameplate (incl. contingency excluded),9000.0,6000.0,14000.0,assumption,S013,Veramaris Blair USD 200m anchors scale only (capacity not in tonnes). Replace with EPC estimate.
+A021,capex_share_fermentation,global,share of greenfield direct capex,0.35,0.35,0.35,assumption,,
+A022,capex_share_downstream,global,share of greenfield direct capex,0.2,0.2,0.2,assumption,,
+A023,capex_share_utilities,global,share of greenfield direct capex,0.15,0.15,0.15,assumption,,
+A024,capex_share_effluent,global,share of greenfield direct capex,0.08,0.08,0.08,assumption,,
+A025,capex_share_buildings,global,share of greenfield direct capex,0.07,0.07,0.07,assumption,,
+A026,capex_share_epc_owner,global,share of greenfield direct capex,0.15,0.15,0.15,assumption,,
+A027,brownfield_utilities_factor,global,fraction of greenfield utilities module needed,0.5,0.3,0.9,assumption,S030,Shared mill steam/power under existing supply agreements; 0.9 if the mill cannot supply more steam.
+A028,brownfield_buildings_factor,global,fraction of greenfield buildings needed,0.4,0.2,0.8,assumption,,
+A029,brownfield_owner_factor,global,fraction of greenfield EPC/owner cost,0.6,0.4,1.0,assumption,,
+A030,contingency_greenfield,global,fraction of direct capex,0.2,0.15,0.3,assumption,,
+A031,contingency_brownfield,global,fraction of direct capex,0.15,0.1,0.25,assumption,,
+A032,imported_equipment_share,global,fraction of capex,0.4,0.3,0.5,assumption,,
+A033,maintenance_pct_capex,global,fraction of capex per year,0.03,0.02,0.04,assumption,,
+A034,insurance_pct_capex,global,fraction of capex per year,0.006,0.004,0.01,assumption,,
+A035,working_capital_pct_revenue,global,fraction of revenue,0.2,0.12,0.28,assumption,,Inventory incl. in-transit + receivables - payables.
+A036,tax_depreciation_years,global,years straight line,10.0,10.0,10.0,assumption,,Simplified for both jurisdictions; verify asset classes.
+A038,terminal_growth_nominal,global,fraction per year,0.01,0.0,0.02,assumption,,Below USD inflation = conservative real decline.
+A040,net_price_usd_per_kg_dha,global,USD2026 per kg DHA (net FCA plant),25.0,15.0,45.0,assumption,S015,NOT a Corbion price. Fish oil at USD 2.5-6.8k/t with ~30% EPA+DHA = USD 8-23/kg EPA+DHA; algal premium unproven.
+A041,price_mult_salmon,global,multiplier,1.0,1.0,1.0,assumption,,
+A042,price_mult_shrimp,global,multiplier,0.9,0.8,1.0,assumption,,More price-sensitive integrators.
+A043,price_mult_pet,global,multiplier,1.15,1.0,1.3,assumption,S044,Distributor margin excluded (net to Corbion).
+A044,price_mult_china,global,multiplier,0.85,0.7,1.0,assumption,,Local algal-DHA competition.
+A045,fish_oil_passthrough,global,elasticity of AlgaPrime price to fish-oil index,0.4,0.2,0.7,assumption,S033,Contract revisions; non-contracted business more exposed.
+A046,fish_oil_base,global,USD per t feed-grade FOB,4500.0,2500.0,6800.0,derived,S015,Midpoint of conflicting 2026 readings.
+A050,inflation_usd,global,per year,0.025,0.02,0.035,assumption,,
+A051,inflation_brl,global,per year,0.045,0.035,0.065,assumption,,
+A052,inflation_thb,global,per year,0.012,0.0,0.025,assumption,,
+A053,fx_brl,global,BRL per USD,5.4,4.8,6.5,assumption,S021,Real-FX shocks modelled as deviation from relative PPP.
+A054,fx_thb,global,THB per USD,33.45,30.9,36.0,reported,S020,
+A055,eurusd,global,USD per EUR,1.15,1.05,1.25,assumption,,Only used to express EUR disclosures in USD.
+A056,risk_free,global,nominal USD,0.043,0.04,0.048,assumption,,US 10-year approx.
+A057,erp,global,fraction,0.0423,0.0423,0.0423,reported,S038,
+A058,beta,global,levered beta proxy,1.0,0.8,1.2,assumption,,
+A059,crp_multiplier,global,x default spread,1.5,1.0,1.5,assumption,S039,"Damodaran convention; country risk only in discount rate, operational risks in cash flows."
+A060,debt_share,global,fraction of capital,0.3,0.2,0.4,assumption,,
+A061,debt_margin,global,fraction,0.015,0.01,0.025,assumption,,
+A062,globe_min_rate,global,fraction,0.15,0.15,0.15,reported,S022,
+A063,sbie_payroll_rate,global,fraction of payroll (2026 transitional),0.092,0.05,0.1,assumption,S022,OECD transitional carve-out schedule; verify per year with tax counsel.
+A064,sbie_asset_rate,global,fraction of tangible carrying value (2026 transitional),0.072,0.05,0.08,assumption,S022,
+A065,transit_carry_rate,global,annual cost of in-transit inventory,0.1,0.08,0.12,assumption,,
+A066,outage_prob_per_plant_year,global,probability,0.02,0.0,0.05,assumption,,Major outage (contamination/utility failure).
+A067,outage_duration_years,global,years,0.5,0.25,1.0,assumption,,
+A070,default_spread,BR,fraction,0.0248,0.02,0.035,reported,S039,
+A070,default_spread,TH,fraction,0.0136,0.01,0.02,reported,S039,
+A071,cit_rate,BR,fraction,0.34,0.34,0.34,reported,S024,IRPJ 25% + CSLL 9%.
+A071,cit_rate,TH,fraction,0.2,0.2,0.2,reported,S022,
+A072,loss_offset_cap,BR,fraction of taxable income,0.3,0.3,0.3,reported,,Brazil NOL offset limited to 30% of taxable profit (Lei 9.065/1995 art.15; verify).
+A072,loss_offset_cap,TH,fraction of taxable income,1.0,1.0,1.0,reported,,5-year carryforward not limited by percentage (simplified).
+A073,boi_holiday_years,BR,years,0.0,0.0,0.0,reported,,
+A073,boi_holiday_years,TH,years,8.0,0.0,13.0,reported,S032,Tier for algal DHA not confirmed.
+A074,globe_topup_applies,BR,0/1,0.0,0.0,1.0,assumption,S024,Statutory 34% > 15%; top-up only if incentives cut GloBE ETR.
+A074,globe_topup_applies,TH,0/1,1.0,0.0,1.0,assumption,S022,Corbion > EUR 750m. Jurisdictional blending with Rayong entities may lift Thai ETR (then 0). Legal opinion pending.
+A075,qrtc_rate,BR,fraction of capex as refundable credit,0.0,0.0,0.0,assumption,,Not applicable.
+A075,qrtc_rate,TH,fraction of capex as refundable credit,0.0,0.0,0.3,assumption,S023,Framework not confirmed enacted -> 0 in base.
+A076,indirect_tax_leakage,BR,fraction of opex,0.015,0.0,0.04,assumption,,Unrecovered ICMS/PIS/COFINS credits on exports; CBS/IBS from 2027 may reduce.
+A076,indirect_tax_leakage,TH,fraction of opex,0.003,0.0,0.01,assumption,,
+A077,import_duty_rate,BR,fraction on imported equipment,0.05,0.0,0.14,assumption,,Ex-tarifário can cut duty to 0-2%.
+A077,import_duty_rate,TH,fraction on imported equipment,0.0,0.0,0.05,assumption,S032,BOI machinery duty exemption.
+A078,labour_usd_per_fte,BR,USD2026 per FTE-year loaded,25900.0,18000.0,34000.0,derived,,Inherited v2 derivation (IBGE PNAD x premium x charges).
+A078,labour_usd_per_fte,TH,USD2026 per FTE-year loaded,11900.0,8500.0,15500.0,derived,,Inherited v2 derivation.
+A080,sugar_usd_per_t,BR_ORI_EXP,USD2026 per t sucrose delivered,370.0,300.0,520.0,derived,S017,"CEPEA cristal SP Aug-2026 BRL 2087/t / 5.40 = USD 386/t, less 5% integrated-mill discount (assumption). VHP/juice contract terms unknown."
+A080,sugar_usd_per_t,BR_GF_GO,USD2026 per t sucrose delivered,395.0,320.0,540.0,derived,S017,Same indicator + USD 10/t delivery; no integration discount.
+A080,sugar_usd_per_t,TH_NSN,USD2026 per t sucrose delivered,560.0,450.0,700.0,derived,S018,"Between raw parity (~USD 445/t, S019) and controlled white 21 THB/kg (USD 628/t); assumes mill contract at KTIS."
+A080,sugar_usd_per_t,TH_RYG,USD2026 per t sucrose delivered,650.0,590.0,760.0,derived,S018,21 THB/kg / 33.45 + USD 22/t trucking.
+A081,sugar_local_share,BR_ORI_EXP,share of sugar cost moving with local real FX,0.3,0.3,0.3,assumption,,Export-parity pricing.
+A081,sugar_local_share,BR_GF_GO,share,0.3,0.3,0.3,assumption,,
+A081,sugar_local_share,TH_NSN,share,0.9,0.9,0.9,assumption,,Administered THB price.
+A081,sugar_local_share,TH_RYG,share,0.9,0.9,0.9,assumption,,
+A082,electricity_usd_per_kwh,BR_ORI_EXP,USD2026,0.1,0.07,0.131,derived,S036,Mill cogeneration contract assumed; grid tariff 0.131 = high case.
+A082,electricity_usd_per_kwh,BR_GF_GO,USD2026,0.11,0.08,0.14,derived,S036,
+A082,electricity_usd_per_kwh,TH_NSN,USD2026,0.12,0.1,0.14,derived,S036,
+A082,electricity_usd_per_kwh,TH_RYG,USD2026,0.125,0.11,0.14,derived,S036,
+A083,steam_usd_per_t,BR_ORI_EXP,USD2026,9.0,5.0,15.0,assumption,,Bagasse cogeneration steam from adjacent mill (v2 basis).
+A083,steam_usd_per_t,BR_GF_GO,USD2026,12.0,7.0,20.0,assumption,,
+A083,steam_usd_per_t,TH_NSN,USD2026,20.0,12.0,30.0,assumption,,Biomass boiler / mill steam at NBC.
+A083,steam_usd_per_t,TH_RYG,USD2026,35.0,25.0,45.0,assumption,,Natural-gas steam in EEC.
+A084,water_usd_per_m3,BR_ORI_EXP,USD2026 incl. effluent,0.6,0.3,1.5,assumption,,
+A084,water_usd_per_m3,BR_GF_GO,USD2026 incl. effluent,0.6,0.3,1.5,assumption,,
+A084,water_usd_per_m3,TH_NSN,USD2026 incl. effluent,0.8,0.5,1.3,assumption,,
+A084,water_usd_per_m3,TH_RYG,USD2026 incl. effluent,1.0,0.7,1.5,assumption,,EEC drought history (2020).
+A085,headcount,BR_ORI_EXP,FTE per module,45.0,30.0,70.0,assumption,S030,Incremental to the ~170 existing staff.
+A085,headcount,BR_GF_GO,FTE per module,100.0,70.0,140.0,assumption,,
+A085,headcount,TH_NSN,FTE per module,100.0,70.0,140.0,assumption,,
+A085,headcount,TH_RYG,FTE per module,90.0,60.0,130.0,assumption,,Some services shared with Corbion Rayong.
+A086,qa_regulatory_fixed_musd,BR_ORI_EXP,USD m per year,0.3,0.2,0.6,assumption,,
+A086,qa_regulatory_fixed_musd,BR_GF_GO,USD m per year,1.0,0.6,1.5,assumption,,
+A086,qa_regulatory_fixed_musd,TH_NSN,USD m per year,1.0,0.6,1.5,assumption,,
+A086,qa_regulatory_fixed_musd,TH_RYG,USD m per year,0.8,0.5,1.2,assumption,,
+A087,location_capex_factor,BR_ORI_EXP,multiplier,1.05,0.95,1.2,assumption,,Custo Brasil partly offset by Ex-tarifário.
+A087,location_capex_factor,BR_GF_GO,multiplier,1.05,0.95,1.2,assumption,,
+A087,location_capex_factor,TH_NSN,multiplier,1.0,0.9,1.15,assumption,,
+A087,location_capex_factor,TH_RYG,multiplier,1.0,0.9,1.15,assumption,,
+A088,connection_capex_musd,BR_ORI_EXP,USD m,1.0,0.0,3.0,assumption,,Tie-ins to existing utilities.
+A088,connection_capex_musd,BR_GF_GO,USD m,8.0,4.0,15.0,assumption,,"Power line, water intake, road."
+A088,connection_capex_musd,TH_NSN,USD m,6.0,3.0,12.0,assumption,,
+A088,connection_capex_musd,TH_RYG,USD m,4.0,2.0,8.0,assumption,,IEAT estate services.
+A089,land_musd,BR_ORI_EXP,USD m,0.0,0.0,1.0,assumption,,Within existing site (to verify).
+A089,land_musd,BR_GF_GO,USD m,2.0,1.0,4.0,assumption,,
+A089,land_musd,TH_NSN,USD m,3.0,2.0,6.0,assumption,,
+A089,land_musd,TH_RYG,USD m,4.0,2.0,8.0,assumption,,
+A090,capex_local_share,BR_ORI_EXP,share of capex in local currency,0.5,0.5,0.5,assumption,,
+A090,capex_local_share,BR_GF_GO,share,0.5,0.5,0.5,assumption,,
+A090,capex_local_share,TH_NSN,share,0.5,0.5,0.5,assumption,,
+A090,capex_local_share,TH_RYG,share,0.5,0.5,0.5,assumption,,
+A091,first_capex_year,BR_ORI_EXP,year,2026.0,2026.0,2027.0,assumption,S004,Inside 2026-28 capex plan.
+A091,first_capex_year,BR_GF_GO,year,2028.0,2027.0,2029.0,assumption,,Site search + CETESB-equivalent licensing (GO: SEMAD).
+A091,first_capex_year,TH_NSN,year,2028.0,2027.0,2029.0,assumption,,BOI + EIA/IEE (ONEP) before construction.
+A091,first_capex_year,TH_RYG,year,2028.0,2027.0,2029.0,assumption,,
+A092,build_years,BR_ORI_EXP,years of capex,2.0,2.0,3.0,assumption,,
+A092,build_years,BR_GF_GO,years,2.0,2.0,3.0,assumption,,
+A092,build_years,TH_NSN,years,2.0,2.0,3.0,assumption,,
+A092,build_years,TH_RYG,years,2.0,2.0,3.0,assumption,,
+A093,gacc_delay_years,BR_ORI_EXP,years before China sales,0.0,0.0,0.0,assumption,S009,Existing registrations assumed to cover Orindiúva (only producing site) - to verify.
+A093,gacc_delay_years,BR_GF_GO,years,2.0,1.0,3.0,assumption,S009,New establishment likely needs own GACC registration.
+A093,gacc_delay_years,TH_NSN,years,2.0,1.0,3.0,assumption,S009,
+A093,gacc_delay_years,TH_RYG,years,2.0,1.0,3.0,assumption,S009,
+A100,hub_capex_musd,ASIA_HUB,USD m,6.0,3.0,10.0,assumption,,"Warehouse + application lab, no fermentation."
+A101,hub_opex_musd,ASIA_HUB,USD m per year,1.5,1.0,2.5,assumption,,
+A102,hub_handling_usd_per_t,ASIA_HUB,USD per t through hub,30.0,20.0,50.0,assumption,,
+A103,asia_capture_from_brazil,global,share of Asian demand winnable from Brazil (lead time 40-56 days),0.7,0.5,0.9,assumption,S041,Key judgement: lead-time/service penalty. Replace with customer interviews.
+A104,asia_capture_with_hub,global,share winnable from Brazil with Asian stock point,0.95,0.85,1.0,assumption,,
+A105,west_capture_from_thailand,global,share of Americas/Europe demand winnable from Thailand,0.85,0.7,1.0,assumption,S042,
+A110,pipeline_weight,stress,probability weight on qualified_pipeline,0.3,0.3,0.3,assumption,,
+A110,pipeline_weight,base,probability weight on qualified_pipeline,0.6,0.6,0.6,assumption,,
+A110,pipeline_weight,upside,probability weight on qualified_pipeline,0.9,0.9,0.9,assumption,,
+A111,unqualified_weight,stress,probability weight on unqualified_potential,0.0,0.0,0.0,assumption,,
+A111,unqualified_weight,base,probability weight on unqualified_potential,0.25,0.25,0.25,assumption,,
+A111,unqualified_weight,upside,probability weight on unqualified_potential,0.5,0.5,0.5,assumption,,
+A120,staged_trigger_utilisation,global,share of module-1 capacity sold in decision year,0.8,0.7,0.9,assumption,,Trigger for 2nd Orindiúva module.
+A121,thailand_trigger_asia_t,global,t/yr Asian demand (weighted) in decision year,2500.0,1500.0,4000.0,assumption,,Trigger for the conditional Thai plant.
+A122,staged_decision_year,global,year,2029.0,2028.0,2030.0,assumption,,

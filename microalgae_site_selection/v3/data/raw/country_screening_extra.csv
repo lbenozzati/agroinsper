@@ -1,0 +1,5 @@
+country,status,reason,data_needed
+USA (Blair NE),not_scored,"Corbion lactic-acid site at Blair and Veramaris algal-oil plant nearby (S013): corn dextrose and fermentation labour exist, but no data collected in v2/v3",Corn dextrose delivered price; power/steam; IRA/state incentives; US-Asia freight
+Ecuador,not_scored,Large shrimp-feed market (demand node) but no cane-sugar/utility data collected,Sugar availability; energy; investment climate
+Peru,not_scored,Fishmeal/fish-oil hub; relevant as demand/competition context not as fermentation site,Sugar (north coast mills); energy; water stress (coastal desert)
+Philippines,not_scored,Sugar producer and shrimp/milkfish market; no data collected,Sugar; power cost (high); LPI; typhoon risk

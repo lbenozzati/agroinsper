@@ -1,0 +1,33 @@
+site_id,gate,status,basis,source_ids
+BR_ORI_EXP,legal_licensing,REVIEW,Operating licence exists; expansion needs CETESB amendment (timing unknown),S030
+BR_ORI_EXP,water_firm,NOT_VERIFIED,Outorga for added withdrawal not checked; Aqueduct sub-basin value not retrieved,S035
+BR_ORI_EXP,energy_firm,REVIEW,Mill steam/power agreements exist (2018); spare capacity and inter-harvest backup not verified,S030
+BR_ORI_EXP,feedstock_spec,REVIEW,Adjacent mill supply agreement exists; extra ~45 kt/yr sucrose per 10 kt module not verified,S030
+BR_ORI_EXP,process_safety,PASS,Same process already operated at site,S030
+BR_ORI_EXP,quality_system,PASS,Existing GMP/feed QA for AlgaPrime,S011
+BR_ORI_EXP,export_target_markets,REVIEW,GACC registrations exist (2025) but SKU/plant scope not visible,S009
+BR_ORI_EXP,epc_executable,NOT_VERIFIED,No EPC estimate public; EUR 50m budget disclosed without capacity,S004
+BR_GF_GO,legal_licensing,NOT_VERIFIED,No site; state licensing (SEMAD-GO) not assessed,
+BR_GF_GO,water_firm,NOT_VERIFIED,No site,
+BR_GF_GO,energy_firm,NOT_VERIFIED,No mill contract,
+BR_GF_GO,feedstock_spec,NOT_VERIFIED,No mill contract,
+BR_GF_GO,process_safety,REVIEW,New site; replicate Orindiúva HAZOP,
+BR_GF_GO,quality_system,REVIEW,New site certification,
+BR_GF_GO,export_target_markets,REVIEW,New GACC establishment registration needed,S009
+BR_GF_GO,epc_executable,NOT_VERIFIED,No EPC estimate,
+TH_NSN,legal_licensing,NOT_VERIFIED,BOI + EIA/IEE + DIW factory licence not started,S032
+TH_NSN,water_firm,NOT_VERIFIED,Chao Phraya basin; Aqueduct value not retrieved; estate water plan not verified,S035
+TH_NSN,energy_firm,NOT_VERIFIED,KTIS steam/biomass contract not verified,S040
+TH_NSN,feedstock_spec,REVIEW,Controlled sugar price; mill contract at KTIS not verified; competes with NatureWorks PLA,S018;S040
+TH_NSN,process_safety,REVIEW,New site; no Corbion DHA operations in Thailand,
+TH_NSN,quality_system,REVIEW,New site certification; Thai DLD feed registration not confirmed,
+TH_NSN,export_target_markets,REVIEW,New GACC registration; Chile/Norway via existing approvals of product (to verify),S009
+TH_NSN,epc_executable,NOT_VERIFIED,No EPC estimate,
+TH_RYG,legal_licensing,NOT_VERIFIED,Corbion site has licences for lactic acid only,S032
+TH_RYG,water_firm,REVIEW,EEC drought/rationing history (2020),S035
+TH_RYG,energy_firm,REVIEW,Gas-fired steam; grid available,S036
+TH_RYG,feedstock_spec,REVIEW,Trucked controlled-price sugar,S018
+TH_RYG,process_safety,REVIEW,Fermentation know-how on site but not DHA,
+TH_RYG,quality_system,REVIEW,Feed-grade QA to be added,
+TH_RYG,export_target_markets,REVIEW,New GACC registration,S009
+TH_RYG,epc_executable,NOT_VERIFIED,No EPC estimate,

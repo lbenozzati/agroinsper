@@ -1,0 +1,11 @@
+check_id,topic,result,implication
+AC01,peso das rubricas,"Rubricas = 66% do peso efetivo. Score só quantitativo: Brasil 4,96 (6º), China 7,04, Thailand 6,30, India 5,92",O 1º lugar do Brasil na v2 depende de rubricas de um avaliador (CR é 100% rubrica).
+AC02,correlação entre critérios,"corr(PE, CR) entre os 8 países = 0,76; corr(MA, SR) = -0,81",Integração com usina e ativos existentes premiam os mesmos países duas vezes.
+AC03,robustez aos pesos,"Sorteios de pesos Dirichlet (n=2000): P(rank 1) Brazil 89%, Thailand 10%; P(top 3) China 50%, India 33%",Top 2 robusto aos pesos; a 3ª posição não.
+AC04,limites de normalização,fator 0.75: 2 países mudam de posição; fator 1.25: 2 países mudam de posição,Limites escolhidos a posteriori só mexem nas posições 3–7.
+AC05,reprodução da v2,"máx |score recalculado − v2 congelado| = 0,0004; ranking idêntico: True",Baseline reproduzido a partir dos dados congelados.
+AC06,balanço de massa do açúcar,"v2 3,0 t açúcar/t produto (30% DHA) vs v3 5,05 t sacarose/t SKU (36% DHA, yield 0.075, recovery 0.95)",Custo de açúcar por t ~+65%.
+AC07,capex brownfield,"v2 fator fixo 0,75 × localização 1,10 = 0,83 do greenfield; v3 modular = 0,79 do greenfield no mesmo site (utilidades compartilhadas 0.5, prédios 0.4, owner 0.6)",Vantagem agora explícita e testável (caso sem vapor ocioso no tornado).
+AC08,custo unitário v2 vs v3,"v2 MSP Orindiúva 11,6 US$/kg DHA (20 kt, 90% de utilização); v3 custo pleno a 100% do módulo 12,9; v3 MSP com demanda-base 18,3","É a utilização (demanda), e não o custo, que define o preço necessário."
+AC09,valor terminal,"VPL base de A1 79,2 US$ mi, dos quais VT 96,6 (122%); VPL sem VT -17,4","Com horizonte 2026–2035 e ramp-up lento, o valor está depois de 2035."
+AC10,demanda vs capacidade,Demanda-base ponderada 2030 = 3.405 t; um módulo = 8.500 t efetivas; contratado (público) = 0 t,"A restrição é a absorção pela demanda, não a capacidade."

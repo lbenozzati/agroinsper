@@ -1,0 +1,6 @@
+,production_economics,market_access,corbion_readiness,regulation_incentives,strategic_risk
+production_economics,1.0,-0.03,0.76,-0.05,-0.07
+market_access,-0.03,1.0,-0.36,0.55,-0.81
+corbion_readiness,0.76,-0.36,1.0,-0.07,0.2
+regulation_incentives,-0.05,0.55,-0.07,1.0,-0.35
+strategic_risk,-0.07,-0.81,0.2,-0.35,1.0

@@ -1,0 +1,4 @@
+,cost_sugar,cost_electricity,cost_steam,cost_water_effluent,cost_labour,cost_other_variable,cost_maintenance_overhead,cost_freight,cost_indirect_tax_leakage,capex_musd,capex_per_t_capacity,cash_cost_per_t,capital_and_tax_per_t,msp_per_t,msp_per_kg_dha,wacc_real,pv_income_tax_pct_of_revenue
+Brazil – Orindiúva expansion,1287.0,250.0,40.0,24.0,100.7222,250.0,330.0,100.0,35.7258,132.0,6600.0,2417.4481,1075.2161,3492.6642,11.6422,0.0805,0.0587
+Brazil – greenfield,1287.0,327.5,75.0,24.0,158.2778,250.0,440.0,100.0,39.9267,176.0,8800.0,2701.7044,1428.004,4129.7084,13.7657,0.0805,0.0656
+Thailand – greenfield (BOI),1917.0,320.0,140.0,36.0,72.7222,250.0,400.0,80.0,9.6472,160.0,8000.0,3225.3694,1049.9658,4275.3352,14.2511,0.0698,0.0207

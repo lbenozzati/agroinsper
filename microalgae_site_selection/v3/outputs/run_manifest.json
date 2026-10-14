@@ -1,0 +1,24 @@
+{
+  "version": "3.0.0",
+  "cutoff_date": "2026-10-14",
+  "seed": 42,
+  "git_commit": "69634f9",
+  "run_utc": "2026-10-14T16:37:44+00:00",
+  "mc_sims": 2000,
+  "demand_origin": "default_premises",
+  "input_hashes": {
+    "assumptions.csv": "a38981a009367d81",
+    "audit_findings.csv": "ee4679424b9ee156",
+    "country_screening_extra.csv": "07a772fe8a3d665c",
+    "evidence_registry.csv": "c525c9c13fe9e1a2",
+    "freight_lanes.csv": "e0f268977afaac9a",
+    "data_change_log.csv": "6128ac3e9cc16768",
+    "economics_assumptions.csv": "5af0ad1e1e4788c8",
+    "raw_country_data.csv": "f7b40b182ed39b5c",
+    "v2_country_scores.csv": "999ca262839fec56",
+    "v2_economics_results.csv": "329f41042d563a8c",
+    "market_demand_scenarios.csv": "e332fc5de6150889",
+    "site_candidates.csv": "41644084f4be5837",
+    "site_gates.csv": "f53acd1c668d0bbe"
+  }
+}

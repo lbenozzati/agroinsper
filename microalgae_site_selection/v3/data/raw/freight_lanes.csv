@@ -1,0 +1,11 @@
+origin_country,region,usd_per_t,low,high,transit_days,value_type,source_id,note
+BR,SALMON,140,100,220,25,derived,S041,"Santos-San Antonio ~USD1.5k/FEU and Santos-Bergen ~USD2.5k/FEU (assumption) / 20 t bagged powder + USD40/t inland & port"
+BR,SHRIMP_AM,140,100,200,20,derived,,"Santos-Guayaquil ~USD2.0k/FEU (assumption)"
+BR,SHRIMP_ASIA,105,80,160,50,derived,S041,"Santos-HCMC ~USD1.1-1.5k/FEU (v2 assumption); 40-56 days"
+BR,CHINA,88,70,130,45,derived,S041,"Santos-Shanghai USD0.8-1.1k/FEU (Agora Freight Jan-2026)"
+BR,PET,140,100,200,25,derived,,"Santos-US East Coast / Rotterdam ~USD2.0k/FEU (assumption)"
+TH,SALMON,190,130,380,40,derived,S042,"Laem Chabang-San Antonio USD1.9-6.7k/FEU (2026 volatility); Norway ~USD2.5k/FEU"
+TH,SHRIMP_AM,190,130,330,35,derived,S042,"Laem Chabang-Guayaquil (assumption)"
+TH,SHRIMP_ASIA,63,50,90,7,derived,,"Intra-Asia USD400-500/FEU (v2 assumption) or trucking"
+TH,CHINA,65,50,100,10,derived,,"Laem Chabang-Shanghai USD350-700/FEU (v2)"
+TH,PET,165,120,260,30,derived,,"Laem Chabang-US/EU ~USD2.5k/FEU (assumption)"
