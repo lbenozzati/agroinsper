@@ -1,0 +1,13 @@
+country,region,application,species,production_t,production_source,fcr,fcr_source,commercial_feed_share,observed_feed_t,feed_source,vintage,value_type,confidence,growth_base,growth_low,growth_high,growth_basis,lat,lon
+Norway,SALMON,salmon,Atlantic salmon,,,1.27,M009,1.0,2470000.0,M005,2025,reported,medium,0.02,0.0,0.04,assumption: licence-capped growth (traffic-light system),62.0,8.0
+Chile,SALMON,salmon,"Atlantic salmon, coho, trout",1152000.0,M006,1.27,M009,1.0,,,2025,derived,medium,0.02,0.0,0.04,assumption,-42.0,-73.0
+United Kingdom,SALMON,salmon,Atlantic salmon,200000.0,M007,1.27,M009,1.0,,,2025,proxy,low,0.03,0.0,0.05,assumption (Rabobank forecast 6%/yr near-term),57.0,-5.0
+Australia,SALMON,salmon,Atlantic salmon (Tasmania),70000.0,ASSUMPTION,1.27,M009,1.0,,,2025,assumption,low,0.0,-0.03,0.02,assumption: no source retrieved; harbour constraints,-42.0,147.0
+Ecuador,SHRIMP_AM,shrimp,L. vannamei,1700000.0,M008,1.43,M009,0.95,,,2025,reported,medium,0.04,0.01,0.06,assumption,-2.2,-79.9
+Thailand,SHRIMP_ASIA,shrimp,L. vannamei,350000.0,ASSUMPTION,1.43,M009,0.95,,,2025,assumption,low,0.01,-0.02,0.03,assumption: 2025 Thai figure not retrieved (outside FAO top-5),13.5,100.5
+Vietnam,SHRIMP_ASIA,shrimp,"L. vannamei, P. monodon",800000.0,M008,1.43,M009,0.9,,,2025,reported,medium,0.03,0.0,0.05,assumption,10.4,106.5
+India,SHRIMP_ASIA,shrimp,L. vannamei,1050000.0,M008,1.43,M009,0.9,,,2025,reported,medium,0.02,-0.02,0.05,assumption (US 50% tariff from Aug-2025),16.5,81.5
+Indonesia,SHRIMP_ASIA,shrimp,L. vannamei,300000.0,M008,1.43,M009,0.9,,,2025,reported,medium,0.03,0.0,0.06,assumption,-7.0,112.0
+China,CHINA,shrimp,L. vannamei (domestic),2560000.0,M008,1.43,M009,0.8,,,2025,reported,medium,0.02,0.0,0.04,assumption; CFIA 22.6 Mt all-aquatic feed NOT used (M030),23.0,113.0
+United States,PET,pet_food,dogs and cats,,,,,,10500000.0,M012,2025,reported,medium,0.01,-0.01,0.02,assumption (Alltech: US volume -0.6% in 2025),39.0,-98.0
+European Union,PET,pet_food,dogs and cats,,,,,,8600000.0,M011,2024,reported,medium,0.01,0.0,0.02,assumption (FEDIAF: +1% 2024),50.0,10.0

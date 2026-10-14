@@ -1,0 +1,7 @@
+competitor,asset,location,technology,product,dha_or_epa_content,approvals,capacity_value,capacity_unit,capacity_status,confirmed_customers,source_id,notes
+Veramaris (dsm-firmenich 50% / Evonik 50%),Blair plant,USA (Nebraska),heterotrophic fermentation (Schizochytrium),algal oil EPA+DHA,~2x fish oil EPA+DHA,salmon/shrimp/pet (company),1.2,Mt wild-fish equivalent (~15% salmon EPA+DHA demand),operating,"salmon feed producers (not itemised here)",M022,"JV counted once (not dsm-firmenich + Evonik separately)"
+Corbion,Orindiúva,Brazil,heterotrophic fermentation on cane sugar,AlgaPrime DHA biomass,35% DHA,"EU/US/CN (GACC 2025)",,undisclosed,operating,see customer_evidence,M026,"EUR 50m expansion in 2026-28 plan"
+CABIO Biotech,Wuhan,China,fermentation,DHA powder / oil,10% (powder listing) / 35% (oil listing),China,100,t/month powder (listing),unknown,not verified,M029,"Infant-formula DHA not equivalent to aquafeed qualification"
+"Other Chinese algal DHA (Runke, Huison, Fuxing)",various,China,fermentation,DHA powder/oil,n/a,China,,not verified,unknown,not verified,,"Named in v2 due diligence; no current specific evidence"
+Fish oil (source competition),Peru/Chile/Nordics,Global,wild capture,fish oil 18:12,EPA 18% DHA 12%,all,1.2,Mt/yr (2025),operating,all feed mills,M017,"Price 2.5-6.8 kUSD/t in 2025-26"
+Nuseed Aquaterra (GM canola),Australia/USA,Global,GM oilseed,omega-3 canola oil,DHA ~10% (not verified),salmon (company),,not verified,unknown,not verified,M001,"Listed by GMI; IP/approval status not verified"

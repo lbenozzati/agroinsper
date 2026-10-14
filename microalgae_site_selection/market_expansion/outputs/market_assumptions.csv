@@ -1,0 +1,24 @@
+assumption_id,parameter,base,low,high,unit,value_type,source_id,note
+B001,net_price_usd_per_kg_dha,25.0,15.0,40.0,USD2026 per kg DHA (net to Corbion),assumption,M018,No public AlgaPrime price; anchored to fish-oil omega-3 value plus algal premium
+B002,dha_fraction_sku,0.35,0.35,0.4,kg DHA per kg SKU,reported,M025,P3 spec minimum
+B003,formulation_efficiency,0.95,0.9,1.0,fraction of DHA delivered to feed,assumption,,
+B004,fish_oil_base_usd_t,4500.0,2500.0,6800.0,USD per t,derived,M018,Midpoint of conflicting readings
+B005,fish_oil_price_passthrough,0.4,0.2,0.7,elasticity,assumption,M028,Same as v3 A045
+B006,fish_oil_gap_elasticity,0.3,0.1,0.5,elasticity of algal substitution space to fish-oil price,assumption,,Higher fish oil -> less marine supply economically
+B007,variable_cost_usd_per_kg_dha,7.4,6.0,10.0,USD per kg DHA (ex-works),derived,,From v3 unit_economics (Orindiúva cash variable cost / 36% DHA) if available
+B008,commercial_cost_pct,0.08,0.05,0.12,fraction of revenue,assumption,,"Sales, technical service, regulatory upkeep"
+B009,rebate_pct,0.03,0.0,0.06,fraction of revenue,assumption,,
+B010,wc_carry_pct,0.02,0.01,0.03,fraction of revenue,assumption,,20% WC x 10% cost of capital
+B011,discount_rate,0.1,0.08,0.12,nominal USD,assumption,,Approx. Corbion Brazil WACC (v3)
+B012,fx_eurusd,1.15,1.05,1.25,USD per EUR,assumption,,
+B013,fte_cost_musd,0.18,0.12,0.25,USD m per commercial/technical FTE-year,assumption,,
+B014,fte_budget,8.0,5.0,12.0,FTE available for market development,assumption,,Portfolio constraint
+B015,registration_budget,3.0,2.0,4.0,new registrations 2026-2028,assumption,,
+B016,capacity_increment_2030_t,8500.0,4000.0,17000.0,t SKU/yr effective new capacity (v3 one module),derived,,v3 module 10 kt x OEE 0.85
+B017,max_country_share,0.6,0.4,0.8,max share of incremental volume per country,assumption,,Concentration limit
+B018,status_prob_documented_current,0.9,0.8,0.95,probability of qualification,assumption,,
+B019,status_prob_documented_historical,0.75,0.6,0.85,probability,assumption,,
+B020,status_prob_trial,0.6,0.45,0.75,probability,assumption,,
+B021,status_prob_channel_only,0.6,0.45,0.75,probability,assumption,,
+B022,status_prob_potential,0.35,0.2,0.5,probability,assumption,,
+B023,status_prob_unknown,0.2,0.1,0.3,probability,assumption,,

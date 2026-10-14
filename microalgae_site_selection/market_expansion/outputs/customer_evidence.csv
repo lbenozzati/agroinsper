@@ -1,0 +1,14 @@
+entity,country,region,application,role,volume_or_capacity,volume_unit,product,relationship_status,evidence,evidence_date,exclusivity,next_proof_needed,source_id
+BioMar Group,Norway;Chile;United Kingdom,SALMON,salmon,formulator (feed),1557000.0,t feed 2025 (all species; 60% salmon),AlgaPrime DHA,documented_historical,>40 kt salmon feed with AlgaPrime since 2016 (cumulative),undated,not demonstrated,Current annual AlgaPrime tonnage and contract term,M020;M019
+BioMar Group (microalgae claim),Global,SALMON,salmon,formulator (feed),1000000.0,t feed 2024 'containing microalgae',algal ingredients (unspecified),unknown,Feed containing SOME algal ingredient - not evidence of AlgaPrime,2025,,Split by supplier (Corbion vs Veramaris vs others),M019
+Mowi Feed,Norway;United Kingdom,SALMON,salmon,formulator (vertically integrated),585402.0,t feed 2025,none documented,potential,No public evidence of AlgaPrime use; Skretting partnership from Q4-2025,2026-02,,Ingredient sourcing policy,M021
+Skretting (Nutreco),Norway;Chile;Ecuador,SALMON,salmon,formulator (feed),,unknown,none documented,potential,No public evidence,,,Impact report 2025 algal oil supplier,
+Cargill Aqua Nutrition,Norway;Chile,SALMON,salmon,formulator (feed),,unknown,none documented,potential,No public evidence,,,Supplier disclosure,
+"Lerøy, Kvarøy Arctic, Ventisqueros",Norway;Chile,SALMON,salmon,farmer/brand,,unknown,AlgaPrime DHA (via feed),documented_historical,"Cited in v2 due diligence (inherited, not re-verified)",pre-2026,not demonstrated,Re-verify current programmes,
+Thai Union / Thai Union Feedmill,Thailand,SHRIMP_ASIA,shrimp,formulator + integrator,,THB 5.8 bn revenue 2025 (guidance),AlgaPrime DHA,documented_historical,2020 expansion of AlgaPrime into shrimp feed,2020,not demonstrated,Continuity and tonnage 2025-26,M023
+BioMar - Tongwei JV,China,CHINA,shrimp,formulator (JV),,unknown,none documented,potential,JV channel only; GACC approval = access not sales,2025,,Trial or order evidence,M026
+BioMar - Viet-Uc JV,Vietnam,SHRIMP_ASIA,shrimp,formulator (JV),,unknown,none documented,potential,JV channel only,,,Trial or order evidence,
+BioMar Ecuador,Ecuador,SHRIMP_AM,shrimp,formulator,,unknown,none documented,potential,New lines planned 2026,2026,,Trial evidence,M019
+Agripac / other Ecuador mills,Ecuador,SHRIMP_AM,shrimp,formulator,,unknown,none documented,potential,No public evidence,,,Trial evidence,
+IQI Petfood,United States;European Union,PET,pet_food,distributor,,unknown,AlgaPrime DHA P3,channel_only,"Distribution partnership for pet food (EU, NA)",2024,not demonstrated,Brand-level customers and volumes,M024
+"Undisclosed (>60 customers, >25 countries)",Global,ALL,all,mixed,,unknown,AlgaPrime / AlgaVia,unknown,Corbion CMD 2025 statement (user-supplied),2025-11,,Customer list with tonnage (Corbion commercial),M004

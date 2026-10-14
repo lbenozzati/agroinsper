@@ -1,0 +1,50 @@
+type,id,item,status,next_step
+source,M001,Market size 2025 (CAGR 11.5% 2026-35; 2035 USD 2.13 bn per user),search_snippet,open original: https://www.gminsights.com/industry-analysis/algae-based-omega-3-production-systems-market
+source,M002,Market size 2025 (USD 20.2 bn 2034; CAGR 18.2%),search_snippet,open original: https://www.gminsights.com/es/industry-analysis/algae-based-omega-3-production-systems-market
+source,M003,Health & Nutrition net sales FY2025 (FY2024 290.2),search_snippet,open original: https://www.corbion.com/-/media/corbion/files/quarterly/2025/2026-02-26_corbion_press-release_q4-fy-2025.pdf
+source,M004,Nutrition net sales 2024 (indicative 2030 ~EUR 275m per user),user_supplied,open original: https://www.corbion.com/-/media/corbion/files/capital-markets-day/2025/2025-11-20_cmd-2025_presentation_to-website.pdf
+source,M005,Feed ingredients used for salmonid production 2025 (2024: 2.26 Mt),search_snippet,open original: https://www.fas.usda.gov/data/norway-norwegian-fish-feed-ingredient-market
+source,M006,Salmonid harvest 2025,search_snippet,open original: https://www.salmonbusiness.com/sernapesca-chiles-overall-salmon-mortality-falls-in-2025-but-tenacibaculosis-rises/
+source,M007,Scottish/UK salmon production (year ambiguous),search_snippet,open original: https://www.fishfarmermagazine.com/features/a-year-of-growth
+source,M008,Farmed shrimp production 2025: China 2.56; Ecuador 1.7; India 1.05; Viet Nam 0.80; Indonesia 0.30 (Mt),search_snippet,open original: https://openknowledge.fao.org/server/api/core/bitstreams/3f097d03-d084-49be-9f44-98ca30177446/content
+source,M009,Economic FCR 2020: Atlantic salmon 1.27; shrimp 1.43,search_snippet,open original: https://www.iffo.com/efcr-data
+source,M010,Total compound feed production 2025 (6.17-6.25 Mt; shrimp ~40%),search_snippet,open original: https://avinews.com/ecuador-alcanza-cifras-historicas-en-alimentos-balanceados-y-proteina-animal-en-2025/
+source,M011,Pet food volume 2024 (foreword cites ~9.1 Mt),search_snippet,open original: https://europeanpetfood.org/wp-content/uploads/2026/06/FEDIAF_Annual-Report_2026_WEBv1.1.pdf
+source,M012,US pet food production 2025 (IFEEDER 2024: 9.8 Mt),search_snippet,open original: https://globalpetindustry.com/news/global-pet-food-production-grows-2-4-in-2025-slowing-from-previous-years/
+source,M013,EPA+DHA for optimal long-term growth in seawater (>2.7% of FA),search_snippet,open original: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5672314/
+source,M014,EPA+DHA > 8% of FA associated with -21% mortality variability,search_snippet,open original: https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2024.1379066/pdf
+source,M015,HUFA tested at 0.5% of diet (DHA limiting above 90% FO replacement),search_snippet,open original: https://www.globalseafood.org/advocate/fatty-acids-in-feeds-improve-growth-lipid-profiles-of-white-shrimp-farmed-at-high-salinity/
+source,M016,Minimum EPA+DHA for growth/reproduction (DM basis); no adult minimum,search_snippet,open original: https://pmc.ncbi.nlm.nih.gov/articles/PMC6546231
+source,M017,Fish oil production 2025 (aquafeed >60% of use in 2023),search_snippet,open original: https://www.salmonbusiness.com/fish-oil-output-rises-5-percent-as-global-supply-tracks-higher/
+source,M018,Feed-grade fish oil Jul-2026 (end-2025 2500; another source 3875 Q2-2026),search_snippet,open original: https://www.fishfarmingexpert.com/aquafeed-fish-oil-fishmeal/feed-fishmeal-and-fish-oil-production-fell-in-q1-2026/2118950
+source,M019,BioMar feed volume 2025 (salmon 60%; shrimp 24%),search_snippet,open original: https://weareaquaculture.com/regions/europe/biomar-reports-13-rise-in-feed-volumes-in-2025-annual-results
+source,M020,Cumulative salmon feed made with AlgaPrime DHA since 2016,search_snippet,open original: https://www.biomar.com/en-au/insights/insights-hub/algaprime-unexpected-algae-heroes
+source,M021,Mowi Feed sales 2025 (harvest 559 kt GWT),search_snippet,open original: https://mowi.com/news/a-record-fourth-quarter-ends-a-record-year-for-mowi/
+source,M022,Capacity equivalent to wild fish (≈15% of salmon EPA+DHA demand),search_snippet,open original: https://www.veramaris.com/media-resources-detail/veramaris-announces-next-phase-of-business-growth
+source,M023,Documented historical adoption in shrimp feed,search_snippet,open original: https://www.thaiunion.com/newsroom/sustainability-and-csr/thai-union-and-corbion-expand-adoption-of-algaprime-dha-into-shrimp-aquaculture
+source,M024,Distribution partnership (channel),search_snippet,open original: https://www.iqi-petfood.com/corbion-and-iqi-strengthen-their-partnership-for-supplying-sustainable-algae-dha-for-pet-food-applications/
+source,M025,Minimum DHA in P3 powder (suspension min 33.5%),search_snippet,open original: https://info.corbion.com/hubfs/Digital%20Product%20OnePager_AlgaPrimeDHA%20P3_Pet%20Food_ENG.pdf
+source,M026,Regulatory access event,search_snippet,open original: https://www.corbion.com/media/press-release/3111491?language=English
+source,M027,Climate impact vs AVERAGE fish-oil datasets per kg DHA (lower bound of 40-50%),search_snippet,open original: https://www.corbion.com/media/press-release/3315039?language=English
+source,M028,Q2 2026 group price effect (volume/mix ~+4%),search_snippet,open original: https://finance.yahoo.com/quote/CRBN.AS/earnings/CRBN.AS-H1-2026-earnings_call-550723.html
+source,M029,Listed DHA powder capacity (10% DHA),search_snippet,open original: https://b2usa.com/hotsite/cabiobiotech/algal-biomass-powder-dha-content-10
+source,M031,Active salmon farming sites (Aug 2025 peak),search_snippet,open original: https://infosalmon.cl/wp-content/uploads/2025/05/Indicadores-Productivos-2025.pdf
+decision_driver,price,Preço líquido por kg DHA,assumption,contrato/cotação com clientes
+decision_driver,fish_oil,Preço do óleo de peixe,assumption,série IFFO / contratos
+decision_driver,share_mult,Participação da Corbion no DHA de algas,assumption,"inteligência competitiva (Veramaris, chineses)"
+decision_driver,target_mult,Alvo de EPA+DHA na dieta,assumption,ensaios / especificações dos clientes
+decision_driver,adoption_mult,Saturação da adoção de algas,assumption,pipeline qualificado / ensaios
+decision_driver,econ_mult,Parcela da ração que paga por DHA,assumption,entrevistas com fabricantes de ração
+account,BioMar Group,documented_historical,unverified volume,Current annual AlgaPrime tonnage and contract term
+account,BioMar Group (microalgae claim),unknown,unverified volume,Split by supplier (Corbion vs Veramaris vs others)
+account,Mowi Feed,potential,unverified volume,Ingredient sourcing policy
+account,Skretting (Nutreco),potential,unverified volume,Impact report 2025 algal oil supplier
+account,Cargill Aqua Nutrition,potential,unverified volume,Supplier disclosure
+account,"Lerøy, Kvarøy Arctic, Ventisqueros",documented_historical,unverified volume,Re-verify current programmes
+account,Thai Union / Thai Union Feedmill,documented_historical,unverified volume,Continuity and tonnage 2025-26
+account,BioMar - Tongwei JV,potential,unverified volume,Trial or order evidence
+account,BioMar - Viet-Uc JV,potential,unverified volume,Trial or order evidence
+account,BioMar Ecuador,potential,unverified volume,Trial evidence
+account,Agripac / other Ecuador mills,potential,unverified volume,Trial evidence
+account,IQI Petfood,channel_only,unverified volume,Brand-level customers and volumes
+account,"Undisclosed (>60 customers, >25 countries)",unknown,unverified volume,Customer list with tonnage (Corbion commercial)

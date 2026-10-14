@@ -1,0 +1,4 @@
+control,low,base,high,dependency,evidence
+contracted_t,0.0,0.0,18437.909997154886,"Contracts cannot exceed qualified pipeline of documented accounts (2030, high scenario)",no public contracts
+price_usd_kg_dha,15.0,25.0,40.0,Price and volume co-move through fish oil (pass-through 0.4; gap elasticity 0.3): high price with low fish oil is inconsistent,B001/B005/B006
+capex_ori_musd,,,,Set in the site study (v3); independent of market variables,v3 A020-A031

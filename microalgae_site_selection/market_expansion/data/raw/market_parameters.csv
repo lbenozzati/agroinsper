@@ -1,0 +1,13 @@
+country,application,region,regulatory_readiness,channel_access,relationship_status,corbion_share,share_low,share_high,adoption_start,adoption_sat,adoption_mid,adoption_k,price_mult,competitive_intensity,strategic_fit,time_to_revenue,fte,registrations,entry_cost_musd,basis
+Norway,salmon,SALMON,1.0,0.8,documented_historical,0.30,0.15,0.45,0.35,0.75,2028,0.5,1.00,8,9,0,1.0,0,0.2,"Veramaris strong in Norway; BioMar AlgaPrime history"
+Chile,salmon,SALMON,1.0,0.8,documented_historical,0.35,0.20,0.50,0.30,0.75,2028,0.5,1.00,7,9,0,1.0,0,0.2,"Closest to Orindiúva; BioMar Chile; Ventisqueros (inherited)"
+United Kingdom,salmon,SALMON,1.0,0.6,documented_historical,0.30,0.15,0.45,0.30,0.70,2029,0.5,1.00,8,8,0,0.5,0,0.1,"BioMar UK (inherited)"
+Australia,salmon,SALMON,0.9,0.3,potential,0.20,0.10,0.35,0.15,0.60,2030,0.5,1.00,6,6,2,0.5,1,0.4,"No documented account"
+Ecuador,shrimp,SHRIMP_AM,0.6,0.4,potential,0.30,0.15,0.45,0.02,0.35,2032,0.6,0.90,5,7,2,1.5,1,0.8,"Largest shrimp feed market served from Brazil; registration not confirmed"
+Thailand,shrimp,SHRIMP_ASIA,0.9,0.7,documented_historical,0.35,0.20,0.50,0.05,0.40,2031,0.6,0.90,6,7,1,1.0,0,0.3,"Thai Union 2020 adoption; Chinese algal imports"
+Vietnam,shrimp,SHRIMP_ASIA,0.5,0.4,potential,0.20,0.10,0.35,0.02,0.30,2033,0.6,0.85,8,6,2,1.0,1,0.6,"BioMar-Viet-Uc channel"
+India,shrimp,SHRIMP_ASIA,0.4,0.2,potential,0.20,0.10,0.30,0.01,0.25,2034,0.6,0.80,7,5,3,1.5,1,0.8,"Price-sensitive; US tariff shock"
+Indonesia,shrimp,SHRIMP_ASIA,0.4,0.2,potential,0.20,0.10,0.30,0.01,0.25,2034,0.6,0.85,7,5,3,1.0,1,0.6,
+China,shrimp,CHINA,0.8,0.4,potential,0.10,0.05,0.20,0.03,0.35,2032,0.6,0.80,10,6,2,2.0,0,1.0,"GACC 2025 approval; strong local algal DHA competition"
+United States,pet_food,PET,1.0,0.7,channel_only,0.35,0.20,0.50,0.10,0.50,2030,0.5,1.15,6,8,1,1.0,0,0.3,"IQI channel; net price after distributor margin"
+European Union,pet_food,PET,1.0,0.7,channel_only,0.35,0.20,0.50,0.10,0.50,2030,0.5,1.15,6,8,1,1.0,0,0.3,"IQI channel"

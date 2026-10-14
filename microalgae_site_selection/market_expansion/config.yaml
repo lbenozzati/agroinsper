@@ -1,0 +1,43 @@
+version: "1.0.0"
+cutoff_date: "2026-10-14"
+seed: 42
+base_year: 2025
+first_decision_year: 2026
+end_year: 2035
+mc_sims: 1000
+export_years: [2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035]
+milestones: [2028, 2030, 2035]
+
+paths:
+  raw: data/raw
+  curated: data/curated
+  outputs: outputs
+  v3_dir: ../v3
+
+scenarios:
+  low:  {growth: low,  target: low,  marine: high, econ: low,  share: low,  adoption_mult: 0.7, fish_oil: low,  price: low}
+  base: {growth: base, target: base, marine: base, econ: base, share: base, adoption_mult: 1.0, fish_oil: base, price: base}
+  high: {growth: high, target: high, marine: low,  econ: high, share: high, adoption_mult: 1.2, fish_oil: high, price: high}
+
+triage_dimensions:
+  incremental_contribution: 0.125
+  probability_of_qualification: 0.125
+  competitive_intensity: 0.125
+  regulatory_readiness: 0.125
+  channel_access: 0.125
+  time_to_revenue: 0.125
+  price_resilience: 0.125
+  strategic_fit: 0.125
+
+status_groups:
+  consolidation: [documented_current, documented_historical, trial, channel_only]
+  expansion: [potential, unknown]
+
+monte_carlo:
+  fish_oil_adoption_corr: 0.4
+
+palette:
+  blue: "#3987e5"
+  magenta: "#d55181"
+  violet: "#9085e9"
+  silver: "#B6B3BA"

@@ -1,0 +1,7 @@
+item,value,unit,date,basis,source_id,usable_as_price,notes
+Feed-grade fish oil Peru FOB,2500,USD/t,2025-12,trade press,M018,driver only,
+Feed-grade fish oil Peru FOB,6800,USD/t,2026-07,trade press,M018,driver only,"Conflicts with 3875 Q2-2026 average"
+Fish oil global average,3875,USD/t,2026-Q2,market research site,M018,driver only,
+Algae oil 40% DHA retail (reseller),35-44,USD/kg oil,undated,retail listing,,no,"Refined human oil at retail; not AlgaPrime B2B"
+AlgaPrime DHA B2B price,,USD/kg,n/a,not public,,no,"Assumption in market_assumptions.csv"
+GMI market value / volume,57.6,USD/kg (720m / 12.5 kt),2025,DIVISION NOT ALLOWED,M001,no,"Scope and tonne definition unknown; not used"

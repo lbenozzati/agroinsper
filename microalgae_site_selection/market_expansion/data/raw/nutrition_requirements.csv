@@ -1,0 +1,9 @@
+application,stage,feed_share,epa_dha_g_per_kg,epa_dha_low,epa_dha_high,dha_share_of_target,marine_supplied_share,marine_low,marine_high,econ_capable_share,econ_low,econ_high,tech_qualified_share,max_inclusion_sku,source_ids,notes
+salmon,hatchery_smolt,0.06,15,10,20,0.5,0.50,0.30,0.70,0.90,0.80,1.00,1.0,0.03,M013,"Freshwater 0.5-1.0% of diet minimum; premium smolt diets higher (assumption)"
+salmon,grow_out,0.79,10,5,15,0.5,0.50,0.35,0.70,0.80,0.60,0.95,1.0,0.02,M013;M014,"10 g/kg for optimal long-term growth (>2.7% FA); 4 g/kg without mortality effect"
+salmon,finishing,0.15,12,8,20,0.5,0.45,0.30,0.65,0.90,0.70,1.00,1.0,0.02,M014,"Fillet omega-3 claims drive finishing levels (assumption)"
+shrimp,hatchery_nursery,0.04,15,10,20,0.5,0.60,0.40,0.80,0.80,0.60,0.95,0.9,0.03,M015,"Broodstock ~2% HUFA; larval diets premium"
+shrimp,grow_out,0.96,5,3,8,0.5,0.85,0.70,0.95,0.35,0.20,0.50,0.8,0.01,M015,"0.5% HUFA tested; DHA limiting only when fish oil replaced >90%; EPA must still be supplied"
+pet_food,dog_dry,0.45,1.0,0.5,3.0,0.4,0.60,0.40,0.80,0.20,0.10,0.35,0.9,0.01,M016,"AAFCO growth min 0.05% DM; econ share = premium/sustainable lines (assumption)"
+pet_food,cat_dry,0.25,1.5,0.5,3.0,0.4,0.60,0.40,0.80,0.20,0.10,0.35,0.9,0.01,M016,"Same basis; cats higher DHA need (assumption)"
+pet_food,wet_treats_excluded,0.30,0,0,0,0.4,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,,"Excluded: formulation/stability not assessed; would need separate dose and claim analysis"

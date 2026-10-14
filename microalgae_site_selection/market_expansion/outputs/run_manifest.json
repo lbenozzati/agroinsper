@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0",
+  "cutoff_date": "2026-10-14",
+  "git_commit": "2041fc3",
+  "seed": 42,
+  "run_utc": "2026-10-14T18:25:19+00:00",
+  "mc_sims": 1000,
+  "variable_cost_source": "v3 outputs/unit_economics.csv (BR_ORI_EXP variable cost / DHA kg)",
+  "input_hashes": {
+    "competitor_assets.csv": "c3b966738a63f34f",
+    "country_species_feed.csv": "1eeae5df047f6faf",
+    "customer_evidence.csv": "db59613228bad01a",
+    "market_assumptions.csv": "673916a8916b8c3e",
+    "market_claims_audit.csv": "f73d7ce4572c3ae9",
+    "market_definitions.csv": "75bd5841966c6618",
+    "market_parameters.csv": "448adbb186f32903",
+    "nutrition_requirements.csv": "842c0a457832a3e0",
+    "pricing_evidence.csv": "1adb8da61678e346",
+    "product_specs.csv": "d1657b1ec296ee24",
+    "source_registry.csv": "c81e8f43a100f06b"
+  }
+}

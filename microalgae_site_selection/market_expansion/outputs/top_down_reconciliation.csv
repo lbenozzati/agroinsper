@@ -1,0 +1,7 @@
+check,bottom_up,top_down,status,interpretation
+Bottom-up Corbion SOM 2025 vs Nutrition sales 2024 (EUR 157 m),"2,999 t SKU / USD 25 m","EUR 157 m = USD 181 m -> 20,634 t SKU at USD 8.75/kg SKU",INCOMPATIBLE SCOPES,Nutrition includes AlgaVia (human) and pet; realised prices may be well above the USD 25/kg DHA premise; SOM premises may be conservative. Gap cannot be resolved with public data.
+Nutrition 2030 ambition (~EUR 275 m) vs bottom-up 2030 revenue,USD 52 m (feed + pet only),EUR 275 m = USD 316 m,check only,Target is revenue across products; not a volume or a feed-only figure.
+Salmon feed total vs BioMar salmon volume,4.28 Mt salmon feed (NO+CL+UK+AU),BioMar 1.557 Mt x 60% salmon = 0.93 Mt,plausible,Implies BioMar ~22% of modelled salmon feed.
+Veramaris capacity ~15% of salmon EPA+DHA demand,"45,325 t EPA+DHA requirement 2025 (model)","15% = 6,799 t EPA+DHA (if claim applied to this base)",order of magnitude only,Fish-equivalent claim not convertible without assay; used for competitive intensity only.
+Ecuador shrimp feed: production x eFCR vs Aprobal,2.31 Mt,6.2 Mt x 40% = 2.5 Mt (derived),consistent (within ~8%),Supports Ecuador feed base.
+GMI market value / volume,n/a,USD 720 m / 12.5 kt = USD 57.6/kg (NOT computed for use),REJECTED,Scope (systems/ingredients/oil) and tonne definition unknown; 6x conflict with USD 4.5 bn page.

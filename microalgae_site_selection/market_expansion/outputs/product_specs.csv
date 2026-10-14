@@ -1,0 +1,7 @@
+product,supplier,form,dha_min_pct,epa_pct,application,status,source_id,notes
+AlgaPrime DHA P3,Corbion,biomass powder,35.0,~0,aquafeed; pet food,commercial,M025,DHA only; EPA must come from other sources
+AlgaPrime DHA (liquid suspension),Corbion,suspension,33.5,~0,aquafeed,commercial,M025,
+AlgaVia DHA,Corbion,oil,,,human nutrition,commercial,M026,Adjacent market; excluded from feed totals
+Veramaris oil,Veramaris (dsm-firmenich/Evonik 50/50),oil,,,salmon; shrimp; pet,commercial,M022,EPA+DHA ~2x fish oil (~50% EPA+DHA); supplies EPA and DHA
+Fish oil 18:12 (Peru),various,oil,12.0,18,all,commodity,M018,"EPA 18%, DHA 12% typical anchovy oil"
+CABIO DHA microalgae powder,CABIO,biomass powder,10.0,~0,feed (listing),listed,M029,Marketplace listing; not audited

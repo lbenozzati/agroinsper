@@ -1,0 +1,8 @@
+term,definition,unit,includes,excludes
+feed_t,"Commercial compound feed for the species/country: observed feed volume when available, else production x eFCR x commercial-feed share",t feed,"salmonid feed (NO), shrimp feed","retail value, wild-capture, non-commercial feed"
+TAM,"Technical DHA requirement of the defined applications: stage feed x EPA+DHA target (g/kg) x DHA share",t DHA/yr,"all stages listed in nutrition_requirements.csv","wet pet food/treats, human nutrition, EPA"
+SAM,"Part of TAM that AlgaPrime (DHA-only biomass) can serve: TAM x economic capability x technical qualification x regulatory readiness x (1 - share economically supplied by marine ingredients)",t DHA/yr,"substitution space for algal DHA","DHA already supplied by fish oil/meal at current prices; EPA"
+algal_DHA,"SAM x adoption S-curve (all algal suppliers)",t DHA/yr,"Corbion + Veramaris + others",
+SOM,"algal_DHA x Corbion share; capped by max inclusion; converted to SKU tonnes by DHA fraction x formulation efficiency",t DHA/yr and t SKU/yr,"plausible Corbion volume","volumes without channel/qualification (handled by probability in NPV)"
+incremental_SOM,"SOM(year) - SOM(2025); treated as demand for NEW capacity (2025 level assumed served by existing Orindiúva output)",t SKU/yr,,"current Corbion volumes"
+revenue_B2B,"SOM x net price to Corbion (after distributor margin and rebates)",USD,,"retail pet-food value, feed value, salmon value"
