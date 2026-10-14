@@ -118,6 +118,7 @@ def allocate(supply: dict, demand: dict, edges: dict) -> dict:
     for r in regions:
         add(f"r:{r}", "T", max(demand[r], 0.0), 0.0)
     n = len(nodes)
+    eps = 1e-7  # costs are USD/t (10^2-10^4): ignore float noise that would create spurious negative cycles
     for _ in range(4 * n * n + 10):
         dist = [math.inf] * n
         prev = [-1] * n
@@ -125,27 +126,27 @@ def allocate(supply: dict, demand: dict, edges: dict) -> dict:
         for _it in range(n - 1):
             changed = False
             for k, (u, v, cap, cost, _r) in enumerate(arcs):
-                if cap > 1e-9 and dist[u] + cost < dist[v] - 1e-12:
+                if cap > 1e-9 and dist[u] + cost < dist[v] - eps:
                     dist[v] = dist[u] + cost
                     prev[v] = k
                     changed = True
             if not changed:
                 break
         t = idx["T"]
-        if dist[t] >= -1e-12 or prev[t] < 0:
+        if dist[t] >= -eps or prev[t] < 0:
             break
-        push = math.inf
+        path = []
         v = t
-        while v != 0:
+        while v != 0 and len(path) <= n:
             k = prev[v]
-            push = min(push, arcs[k][2])
+            path.append(k)
             v = arcs[k][0]
-        v = t
-        while v != 0:
-            k = prev[v]
+        if v != 0:  # predecessor cycle: no valid augmenting path left
+            break
+        push = min(arcs[k][2] for k in path)
+        for k in path:
             arcs[k][2] -= push
             arcs[arcs[k][4]][2] += push
-            v = arcs[k][0]
     flows = {}
     for key, k in edge_arc.items():
         f = arcs[k + 1][2]
@@ -162,7 +163,7 @@ def _resolve_units(p: dict, alt: dict) -> list[dict]:
         s = p["sites"][u["site"]]
         count[u["site"]] = count.get(u["site"], 0) + 1
         unit = dict(u, module=count[u["site"]], id=f"{u['site']}#{count[u['site']]}")
-        first = s["first_capex"]
+        first = int(u.get("first_capex", s["first_capex"]))
         if u.get("conditional"):
             dy = p["decision_year"]
             if u["conditional"] == "asia":
@@ -200,6 +201,7 @@ def run_alternative(p: dict, alt: dict, _probe: bool = False) -> dict:
                      ("revenue", "var_cost", "freight", "transit", "fixed", "hub", "ebitda", "tax", "topup",
                       "capex", "d_wc", "qrtc", "fcf", "sold_t", "capacity_t", "dep")} for u in units}
     sold_by_region = {r: [0.0] * len(ys) for r in p["regions"]}
+    sold_by_site_region = {}
     first_br = next((u["id"] for u in units if p["sites"][u["site"]]["country"] == "BR"), units[0]["id"])
 
     for u in units:
@@ -253,6 +255,7 @@ def run_alternative(p: dict, alt: dict, _probe: bool = False) -> dict:
                 if f <= 0:
                     continue
                 sold_by_region[r][i] += f
+                sold_by_site_region.setdefault(f"{s}|{r}", [0.0] * len(ys))[i] += f
                 fr = p["freight"][c][r]
                 price = price_per_t(p, r, y)
                 for u in s_units:
@@ -367,6 +370,7 @@ def run_alternative(p: dict, alt: dict, _probe: bool = False) -> dict:
                        "capex", "d_wc", "qrtc", "fcf")}
     out.update(npv=npv, npv_ex_tv=npv_ex, tv_pv=tv_pv, irr=irr(flows_irr), utilisation=util, capacity_t=cap_t,
                sold_t=sold, fcf=fcf, kg_dha=pv_kg, lcod=(pv_cost / pv_kg) if pv_kg > 0 else None,
+               sold_by_site_region=sold_by_site_region,
                disc_payback=payback, peak_funding=peak, sold_by_region=sold_by_region, lines=lines,
                unit_npv=unit_npv, capex_real={k: v["total"] for k, v in caps.items()},
                capex_modules=caps)

@@ -1,9 +1,9 @@
 {
   "version": "1.0.0",
   "cutoff_date": "2026-10-14",
-  "git_commit": "2041fc3",
+  "git_commit": "2a44797",
   "seed": 42,
-  "run_utc": "2026-10-14T18:25:19+00:00",
+  "run_utc": "2026-10-14T20:02:47+00:00",
   "mc_sims": 1000,
   "variable_cost_source": "v3 outputs/unit_economics.csv (BR_ORI_EXP variable cost / DHA kg)",
   "input_hashes": {

@@ -1,0 +1,22 @@
+capex_ori_musd,price_mult,net_price_usd_kg_dha,min_asia_contract_for_B_gt_A_t,min_asia_contract_for_THalone_gt_A_t,best_policy_at_zero_contract
+60,0.6,15.0,,,WAIT (no positive NPV)
+60,0.8,20.0,,,WAIT (no positive NPV)
+60,1.0,25.0,,,A_ORI_1
+60,1.2,30.0,12000.0,,A_ORI_1
+60,1.4,35.0,10000.0,,A_ORI_1
+60,1.6,40.0,10000.0,5000.0,A_ORI_1
+60,1.8,45.0,10000.0,4000.0,A_ORI_1
+92,0.6,15.0,,,WAIT (no positive NPV)
+92,0.8,20.0,,,WAIT (no positive NPV)
+92,1.0,25.0,,,WAIT (no positive NPV)
+92,1.2,30.0,12000.0,,WAIT (no positive NPV)
+92,1.4,35.0,10000.0,4000.0,A_ORI_1
+92,1.6,40.0,10000.0,3000.0,A_ORI_1
+92,1.8,45.0,10000.0,2000.0,A_ORI_1
+140,0.6,15.0,,,WAIT (no positive NPV)
+140,0.8,20.0,,,WAIT (no positive NPV)
+140,1.0,25.0,,1000.0,WAIT (no positive NPV)
+140,1.2,30.0,12000.0,0.0,WAIT (no positive NPV)
+140,1.4,35.0,10000.0,0.0,WAIT (no positive NPV)
+140,1.6,40.0,10000.0,0.0,WAIT (no positive NPV)
+140,1.8,45.0,10000.0,0.0,A_ORI_1

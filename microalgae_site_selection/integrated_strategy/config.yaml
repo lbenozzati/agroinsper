@@ -1,0 +1,52 @@
+version: "1.0.0"
+cutoff_date: "2026-10-14"
+seed: 42
+mc_sims: 400
+dha_fraction_canonical: 0.35
+contract_start_year: 2029
+milestones: [2028, 2030, 2035]
+paths:
+  v3: ../v3
+  market: ../market_expansion
+  raw: data/raw
+  processed: data/processed
+  outputs: outputs
+
+# Policies are built from v3 site units. 'first_capex' overrides the site default; 'conditional' uses the v3 trigger logic.
+policies:
+  WAIT:            {label: "Esperar (nenhum capex)", units: []}
+  A_ORI_1:         {label: "A Orindiúva 1 módulo (2028)", units: [{site: BR_ORI_EXP}]}
+  A_ORI_DELAY:     {label: "A' Orindiúva 1 módulo adiado (2030)", units: [{site: BR_ORI_EXP, first_capex: 2028}]}
+  A_ORI_2_STAGED:  {label: "A2 Orindiúva 2 módulos (2º se utilização ≥ 80%)", units: [{site: BR_ORI_EXP}, {site: BR_ORI_EXP, conditional: utilisation, utilities_factor: 0.9, buildings_factor: 0.6}]}
+  A_ORI_2_FIXED:   {label: "A2' Orindiúva 2 módulos (2º em 2032)", units: [{site: BR_ORI_EXP}, {site: BR_ORI_EXP, first_capex: 2030, utilities_factor: 0.9, buildings_factor: 0.6}]}
+  B_ORI_TH_NOW:    {label: "B Orindiúva + Tailândia desde o início (2030)", units: [{site: BR_ORI_EXP}, {site: TH_NSN}]}
+  B_ORI_TH_2032:   {label: "B' Orindiúva + Tailândia 2032", units: [{site: BR_ORI_EXP}, {site: TH_NSN, first_capex: 2030}]}
+  C_ORI_TH_TRIG_ASIA: {label: "C Orindiúva + Tailândia se demanda asiática ≥ gatilho", units: [{site: BR_ORI_EXP}, {site: TH_NSN, conditional: asia}]}
+  C_ORI_TH_TRIG_UTIL: {label: "C' Orindiúva + Tailândia se Orindiúva ≥ 80%", units: [{site: BR_ORI_EXP}, {site: TH_NSN, conditional: utilisation}]}
+  D_ORI_HUB:       {label: "D Orindiúva + hub asiático (sem fermentação)", units: [{site: BR_ORI_EXP}], hub: true}
+
+market_scenarios: [low, base, high]
+pipeline_weights: base          # v3 A110/A111 weights applied to market-study statuses
+
+stresses:
+  ori_outage_2031: {desc: "Orindiúva (todas as unidades do site) parada 6 meses em 2031", outage: {BR_ORI_EXP: {"2031": 0.5}}}
+  ori_outage_2033: {desc: "Orindiúva parada 12 meses em 2033", outage: {BR_ORI_EXP: {"2033": 1.0}}}
+  th_delay_2y:     {desc: "Construção asiática atrasa 2 anos", delay: {TH_NSN: 2}}
+  logistics_shock: {desc: "Fretes do Brasil para Ásia ×3 em toda a vida (ruptura de rota)", freight_mult: {BR: {SHRIMP_ASIA: 3.0, CHINA: 3.0}}}
+
+voi:
+  - {key: capex_ori_musd, label: "Capacidade comprada pelos €50 mi (capex por módulo de Orindiúva)", low: 60, high: 140, effort: medium, how: "Engenharia conceitual / Corbion"}
+  - {key: price_mult, label: "Preço líquido por SKU", low: 0.7, high: 1.4, effort: medium, how: "Contratos e listas de preço"}
+  - {key: pipeline_weight, label: "Offtake efetivo (conversão do pipeline)", low: 0.3, high: 0.9, effort: high, how: "Contratos com feed mills"}
+  - {key: dha_yield, label: "Rendimento industrial DHA/açúcar", low: 0.055, high: 0.10, effort: low, how: "Dados de operação de Orindiúva"}
+  - {key: th_capex_mult, label: "Proposta EPC Tailândia", low: 0.85, high: 1.5, effort: medium, how: "Cotação EPC / FEED"}
+  - {key: freight_mult, label: "Frete cotado", low: 0.7, high: 2.0, effort: low, how: "Cotações de forwarders"}
+  - {key: th_delay, label: "Prazo de licenciamento Tailândia (anos de atraso)", low: 0, high: 2, effort: medium, how: "BOI / ONEP / DIW"}
+  - {key: market_scenario, label: "Mercado capturável (estudo de mercado baixo/alto)", low: low, high: high, effort: high, how: "Entrevistas, ensaios, CRM"}
+
+frontier:
+  asia_contract_t: [0, 1000, 2000, 3000, 4000, 5000, 6000, 8000, 10000, 12000]
+  price_mult: [0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8]
+  capex_ori_musd: [60, 92, 140]
+
+palette: {blue: "#3987e5", magenta: "#d55181", violet: "#9085e9", silver: "#B6B3BA"}

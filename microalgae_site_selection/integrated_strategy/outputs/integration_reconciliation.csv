@@ -1,0 +1,10 @@
+item,site_study,market_study,export_file,conversion,status
+Incremental demand 2030,"1,922 t SKU (after v3 status weights)","3,254 t SKU (unweighted incremental SOM)","3,254 t SKU",v3 weights A110/A111 applied to statuses; contracted = 0,consistent
+Incremental demand 2035,"3,240 t SKU (after v3 status weights)","5,545 t SKU (unweighted incremental SOM)","5,545 t SKU",v3 weights A110/A111 applied to statuses; contracted = 0,consistent
+DHA per t SKU,0.36 (A001 assay assumption),0.35 (B002 spec minimum),,canonical 0.35 used in all integrated runs (revenue per t SKU -2.8% vs v3),harmonised
+Price basis,"A040 USD 25/kg DHA x region multiplier, FCA plant; freight paid in engine",B001 USD 25/kg DHA x country multiplier x fish-oil pass-through; net of 8% commercial + 3% rebates + 2% WC carry,realized_price_currency_kg per row,integrated price = market SOM-weighted price by region net of commercial and rebates (WC modelled in v3); fish-oil pass-through applied once (v3 fish_oil set to base),harmonised
+Incoterm,"Corbion pays freight, transit inventory and (if any) non-recoverable duty",contribution deducts freight from Brazil,,DAP-like: freight and duty deducted once in the v3 engine / route table; not in the price,harmonised
+Currency / base year,"nominal USD, base 2026, US inflation 2.5%","USD 2026 (real), base year 2025 for volumes",,market prices treated as 2026 USD and inflated by v3; volumes incremental vs 2025,harmonised
+Variable cost,"site-specific (sugar, utilities, nutrients) per v3",Orindiúva cost from v3 unit_economics (for ranking only),,integrated uses v3 site costs for every origin,harmonised
+Current Corbion volume,excluded (incremental only),2025 SOM of documented markets subtracted,incremental only,no current sales attributed to new capacity,consistent
+Customer double counting,demand by region,"demand by country x niche (formulation geography); accounts are context, not added",one row per market/country/application/year/status,BioMar volume is not added to salmon farmer volume; IQI not added to brand volume,consistent

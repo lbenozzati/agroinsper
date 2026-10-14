@@ -71,7 +71,7 @@
       if (e) { const m = e[0], cap = e[1]; if (m > 0 && cap > 1e-9) { edgeArc[x + "|" + r] = arcs.length; add("p:" + x, "r:" + r, cap, -m); } }
     }));
     regions.forEach(r => add("r:" + r, "T", Math.max(demand[r], 0.0), 0.0));
-    const n = nodes.length, t = idx["T"];
+    const n = nodes.length, t = idx["T"], eps = 1e-7;
     for (let it = 0; it < 4 * n * n + 10; it++) {
       const dist = new Array(n).fill(Infinity), prev = new Array(n).fill(-1);
       dist[0] = 0.0;
@@ -79,15 +79,16 @@
         let changed = false;
         for (let a = 0; a < arcs.length; a++) {
           const [u, v, cap, cost] = arcs[a];
-          if (cap > 1e-9 && dist[u] + cost < dist[v] - 1e-12) { dist[v] = dist[u] + cost; prev[v] = a; changed = true; }
+          if (cap > 1e-9 && dist[u] + cost < dist[v] - eps) { dist[v] = dist[u] + cost; prev[v] = a; changed = true; }
         }
         if (!changed) break;
       }
-      if (dist[t] >= -1e-12 || prev[t] < 0) break;
-      let push = Infinity, v = t;
-      while (v !== 0) { const a = prev[v]; push = Math.min(push, arcs[a][2]); v = arcs[a][0]; }
-      v = t;
-      while (v !== 0) { const a = prev[v]; arcs[a][2] -= push; arcs[arcs[a][4]][2] += push; v = arcs[a][0]; }
+      if (dist[t] >= -eps || prev[t] < 0) break;
+      const path = []; let v = t;
+      while (v !== 0 && path.length <= n) { const a = prev[v]; path.push(a); v = arcs[a][0]; }
+      if (v !== 0) break;
+      let push = Infinity; path.forEach(a => push = Math.min(push, arcs[a][2]));
+      path.forEach(a => { arcs[a][2] -= push; arcs[arcs[a][4]][2] += push; });
     }
     const flows = {};
     for (const key in edgeArc) { const f = arcs[edgeArc[key] + 1][2]; if (f > 1e-9) flows[key] = f; }
@@ -101,7 +102,7 @@
       const s = p.sites[u.site];
       count[u.site] = (count[u.site] || 0) + 1;
       const unit = Object.assign({}, u, { module: count[u.site], id: u.site + "#" + count[u.site] });
-      let first = s.first_capex;
+      let first = u.first_capex !== undefined ? u.first_capex : s.first_capex;
       if (u.conditional) {
         const dy = p.decision_year;
         let triggered;

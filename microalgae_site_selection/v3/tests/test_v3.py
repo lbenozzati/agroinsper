@@ -338,3 +338,21 @@ def test_cockpit_engine_matches_python(ctx, tmp_path):
         r = E.run_alternative(p, alt)
         assert got[k][0] == pytest.approx(r["npv"], rel=1e-9, abs=1e-3)
         assert got[k][1] == pytest.approx(r["npv_ex_tv"], rel=1e-9, abs=1e-3)
+
+
+def test_allocation_terminates_and_is_optimal_with_large_costs():
+    """Regression: float noise on USD/t-scale margins once produced a predecessor cycle (infinite loop)."""
+    rng = np.random.default_rng(11)
+    for _ in range(40):
+        plants, regions = ["P1", "P2"], ["R1", "R2", "R3", "R4", "R5"]
+        supply = {x: float(rng.uniform(0, 12000)) for x in plants}
+        demand = {r: float(rng.uniform(0, 9000)) for r in regions}
+        edges = {(x, r): (float(rng.uniform(5000, 20000)), float(rng.uniform(0, 9000))) for x in plants for r in regions}
+        flows = E.allocate(supply, demand, edges)
+        keys = list(edges)
+        A_ub = [[1.0 if k[0] == x else 0.0 for k in keys] for x in plants] + \
+               [[1.0 if k[1] == r else 0.0 for k in keys] for r in regions]
+        b_ub = [supply[x] for x in plants] + [demand[r] for r in regions]
+        lp = linprog([-edges[k][0] for k in keys], A_ub=A_ub, b_ub=b_ub, bounds=[(0, edges[k][1]) for k in keys],
+                     method="highs")
+        assert sum(edges[k][0] * f for k, f in flows.items()) == pytest.approx(-lp.fun, rel=1e-6)

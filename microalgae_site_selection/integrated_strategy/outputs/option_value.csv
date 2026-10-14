@@ -1,0 +1,6 @@
+comparison,value_musd,reading
+Orindiúva agora vs adiar 2 anos (base),-8.984730832386262,positivo = custo de esperar (vendas perdidas) > economia de adiar capex
+Orindiúva agora vs adiar 2 anos (alto),81.83278765387985,idem
+E[VPL] Tailândia por gatilho de utilização − Tailândia já (MC),216.88619662419222,valor da opção de esperar pelo gatilho
+E[VPL] 2º módulo Orindiúva por gatilho − fixo 2032 (MC),124.15903596386502,valor do faseamento
+E[VPL] melhor política MC − Esperar,0.0,melhor em média: WAIT

@@ -1,6 +1,6 @@
 # Relatório de auditoria forense: v2 → v3
 
-*Corte: 2026-10-14 · commit 69634f9 · gerado por `python -m src run`*
+*Corte: 2026-10-14 · commit 2a44797 · gerado por `python -m src run`*
 
 ## Como ler
 

@@ -1,0 +1,8 @@
+series,needed_for,frequency,geography,currency,observations_available,source_status,note,correlation_computed,result
+AlgaPrime realised price,price beta vs fish oil,annual/quarterly,global,USD/EUR,0,not public,"No coefficient, beta, R2 or p-value can be estimated",False,not computed: insufficient observations; scenario/priors used instead
+Fish oil price (Peru FOB feed grade),pass-through / adoption,monthly,Peru,USD,0,IFFO/Mintec not accessible (search snippets only),Two conflicting 2026 points do not form a series,False,not computed: insufficient observations; scenario/priors used instead
+Cane sugar ex-mill price (CEPEA),sugar-FX co-movement,daily,Brazil,BRL,2,Two dated points (Jul/Aug 2026) via search,Insufficient for correlation,False,not computed: insufficient observations; scenario/priors used instead
+Thai ex-factory sugar price,sugar co-movement,irregular,Thailand,THB,1,administered price,,False,not computed: insufficient observations; scenario/priors used instead
+USD/BRL and USD/THB,FX co-movement,daily,Brazil/Thailand,USD,1,single dated points via search,,False,not computed: insufficient observations; scenario/priors used instead
+Salmon / shrimp production,production-demand link,annual,countries,t,1,2025 points (FAO/USDA via search),,False,not computed: insufficient observations; scenario/priors used instead
+Aquafeed volumes by mill,demand link,annual,countries,t,1,BioMar/Mowi 2025 points,,False,not computed: insufficient observations; scenario/priors used instead

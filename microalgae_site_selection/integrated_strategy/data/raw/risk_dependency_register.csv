@@ -1,0 +1,12 @@
+driver,affects,sign,mechanism,evidence_level,quantified_in_model,how,source
+fish_oil_price,AlgaPrime net price,+,"Contract revisions reference fish-oil omega-3 value; non-contracted business more exposed",plausible_hypothesis,yes,"pass-through elasticity 0.4 (v3 A045 / market B005); range 0.2-0.7","S033; M028"
+fish_oil_price,algal adoption / substitution space,+,"Higher fish oil makes marine supply uneconomic -> larger algal space",plausible_hypothesis,yes,"gap elasticity 0.3 (B006); Gaussian copula fish_oil-demand rho 0.4","M018"
+fish_oil_price,feed cost for customers,+,"Feed cost rises; net effect on DHA demand depends on formulation economics",not_identifiable,no,"no ingredient matrix",
+salmon_shrimp_production,feed tonnes -> demand potential,+,"Feed = production x eFCR",documented,yes,"market study growth low/base/high","M005;M006;M008;M009"
+sugar_price,industrial cost,+,"Sugar ~70% of variable cost",documented,yes,"v3 sugar per site; copula sugar_BR-sugar_TH rho 0.6","S017;S018"
+fx_brl,local cost in USD,-,"Real depreciation lowers BRL-denominated costs; sugar export-parity partly USD",documented,yes,"fx shock on local shares; sugar_BR-fx_BR rho -0.4 (prior)","S021"
+fx_thb,local cost in USD,-,"Administered THB prices",documented,yes,"fx_TH shock","S020"
+el_nino,fish oil supply,-,"Coastal El Nino reduced Peru anchovy landings in 2026",documented,partly,"captured only through fish-oil range","M016;M018"
+el_nino,cane/water availability,?,"Climate affects cane yields and water; sign site-specific",not_identifiable,no,"no site series",
+capex_overrun,construction delay,+,"Overruns and delays co-occur",plausible_hypothesis,yes,"delay 1 yr if capex mult > 1.3; capex_BR-capex_TH rho 0.5",
+customer_concentration,volume risk,+,"Salmon Norway/Chile ~89% of incremental volume",documented,partly,"concentration reported; no default model",

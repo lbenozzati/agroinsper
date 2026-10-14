@@ -1,0 +1,41 @@
+market_scenario,stress,description,policy,npv_base_musd,npv_stress_musd,loss_musd,resilience_value_B_vs_A_musd,resilience_value_Cutil_vs_A_musd
+base,ori_outage_2031,Orindiúva (todas as unidades do site) parada 6 meses em 2031,A_ORI_1,-31.811936987645215,-31.811936987645215,0.0,0.0,0.0
+base,ori_outage_2031,Orindiúva (todas as unidades do site) parada 6 meses em 2031,A_ORI_2_STAGED,-31.811936987645215,-31.811936987645215,0.0,0.0,0.0
+base,ori_outage_2031,Orindiúva (todas as unidades do site) parada 6 meses em 2031,B_ORI_TH_NOW,-227.23264259038856,-227.23264259038856,0.0,0.0,0.0
+base,ori_outage_2031,Orindiúva (todas as unidades do site) parada 6 meses em 2031,C_ORI_TH_TRIG_UTIL,-31.811936987645215,-31.811936987645215,0.0,0.0,0.0
+base,ori_outage_2031,Orindiúva (todas as unidades do site) parada 6 meses em 2031,D_ORI_HUB,-48.488879063826914,-48.488879063826914,0.0,0.0,0.0
+base,ori_outage_2033,Orindiúva parada 12 meses em 2033,A_ORI_1,-31.811936987645215,-39.180171034055206,7.368234046409992,5.408053622577807,0.0
+base,ori_outage_2033,Orindiúva parada 12 meses em 2033,A_ORI_2_STAGED,-31.811936987645215,-39.180171034055206,7.368234046409992,5.408053622577807,0.0
+base,ori_outage_2033,Orindiúva parada 12 meses em 2033,B_ORI_TH_NOW,-227.23264259038856,-229.19282301422075,1.9601804238321847,5.408053622577807,0.0
+base,ori_outage_2033,Orindiúva parada 12 meses em 2033,C_ORI_TH_TRIG_UTIL,-31.811936987645215,-39.180171034055206,7.368234046409992,5.408053622577807,0.0
+base,ori_outage_2033,Orindiúva parada 12 meses em 2033,D_ORI_HUB,-48.488879063826914,-56.092430442207615,7.6035513783807005,5.408053622577807,0.0
+base,th_delay_2y,Construção asiática atrasa 2 anos,A_ORI_1,-31.811936987645215,-31.811936987645215,0.0,14.33282961408824,0.0
+base,th_delay_2y,Construção asiática atrasa 2 anos,A_ORI_2_STAGED,-31.811936987645215,-31.811936987645215,0.0,14.33282961408824,0.0
+base,th_delay_2y,Construção asiática atrasa 2 anos,B_ORI_TH_NOW,-227.23264259038856,-212.89981297630032,-14.33282961408824,14.33282961408824,0.0
+base,th_delay_2y,Construção asiática atrasa 2 anos,C_ORI_TH_TRIG_UTIL,-31.811936987645215,-31.811936987645215,0.0,14.33282961408824,0.0
+base,th_delay_2y,Construção asiática atrasa 2 anos,D_ORI_HUB,-48.488879063826914,-48.488879063826914,0.0,14.33282961408824,0.0
+base,logistics_shock,Fretes do Brasil para Ásia ×3 em toda a vida (ruptura de rota),A_ORI_1,-31.811936987645215,-31.841300856195755,0.029363868550539962,2.1316282072803006e-14,0.0
+base,logistics_shock,Fretes do Brasil para Ásia ×3 em toda a vida (ruptura de rota),A_ORI_2_STAGED,-31.811936987645215,-31.841300856195755,0.029363868550539962,2.1316282072803006e-14,0.0
+base,logistics_shock,Fretes do Brasil para Ásia ×3 em toda a vida (ruptura de rota),B_ORI_TH_NOW,-227.23264259038856,-227.26200645893908,0.029363868550518646,2.1316282072803006e-14,0.0
+base,logistics_shock,Fretes do Brasil para Ásia ×3 em toda a vida (ruptura de rota),C_ORI_TH_TRIG_UTIL,-31.811936987645215,-31.841300856195755,0.029363868550539962,2.1316282072803006e-14,0.0
+base,logistics_shock,Fretes do Brasil para Ásia ×3 em toda a vida (ruptura de rota),D_ORI_HUB,-48.488879063826914,-48.53005149958236,0.041172435755449044,2.1316282072803006e-14,0.0
+high,ori_outage_2031,Orindiúva (todas as unidades do site) parada 6 meses em 2031,A_ORI_1,520.7013952437528,500.43883851605733,20.262556727695483,9.755517573991483,0.0
+high,ori_outage_2031,Orindiúva (todas as unidades do site) parada 6 meses em 2031,A_ORI_2_STAGED,897.717076219675,867.3232411281318,30.393835091543224,9.755517573991483,0.0
+high,ori_outage_2031,Orindiúva (todas as unidades do site) parada 6 meses em 2031,B_ORI_TH_NOW,1036.4282524207822,1025.9212132670782,10.507039153704,9.755517573991483,0.0
+high,ori_outage_2031,Orindiúva (todas as unidades do site) parada 6 meses em 2031,C_ORI_TH_TRIG_UTIL,1018.6414234357471,998.3788667080516,20.262556727695483,9.755517573991483,0.0
+high,ori_outage_2031,Orindiúva (todas as unidades do site) parada 6 meses em 2031,D_ORI_HUB,506.53750656631075,486.27494983861527,20.262556727695483,9.755517573991483,0.0
+high,ori_outage_2033,Orindiúva parada 12 meses em 2033,A_ORI_1,520.7013952437528,484.33225890127187,36.36913634248094,0.9363465438716503,0.9363465438716503
+high,ori_outage_2033,Orindiúva parada 12 meses em 2033,A_ORI_2_STAGED,897.717076219675,826.0542415355072,71.66283468416782,0.9363465438716503,0.9363465438716503
+high,ori_outage_2033,Orindiúva parada 12 meses em 2033,B_ORI_TH_NOW,1036.4282524207822,1000.9954626221729,35.43278979860929,0.9363465438716503,0.9363465438716503
+high,ori_outage_2033,Orindiúva parada 12 meses em 2033,C_ORI_TH_TRIG_UTIL,1018.6414234357471,983.2086336371378,35.43278979860929,0.9363465438716503,0.9363465438716503
+high,ori_outage_2033,Orindiúva parada 12 meses em 2033,D_ORI_HUB,506.53750656631075,470.1336644799392,36.403842086371526,0.9363465438716503,0.9363465438716503
+high,th_delay_2y,Construção asiática atrasa 2 anos,A_ORI_1,520.7013952437528,520.7013952437528,0.0,-64.49105028652309,-85.17320334260228
+high,th_delay_2y,Construção asiática atrasa 2 anos,A_ORI_2_STAGED,897.717076219675,897.717076219675,0.0,-64.49105028652309,-85.17320334260228
+high,th_delay_2y,Construção asiática atrasa 2 anos,B_ORI_TH_NOW,1036.4282524207822,971.9372021342591,64.49105028652309,-64.49105028652309,-85.17320334260228
+high,th_delay_2y,Construção asiática atrasa 2 anos,C_ORI_TH_TRIG_UTIL,1018.6414234357471,933.4682200931449,85.17320334260228,-64.49105028652309,-85.17320334260228
+high,th_delay_2y,Construção asiática atrasa 2 anos,D_ORI_HUB,506.53750656631075,506.53750656631075,0.0,-64.49105028652309,-85.17320334260228
+high,logistics_shock,Fretes do Brasil para Ásia ×3 em toda a vida (ruptura de rota),A_ORI_1,520.7013952437528,520.7013952437528,0.0,-0.005247594073580331,0.0
+high,logistics_shock,Fretes do Brasil para Ásia ×3 em toda a vida (ruptura de rota),A_ORI_2_STAGED,897.717076219675,897.717076219675,0.0,-0.005247594073580331,0.0
+high,logistics_shock,Fretes do Brasil para Ásia ×3 em toda a vida (ruptura de rota),B_ORI_TH_NOW,1036.4282524207822,1036.4230048267086,0.005247594073580331,-0.005247594073580331,0.0
+high,logistics_shock,Fretes do Brasil para Ásia ×3 em toda a vida (ruptura de rota),C_ORI_TH_TRIG_UTIL,1018.6414234357471,1018.6414234357471,0.0,-0.005247594073580331,0.0
+high,logistics_shock,Fretes do Brasil para Ásia ×3 em toda a vida (ruptura de rota),D_ORI_HUB,506.53750656631075,506.53750656631075,0.0,-0.005247594073580331,0.0

@@ -2,8 +2,8 @@
   "version": "3.0.0",
   "cutoff_date": "2026-10-14",
   "seed": 42,
-  "git_commit": "69634f9",
-  "run_utc": "2026-10-14T16:37:44+00:00",
+  "git_commit": "2a44797",
+  "run_utc": "2026-10-14T20:01:30+00:00",
   "mc_sims": 2000,
   "demand_origin": "default_premises",
   "input_hashes": {

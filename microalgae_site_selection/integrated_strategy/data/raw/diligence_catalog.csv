@@ -1,0 +1,9 @@
+item,parameter_key,effort,cost_estimate,owner,reversible_step
+Capacidade incremental comprada pelos €50 mi e capex por módulo,capex_ori_musd,medium,"engenharia conceitual (~US$ 0,3-0,5 mi, premissa)",Corbion engenharia,yes
+Preço líquido por SKU e mercado,price_mult,medium,"análise de contratos (interno)",Corbion comercial,yes
+Offtake efetivo / contratos firmes,pipeline_weight,high,"negociação 6-12 meses",Corbion comercial,yes
+Rendimento industrial,dha_yield,low,"dados de operação (interno)",Corbion operações,yes
+Proposta EPC Tailândia,th_capex_mult,medium,"FEED/EPC estimate (~US$ 0,5-1 mi, premissa)",Corbion engenharia,yes
+Frete cotado por SKU,freight_mult,low,"cotações de forwarders",Logística,yes
+Prazo de licenciamento Tailândia,th_delay,medium,"consulta BOI/ONEP",Jurídico/regulatório,yes
+Mercado capturável (pipeline qualificado),market_scenario,high,"entrevistas, ensaios pagos",Corbion comercial + técnico,yes

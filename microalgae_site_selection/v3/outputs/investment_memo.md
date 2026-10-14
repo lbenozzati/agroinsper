@@ -1,6 +1,6 @@
 # Memorando de investimento: próxima capacidade de DHA de microalgas da Corbion (v3)
 
-*Data de corte: 2026-10-14. Gerado automaticamente a partir dos outputs da execução (commit 69634f9, seed 42, 2000 simulações).*
+*Data de corte: 2026-10-14. Gerado automaticamente a partir dos outputs da execução (commit 2a44797, seed 42, 2000 simulações).*
 
 > **Natureza do resultado.**
 > - Não houve acesso a documentos internos da Corbion, contratos ou cotações de EPC e frete.

@@ -1,6 +1,6 @@
 # Mercados para expansão e consolidação de DHA (AlgaPrime): memorando
 
-*Corte: 2026-10-14 · commit 2041fc3 · seed 42 · 1000 simulações · gerado por `python -m src run`*
+*Corte: 2026-10-14 · commit 2a44797 · seed 42 · 1000 simulações · gerado por `python -m src run`*
 
 > **Natureza do resultado.**
 > - É um estudo de mercado independente da localização da fábrica.

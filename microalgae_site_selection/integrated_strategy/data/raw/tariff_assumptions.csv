@@ -1,0 +1,6 @@
+destination_region,import_duty_on_feed_ingredient,low,high,recoverable,basis,status
+SALMON,0.0,0.0,0.0,n/a,"Chile/Norway/UK: feed ingredient duty assumed 0 (Chile-Brazil ACE-35; EEA/UK MFN for Schizochytrium biomass not verified)",assumption_unverified
+SHRIMP_AM,0.0,0.0,0.05,no,"Ecuador: Mercosur-CAN preferences assumed; HS classification not verified",assumption_unverified
+SHRIMP_ASIA,0.0,0.0,0.05,no,"From Thailand: ASEAN FTA 0%; from Brazil: MFN may apply (not verified) -> high case 5%",assumption_unverified
+CHINA,0.0,0.0,0.05,no,"China MFN on feed additives not verified; Thailand via ACFTA 0%",assumption_unverified
+PET,0.0,0.0,0.03,no,"US/EU MFN on algal biomass not verified",assumption_unverified
