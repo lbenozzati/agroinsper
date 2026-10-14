@@ -3,7 +3,7 @@
 Dois rankings ponderados, no mesmo formato da v2 (critérios com pesos → score 0–10), aprofundados:
 
 1. **Prompt 1 – `plant`:** qual país é o melhor para a nova unidade de fermentação de DHA de microalgas.
-2. **Prompt 2 – `market`** (em construção): quais países são os melhores para a Corbion expandir vendas em
+2. **Prompt 2 – `market`:** quais países são os melhores para a Corbion expandir vendas em
    salmão, camarão e pet food — um ranking por nicho e um geral.
 
 ## Executar
@@ -11,7 +11,8 @@ Dois rankings ponderados, no mesmo formato da v2 (critérios com pesos → score
 ```bash
 cd microalgae_site_selection/country_ranking
 python -m src plant            # ~2 min (1.000 simulações de dados + 4.000 sorteios de pesos)
-python -m pytest -q tests      # 10 testes
+python -m src market           # ~2 min (3 nichos)
+python -m pytest -q tests      # 17 testes
 ```
 
 ## Prompt 1 – método
@@ -36,6 +37,25 @@ python -m pytest -q tests      # 10 testes
 - **Rubricas** (~42% do peso, antes ~66%): definidas e justificadas linha a linha em `data/raw/plant_rubrics.csv`;
   template para outros avaliadores em `outputs/plant/plant_rubric_ratings_template.csv`.
 
+## Prompt 2 – método
+
+- **Mesmos 5 critérios em todos os nichos** (scores comparáveis): Tamanho e crescimento 30%, Valor e disposição a
+  pagar 20%, Acesso a clientes e posição competitiva 20%, Regulação e acesso comercial 15%, Risco país e biológico 15%.
+  Cenários: Consolidação (20/20/35/15/10) e Crescimento (40/20/10/15/15). Métricas por nicho em `config_market.yaml`.
+- **Nichos e países:** salmão (10), camarão (12), pet food (15).
+- **Necessidade técnica de DHA** (derivada): ração × g de DHA/kg do estudo de mercado (salmão 5,3; camarão 2,7;
+  pet 0,33), com a mesma régua log nos três nichos.
+- **Ranking geral:** média dos scores do país por nicho, ponderada pela necessidade técnica de DHA do país em cada nicho.
+- **Regras de cobertura:** métrica com dado em < 40% dos países do nicho sai do score (fica no CSV);
+  país com < 50% do peso coberto é marcado "dados insuficientes" e ranqueado depois dos demais.
+- Mesmas análises de robustez do Prompt 1 (Monte Carlo de dados, Dirichlet de pesos, só-quantitativo, pontos de virada).
+
+Saídas em `outputs/market/`: `market_ranking_{salmon,shrimp,pet}.csv`, `market_ranking_overall.csv`,
+`market_ranking_country_niche_pairs.csv`, `market_metric_scores.csv`, `market_metric_coverage_*.csv`,
+`market_tipping_points.csv`, `market_country_memo.md` e gráficos (`market_heatmap_*.png`, `market_contributions_*.png`,
+`market_overall_ranking.png`, `market_map.png`). Entradas: `data/raw/market_research/*.csv`,
+`data/raw/market_rubrics.csv`, `data/raw/market_analyst_fallback.csv`.
+
 ## Entradas
 
 | Arquivo | Conteúdo |
@@ -59,4 +79,4 @@ python -m pytest -q tests      # 10 testes
 - Portais primários bloqueados: quase tudo veio de trechos de busca (marcado nas notas).
 - Sem preço de açúcar para México, Equador e Chile; OECD FDI Index só existia para 3 países e ficou fora do score.
 - Salários com definições diferentes; Aqueduct 3.0 (portal 4.0 bloqueado); rotas ±10%.
-- `data/raw/market_research_partial/` guarda a pesquisa incompleta do Prompt 2 (limite de buscas atingido).
+- `data/raw/market_research_partial/` guarda a primeira tentativa (incompleta) da pesquisa do Prompt 2.

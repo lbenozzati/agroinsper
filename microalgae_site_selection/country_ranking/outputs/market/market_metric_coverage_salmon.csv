@@ -1,0 +1,17 @@
+metric_id,coverage,used,niche
+sal_production_t,1.0,True,salmon
+dha_need_t,1.0,True,salmon
+sal_growth_5y_cagr,0.5,True,salmon
+sal_growth_outlook_2030,1.0,True,salmon
+sal_price_usd_kg,1.0,True,salmon
+sal_certification_share,0.1,False,salmon
+sal_algal_dha_adoption,1.0,True,salmon
+sal_feed_suppliers,1.0,True,salmon
+sal_relationship,1.0,True,salmon
+sal_market_access_tariff,0.2,False,salmon
+sal_registration,1.0,True,salmon
+sal_mortality_pct,0.5,True,salmon
+sr_sovereign_rating_notch,1.0,True,salmon
+sr_wgi_political_stability,1.0,True,salmon
+sr_wgi_regulatory_quality,1.0,True,salmon
+sr_fx_volatility,0.9,True,salmon

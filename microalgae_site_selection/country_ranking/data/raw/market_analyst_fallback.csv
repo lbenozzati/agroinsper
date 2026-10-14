@@ -1,0 +1,16 @@
+country,metric_id,raw_value,unit,reference_year,source_name,source_url,date_accessed,value_type,confidence,notes
+Faroe Islands,sal_price_usd_kg,8.5,USD/kg,2024-25,Analyst estimate used only where research found nothing,,2026-10-14,estimate,Low,Faroese salmon trades at a premium to Norwegian (analyst estimate)
+Canada,sal_price_usd_kg,7.5,USD/kg,2024-25,Analyst estimate used only where research found nothing,,2026-10-14,estimate,Low,Close to Norwegian/Chilean export parity into the US (analyst estimate)
+Australia,sal_price_usd_kg,10.0,USD/kg,2024-25,Analyst estimate used only where research found nothing,,2026-10-14,estimate,Low,Tasmanian salmon sold mostly in the protected domestic market (analyst estimate)
+United States,sal_price_usd_kg,8.0,USD/kg,2024-25,Analyst estimate used only where research found nothing,,2026-10-14,estimate,Low,Domestic farmed Atlantic salmon (analyst estimate)
+Turkey,sal_price_usd_kg,5.0,USD/kg,2024-25,Analyst estimate used only where research found nothing,,2026-10-14,estimate,Low,Mostly rainbow trout / Black Sea trout (analyst estimate)
+New Zealand,sal_price_usd_kg,12.0,USD/kg,2024-25,Analyst estimate used only where research found nothing,,2026-10-14,estimate,Low,"King salmon, premium niche (analyst estimate, capped at the goalpost)"
+Germany,pet_food_production_t,1600000.0,t,2024,Analyst estimate used only where research found nothing,,2026-10-14,estimate,Low,Order of magnitude from FEDIAF/IVH (analyst estimate)
+Poland,pet_food_production_t,1100000.0,t,2024,Analyst estimate used only where research found nothing,,2026-10-14,estimate,Low,Poland is a large EU pet-food producer/exporter (analyst estimate)
+Australia,pet_food_production_t,450000.0,t,2024,Analyst estimate used only where research found nothing,,2026-10-14,estimate,Low,Analyst estimate
+Canada,pet_ingredient_regulation,0.5,0/0.5/1,2026,Analyst estimate used only where research found nothing,,2026-10-14,estimate,Low,Registration/notification needed; route exists (analyst estimate)
+Japan,pet_ingredient_regulation,0.5,0/0.5/1,2026,Analyst estimate used only where research found nothing,,2026-10-14,estimate,Low,Registration/notification needed; route exists (analyst estimate)
+Australia,pet_ingredient_regulation,0.5,0/0.5/1,2026,Analyst estimate used only where research found nothing,,2026-10-14,estimate,Low,Registration/notification needed; route exists (analyst estimate)
+Thailand,pet_ingredient_regulation,0.5,0/0.5/1,2026,Analyst estimate used only where research found nothing,,2026-10-14,estimate,Low,Registration/notification needed; route exists (analyst estimate)
+Mexico,pet_ingredient_regulation,0.5,0/0.5/1,2026,Analyst estimate used only where research found nothing,,2026-10-14,estimate,Low,Registration/notification needed; route exists (analyst estimate)
+Argentina,pet_ingredient_regulation,0.5,0/0.5/1,2026,Analyst estimate used only where research found nothing,,2026-10-14,estimate,Low,Registration/notification needed; route exists (analyst estimate)

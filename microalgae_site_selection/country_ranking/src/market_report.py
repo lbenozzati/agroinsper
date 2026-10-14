@@ -59,20 +59,20 @@ def charts(out: dict) -> None:
     ax.set_xlim(0, 10)
     ax.grid(axis="x", color=C.GRID, lw=0.8)
     ax.set_axisbelow(True)
-    for k, (n, colr) in enumerate(cols.items()):
-        ax.barh([], [], color=colr, label=NICHE_PT[n])
-    ax.legend(ncol=3, loc="lower center", bbox_to_anchor=(0.5, 1.0), frameon=False, fontsize=11)
-    fig.text(0.84, 0.83, "DHA técnico\n(t/ano)", fontsize=9.5, color=C.INK2, ha="center")
+    from matplotlib.patches import Patch
+    ax.legend(handles=[Patch(color=colr, label=NICHE_PT[n]) for n, colr in cols.items()], ncol=3,
+              loc="lower center", bbox_to_anchor=(0.5, 1.0), frameon=False, fontsize=11)
+    ax.text(11.2, y.max() + 1.1, "DHA técnico (t/ano)", fontsize=9.5, color=C.INK2, ha="center", clip_on=False)
     for yi, c in zip(y, order):
-        yy = 0.10 + (yi + 0.5) * 0.72 / len(order)
-        fig.text(0.84, yy, f"{ov.dha_need_total_t[c]:,.0f}".replace(",", "."), fontsize=10, color=C.INK2,
-                 ha="center", va="center")
+        ax.text(11.2, yi, f"{ov.dha_need_total_t[c]:,.0f}".replace(",", "."), fontsize=10, color=C.INK2,
+                ha="center", va="center", clip_on=False)
     C.save(fig, OUT / "market_overall_ranking.png")
     t = ov.rename(columns={"overall_score": "score", "overall_rank": "rank"})
     C.bubble_map(t, OUT / "market_map.png", "Melhores países para expandir o AlgaPrime (ranking geral)",
                  "Área proporcional ao score geral; destaque = 1º lugar",
                  "Score = triagem multicritério ponderada pela necessidade técnica de DHA por nicho. "
-                 "Fonte: market_ranking_overall.csv.", extent=(-140, 180, -50, 72), points=POINTS)
+                 "Fonte: market_ranking_overall.csv. Rótulo nos 12 primeiros.", extent=(-140, 180, -50, 72),
+                 points=POINTS, label_top=12, size_scale=1500)
 
 
 def memo(out: dict) -> None:
@@ -146,6 +146,10 @@ def memo(out: dict) -> None:
              "conferir Medium/Low na fonte primária.")
     L.append("- Rubricas de relacionamento e registro aplicadas por um único analista; template em "
              "`outputs/market/market_rubric_ratings_template.csv`.")
+    for n, r in out["results"].items():
+        if r["dropped"]:
+            L.append(f"- {NICHE_PT[n].capitalize()}: métricas fora do score por cobertura < 40% dos países: "
+                     + ", ".join(r["dropped"]) + " (seguem no CSV para quando houver dado).")
     L.append("- A necessidade técnica de DHA usa os mesmos g/kg de ração do estudo de mercado para todos os países do "
              "nicho (salmão 5,3; camarão 2,7; pet food 0,33 g DHA/kg).")
     (OUT / "market_country_memo.md").write_text("\n".join(L), encoding="utf-8")

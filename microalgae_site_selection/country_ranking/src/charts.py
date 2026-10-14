@@ -145,13 +145,13 @@ def rank_probability(tab: pd.DataFrame, path: Path, title: str, subtitle: str, n
 LABEL_OFFSETS = {  # (dx, dy, ha) in degrees, to keep labels apart in crowded regions
     "Thailand": (-6, -1, "right"), "Vietnam": (2, -5, "left"), "China": (5, 3, "left"), "Philippines": (5, 0, "left"),
     "Ecuador": (-5, 1, "right"), "Peru": (-5, -2, "right"), "India": (-4, 0, "right"), "Indonesia": (0, -5, "center"),
-    "Norway": (4, 3, "left"), "United Kingdom": (-4, 0, "right"), "Faroe Islands": (-4, 2, "right"),
-    "Iceland": (0, 4, "center"), "Germany": (4, 2, "left"), "France": (-4, -1, "right"), "Spain": (-4, -2, "right"),
+    "Norway": (7, 3, "left"), "United Kingdom": (-4, 0, "right"), "Faroe Islands": (-4, 2, "right"),
+    "Iceland": (0, 4, "center"), "Germany": (6, -1, "left"), "France": (-4, -1, "right"), "Spain": (-4, -2, "right"),
     "Italy": (4, -2, "left"), "Poland": (4, 2, "left"), "Bangladesh": (2, 4, "left")}
 
 
 def bubble_map(tab: pd.DataFrame, path: Path, title: str, subtitle: str, note: str, extent=(-130, 160, -50, 65),
-               points: dict | None = None):
+               points: dict | None = None, label_top: int | None = None, size_scale: float = 2600):
     """Bubble area proportional to score (triage, not NPV); only the leader is highlighted."""
     world = gpd.read_file(ASSETS / "geo" / "ne_110m_admin_0_countries.geojson")
     fig = slide(title, subtitle, note)
@@ -169,9 +169,11 @@ def bubble_map(tab: pd.DataFrame, path: Path, title: str, subtitle: str, note: s
                 continue
             pt = g.geometry.iloc[0].representative_point()
             lon, lat = pt.x, pt.y
-        size = (r.score / 10) ** 2 * 2600
+        size = (r.score / 10) ** 2 * size_scale
         ax.scatter(lon, lat, s=size, color=INK if c == leader else BLUE, alpha=0.9 if c == leader else 0.55,
                    edgecolor=INK, linewidth=0.8, zorder=5)
+        if label_top is not None and r["rank"] > label_top:
+            continue
         if c in LABEL_OFFSETS:
             dx, dy, ha = LABEL_OFFSETS[c]
             tx, ty, va = lon + dx, lat + dy, "center"

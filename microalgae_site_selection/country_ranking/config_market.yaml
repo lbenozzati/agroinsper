@@ -2,6 +2,8 @@
 # Same five criteria for every niche (comparable scores); metrics differ by niche.
 seed: 42
 mc_sims: 600
+min_metric_coverage: 0.4   # a metric with data for fewer than 40% of a niche's countries is left out of that niche's score
+min_country_coverage: 0.5  # countries below 50% of weight with data are flagged 'dados insuficientes' and ranked after the rest
 dirichlet_draws: 4000
 base_scenario: Base Case
 criteria:
@@ -72,7 +74,7 @@ niches:
       shr_growth_5y_cagr:          {sub: sz_growth, weight: 0.40, method: linear, worst: -3, best: 12, label: "CAGR 5 anos (%)"}
       shr_growth_outlook:          {sub: sz_growth, weight: 0.60, method: linear, worst: -2, best: 8, label: "Crescimento esperado até 2030 (%/ano)"}
       shr_export_price_usd_kg:     {sub: vl_price, weight: 1.0, method: linear, worst: 3, best: 9, label: "Preço de exportação (US$/kg)"}
-      shr_intensive_share:         {sub: vl_intens, weight: 0.50, method: linear, worst: 0, best: 80, label: "Produção intensiva (%)"}
+      shr_intensive_share:         {sub: vl_intens, weight: 0.50, method: linear, worst: 1, best: 5, label: "Grau de intensificação (1-5, analista)"}
       shr_hatchery_pl_billion:     {sub: vl_intens, weight: 0.50, method: log, worst: 1, best: 300, label: "Pós-larvas (bilhões/ano)"}
       shr_algal_dha_adoption:      {sub: ac_adopt, weight: 1.0, method: linear, worst: 0, best: 1, label: "Adoção de DHA de algas (0/0,5/1)"}
       shr_feed_suppliers:          {sub: ac_feed, weight: 1.0, method: linear, worst: 0, best: 6, label: "Grandes fabricantes de ração com fábrica (nº)"}
@@ -98,7 +100,7 @@ niches:
       pet_market_value_usd_bn: {sub: sz_volume, weight: 0.30, method: log, worst: 0.5, best: 60, label: "Mercado de pet food (US$ bi)"}
       dha_need_t:              {sub: sz_volume, weight: 0.30, method: log, worst: 30, best: 10000, label: "Necessidade técnica de DHA (t, derivado)"}
       pet_growth_5y_cagr:      {sub: sz_growth, weight: 1.0, method: linear, worst: 0, best: 12, label: "CAGR 5 anos (%)"}
-      pet_premium_share:       {sub: vl_premium, weight: 1.0, method: linear, worst: 10, best: 60, label: "Participação premium (%)"}
+      pet_premium_share:       {sub: vl_premium, weight: 1.0, method: linear, worst: 50, best: 450, label: "Gasto com ração por cão+gato (US$/ano, proxy de premiumização)"}
       pet_omega3_claims:       {sub: vl_claims, weight: 1.0, method: linear, worst: 1, best: 5, label: "Demanda por ômega-3 (1-5)"}
       pet_algal_dha_adoption:  {sub: ac_adopt, weight: 1.0, method: linear, worst: 0, best: 1, label: "Adoção de DHA de algas (0/0,5/1)"}
       pet_manufacturers:       {sub: ac_feed, weight: 1.0, method: linear, worst: 0, best: 20, label: "Fábricas dos grandes fabricantes (nº)"}

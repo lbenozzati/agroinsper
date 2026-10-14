@@ -35,6 +35,9 @@ def niche_model(cfg: dict, niche: str) -> S.Model:
 def load_inputs() -> pd.DataFrame:
     """Country risk (plant study + market research), niche research, analyst rubrics/fallbacks (later overrides)."""
     frames = []
+    fb = RAW / "market_analyst_fallback.csv"
+    if fb.exists():
+        frames.append(pd.read_csv(fb)[COLS])
     for f in [RAW / "research" / "risk.csv"] + sorted((RAW / "market_research").glob("*.csv")):
         if f.exists():
             d = pd.read_csv(f)
@@ -44,6 +47,7 @@ def load_inputs() -> pd.DataFrame:
         if f.exists():
             frames.append(pd.read_csv(f)[COLS])
     data = pd.concat(frames, ignore_index=True)
+    data["country"] = data.country.str.replace(r"\s*\(.*\)$", "", regex=True).str.strip()  # "Australia (Tasmania)"
     data = data[pd.to_numeric(data.raw_value, errors="coerce").notna()]
     return data.drop_duplicates(["country", "metric_id"], keep="last").reset_index(drop=True)
 
@@ -88,19 +92,29 @@ def run_niche(cfg: dict, data: pd.DataFrame, niche: str, n_mc: int, n_dir: int) 
     values = S.wide_values(model, d).reindex(countries).apply(pd.to_numeric, errors="coerce")
     conf = d.pivot_table(index="country", columns="metric_id", values="confidence", aggfunc="first") \
         .reindex(index=countries, columns=list(model.metrics))
-    ms = S.metric_scores(model, values)
+    ms_all = S.metric_scores(model, values)
+    mcov = ms_all.notna().mean()
+    dropped = [k for k in model.metrics if mcov[k] < cfg["min_metric_coverage"]]
+    ms = ms_all.drop(columns=dropped)
     score, crit, sub = S.aggregate(model, ms)
-    cov = S.coverage(model, ms)
+    cov = S.coverage(model, ms_all)
+    cov_used = S.coverage(model, ms.reindex(columns=list(model.metrics)))
     lo, _, _ = S.aggregate(model, ms, fill=0.0)
     hi, _, _ = S.aggregate(model, ms, fill=10.0)
     q, _, _ = S.aggregate(model, ms, keep=[k for k, m in model.metrics.items() if m.method != "rubric"])
+    used_w = sum(model.nominal_weight(k) for k in ms.columns)
+    insufficient = (cov_used.data_coverage_of_weight / used_w) < cfg["min_country_coverage"]
     scen = {nm: S.aggregate(model, ms, w)[0] for nm, w in model.scenarios.items()}
     base_w = model.scenarios[model.base]
     dr = S.dirichlet_ranks(crit, base_w, n_dir, cfg["seed"])
-    mc = S.monte_carlo(model, values, conf, n_mc, cfg["seed"])
+    keep_vals = values.drop(columns=dropped)
+    m_used = copy.deepcopy(model)
+    m_used.metrics = {k: v for k, v in model.metrics.items() if k not in dropped}
+    mc = S.monte_carlo(m_used, keep_vals, conf.drop(columns=dropped), n_mc, cfg["seed"])
     need = values["dha_need_t"] if "dha_need_t" in values else pd.Series(np.nan, index=countries)
+    adj = score.where(~insufficient, score - 100)  # insufficient-data countries ranked after the rest
     tab = pd.DataFrame({
-        "niche": niche, "rank": S.rank(score), "score": score.round(3), **{c: crit[c].round(2) for c in model.criteria},
+        "niche": niche, "rank": S.rank(adj), "data_status": np.where(insufficient, "dados insuficientes", "ok"), "score": score.round(3), **{c: crit[c].round(2) for c in model.criteria},
         **{f"rank_{n.split()[0].lower()}": S.rank(s) for n, s in scen.items()},
         "score_quant_only": q.round(3), "rank_quant_only": S.rank(q),
         "score_if_missing_0": lo.round(3), "score_if_missing_10": hi.round(3), **cov, **dr.round(4), **mc.round(4),
@@ -120,7 +134,10 @@ def run_niche(cfg: dict, data: pd.DataFrame, niche: str, n_mc: int, n_dir: int) 
         for c in model.criteria:
             tips.append(dict(niche=niche, leader=order[0], challenger=b, criterion=c, base_weight=base_w[c],
                              weight_where_challenger_overtakes=S.weight_tipping(crit, base_w, order[0], b, c)))
-    return dict(model=model, table=tab, long=long, sub=sub, crit=crit, tips=pd.DataFrame(tips), data=d,
+    pd.DataFrame({"metric_id": list(model.metrics), "coverage": [round(mcov[k], 2) for k in model.metrics],
+                  "used": [k not in dropped for k in model.metrics]}).assign(niche=niche) \
+        .to_csv(OUT / f"market_metric_coverage_{niche}.csv", index=False)
+    return dict(model=model, table=tab, dropped=dropped, long=long, sub=sub, crit=crit, tips=pd.DataFrame(tips), data=d,
                 contributions=crit.mul(pd.Series(base_w)))
 
 

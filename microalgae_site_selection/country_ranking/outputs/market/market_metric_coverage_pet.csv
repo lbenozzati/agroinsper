@@ -1,0 +1,17 @@
+metric_id,coverage,used,niche
+pet_food_production_t,1.0,True,pet
+pet_market_value_usd_bn,1.0,True,pet
+dha_need_t,1.0,True,pet
+pet_growth_5y_cagr,0.87,True,pet
+pet_premium_share,1.0,True,pet
+pet_omega3_claims,1.0,True,pet
+pet_algal_dha_adoption,0.67,True,pet
+pet_manufacturers,0.0,False,pet
+pet_relationship,1.0,True,pet
+pet_import_tariff,0.2,False,pet
+pet_ingredient_regulation,1.0,True,pet
+pet_market_risk,1.0,True,pet
+sr_sovereign_rating_notch,1.0,True,pet
+sr_wgi_political_stability,1.0,True,pet
+sr_wgi_regulatory_quality,1.0,True,pet
+sr_fx_volatility,1.0,True,pet

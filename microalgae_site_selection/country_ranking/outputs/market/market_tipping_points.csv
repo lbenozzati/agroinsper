@@ -1,0 +1,31 @@
+niche,leader,challenger,criterion,base_weight,weight_where_challenger_overtakes
+salmon,Norway,Chile,size_growth,0.3,
+salmon,Norway,Chile,value,0.2,
+salmon,Norway,Chile,access,0.2,
+salmon,Norway,Chile,regulatory,0.15,
+salmon,Norway,Chile,risk,0.15,
+salmon,Norway,United Kingdom,size_growth,0.3,0.025
+salmon,Norway,United Kingdom,value,0.2,0.369
+salmon,Norway,United Kingdom,access,0.2,
+salmon,Norway,United Kingdom,regulatory,0.15,
+salmon,Norway,United Kingdom,risk,0.15,
+shrimp,China,Thailand,size_growth,0.3,0.29
+shrimp,China,Thailand,value,0.2,0.24
+shrimp,China,Thailand,access,0.2,0.22
+shrimp,China,Thailand,regulatory,0.15,0.179
+shrimp,China,Thailand,risk,0.15,0.199
+shrimp,China,Ecuador,size_growth,0.3,0.468
+shrimp,China,Ecuador,value,0.2,0.146
+shrimp,China,Ecuador,access,0.2,0.338
+shrimp,China,Ecuador,regulatory,0.15,
+shrimp,China,Ecuador,risk,0.15,0.306
+pet,United States,Germany,size_growth,0.3,
+pet,United States,Germany,value,0.2,
+pet,United States,Germany,access,0.2,
+pet,United States,Germany,regulatory,0.15,0.281
+pet,United States,Germany,risk,0.15,
+pet,United States,France,size_growth,0.3,
+pet,United States,France,value,0.2,
+pet,United States,France,access,0.2,
+pet,United States,France,regulatory,0.15,0.292
+pet,United States,France,risk,0.15,
