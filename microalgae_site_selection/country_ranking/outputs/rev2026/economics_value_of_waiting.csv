@@ -1,0 +1,5 @@
+alternative,site,expected_npv_commit_now_musd,expected_npv_wait_1y_then_decide_musd,value_of_waiting_musd,n_scenarios,probabilities,status
+A1_ORI,BR_ORI_EXP,102.45009992402434,99.80728586690701,-2.6428140571173344,6,iguais (ASSUMPTION),"ASSUMPTION – cenário ilustrativo (premissas v3), não observado"
+B_BR_GF,BR_GF_GO,42.772302357116665,54.37124471214174,11.598942355025073,6,iguais (ASSUMPTION),"ASSUMPTION – cenário ilustrativo (premissas v3), não observado"
+C_TH_NSN,TH_NSN,78.10963256886555,85.87491476168124,7.76528219281569,6,iguais (ASSUMPTION),"ASSUMPTION – cenário ilustrativo (premissas v3), não observado"
+D_TH_RYG,TH_RYG,51.97124686906437,67.2085724594144,15.237325590350025,6,iguais (ASSUMPTION),"ASSUMPTION – cenário ilustrativo (premissas v3), não observado"

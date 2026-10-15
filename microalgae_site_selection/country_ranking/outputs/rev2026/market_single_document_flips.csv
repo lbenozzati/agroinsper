@@ -1,0 +1,12 @@
+leader,challenger,metric_id,label,criterion,status_leader,status_challenger,floor_gap,max_gain_challenger,single_document_can_flip,niche
+salmon|Norway,salmon|Chile,ec_net_price,Preço líquido realizável (US$/kg DHA),economia,UNKNOWN,UNKNOWN,0.045,1.5,True,salmon
+salmon|Norway,salmon|Chile,ec_tariff_pct,Tarifa de importação do ingrediente (%),economia,UNKNOWN,JUDGMENT,0.045,0.0,False,salmon
+salmon|Norway,salmon|Chile,fc_competitor_documented,Concorrente algal documentado no país×nicho (1 = sim),adequacao,OBSERVED,UNKNOWN,0.045,0.75,True,salmon
+salmon|Norway,salmon|Chile,rk_fx_vol,Volatilidade cambial do destino (%/ano),risco,OBSERVED,UNKNOWN,0.045,0.5,True,salmon
+shrimp|China,shrimp|Thailand,ec_net_price,Preço líquido realizável (US$/kg DHA),economia,UNKNOWN,UNKNOWN,0.834,1.5,True,shrimp
+shrimp|China,shrimp|Thailand,fc_competitor_documented,Concorrente algal documentado no país×nicho (1 = sim),adequacao,UNKNOWN,UNKNOWN,0.834,0.75,False,shrimp
+pet|United States,pet|France,dm_growth,Crescimento esperado (%/ano),demanda,DERIVED,UNKNOWN,1.146,0.875,False,pet
+pet|United States,pet|France,ac_feed_plants,Grandes fabricantes com fábrica no país (nº),acesso,UNKNOWN,UNKNOWN,1.146,0.75,False,pet
+pet|United States,pet|France,ec_net_price,Preço líquido realizável (US$/kg DHA),economia,UNKNOWN,UNKNOWN,1.146,1.5,True,pet
+pet|United States,pet|France,ec_tariff_pct,Tarifa de importação do ingrediente (%),economia,DERIVED,UNKNOWN,1.146,0.375,False,pet
+pet|United States,pet|France,fc_competitor_documented,Concorrente algal documentado no país×nicho (1 = sim),adequacao,OBSERVED,UNKNOWN,1.146,0.75,False,pet

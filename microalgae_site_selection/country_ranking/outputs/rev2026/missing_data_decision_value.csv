@@ -1,0 +1,18 @@
+ranking,metric_id,abs_weight,unknown_at,ranged_at,single_doc_can_flip_any_pair,single_doc_can_flip_brazil_thailand,pairs_flippable,npv_swing_musd_driver,economic_driver,document_needed,holder,priority
+mercado,ec_net_price,,pet|France;pet|United States;salmon|Chile;salmon|Norway;shrimp|China;shrimp|Thailand,,True,False,salmon|Norway>salmon|Chile;shrimp|China>shrimp|Thailand;pet|United States>pet|France,262.264398200658,preço DHA ±30%,Preço líquido 2027+ por destino (resultado da renovação dez/2026),Corbion/clientes,alta
+mercado,dm_growth,,pet|France;pet|United States,,False,False,,138.0418316089001,demanda ±30%,Projeção setorial,associações,alta
+site,ec_opex_usd_per_kg_dha,0.12,BR_GF_GO;BR_ORI_EXP;TH_NSN;TH_RYG,,True,True,BR_GF_GO>TH_NSN;BR_GF_GO>TH_RYG;TH_NSN>TH_RYG,104.20995080239311,"rendimento 0,055/0,10",Rendimento DHA/açúcar industrial e balanço de utilidades,Corbion,alta
+site,ec_sugar_usd_t,0.08000000000000002,,BR_GF_GO;BR_ORI_EXP;TH_NSN;TH_RYG,True,False,TH_NSN>TH_RYG,101.63574403276259,açúcar ±30%,"Contrato de açúcar entregue (especificação, entressafra)",usina,alta
+site,ec_capex_usd_per_kg_dha_yr,0.16000000000000003,BR_GF_GO;BR_ORI_EXP;TH_NSN;TH_RYG,,True,True,BR_GF_GO>TH_NSN;BR_GF_GO>TH_RYG;TH_NSN>TH_RYG,98.05342291753257,capex ±30%,Orçamento de capex por site (classe AACE ≥3) e capacidade efetiva,Corbion,alta
+site,ac_freight_usd_t,0.075,BR_GF_GO;BR_ORI_EXP;TH_NSN;TH_RYG,,True,True,BR_GF_GO>TH_NSN;BR_GF_GO>TH_RYG;TH_NSN>TH_RYG,6.835604904267662,frete ±50%,Cotações de frete entregue por destino/Incoterm,Corbion/agente,alta
+site,op_space_documented,0.05,BR_GF_GO;TH_NSN;TH_RYG,,True,True,BR_GF_GO>TH_NSN;BR_GF_GO>TH_RYG;TH_NSN>TH_RYG,,—,Plot plan e reserva de utilidades,Corbion,alta
+economia,resultado da renovação dez/2026,,todas as alternativas,,True,True,"sinal do VPL de B/C/D (R1/R4 negativos, R3/R5/R6 positivos)",,cenários R1-R6,"Termos renovados (preço, volume, take-or-pay, prazo)",Corbion,alta
+site,ec_power_usd_kwh,0.04000000000000001,,BR_GF_GO;BR_ORI_EXP;TH_NSN;TH_RYG,False,False,,,—,Contrato de energia/vapor,usina,baixa
+site,ex_months_to_first_dha,0.0525,,BR_GF_GO;BR_ORI_EXP;TH_NSN;TH_RYG,True,False,TH_NSN>TH_RYG,8.821193002451238,licenciamento +2/0 anos,Cronograma de engenharia + licenciamento,Corbion/EPC,média
+site,rs_water_grant_incremental,0.0375,BR_GF_GO;BR_ORI_EXP;TH_NSN;TH_RYG,,True,False,TH_NSN>TH_RYG,8.821193002451238,licenciamento +2/0 anos,Outorga para a demanda incremental,DAEE-SP Águas / órgão TH,média
+site,ex_corbion_staff_on_site,0.0375,TH_RYG,,True,False,TH_NSN>TH_RYG,,—,Organograma do site,Corbion,média
+site,rs_basin_water_stress,0.0525,BR_GF_GO,BR_ORI_EXP;TH_RYG,True,False,TH_NSN>TH_RYG,,—,Balanço hídrico do site e outorga,Corbion/órgão gestor,média
+site,rs_utility_backup,0.0225,BR_GF_GO;BR_ORI_EXP;TH_NSN;TH_RYG,,True,False,TH_NSN>TH_RYG,,—,Plano de backup de vapor/energia na entressafra,Corbion/usina,média
+mercado,fc_competitor_documented,,pet|France;pet|United States;salmon|Chile;salmon|Norway;shrimp|China;shrimp|Thailand,,True,False,salmon|Norway>salmon|Chile,,—,Lista de fornecedores qualificados por fábrica de ração,clientes,média
+mercado,rk_fx_vol,,salmon|Chile;salmon|Norway,,True,False,salmon|Norway>salmon|Chile,,—,Série cambial,público,média
+gate,G04 reconciliação SKU–cepa–licença,,todos os mercados,,True,False,gate (não compensatório),,—,Mapa SKU–cepa–fábrica–licença–mercado assinado,Corbion,média

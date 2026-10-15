@@ -1,0 +1,17 @@
+{
+  "revision_date": "2026-10-15",
+  "git_commit": "d68712f",
+  "run_utc": "2026-10-15T18:57:30+00:00",
+  "seed": 42,
+  "mc_sims": 1000,
+  "v3_demand_origin": "default_premises",
+  "input_hashes": {
+    "claims_audit.csv": "1773bff3a4a22b34",
+    "competitor_product_matrix.csv": "01bd77abcd0f1c6d",
+    "customer_factory_matrix.csv": "c189686f0fd9d697",
+    "product_regulatory_matrix.csv": "1951aea2b072d73c",
+    "site_cells.csv": "f1af0debb9078079",
+    "source_registry.csv": "b287cef40da90402",
+    "config_rev2026.yaml": "d0daabb98f0486f2"
+  }
+}

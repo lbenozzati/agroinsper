@@ -1,0 +1,64 @@
+leader,challenger,metric_id,label,criterion,status_leader,status_challenger,floor_gap,max_gain_challenger,single_document_can_flip
+BR_ORI_EXP,BR_GF_GO,ec_capex_usd_per_kg_dha_yr,Capex incremental (US$ por kg/ano de DHA),economia,UNKNOWN,UNKNOWN,1.987,1.6,False
+BR_ORI_EXP,BR_GF_GO,ec_opex_usd_per_kg_dha,Opex (US$/kg DHA),economia,UNKNOWN,UNKNOWN,1.987,1.2,False
+BR_ORI_EXP,BR_GF_GO,ec_sugar_usd_t,Açúcar entregue (US$/t),economia,OBSERVED,DERIVED,1.987,0.074,False
+BR_ORI_EXP,BR_GF_GO,ec_power_usd_kwh,Energia elétrica (US$/kWh),economia,OBSERVED,OBSERVED,1.987,0.169,False
+BR_ORI_EXP,BR_GF_GO,ac_freight_usd_t,Frete entregue ponderado (US$/t SKU),acesso,UNKNOWN,UNKNOWN,1.987,0.75,False
+BR_ORI_EXP,BR_GF_GO,ex_months_to_first_dha,Meses da FID ao 1º DHA (julgamento explícito),execucao,JUDGMENT,JUDGMENT,1.987,0.262,False
+BR_ORI_EXP,BR_GF_GO,rs_basin_water_stress,Estresse hídrico local (0-4),resiliencia,OBSERVED,UNKNOWN,1.987,0.525,False
+BR_ORI_EXP,BR_GF_GO,rs_water_grant_incremental,Outorga para a água incremental (0/1),resiliencia,UNKNOWN,UNKNOWN,1.987,0.375,False
+BR_ORI_EXP,BR_GF_GO,rs_utility_backup,Backup de utilidades documentado (0/1),resiliencia,UNKNOWN,UNKNOWN,1.987,0.225,False
+BR_ORI_EXP,BR_GF_GO,op_space_documented,Espaço/utilidades p/ 2º módulo documentados,opcao,OBSERVED,UNKNOWN,1.987,0.5,False
+BR_ORI_EXP,TH_NSN,ec_capex_usd_per_kg_dha_yr,Capex incremental (US$ por kg/ano de DHA),economia,UNKNOWN,UNKNOWN,2.389,1.6,False
+BR_ORI_EXP,TH_NSN,ec_opex_usd_per_kg_dha,Opex (US$/kg DHA),economia,UNKNOWN,UNKNOWN,2.389,1.2,False
+BR_ORI_EXP,TH_NSN,ec_sugar_usd_t,Açúcar entregue (US$/t),economia,OBSERVED,OBSERVED,2.389,0.131,False
+BR_ORI_EXP,TH_NSN,ec_power_usd_kwh,Energia elétrica (US$/kWh),economia,OBSERVED,OBSERVED,2.389,0.037,False
+BR_ORI_EXP,TH_NSN,ac_freight_usd_t,Frete entregue ponderado (US$/t SKU),acesso,UNKNOWN,UNKNOWN,2.389,0.75,False
+BR_ORI_EXP,TH_NSN,ex_months_to_first_dha,Meses da FID ao 1º DHA (julgamento explícito),execucao,JUDGMENT,JUDGMENT,2.389,0.262,False
+BR_ORI_EXP,TH_NSN,rs_basin_water_stress,Estresse hídrico local (0-4),resiliencia,OBSERVED,OBSERVED,2.389,0.0,False
+BR_ORI_EXP,TH_NSN,rs_water_grant_incremental,Outorga para a água incremental (0/1),resiliencia,UNKNOWN,UNKNOWN,2.389,0.375,False
+BR_ORI_EXP,TH_NSN,rs_utility_backup,Backup de utilidades documentado (0/1),resiliencia,UNKNOWN,UNKNOWN,2.389,0.225,False
+BR_ORI_EXP,TH_NSN,op_space_documented,Espaço/utilidades p/ 2º módulo documentados,opcao,OBSERVED,UNKNOWN,2.389,0.5,False
+BR_ORI_EXP,TH_RYG,ec_capex_usd_per_kg_dha_yr,Capex incremental (US$ por kg/ano de DHA),economia,UNKNOWN,UNKNOWN,2.456,1.6,False
+BR_ORI_EXP,TH_RYG,ec_opex_usd_per_kg_dha,Opex (US$/kg DHA),economia,UNKNOWN,UNKNOWN,2.456,1.2,False
+BR_ORI_EXP,TH_RYG,ec_sugar_usd_t,Açúcar entregue (US$/t),economia,OBSERVED,DERIVED,2.456,0.175,False
+BR_ORI_EXP,TH_RYG,ec_power_usd_kwh,Energia elétrica (US$/kWh),economia,OBSERVED,OBSERVED,2.456,0.037,False
+BR_ORI_EXP,TH_RYG,ac_freight_usd_t,Frete entregue ponderado (US$/t SKU),acesso,UNKNOWN,UNKNOWN,2.456,0.75,False
+BR_ORI_EXP,TH_RYG,ex_corbion_staff_on_site,Equipe Corbion no site (FTE),execucao,OBSERVED,UNKNOWN,2.456,0.375,False
+BR_ORI_EXP,TH_RYG,ex_months_to_first_dha,Meses da FID ao 1º DHA (julgamento explícito),execucao,JUDGMENT,JUDGMENT,2.456,0.262,False
+BR_ORI_EXP,TH_RYG,rs_basin_water_stress,Estresse hídrico local (0-4),resiliencia,OBSERVED,OBSERVED,2.456,0.131,False
+BR_ORI_EXP,TH_RYG,rs_water_grant_incremental,Outorga para a água incremental (0/1),resiliencia,UNKNOWN,UNKNOWN,2.456,0.375,False
+BR_ORI_EXP,TH_RYG,rs_utility_backup,Backup de utilidades documentado (0/1),resiliencia,UNKNOWN,UNKNOWN,2.456,0.225,False
+BR_ORI_EXP,TH_RYG,op_space_documented,Espaço/utilidades p/ 2º módulo documentados,opcao,OBSERVED,UNKNOWN,2.456,0.5,False
+BR_GF_GO,TH_NSN,ec_capex_usd_per_kg_dha_yr,Capex incremental (US$ por kg/ano de DHA),economia,UNKNOWN,UNKNOWN,0.402,1.6,True
+BR_GF_GO,TH_NSN,ec_opex_usd_per_kg_dha,Opex (US$/kg DHA),economia,UNKNOWN,UNKNOWN,0.402,1.2,True
+BR_GF_GO,TH_NSN,ec_sugar_usd_t,Açúcar entregue (US$/t),economia,DERIVED,OBSERVED,0.402,0.131,False
+BR_GF_GO,TH_NSN,ec_power_usd_kwh,Energia elétrica (US$/kWh),economia,OBSERVED,OBSERVED,0.402,0.037,False
+BR_GF_GO,TH_NSN,ac_freight_usd_t,Frete entregue ponderado (US$/t SKU),acesso,UNKNOWN,UNKNOWN,0.402,0.75,True
+BR_GF_GO,TH_NSN,ex_months_to_first_dha,Meses da FID ao 1º DHA (julgamento explícito),execucao,JUDGMENT,JUDGMENT,0.402,0.262,False
+BR_GF_GO,TH_NSN,rs_basin_water_stress,Estresse hídrico local (0-4),resiliencia,UNKNOWN,OBSERVED,0.402,0.0,False
+BR_GF_GO,TH_NSN,rs_water_grant_incremental,Outorga para a água incremental (0/1),resiliencia,UNKNOWN,UNKNOWN,0.402,0.375,False
+BR_GF_GO,TH_NSN,rs_utility_backup,Backup de utilidades documentado (0/1),resiliencia,UNKNOWN,UNKNOWN,0.402,0.225,False
+BR_GF_GO,TH_NSN,op_space_documented,Espaço/utilidades p/ 2º módulo documentados,opcao,UNKNOWN,UNKNOWN,0.402,0.5,True
+BR_GF_GO,TH_RYG,ec_capex_usd_per_kg_dha_yr,Capex incremental (US$ por kg/ano de DHA),economia,UNKNOWN,UNKNOWN,0.469,1.6,True
+BR_GF_GO,TH_RYG,ec_opex_usd_per_kg_dha,Opex (US$/kg DHA),economia,UNKNOWN,UNKNOWN,0.469,1.2,True
+BR_GF_GO,TH_RYG,ec_sugar_usd_t,Açúcar entregue (US$/t),economia,DERIVED,DERIVED,0.469,0.175,False
+BR_GF_GO,TH_RYG,ec_power_usd_kwh,Energia elétrica (US$/kWh),economia,OBSERVED,OBSERVED,0.469,0.037,False
+BR_GF_GO,TH_RYG,ac_freight_usd_t,Frete entregue ponderado (US$/t SKU),acesso,UNKNOWN,UNKNOWN,0.469,0.75,True
+BR_GF_GO,TH_RYG,ex_corbion_staff_on_site,Equipe Corbion no site (FTE),execucao,OBSERVED,UNKNOWN,0.469,0.375,False
+BR_GF_GO,TH_RYG,ex_months_to_first_dha,Meses da FID ao 1º DHA (julgamento explícito),execucao,JUDGMENT,JUDGMENT,0.469,0.262,False
+BR_GF_GO,TH_RYG,rs_basin_water_stress,Estresse hídrico local (0-4),resiliencia,UNKNOWN,OBSERVED,0.469,0.131,False
+BR_GF_GO,TH_RYG,rs_water_grant_incremental,Outorga para a água incremental (0/1),resiliencia,UNKNOWN,UNKNOWN,0.469,0.375,False
+BR_GF_GO,TH_RYG,rs_utility_backup,Backup de utilidades documentado (0/1),resiliencia,UNKNOWN,UNKNOWN,0.469,0.225,False
+BR_GF_GO,TH_RYG,op_space_documented,Espaço/utilidades p/ 2º módulo documentados,opcao,UNKNOWN,UNKNOWN,0.469,0.5,True
+TH_NSN,TH_RYG,ec_capex_usd_per_kg_dha_yr,Capex incremental (US$ por kg/ano de DHA),economia,UNKNOWN,UNKNOWN,0.067,1.6,True
+TH_NSN,TH_RYG,ec_opex_usd_per_kg_dha,Opex (US$/kg DHA),economia,UNKNOWN,UNKNOWN,0.067,1.2,True
+TH_NSN,TH_RYG,ec_sugar_usd_t,Açúcar entregue (US$/t),economia,OBSERVED,DERIVED,0.067,0.175,True
+TH_NSN,TH_RYG,ec_power_usd_kwh,Energia elétrica (US$/kWh),economia,OBSERVED,OBSERVED,0.067,0.037,False
+TH_NSN,TH_RYG,ac_freight_usd_t,Frete entregue ponderado (US$/t SKU),acesso,UNKNOWN,UNKNOWN,0.067,0.75,True
+TH_NSN,TH_RYG,ex_corbion_staff_on_site,Equipe Corbion no site (FTE),execucao,OBSERVED,UNKNOWN,0.067,0.375,True
+TH_NSN,TH_RYG,ex_months_to_first_dha,Meses da FID ao 1º DHA (julgamento explícito),execucao,JUDGMENT,JUDGMENT,0.067,0.262,True
+TH_NSN,TH_RYG,rs_basin_water_stress,Estresse hídrico local (0-4),resiliencia,OBSERVED,OBSERVED,0.067,0.131,True
+TH_NSN,TH_RYG,rs_water_grant_incremental,Outorga para a água incremental (0/1),resiliencia,UNKNOWN,UNKNOWN,0.067,0.375,True
+TH_NSN,TH_RYG,rs_utility_backup,Backup de utilidades documentado (0/1),resiliencia,UNKNOWN,UNKNOWN,0.067,0.225,True
+TH_NSN,TH_RYG,op_space_documented,Espaço/utilidades p/ 2º módulo documentados,opcao,UNKNOWN,UNKNOWN,0.067,0.5,True

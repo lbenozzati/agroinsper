@@ -1,0 +1,111 @@
+# Revisão factual 2026-10-15 – rankings PÚBLICOS de site (localização) e de mercado (país × nicho × conta).
+# Os pesos abaixo são ESCOLHAS ESTRATÉGICAS propostas pelo cliente, não estimativas científicas.
+# Goalposts (piso/teto) foram fixados ANTES de calcular a nova ordem e não dependem do conjunto de entidades.
+revision_date: "2026-10-15"
+weights_change_reason: >-
+  Brief de revisão de 15/10/2026: (i) separar ranking público de retorno; (ii) regulação vira gate não compensatório;
+  (iii) tributos/incentivos só no fluxo de caixa; (iv) julgamento não documentado <= 10% do peso;
+  (v) remover dupla contagem açúcar/vapor entre Economia e Prontidão e circularidade com o ranking de mercado.
+seed: 42
+judgment_budget: 0.10          # meta de qualidade, não resultado forçado
+
+site:
+  entities: [BR_ORI_EXP, BR_GF_GO, TH_NSN, TH_RYG]
+  labels: {BR_ORI_EXP: "Orindiúva/Moema (expansão)", BR_GF_GO: "Greenfield Brasil (GO, ilustrativo)",
+           TH_NSN: "Nakhon Sawan (KTIS, candidato)", TH_RYG: "Rayong (site Corbion de ácido láctico)"}
+  country: {BR_ORI_EXP: Brazil, BR_GF_GO: Brazil, TH_NSN: Thailand, TH_RYG: Thailand}
+  origin_inland_days: {BR_ORI_EXP: 1.0, BR_GF_GO: 1.6, TH_NSN: 1.0, TH_RYG: 0.2}
+  criteria:
+    economia:   {label: "Economia da unidade", weight: 0.40}
+    acesso:     {label: "Acesso econômico aos mercados", weight: 0.25}
+    execucao:   {label: "Execução industrial Corbion", weight: 0.15}
+    resiliencia: {label: "Resiliência operacional", weight: 0.15}
+    opcao:      {label: "Opção de expansão futura", weight: 0.05}
+  metrics:
+    ec_capex_usd_per_kg_dha_yr: {criterion: economia, weight: 0.40, worst: 80, best: 15, scale: linear, label: "Capex incremental (US$ por kg/ano de DHA)"}
+    ec_opex_usd_per_kg_dha:     {criterion: economia, weight: 0.30, worst: 25, best: 8, scale: linear, label: "Opex (US$/kg DHA)"}
+    ec_sugar_usd_t:             {criterion: economia, weight: 0.20, worst: 800, best: 250, scale: linear, label: "Açúcar entregue (US$/t)", component_of: ec_opex_usd_per_kg_dha}
+    ec_power_usd_kwh:           {criterion: economia, weight: 0.10, worst: 0.20, best: 0.06, scale: linear, label: "Energia elétrica (US$/kWh)", component_of: ec_opex_usd_per_kg_dha}
+    ac_freight_usd_t:           {criterion: acesso, weight: 0.30, worst: 300, best: 50, scale: linear, label: "Frete entregue ponderado (US$/t SKU)"}
+    ac_transit_days:            {criterion: acesso, weight: 0.30, worst: 40, best: 10, scale: linear, label: "Prazo porta a porta ponderado (dias)"}
+    ac_fta_share:               {criterion: acesso, weight: 0.20, worst: 0.0, best: 1.0, scale: linear, label: "Destinos com acordo comercial em vigor (fração)"}
+    ac_lpi:                     {criterion: acesso, weight: 0.10, worst: 2.5, best: 4.2, scale: linear, label: "LPI 2023 da origem"}
+    ac_lsci:                    {criterion: acesso, weight: 0.10, worst: 5, best: 150, scale: log, label: "Conectividade marítima LSCI da origem"}
+    ex_dha_asset_operating:     {criterion: execucao, weight: 0.40, worst: 0, best: 1, scale: linear, label: "Ativo de DHA operante no site (0/1)"}
+    ex_corbion_staff_on_site:   {criterion: execucao, weight: 0.25, worst: 0, best: 150, scale: linear, label: "Equipe Corbion no site (FTE)"}
+    ex_months_to_first_dha:     {criterion: execucao, weight: 0.35, worst: 48, best: 12, scale: linear, label: "Meses da FID ao 1º DHA (julgamento explícito)"}
+    rs_basin_water_stress:      {criterion: resiliencia, weight: 0.35, worst: 4, best: 0, scale: linear, label: "Estresse hídrico local (0-4)"}
+    rs_water_grant_incremental: {criterion: resiliencia, weight: 0.25, worst: 0, best: 1, scale: linear, label: "Outorga para a água incremental (0/1)"}
+    rs_utility_backup:          {criterion: resiliencia, weight: 0.15, worst: 0, best: 1, scale: linear, label: "Backup de utilidades documentado (0/1)"}
+    rs_fx_vol_pct:              {criterion: resiliencia, weight: 0.10, worst: 15, best: 0, scale: linear, label: "Volatilidade cambial (%/ano)"}
+    rs_supply_contract:         {criterion: resiliencia, weight: 0.15, worst: 0, best: 1, scale: linear, label: "Contrato de açúcar/vapor/energia (0/1)"}
+    op_space_documented:        {criterion: opcao, weight: 1.00, worst: 0, best: 1, scale: linear, label: "Espaço/utilidades p/ 2º módulo documentados"}
+  # Destinos com pesos FIXOS e declarados (1/3 por nicho) – independentes do ranking de mercado (sem circularidade).
+  destination_weights:
+    salmon: {Norway: 0.5, Chile: 0.5}
+    shrimp: {Ecuador: 0.5, China: 0.125, Vietnam: 0.125, India: 0.125, Indonesia: 0.125}
+    pet:    {United States: 0.5, European Union: 0.5}
+  niche_weights: {salmon: 0.3333333333, shrimp: 0.3333333333, pet: 0.3333333334}
+  fta_partners:   # acordos em vigor (lista dos rankings anteriores, nota 'Covered'); doméstico conta como coberto
+    Brazil: [Chile, Ecuador, India, Brazil]
+    Thailand: [Australia, Chile, China, India, Indonesia, Vietnam, Thailand]
+  weight_sets:
+    proposto:     {economia: 0.40, acesso: 0.25, execucao: 0.15, resiliencia: 0.15, opcao: 0.05}
+    custo:        {economia: 0.55, acesso: 0.15, execucao: 0.10, resiliencia: 0.15, opcao: 0.05}
+    asia:         {economia: 0.30, acesso: 0.40, execucao: 0.10, resiliencia: 0.15, opcao: 0.05}
+    consolidacao: {economia: 0.35, acesso: 0.20, execucao: 0.25, resiliencia: 0.15, opcao: 0.05}
+    crescimento:  {economia: 0.35, acesso: 0.30, execucao: 0.10, resiliencia: 0.10, opcao: 0.15}
+    # pesos atuais (30/20/15/15/20) mapeados: Regulação (15%) virou gate → removida e renormalizada; Risco → Resiliência
+    atuais_mapeados: {economia: 0.3529, acesso: 0.2353, execucao: 0.1765, resiliencia: 0.2353, opcao: 0.0}
+
+market:
+  niches: {salmon: "Salmão", shrimp: "Camarão", pet: "Pet food"}
+  criteria:
+    demanda:    {label: "Demanda técnica endereçável", weight: 0.25}
+    acesso:     {label: "Acesso comercial comprovado", weight: 0.25}
+    economia:   {label: "Economia para a Corbion", weight: 0.25}
+    adequacao:  {label: "Adequação do produto e concorrência", weight: 0.15}
+    risco:      {label: "Risco de demanda", weight: 0.10}
+  # TAM técnico (t DHA/ano) = ração (t) × EPA+DHA alvo (g/kg) × fração DHA do alvo / 1000  (market_expansion/nutrition_requirements)
+  dha_g_per_kg_feed: {salmon: 5.3, shrimp: 2.7, pet: 0.33}
+  dha_fit: {salmon: 0.5, shrimp: 0.5, pet: 0.4}      # fração DHA do alvo EPA+DHA que um produto só-DHA cobre
+  evidence_stage_score: {current_purchase: 10, historical_adoption: 6, trial: 4, channel_only: 3, registration_only: 1, none_found: 0}
+  metrics:
+    dm_dha_tech_t:      {criterion: demanda, weight: 0.65, worst: 30, best: 10000, scale: log, label: "TAM técnico de DHA (t/ano, derivado)"}
+    dm_growth:          {criterion: demanda, weight: 0.35, worst: -2, best: 8, scale: linear, label: "Crescimento esperado (%/ano)"}
+    ac_evidence_stage:  {criterion: acesso, weight: 0.70, worst: 0, best: 10, scale: linear, label: "Estágio de evidência da melhor conta (0-10)"}
+    ac_feed_plants:     {criterion: acesso, weight: 0.30, worst: 0, best: 6, scale: linear, label: "Grandes fabricantes com fábrica no país (nº)"}
+    ec_net_price:       {criterion: economia, weight: 0.60, worst: 10, best: 30, scale: linear, label: "Preço líquido realizável (US$/kg DHA)"}
+    ec_transit_days:    {criterion: economia, weight: 0.25, worst: 45, best: 3, scale: linear, label: "Prazo de entrega desde Orindiúva (dias)"}
+    ec_tariff_pct:      {criterion: economia, weight: 0.15, worst: 15, best: 0, scale: linear, label: "Tarifa de importação do ingrediente (%)"}
+    fc_dha_fit:         {criterion: adequacao, weight: 0.50, worst: 0, best: 1, scale: linear, label: "Cobertura do alvo EPA+DHA por produto só-DHA"}
+    fc_competitor_documented: {criterion: adequacao, weight: 0.50, worst: 1, best: 0, scale: linear, label: "Concorrente algal documentado no país×nicho (1 = sim)"}
+    rk_fx_vol:          {criterion: risco, weight: 0.50, worst: 15, best: 0, scale: linear, label: "Volatilidade cambial do destino (%/ano)"}
+    rk_bio:             {criterion: risco, weight: 0.50, worst: 10, best: 0, scale: linear, label: "Risco biológico/de canal (0-10, maior = pior)"}
+  weight_sets:
+    proposto:     {demanda: 0.25, acesso: 0.25, economia: 0.25, adequacao: 0.15, risco: 0.10}
+    consolidacao: {demanda: 0.20, acesso: 0.40, economia: 0.20, adequacao: 0.10, risco: 0.10}
+    crescimento:  {demanda: 0.40, acesso: 0.10, economia: 0.25, adequacao: 0.15, risco: 0.10}
+    custo:        {demanda: 0.20, acesso: 0.20, economia: 0.40, adequacao: 0.10, risco: 0.10}
+    # pesos atuais 30/20/20/15/15 mapeados: Tamanho→Demanda; Valor→Economia; Acesso→Acesso; Regulação (gate) removida; Risco→Risco
+    atuais_mapeados: {demanda: 0.3529, acesso: 0.2353, economia: 0.2353, adequacao: 0.0, risco: 0.1765}
+  pairs_to_test: [[salmon, Norway, salmon, Chile], [shrimp, China, shrimp, Thailand], [pet, United States, pet, France]]
+
+economics:
+  alternatives: [A1_ORI, B_BR_GF, C_TH_NSN, D_TH_RYG]
+  site_of: {A1_ORI: BR_ORI_EXP, B_BR_GF: BR_GF_GO, C_TH_NSN: TH_NSN, D_TH_RYG: TH_RYG}
+  # Debottleneck em curso dá capacidade até fim-2028/início-2029 (H1 2026) → novo módulo deve entrar em 2029.
+  first_capex_year: {BR_ORI_EXP: 2027, BR_GF_GO: 2027, TH_NSN: 2027, TH_RYG: 2027}
+  # Cenários de renovação dos contratos de fim de 2026 (nenhum observado em 15/10/2026).
+  # price_mult: sobre o preço líquido de DHA; demand_mult: demanda incremental disponível ao novo módulo;
+  # freed_t: t SKU/ano liberadas na planta atual por perda de conta (atendidas antes do novo módulo);
+  # anchor_t: contrato âncora firme novo (t SKU/ano a partir de 2029).
+  renewal_scenarios:
+    R0_base:            {label: "Base v3 (sem efeito de renovação)", price_mult: 1.00, demand_mult: 1.00, freed_t: 0,    anchor_t: 0}
+    R1_renova_menor:    {label: "Renova com preço/volume menores", price_mult: 0.85, demand_mult: 0.90, freed_t: 0,    anchor_t: 0}
+    R2_renova_igual:    {label: "Renova igual",                       price_mult: 1.00, demand_mult: 1.00, freed_t: 0,    anchor_t: 0}
+    R3_renova_maior:    {label: "Renova com preço maior (spot alto)", price_mult: 1.25, demand_mult: 1.00, freed_t: 0,    anchor_t: 0}
+    R4_perda_parcial:   {label: "Perda parcial de conta",             price_mult: 0.95, demand_mult: 1.00, freed_t: 1500, anchor_t: 0}
+    R5_take_or_pay:     {label: "Renovação com volume mínimo / take-or-pay", price_mult: 1.05, demand_mult: 1.00, freed_t: 0, anchor_t: 1500}
+    R6_ancora_nova:     {label: "Novos contratos âncora",             price_mult: 1.10, demand_mult: 1.00, freed_t: 0,    anchor_t: 3000}
+  mc_sims: 1000

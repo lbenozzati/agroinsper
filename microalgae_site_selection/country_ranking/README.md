@@ -1,4 +1,52 @@
-# Rankings de países – Corbion AlgaPrime DHA
+# Rankings Corbion AlgaPrime DHA
+
+> **Revisão factual de 15/10/2026 (`rev2026`) – versão de decisão.** Os rankings de país de 14/10/2026 (seções
+> abaixo) ficam **congelados** em `outputs/frozen_2026-10-14/` só para comparação.
+
+## Revisão 2026-10-15 (`python -m src rev2026`)
+
+```bash
+cd microalgae_site_selection/country_ranking
+python -m src rev2026                 # ~40 s (inclui o motor DCF da v3 e Monte Carlo de 1.000 sorteios)
+python -m pytest -q tests/test_rev2026.py
+```
+
+**Duas análises, dois lados da decisão:**
+- **(A) ranking público** – sites (Orindiúva, greenfield BR, Nakhon Sawan, Rayong) com pesos 40/25/15/15/5 e
+  mercados país×nicho com pesos 25/25/25/15/10. Os pesos são **escolhas estratégicas** (config_rev2026.yaml).
+- **(B) retorno incremental** – DCF da v3 (`../v3/src/engine.py`, não reimplementado) por site × nicho ×
+  cenário de renovação dos contratos de dez/2026 (R1-R6). **Tudo em B é ASSUMPTION**; com dados públicos o VPL/TIR
+  é "não estimável" (`economics_public_only.csv`).
+
+**Regras do score público (`src/rev2026/interval.py`):**
+- cada célula tem `status` OBSERVED / DERIVED / JUDGMENT / ASSUMPTION / UNKNOWN (schema do brief §6 em
+  `data/rev2026/site_cells.csv` e `outputs/rev2026/market_evidence.csv`, com `value_low/value_high` e `absence_type`
+  = documented_no / no_public_evidence);
+- ASSUMPTION nunca pontua; UNKNOWN entra como 0 no **piso** e 10 no **teto** (sem nota 5 inventada, sem zero como
+  fato, sem renormalizar os pesos conhecidos); faixas documentadas entram pelas pontas;
+- açúcar e energia são componentes do opex: se o opex for observado, o peso deles passa para o opex (sem dupla
+  contagem);
+- ordem pelo piso garantido; **faixa de posição** = melhor/pior completando os desconhecidos; dominância par a par;
+- regulação/licenciamento = **gates** (`product_regulatory_matrix.csv`), não pontos; tributos e BOI só no caixa;
+- goalposts fixos publicados em `goalposts_table.csv`. Nota de transparência: os goalposts de capex/opex foram
+  corrigidos de escala (US$ por kg/ano de DHA) durante a montagem, quando todos os valores ainda eram UNKNOWN –
+  sem efeito na ordem.
+
+**Saídas (`outputs/rev2026/`):** `old_vs_new_weights.csv`, `rubric_migration.csv`, `source_registry.csv`,
+`claims_audit.csv`, `product_regulatory_matrix.csv`, `customer_factory_matrix.csv`, `competitor_product_matrix.csv`,
+`site_evidence.csv`, `missing_data_decision_value.csv`, `site_public_scores.csv`, `market_public_scores_*.csv`,
+`economics_*.csv`, `capacity_to_npv_bridge.csv`, sensibilidades (`*_weight_perturbation_pm25.csv`,
+`*_tipping_points.csv`, `*_single_document_flips.csv`, `*_leave_one_criterion_out.csv`, correlações),
+`circularity_check.csv`, `automated_checks.csv`, `management_data_template.csv`, `run.log`, `run_manifest.json`,
+memo `revision_memo.md` e slides `slide1..5_*.png` (+ `site_intervals.png`, `market_intervals_*.png`).
+
+**Fontes:** nenhum documento primário pôde ser aberto integralmente neste ambiente (hosts bloqueados). Cada fonte
+tem `verification_level`: L1 = conteúdo relatado pelo brief do cliente, L2 = trecho de busca, L3 = sessão anterior,
+L0 = indisponível. Nada é apresentado como lido do original.
+
+---
+
+# Rankings de países (14/10/2026 – congelados)
 
 Dois rankings ponderados, no mesmo formato da v2 (critérios com pesos → score 0–10), aprofundados:
 

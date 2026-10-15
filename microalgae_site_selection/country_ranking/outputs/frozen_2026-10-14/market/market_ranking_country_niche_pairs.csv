@@ -1,0 +1,38 @@
+country,niche,score,dha_need_t,niche_rank
+Norway,salmon,7.599,13091.0,1
+United States,pet,7.26,3465.0,1
+Chile,salmon,7.066,7632.0,2
+United Kingdom,salmon,6.958,1272.0,3
+France,pet,6.498,609.0,2
+Germany,pet,6.385,528.0,3
+China,shrimp,6.355,4925.0,1
+Italy,pet,6.26,222.0,4
+United Kingdom,pet,6.188,318.0,5
+Thailand,shrimp,6.172,1021.0,2
+Australia,pet,6.16,148.0,6
+Faroe Islands,salmon,6.033,729.0,4
+Canada,pet,5.963,287.0,7
+Ecuador,shrimp,5.958,6696.0,3
+Spain,pet,5.91,353.0,8
+Vietnam,shrimp,5.83,3024.0,4
+Iceland,salmon,5.72,389.0,5
+Australia,salmon,5.683,492.0,6
+New Zealand,salmon,5.58,86.0,7
+Brazil,pet,5.549,1320.0,9
+Poland,pet,5.538,363.0,10
+China,pet,5.43,627.0,11
+India,shrimp,5.336,3969.0,5
+Brazil,shrimp,5.091,555.0,6
+Indonesia,shrimp,5.085,1134.0,7
+Canada,salmon,4.982,729.0,8
+Japan,pet,4.864,187.0,12
+Saudi Arabia,shrimp,4.821,245.0,8
+United States,salmon,4.8,80.0,9
+Thailand,pet,4.67,362.0,13
+Mexico,shrimp,4.582,816.0,9
+Philippines,shrimp,4.114,266.0,10
+Turkey,salmon,3.959,1517.0,10
+Argentina,pet,3.714,330.0,14
+Mexico,pet,3.552,457.0,15
+Bangladesh,shrimp,3.441,544.0,11
+Honduras,shrimp,3.27,103.0,12

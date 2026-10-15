@@ -1,0 +1,27 @@
+check,result,detail
+soma dos pesos de critério (site) = 1,PASS,1.000000
+soma do conjunto de pesos site/proposto = 1,PASS,1.0000
+soma do conjunto de pesos site/custo = 1,PASS,1.0000
+soma do conjunto de pesos site/asia = 1,PASS,1.0000
+soma do conjunto de pesos site/consolidacao = 1,PASS,1.0000
+soma do conjunto de pesos site/crescimento = 1,PASS,1.0000
+soma do conjunto de pesos site/atuais_mapeados = 1,PASS,1.0000
+soma dos pesos de critério (market) = 1,PASS,1.000000
+soma do conjunto de pesos market/proposto = 1,PASS,1.0000
+soma do conjunto de pesos market/consolidacao = 1,PASS,1.0000
+soma do conjunto de pesos market/crescimento = 1,PASS,1.0000
+soma do conjunto de pesos market/custo = 1,PASS,1.0000
+soma do conjunto de pesos market/atuais_mapeados = 1,PASS,1.0000
+cobertura: verificado + julgamento + desconhecido = 1 (sites),PASS,por site
+piso ≤ ceiling em todas as entidades,PASS,
+julgamento explícito ≤ 10% do peso (meta),FAIL,máximo observado 21.2%
+nenhuma célula ASSUMPTION no score público,PASS,0 células ASSUMPTION
+toda fonte citada existe no source_registry,PASS,faltando: []
+nenhuma fonte marcada como lida integralmente sem acesso,PASS,
+evidência histórica não classificada como compra atual,PASS,0 contas com compra atual documentada
+utilização ≤ 100% em todos os cenários,PASS,máx 1.000
+vendido ≤ capacidade (2035),PASS,
+balanço de massa: açúcar por t SKU = fração DHA/(rendimento × recuperação),PASS,5.05 t açúcar/t SKU (premissa v3)
+tributos: alíquota CIT BR 34% e TH 20% no motor,PASS,top-up 15% ativo para TH
+tetos de licença não usados como capacidade,PASS,"módulo = premissa v3, não LO"
+old_vs_new_weights somam 1 (antes e depois),PASS,12 linhas

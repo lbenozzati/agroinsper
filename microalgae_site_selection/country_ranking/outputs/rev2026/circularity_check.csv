@@ -1,0 +1,4 @@
+variable,site_ranking,market_ranking,npv,treatment
+prazo de entrega desde Orindiúva,ac_transit_days (pesos fixos por nicho),"ec_transit_days (Economia, 25%×25%)",frete + custo de estoque em trânsito (v3),Mesma geometria de rota; no site os destinos têm pesos fixos 1/3 por nicho (não o ranking de mercado); no VPL integrado o frete entra uma única vez.
+demanda por destino,não usada,dm_dha_tech_t,demanda v3 (premissa),Removida do acesso do site (antes: pesos SAM) → sem circularidade.
+registro do SKU,gate,gate,atraso GACC (A093),Gate não pontua; no VPL só como atraso de vendas.

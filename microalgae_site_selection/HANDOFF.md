@@ -1,8 +1,67 @@
 # Briefing: nova capacidade de DHA de microalgas (Corbion) – estado da análise
 
-*Atualizado em 2026-10-14 · branch `claude/corbion-dha-site-evaluation-e13c6j` · último commit do código `bbb761e`.*
+*Atualizado em 2026-10-15 (revisão factual `rev2026`) · branch `claude/corbion-dha-site-evaluation-e13c6j` · último commit do código `bbb761e`.*
 
-## 0. Resumo em 30 segundos
+## 0. Revisão factual de 15/10/2026 – versão de decisão (`country_ranking/outputs/rev2026/`)
+Brief do cliente `Prompt_Claude_Code_Revisao_Rankings_Corbion_2026.md`. Executar: `cd country_ranking && python -m
+src rev2026` (~40 s); testes `tests/test_rev2026.py` (15). Memo: `outputs/rev2026/revision_memo.md`; slides
+`slide1..5_*.png`. Rankings de 14/10 congelados em `outputs/frozen_2026-10-14/`.
+
+**Desenho:**
+- **(A) Ranking público:**
+  - sites com pesos 40/25/15/15/5 (Economia, Acesso, Execução, Resiliência, Opção);
+  - mercados país × nicho com pesos 25/25/25/15/10 (Demanda técnica, Acesso comprovado, Economia, Adequação/concorrência, Risco);
+  - os pesos são escolhas estratégicas, não estimativas.
+- **Score por intervalo:**
+  - desconhecido = 0 no piso e 10 no teto; ASSUMPTION nunca pontua;
+  - julgamento explícito ≤ 10% como meta: atingida em sites (5%), salmão (8%) e pet (5%); **não atingida em camarão (21%)**;
+  - regulação vira gate não compensatório;
+  - tributos e BOI entram só no caixa.
+- **(B) Retorno incremental:**
+  - DCF da v3 por site × nicho × cenário de renovação dos contratos de dez/2026 (R1–R6);
+  - tudo em B é **ASSUMPTION**: com dados públicos, VPL e TIR são "não estimáveis".
+
+**Resultados:**
+- **Sites (A):**
+  - Orindiúva tem o maior piso: 3,72 (teto 8,64). Seguem greenfield BR 1,73, Nakhon Sawan 1,33 e Rayong 1,27.
+  - **Nenhuma posição está decidida**: todos ficam na faixa 1–4, com 42–52% do peso desconhecido.
+  - O resultado é uma shortlist factual, não um ranking completo.
+  - A ordem pelo piso é a mesma em todos os conjuntos de pesos e com ±25% em cada critério.
+  - Nenhum documento isolado inverte Orindiúva × Tailândia.
+- **Sites (B), cenário R2 (renovação igual):**
+
+  | Site | VPL (US$ mi) | TIR |
+  |---|---:|---:|
+  | Orindiúva | 80 | 23% |
+  | Nakhon Sawan | 48 | 16% |
+  | Rayong | 23 | 13% |
+  | Greenfield BR | 22 | 14% |
+
+  - O valor terminal é 120% do VPL de Orindiúva: sem ele, o VPL até 2035 é negativo.
+  - R1 (renovação menor) e R4 (perda de conta) deixam o VPL negativo nos três sites novos; R5 (take-or-pay) e R6 (âncora nova) deixam todos positivos.
+  - Nakhon Sawan só passa Orindiúva em R3 (preço maior).
+  - Nenhum nicho sozinho enche um módulo de 10 kt.
+  - O BOI quase não muda o VPL porque o top-up de 15% do Pilar Dois o neutraliza; e não há certificado BOI.
+- **Mercados (A), primeiro colocado pelo piso em cada nicho:**
+  - salmão: Noruega (4,99), com Chile 4,94 e Reino Unido 4,35;
+  - camarão: China (4,49), com Equador e Vietnã;
+  - pet food: EUA (3,85).
+  - As faixas são largas, porque o preço líquido realizável (15% do peso) é desconhecido em todos.
+  - Consolidação (adoção histórica documentada) só em salmão Noruega/Chile/Reino Unido e camarão Tailândia.
+  - **Nenhuma compra 2026 está documentada publicamente.**
+- **Auditoria:**
+  - 21 afirmações corrigidas ou condicionadas em `claims_audit.csv`;
+  - lacuna crítica: a cepa *Prototheca* S2014 OGM (LO CETESB/CTNBio) diverge do *Schizochytrium* não OGM dos textos BioMar/IQI;
+  - nenhuma fonte primária pôde ser aberta integralmente; cada fonte tem um nível L0–L3 em `source_registry.csv`.
+- **Para aprovar o capex faltam:**
+  - preço 2027+ e termos da renovação;
+  - rendimento DHA/açúcar industrial;
+  - capex por site;
+  - contratos de açúcar e vapor;
+  - outorga de água;
+  - mapa SKU–cepa–licença (`missing_data_decision_value.csv`).
+
+## 0b. Resumo de 14/10/2026 (congelado, superado pela revisão acima)
 **Entregáveis principais (escopo confirmado com o usuário em 2026-10-14): dois rankings ponderados de PAÍSES**
 em `country_ranking/`. Os módulos `v3/`, `market_expansion/` e `integrated_strategy/` (seções 4–6) são análises
 complementares de VPL, volume e estratégia feitas antes do esclarecimento do escopo.
@@ -36,7 +95,7 @@ O produto é o AlgaPrime DHA, DHA de microalgas por fermentação heterotrófica
 ## 2. Mapa do repositório (`microalgae_site_selection/`)
 | Pasta | Etapa | Executar | Testes | Entregáveis principais |
 |---|---|---|---|---|
-| **`country_ranking/`** | **Prompts 1 e 2 (escopo correto): rankings ponderados de países** | `cd country_ranking && python -m src plant` / `python -m src market` | 17 | `outputs/plant/plant_country_memo.md`, `outputs/market/market_country_memo.md`, heatmaps, mapas |
+| **`country_ranking/`** | **Revisão 15/10 (`rev2026`, decisão) + rankings de países 14/10 (congelados)** | `cd country_ranking && python -m src rev2026` (ou `plant` / `market`) | 32 | `outputs/plant/plant_country_memo.md`, `outputs/market/market_country_memo.md`, heatmaps, mapas |
 | raiz | v2: score de países + custo BR × TH | `python microalgae_site_selection.py`, `python brazil_thailand_economics.py` | 14 | `outputs/` (mapas, ranking, MSP) |
 | `v3/` | Prompt 1: localização e retorno | `cd v3 && python -m src run` | 24 (inclui paridade Python × JS) | `investment_memo.md`, `audit_report.md`, `decision_cockpit.html` |
 | `market_expansion/` | Prompt 2: mercados | `cd market_expansion && python -m src run [--publish-v3]` | 13 | `market_memo.md`, `market_explorer.html`, `market_demand_scenarios.csv` |
@@ -52,7 +111,7 @@ O produto é o AlgaPrime DHA, DHA de microalgas por fermentação heterotrófica
 - A v3 consome a demanda do mercado por `v3/data/raw/market_demand_scenarios.csv`. Sem esse arquivo, usa uma premissa rotulada `ASSUMPTION_DEMAND_V3`.
 - O integrado importa os dois motores e não reimplementa nada.
 
-## 2b. Rankings de países (`country_ranking/`) – entregável principal
+## 2b. Rankings de países (`country_ranking/`) – versão 14/10/2026 (congelada; ver seção 0)
 
 ### 2b.1 Prompt 1 – melhor país para a nova unidade
 - **Pesos mantidos da v2 (decisão do usuário):** Economia de produção 30%, Acesso a mercados 20%, Prontidão Corbion

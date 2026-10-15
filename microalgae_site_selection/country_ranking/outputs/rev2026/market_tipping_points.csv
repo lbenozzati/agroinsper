@@ -1,0 +1,31 @@
+niche,leader_on_floor,challenger,criterion,basis,current_weight,tipping_weight
+salmon,salmon|Norway,salmon|Chile,demanda,floor,0.25,
+salmon,salmon|Norway,salmon|Chile,demanda,ceiling,0.25,0.9
+salmon,salmon|Norway,salmon|Chile,acesso,floor,0.25,0.202
+salmon,salmon|Norway,salmon|Chile,acesso,ceiling,0.25,0.644
+salmon,salmon|Norway,salmon|Chile,economia,floor,0.25,0.278
+salmon,salmon|Norway,salmon|Chile,economia,ceiling,0.25,0.794
+salmon,salmon|Norway,salmon|Chile,adequacao,floor,0.15,1.0
+salmon,salmon|Norway,salmon|Chile,adequacao,ceiling,0.15,
+salmon,salmon|Norway,salmon|Chile,risco,floor,0.1,0.065
+salmon,salmon|Norway,salmon|Chile,risco,ceiling,0.1,
+shrimp,shrimp|China,shrimp|Thailand,demanda,floor,0.25,0.016
+shrimp,shrimp|China,shrimp|Thailand,demanda,ceiling,0.25,0.016
+shrimp,shrimp|China,shrimp|Thailand,acesso,floor,0.25,0.92
+shrimp,shrimp|China,shrimp|Thailand,acesso,ceiling,0.25,0.92
+shrimp,shrimp|China,shrimp|Thailand,economia,floor,0.25,
+shrimp,shrimp|China,shrimp|Thailand,economia,ceiling,0.25,
+shrimp,shrimp|China,shrimp|Thailand,adequacao,floor,0.15,1.0
+shrimp,shrimp|China,shrimp|Thailand,adequacao,ceiling,0.15,1.0
+shrimp,shrimp|China,shrimp|Thailand,risco,floor,0.1,0.529
+shrimp,shrimp|China,shrimp|Thailand,risco,ceiling,0.1,0.529
+pet,pet|United States,pet|France,demanda,floor,0.25,
+pet,pet|United States,pet|France,demanda,ceiling,0.25,
+pet,pet|United States,pet|France,acesso,floor,0.25,1.0
+pet,pet|United States,pet|France,acesso,ceiling,0.25,1.0
+pet,pet|United States,pet|France,economia,floor,0.25,
+pet,pet|United States,pet|France,economia,ceiling,0.25,
+pet,pet|United States,pet|France,adequacao,floor,0.15,1.0
+pet,pet|United States,pet|France,adequacao,ceiling,0.15,
+pet,pet|United States,pet|France,risco,floor,0.1,
+pet,pet|United States,pet|France,risco,ceiling,0.1,0.372

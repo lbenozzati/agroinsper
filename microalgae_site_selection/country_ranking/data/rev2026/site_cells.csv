@@ -1,0 +1,65 @@
+metric_id,entity,entity_type,niche,sku,value,value_low,value_high,unit,start_year,end_year,as_of_date,source_id,page_or_table,evidence_type,status,absence_type,formula,verification_level,notes
+ec_capex_usd_per_kg_dha_yr,BR_ORI_EXP,site,all,AlgaPrime DHA,,,,USD per kg/yr DHA,2027,2029,2026-10-15,,,none_public,UNKNOWN,,capex incremental / (capacidade efetiva t SKU × fração DHA × 1000),L0_unavailable,"Capex do fermentador 2026-27 e da decisão debottleneck/brownfield não divulgados. v3 tem só ASSUMPTION (A020). Debottleneck histórico € 10-15 mi (R33) sem capacidade associada → não convertível."
+ec_capex_usd_per_kg_dha_yr,BR_GF_GO,site,all,AlgaPrime DHA,,,,USD per kg/yr DHA,2028,2030,2026-10-15,,,none_public,UNKNOWN,,idem,L0_unavailable,"Sem site, sem orçamento. Capex de Blair (Veramaris, US$ 200 mi, 2019) é outro produto/escopo → não usado (R20)."
+ec_capex_usd_per_kg_dha_yr,TH_NSN,site,all,AlgaPrime DHA,,,,USD per kg/yr DHA,2028,2030,2026-10-15,,,none_public,UNKNOWN,,idem,L0_unavailable,Sem orçamento público.
+ec_capex_usd_per_kg_dha_yr,TH_RYG,site,all,AlgaPrime DHA,,,,USD per kg/yr DHA,2028,2030,2026-10-15,,,none_public,UNKNOWN,,idem,L0_unavailable,Sem orçamento público; reaproveitamento da planta de ácido láctico não demonstrado.
+ec_opex_usd_per_kg_dha,BR_ORI_EXP,site,all,AlgaPrime DHA,,,,USD per kg DHA,2029,2035,2026-10-15,,,none_public,UNKNOWN,,(açúcar + vapor + energia + água + nutrientes + mão de obra + QA + embalagem + perdas) / kg DHA,L0_unavailable,"Rendimento DHA/açúcar industrial não público (v3 A002 = ASSUMPTION). Componentes observados abaixo (açúcar, energia) entram só enquanto este campo for UNKNOWN."
+ec_opex_usd_per_kg_dha,BR_GF_GO,site,all,AlgaPrime DHA,,,,USD per kg DHA,2030,2035,2026-10-15,,,none_public,UNKNOWN,,idem,L0_unavailable,
+ec_opex_usd_per_kg_dha,TH_NSN,site,all,AlgaPrime DHA,,,,USD per kg DHA,2030,2035,2026-10-15,,,none_public,UNKNOWN,,idem,L0_unavailable,
+ec_opex_usd_per_kg_dha,TH_RYG,site,all,AlgaPrime DHA,,,,USD per kg DHA,2030,2035,2026-10-15,,,none_public,UNKNOWN,,idem,L0_unavailable,
+ec_sugar_usd_t,BR_ORI_EXP,site,all,,300,289,312,USD/t açúcar,2026,2026,2026-08-07,R26,série 2026 (5 valores),official_statistic,OBSERVED,,US$/saca 50 kg × 20,L2_search_digest,"Benchmark VHP exportação SP (CEPEA/MAPA). Preço contratual entregue pela usina adjacente não público; cristal SP ago/2026 = 429 US$/t (R37) mostra a faixa por especificação."
+ec_sugar_usd_t,BR_GF_GO,site,all,,300,289,340,USD/t açúcar,2026,2026,2026-08-07,R26,série 2026,official_statistic,DERIVED,,benchmark SP aplicado a GO; teto +40 US$/t por diferencial logístico não verificado,L2_search_digest,Escopo geográfico diferente (SP → GO).
+ec_sugar_usd_t,TH_NSN,site,all,,628,600,690,USD/t açúcar,2024,2026,2024,R27,n/a,official_statistic,OBSERVED,,"21–23 THB/kg ÷ 33,45 THB/USD × 1000",L2_search_digest,"Preço ex-fábrica controlado 2024; valor industrial 2026 'fixo' mas não confirmado (faixa até 23 THB/kg)."
+ec_sugar_usd_t,TH_RYG,site,all,,628,600,720,USD/t açúcar,2024,2026,2024,R27,n/a,official_statistic,DERIVED,,preço ex-fábrica + frete rodoviário até Rayong (não quantificado → teto),L2_search_digest,Rayong fica fora do cinturão de cana.
+ec_power_usd_kwh,BR_ORI_EXP,site,all,,0.131,0.10,0.159,USD/kWh,2023,2025,2025-12,R37,GlobalPetrolPrices média 2023-25,official_statistic,OBSERVED,,média nacional empresas 1 GWh/ano; faixa até snapshot dez/2025,L3_prior_session,"Tarifa nacional; a planta recebe energia da usina sob contrato de 2018 (preço não público)."
+ec_power_usd_kwh,BR_GF_GO,site,all,,0.131,0.10,0.159,USD/kWh,2023,2025,2025-12,R37,idem,official_statistic,OBSERVED,,idem,L3_prior_session,
+ec_power_usd_kwh,TH_NSN,site,all,,0.128,0.122,0.135,USD/kWh,2023,2025,2025-12,R37,idem,official_statistic,OBSERVED,,idem,L3_prior_session,
+ec_power_usd_kwh,TH_RYG,site,all,,0.128,0.122,0.135,USD/kWh,2023,2025,2025-12,R37,idem,official_statistic,OBSERVED,,idem,L3_prior_session,
+ac_freight_usd_t,BR_ORI_EXP,site,all,AlgaPrime DHA P3,,,,USD/t SKU (média dos 3 nichos),2026,2026,2026-10-15,,v3 freight_lanes.csv,none_public,UNKNOWN,,média ponderada fixa por nicho (ver config destination_weights),L0_unavailable,"Rotas em v3/freight_lanes.csv misturam cotações (Agora Freight jan/2026) com premissas; frete realmente entregue (Incoterm, contrato) não público."
+ac_freight_usd_t,BR_GF_GO,site,all,AlgaPrime DHA P3,,,,USD/t SKU,2026,2026,2026-10-15,,,none_public,UNKNOWN,,idem,L0_unavailable,
+ac_freight_usd_t,TH_NSN,site,all,AlgaPrime DHA P3,,,,USD/t SKU,2026,2026,2026-10-15,,,none_public,UNKNOWN,,idem,L0_unavailable,
+ac_freight_usd_t,TH_RYG,site,all,AlgaPrime DHA P3,,,,USD/t SKU,2026,2026,2026-10-15,,,none_public,UNKNOWN,,idem,L0_unavailable,
+ac_lpi,BR_ORI_EXP,site,all,,3.2,,,LPI 1-5,2023,2023,2023,R36,WDI LP.LPI.OVRL.XQ,official_statistic,OBSERVED,,,L3_prior_session,Indicador do país de origem.
+ac_lpi,BR_GF_GO,site,all,,3.2,,,LPI 1-5,2023,2023,2023,R36,idem,official_statistic,OBSERVED,,,L3_prior_session,
+ac_lpi,TH_NSN,site,all,,3.5,,,LPI 1-5,2023,2023,2023,R36,idem,official_statistic,OBSERVED,,,L3_prior_session,
+ac_lpi,TH_RYG,site,all,,3.5,,,LPI 1-5,2023,2023,2023,R36,idem,official_statistic,OBSERVED,,,L3_prior_session,
+ac_lsci,BR_ORI_EXP,site,all,,39.74,,,LSCI (2004 máx=100),2021,2021,2021,R36,WDI IS.SHP.GCNW.XQ,official_statistic,OBSERVED,,,L3_prior_session,
+ac_lsci,BR_GF_GO,site,all,,39.74,,,LSCI,2021,2021,2021,R36,idem,official_statistic,OBSERVED,,,L3_prior_session,
+ac_lsci,TH_NSN,site,all,,68.95,,,LSCI,2021,2021,2021,R36,idem,official_statistic,OBSERVED,,,L3_prior_session,
+ac_lsci,TH_RYG,site,all,,68.95,,,LSCI,2021,2021,2021,R36,idem,official_statistic,OBSERVED,,,L3_prior_session,
+ex_dha_asset_operating,BR_ORI_EXP,site,all,AlgaPrime DHA,1,,,0/1,2014,2026,2026-07-31,R01;R10;R34;R04b,LO 51001996; CQB 2014; H1 2026,regulator_individual_act,OBSERVED,,,L2_search_digest,"Única planta comercial de DHA de algas da Corbion. Inventário licenciado, volume permitido, volume produzido e DHA incremental são variáveis distintas e NÃO estão aqui."
+ex_dha_asset_operating,BR_GF_GO,site,all,AlgaPrime DHA,0,,,0/1,2026,2026,2026-10-15,,,documentary_absence,OBSERVED,documented_no,,L2_search_digest,Nenhum ativo Corbion no local (site ilustrativo).
+ex_dha_asset_operating,TH_NSN,site,all,AlgaPrime DHA,0,,,0/1,2026,2026,2026-10-15,R30,,documentary_absence,OBSERVED,documented_no,,L2_search_digest,KTIS é local candidato; nenhuma ligação KTIS–Corbion encontrada.
+ex_dha_asset_operating,TH_RYG,site,all,AlgaPrime DHA,0,,,0/1,2026,2026,2026-10-15,R06,,documentary_absence,OBSERVED,documented_no,,L2_search_digest,"Planta de ácido láctico/PLA ≠ capacidade de DHA."
+ex_corbion_staff_on_site,BR_ORI_EXP,site,all,,170,,,FTE,2018,2018,2018-06-05,R34,n/a,corporate_specific_disclosure,OBSERVED,,,L2_search_digest,Headcount 2018; atual não verificado.
+ex_corbion_staff_on_site,BR_GF_GO,site,all,,0,,,FTE,2026,2026,2026-10-15,,,documentary_absence,OBSERVED,documented_no,,L2_search_digest,
+ex_corbion_staff_on_site,TH_NSN,site,all,,0,,,FTE,2026,2026,2026-10-15,,,documentary_absence,OBSERVED,documented_no,,L2_search_digest,
+ex_corbion_staff_on_site,TH_RYG,site,all,,,,,FTE,2026,2026,2026-10-15,R06,,none_public,UNKNOWN,,,L2_search_digest,"Equipe de fermentação de ácido láctico existe, número e transferibilidade a DHA não públicos."
+ex_months_to_first_dha,BR_ORI_EXP,site,all,AlgaPrime DHA,18,12,24,meses da FID ao primeiro DHA vendável,2026,2029,2026-10-15,R04b;R01;R03,,explicit_judgment,JUDGMENT,,,L2_search_digest,"Base: fermentador instalado em 2026 entrega capacidade em 2027 (~12-18 meses); LP/LI para alterações (LO) e renovação da LO em curso podem alongar."
+ex_months_to_first_dha,BR_GF_GO,site,all,AlgaPrime DHA,36,30,48,meses,2026,2030,2026-10-15,,,explicit_judgment,JUDGMENT,,,L0_unavailable,"Greenfield: terreno, LP/LI/LO estaduais, CQB/CTNBio, registro de estabelecimento GACC."
+ex_months_to_first_dha,TH_NSN,site,all,AlgaPrime DHA,36,30,48,meses,2026,2030,2026-10-15,R23,,explicit_judgment,JUDGMENT,,,L0_unavailable,"Greenfield + EIA/licenças tailandesas + biossegurança da cepa + BOI + registro GACC do novo estabelecimento."
+ex_months_to_first_dha,TH_RYG,site,all,AlgaPrime DHA,30,24,42,meses,2026,2030,2026-10-15,R06;R23,,explicit_judgment,JUDGMENT,,,L0_unavailable,"Site Corbion existente (terreno/utilidades parciais), processo novo; adaptação dos fermentadores de ácido láctico não demonstrada."
+rs_basin_water_stress,BR_ORI_EXP,site,all,,0,0,3,Aqueduct 0-4,2019,2025,2026-03-17,R35;R05,,official_statistic,OBSERVED,,,L2_search_digest,"CONFLITO: Aqueduct 3.0 na coordenada = 0 (baixo); Corbion AR 2025 lista Orindiúva entre sites de alto risco hídrico ('high or extremely high' / 'water availability challenges'). Intervalo [0;3] até balanço/outorga do site."
+rs_basin_water_stress,BR_GF_GO,site,all,,,,,Aqueduct 0-4,2019,2019,2026-10-15,,,none_public,UNKNOWN,,,L0_unavailable,Site não definido.
+rs_basin_water_stress,TH_NSN,site,all,,3,,,Aqueduct 0-4,2019,2019,2019,R35,sub-bacia na coordenada KTIS,official_statistic,OBSERVED,,,L3_prior_session,
+rs_basin_water_stress,TH_RYG,site,all,,3.5,3,4,Aqueduct 0-4,2025,2025,2026-03-17,R05,Environmental information / Water,corporate_specific_disclosure,OBSERVED,,,L2_search_digest,Empresa declara Rayong em área de estresse alto ou extremamente alto.
+rs_water_grant_incremental,BR_ORI_EXP,site,all,,,,,0/1 outorga para volume incremental,2026,2026,2026-10-15,R01,condicionantes da LO,none_public,UNKNOWN,,,L1_user_brief,"LO exige outorgas atualizadas (brief); status da outorga para a demanda incremental desconhecido."
+rs_water_grant_incremental,BR_GF_GO,site,all,,,,,0/1,2026,2026,2026-10-15,,,none_public,UNKNOWN,,,L0_unavailable,
+rs_water_grant_incremental,TH_NSN,site,all,,,,,0/1,2026,2026,2026-10-15,,,none_public,UNKNOWN,,,L0_unavailable,
+rs_water_grant_incremental,TH_RYG,site,all,,,,,0/1,2026,2026,2026-10-15,,,none_public,UNKNOWN,,,L0_unavailable,
+rs_utility_backup,BR_ORI_EXP,site,all,,,,,0/1,2026,2026,2026-10-15,,,none_public,UNKNOWN,,,L0_unavailable,"Lacuna de vapor na entressafra (dez-mar) citada na v3; backup não documentado."
+rs_utility_backup,BR_GF_GO,site,all,,,,,0/1,2026,2026,2026-10-15,,,none_public,UNKNOWN,,,L0_unavailable,
+rs_utility_backup,TH_NSN,site,all,,,,,0/1,2026,2026,2026-10-15,,,none_public,UNKNOWN,,,L0_unavailable,
+rs_utility_backup,TH_RYG,site,all,,,,,0/1,2026,2026,2026-10-15,,,none_public,UNKNOWN,,,L0_unavailable,
+rs_fx_vol_pct,BR_ORI_EXP,site,all,,4.93,,,% RMS variação anual log BRL/USD,2020,2025,2025,R37,Fed G.5A,official_statistic,DERIVED,,RMS(Δln câmbio médio anual),L3_prior_session,
+rs_fx_vol_pct,BR_GF_GO,site,all,,4.93,,,%,2020,2025,2025,R37,Fed G.5A,official_statistic,DERIVED,,idem,L3_prior_session,
+rs_fx_vol_pct,TH_NSN,site,all,,5.30,,,%,2020,2025,2025,R37,Fed G.5A,official_statistic,DERIVED,,idem,L3_prior_session,
+rs_fx_vol_pct,TH_RYG,site,all,,5.30,,,%,2020,2025,2025,R37,Fed G.5A,official_statistic,DERIVED,,idem,L3_prior_session,
+rs_supply_contract,BR_ORI_EXP,site,all,,1,,,0/1 contrato de longo prazo de vapor/energia/açúcar documentado,2018,2018,2018,R34,v3 site_candidates (S004;S009),corporate_specific_disclosure,OBSERVED,,,L3_prior_session,"Acordos de longo prazo de vapor de bagaço e energia com a usina (2018); prazo restante e excedente para expansão NÃO verificados."
+rs_supply_contract,BR_GF_GO,site,all,,0,,,0/1,2026,2026,2026-10-15,,,documentary_absence,OBSERVED,documented_no,,L0_unavailable,Projeto não iniciado.
+rs_supply_contract,TH_NSN,site,all,,0,,,0/1,2026,2026,2026-10-15,R30,,documentary_absence,OBSERVED,documented_no,,L2_search_digest,Sem contrato com KTIS.
+rs_supply_contract,TH_RYG,site,all,,0,,,0/1,2026,2026,2026-10-15,,,documentary_absence,OBSERVED,documented_no,,L0_unavailable,Sem contrato de açúcar para DHA.
+op_space_documented,BR_ORI_EXP,site,all,,0.5,,,"0 nada / 0,5 declaração / 1 planta+utilidades documentadas",2021,2021,2021,v3:S017,entrevista 2021,corporate_specific_disclosure,OBSERVED,,,L3_prior_session,"'Ample room to expand' (entrevista 2021); plot plan não público."
+op_space_documented,BR_GF_GO,site,all,,,,,0-1,2026,2026,2026-10-15,,,none_public,UNKNOWN,,,L0_unavailable,
+op_space_documented,TH_NSN,site,all,,,,,0-1,2026,2026,2026-10-15,,,none_public,UNKNOWN,,,L0_unavailable,
+op_space_documented,TH_RYG,site,all,,,,,0-1,2026,2026,2026-10-15,,,none_public,UNKNOWN,,,L0_unavailable,

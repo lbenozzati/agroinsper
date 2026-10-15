@@ -1,0 +1,13 @@
+step,value,status,note
+Planta atual: tetos licenciados (LO),100 kt óleo / 80 kt biomassa / 20.625 t suspensão,L1 brief,NÃO é capacidade nem produção
+Planta atual: capacidade técnica,não divulgada,UNKNOWN,"5 fermentadores (LO, brief) vs. 'seis tanques' (analista)"
+Planta atual: volume produzido/vendido,não divulgado,UNKNOWN,"≈2/3 em contratos longos (brief, não confirmado)"
+Planta atual: folga até,fim 2028 / início 2029,OBSERVED (declaração),H1 2026 com fermentador novo em 2027
+Novo módulo: capacidade técnica (t SKU/ano),10.000,ASSUMPTION,v3 A012
+Novo módulo: capacidade disponível (t SKU/ano),8.500,ASSUMPTION,× OEE (A009)
+Volume contratado (t SKU/ano),0 público,UNKNOWN,cenários R5/R6 adicionam 1.500/3.000 t
+Vendido 2032 a partir do pipeline ponderado (t SKU),4.384,ASSUMPTION,demanda v3 ponderada (A110/A111)
+Utilização 2035,75%,ASSUMPTION,
+EBITDA 2032 (US$ mi),"24,6",ASSUMPTION,
+FCF 2032 (US$ mi),"17,9",ASSUMPTION,
+VPL (US$ mi),"80,3",ASSUMPTION,VT = 120% do VPL

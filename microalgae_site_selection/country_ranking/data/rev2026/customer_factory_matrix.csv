@@ -1,0 +1,25 @@
+account_id,customer,entity_level,plant,country,niche,feed_capacity_t,capacity_year,capacity_basis,ownership,evidence_stage,evidence_date,evidence_text,source_id,verification_level,next_proof_needed
+C01,BioMar Group,matriz,(grupo; 16 fábricas),Global,all,2000000,2026,sazonalizada (grupo),própria+JV,historical_adoption,pré-2022,">40 kt cumulativos de ração de salmão com AlgaPrime desde 2016; ~350 kt de ração com AlgaPrime em 2 anos (BioMar). Relação global ≠ adoção em cada fábrica; texto histórico/promocional ≠ compras 2026.",R15;R44;R14b,L2_search_digest,Volume 2025-26 de AlgaPrime por fábrica
+C02,BioMar Norway,fábrica,Myre,Norway,salmon,360000,2025,nominal (prospecto),própria,historical_adoption,pré-2022,Programa BioMar salmão (Noruega) citado historicamente; fábrica específica não documentada.,R12;R44,L1_user_brief,Confirmação de uso atual na fábrica
+C03,BioMar Norway,fábrica,Karmøy,Norway,salmon,360000,2025,nominal (prospecto),própria,historical_adoption,pré-2022,Idem.,R12;R44,L1_user_brief,Idem
+C04,BioMar Chile,fábrica,Pargua (2 plantas),Chile,salmon,180000,2025,nominal (prospecto),própria,historical_adoption,pré-2022,"BioMar Chile e Ventisqueros citados (herdado, não reverificado). Castro fechou em 2025, produção consolidada em Pargua.",R12;R37,L1_user_brief,Idem
+C05,BioMar Chile,fábrica,Ercilla,Chile,salmon,120000,2025,nominal (prospecto),própria,historical_adoption,pré-2022,Idem.,R12;R37,L1_user_brief,Idem
+C06,BioMar UK,fábrica,Grangemouth (Escócia),United Kingdom,salmon,,,desconhecida,própria,historical_adoption,pré-2022,Escócia citada no programa >40 kt; capacidade não vista.,R37,L3_prior_session,Capacidade e uso atual
+C07,BioMar Ecuador,fábrica,Durán,Ecuador,shrimp,410000,2026,nominal após expansão 3T2026 (300 kt antes),própria (100% desde 2026),none_found,2026-02,Nenhuma evidência de AlgaPrime; canal BioMar presente.,R12;R13,L2_search_digest,Teste ou pedido
+C08,BioMar–Tongwei JV,fábrica,Haiwei,China,shrimp,150000,2025,nominal (prospecto),JV,channel_only,2025,"Canal JV + aprovação GACC (marca); sem teste/pedido documentado.",R12;R08,L1_user_brief,Teste ou pedido
+C09,BioMar–Tongwei JV,fábrica,Wuxi,China,shrimp,50000,2025,nominal; dobra em 1T2027,JV,channel_only,2026-02,Idem.,R12;R14,L2_search_digest,Teste ou pedido
+C10,BioMar–Viet-Uc JV,fábrica,Châu Thành,Vietnam,shrimp,30000,2025,nominal (prospecto),JV,channel_only,n/a,Canal JV apenas.,R12,L1_user_brief,Teste ou pedido
+C11,Thai Union Feedmill (TFM),empresa,(fábricas TFM),Thailand,shrimp,,,desconhecida,terceiro,historical_adoption,2019-2020,"Adoção ampliada após teste em larga escala de 2019 (comunicado histórico). Uso 2025-26 não documentado; incentivos BOI da TFM não se transferem à Corbion.",R17;R18,L2_search_digest,Continuidade e tonelagem 2025-26
+C12,Mowi Feed,empresa,Valsneset (NO) + Kyleakin (UK),Norway,salmon,585402,2025,vendas de ração (não capacidade),integrado,none_found,2026-02,Sem evidência pública de AlgaPrime.,R40,L3_prior_session,Política de fornecimento de ômega-3
+C13,Skretting (Nutreco),empresa,(Noruega/Chile/Equador),Norway,salmon,,,desconhecida,terceiro,none_found,2021,"Usa Veramaris (Lingalaks 2018; Atlantic Sapphire 2021) — concorrente documentado; nada sobre AlgaPrime.",R31,L2_search_digest,Teste AlgaPrime
+C14,Cargill Aqua Nutrition,empresa,(Noruega/Chile/Canadá),Norway,salmon,,,desconhecida,terceiro,none_found,2025,Teste Cermaq Canada com óleo Veramaris; nada sobre AlgaPrime.,R31,L2_search_digest,Teste AlgaPrime
+C15,IQI Petfood,distribuidor,(UE e América do Norte),United States,pet,,,n/a (distribuidor),terceiro,channel_only,2024,Parceria de distribuição para pet food (UE/NA). Disponibilidade de canal ≠ receita futura; marcas finais não identificadas.,R16;R37,L3_prior_session,Marcas e volumes
+C16,IQI Petfood,distribuidor,(UE),Germany,pet,,,n/a,terceiro,channel_only,2024,Idem (cobertura UE).,R16;R37,L3_prior_session,Idem
+C17,IQI Petfood,distribuidor,(UE),France,pet,,,n/a,terceiro,channel_only,2024,Idem (cobertura UE).,R16;R37,L3_prior_session,Idem
+C18,Clientes não divulgados,grupo,(>60 clientes em >25 países),Global,all,,,n/a,n/a,unknown,2025-11,Declaração CMD 2025 (brief anterior); sem lista.,R43,L2_search_digest,Lista de clientes com tonelagem (dado de gestão)
+C19,Lerøy / Kvarøy Arctic,piscicultor-marca,via ração,Norway,salmon,,,n/a,n/a,historical_adoption,pré-2026,Citados na diligência v2 (herdado; não reverificado).,R37,L3_prior_session,Programa vigente
+C20,Ventisqueros,piscicultor-marca,via ração,Chile,salmon,,,n/a,n/a,historical_adoption,pré-2026,Idem.,R37,L3_prior_session,Programa vigente
+C21,IQI Petfood,distribuidor,(UE),Italy,pet,,,n/a,terceiro,channel_only,2024,Idem (cobertura UE).,R16;R37,L3_prior_session,Idem
+C22,IQI Petfood,distribuidor,(UE),Spain,pet,,,n/a,terceiro,channel_only,2024,Idem (cobertura UE).,R16;R37,L3_prior_session,Idem
+C23,IQI Petfood,distribuidor,(UE),Poland,pet,,,n/a,terceiro,channel_only,2024,Idem (cobertura UE).,R16;R37,L3_prior_session,Idem
+C24,IQI Petfood,distribuidor,(América do Norte),Canada,pet,,,n/a,terceiro,channel_only,2024,Idem (cobertura NA).,R16;R37,L3_prior_session,Idem
