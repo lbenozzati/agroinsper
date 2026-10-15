@@ -1,4 +1,7 @@
 metric_id,coverage,used,niche
+sal_transit_days,1.0,True,salmon
+ma_lpi_score,1.0,True,salmon
+ma_lsci,1.0,True,salmon
 sal_production_t,1.0,True,salmon
 dha_need_t,1.0,True,salmon
 sal_growth_5y_cagr,0.5,True,salmon

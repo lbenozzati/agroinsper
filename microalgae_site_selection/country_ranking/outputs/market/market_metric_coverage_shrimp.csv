@@ -1,4 +1,7 @@
 metric_id,coverage,used,niche
+shr_transit_days,1.0,True,shrimp
+ma_lpi_score,1.0,True,shrimp
+ma_lsci,1.0,True,shrimp
 shr_production_t,1.0,True,shrimp
 dha_need_t,1.0,True,shrimp
 shr_growth_5y_cagr,0.58,True,shrimp

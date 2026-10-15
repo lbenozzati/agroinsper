@@ -38,7 +38,7 @@ def load_inputs() -> pd.DataFrame:
     fb = RAW / "market_analyst_fallback.csv"
     if fb.exists():
         frames.append(pd.read_csv(fb)[COLS])
-    for f in [RAW / "research" / "risk.csv"] + sorted((RAW / "market_research").glob("*.csv")):
+    for f in [RAW / "research" / "risk.csv", RAW / "research" / "market_regulation.csv"] + sorted((RAW / "market_research").glob("*.csv")):
         if f.exists():
             d = pd.read_csv(f)
             d["notes"] = f"[{f.stem}] " + d["notes"].fillna("").astype(str)
@@ -57,13 +57,43 @@ def num(d: pd.DataFrame, c: str, m: str) -> float:
     return float(pd.to_numeric(r.raw_value, errors="coerce").iloc[0]) if len(r) else np.nan
 
 
+def transit_days(niche: str) -> dict:
+    """Door-to-door days Orindiúva -> market port of the niche (same waypoint routing as the plant ranking)."""
+    from . import searoutes as SR
+    pc = yaml.safe_load(open(RAW / "ports_market.yaml"))
+    ports = {"origin": (tuple(pc["origin"]["port"][0]), pc["origin"]["port"][1])}
+    for c, v in pc["markets"].items():
+        spec = v.get(niche, v.get("all"))
+        if spec is not None:
+            ports[c] = (tuple(spec[0]), spec[1])
+    g = SR.build_graph(ports)
+    out = {}
+    for c in pc["markets"]:
+        if c not in ports:
+            continue
+        if c in pc.get("domestic_days", {}):
+            out[c] = (0.0, pc["domestic_days"][c])
+            continue
+        nm = SR.shortest_nm(g, "origin", c)
+        out[c] = (nm, nm / (pc["speed_knots"] * 24) + 2 * pc["port_days_per_call"] + pc["origin"]["inland_days"]
+                  + pc["inland_days_market"])
+    return out
+
+
 def derive(data: pd.DataFrame, cfg: dict, niche: str) -> pd.DataFrame:
     """Per-niche frame: niche metrics + shared country risk + derived DHA need and FX volatility."""
     countries = cfg["niches"][niche]["countries"]
     d = data[data.country.isin(countries)].copy()
     rows = []
     g = cfg["dha_g_per_kg_feed"][niche]
+    pref = {"salmon": "sal", "shrimp": "shr", "pet": "pet"}[niche]
+    td = transit_days(niche)
     for c in countries:
+        if c in td:
+            nm, days = td[c]
+            rows.append(_row(c, f"{pref}_transit_days", round(days, 1), "days", "2026",
+                             "Derived: Orindiúva -> Santos -> market port by waypoint sea routing at 15 kn + 2 port calls "
+                             "+ inland legs (data/raw/ports_market.yaml)", f"sea distance {nm:,.0f} nm", "Medium", "estimate"))
         feed = num(d, c, FEED_KEY[niche])
         basis = FEED_KEY[niche]
         if np.isnan(feed):
@@ -80,7 +110,8 @@ def derive(data: pd.DataFrame, cfg: dict, niche: str) -> pd.DataFrame:
             rows.append(_row(c, "sr_fx_volatility", round(float(np.sqrt(np.mean(ch ** 2)) * 100), 2), "%", "2020-2025",
                              "Derived: RMS of annual log changes of LCU/USD", "", "Medium", "reported"))
     der = pd.DataFrame(rows, columns=COLS)
-    out = pd.concat([d[~d.metric_id.isin(["dha_need_t", "sr_fx_volatility"])], der], ignore_index=True)
+    out = pd.concat([d[~d.metric_id.isin(["dha_need_t", "sr_fx_volatility", f"{pref}_transit_days"])], der],
+                    ignore_index=True)
     out["niche"] = niche
     return out
 

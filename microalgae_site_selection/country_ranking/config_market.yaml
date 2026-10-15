@@ -3,7 +3,8 @@
 seed: 42
 mc_sims: 600
 min_metric_coverage: 0.4   # a metric with data for fewer than 40% of a niche's countries is left out of that niche's score
-min_country_coverage: 0.5  # countries below 50% of weight with data are flagged 'dados insuficientes' and ranked after the rest
+min_country_coverage: 0.5
+top_n: 10                 # charts and memo show the top 10 per niche and overall (CSV keeps everyone)  # countries below 50% of weight with data are flagged 'dados insuficientes' and ranked after the rest
 dirichlet_draws: 4000
 base_scenario: Base Case
 criteria:
@@ -37,12 +38,16 @@ niches:
       sz_growth:  {criterion: size_growth, label: "Crescimento", weight: 0.35}
       vl_price:   {criterion: value, label: "Valor do produto final", weight: 0.60}
       vl_premium: {criterion: value, label: "Exigência de certificação/sustentabilidade", weight: 0.40}
-      ac_adopt:   {criterion: access, label: "Adoção documentada de DHA de algas", weight: 0.40}
-      ac_feed:    {criterion: access, label: "Fábricas de ração dos grandes clientes", weight: 0.35}
-      ac_rel:     {criterion: access, label: "Relacionamento Corbion/canal", weight: 0.25}
+      ac_adopt:   {criterion: access, label: "Adoção documentada de DHA de algas", weight: 0.30}
+      ac_feed:    {criterion: access, label: "Fábricas de ração dos grandes clientes", weight: 0.25}
+      ac_rel:     {criterion: access, label: "Relacionamento Corbion/canal", weight: 0.20}
+      ac_log:     {criterion: access, label: "Logística até o cliente (a partir de Orindiúva)", weight: 0.25}
       rg_tariff:  {criterion: regulatory, label: "Tarifa de importação do ingrediente", weight: 0.50}
       rg_reg:     {criterion: regulatory, label: "Registro do ingrediente", weight: 0.50}
     metrics:
+      sal_transit_days:        {sub: ac_log, weight: 0.50, method: linear, worst: 45, best: 3, label: "Dias porta a porta desde Orindiúva (derivado)"}
+      ma_lpi_score:            {sub: ac_log, weight: 0.30, method: linear, worst: 2.5, best: 4.2, label: "LPI 2023 do destino (1-5)"}
+      ma_lsci:                 {sub: ac_log, weight: 0.20, method: log, worst: 5, best: 150, label: "Conectividade marítima UNCTAD LSCI"}
       sal_production_t:         {sub: sz_volume, weight: 0.50, method: log, worst: 5000, best: 1500000, label: "Produção de salmonídeos (t)"}
       dha_need_t:               {sub: sz_volume, weight: 0.50, method: log, worst: 30, best: 10000, label: "Necessidade técnica de DHA (t, derivado)"}
       sal_growth_5y_cagr:       {sub: sz_growth, weight: 0.40, method: linear, worst: -3, best: 8, label: "CAGR 5 anos (%)"}
@@ -63,12 +68,16 @@ niches:
       sz_growth:  {criterion: size_growth, label: "Crescimento", weight: 0.35}
       vl_price:   {criterion: value, label: "Valor do produto final (exportação)", weight: 0.45}
       vl_intens:  {criterion: value, label: "Intensificação e larvicultura (uso de DHA)", weight: 0.55}
-      ac_adopt:   {criterion: access, label: "Adoção documentada de DHA de algas", weight: 0.40}
-      ac_feed:    {criterion: access, label: "Fábricas de ração dos grandes clientes", weight: 0.35}
-      ac_rel:     {criterion: access, label: "Relacionamento Corbion/canal", weight: 0.25}
+      ac_adopt:   {criterion: access, label: "Adoção documentada de DHA de algas", weight: 0.30}
+      ac_feed:    {criterion: access, label: "Fábricas de ração dos grandes clientes", weight: 0.25}
+      ac_rel:     {criterion: access, label: "Relacionamento Corbion/canal", weight: 0.20}
+      ac_log:     {criterion: access, label: "Logística até o cliente (a partir de Orindiúva)", weight: 0.25}
       rg_tariff:  {criterion: regulatory, label: "Tarifa de importação do ingrediente", weight: 0.50}
       rg_reg:     {criterion: regulatory, label: "Registro do ingrediente", weight: 0.50}
     metrics:
+      shr_transit_days:        {sub: ac_log, weight: 0.50, method: linear, worst: 45, best: 3, label: "Dias porta a porta desde Orindiúva (derivado)"}
+      ma_lpi_score:            {sub: ac_log, weight: 0.30, method: linear, worst: 2.5, best: 4.2, label: "LPI 2023 do destino (1-5)"}
+      ma_lsci:                 {sub: ac_log, weight: 0.20, method: log, worst: 5, best: 150, label: "Conectividade marítima UNCTAD LSCI"}
       shr_production_t:            {sub: sz_volume, weight: 0.50, method: log, worst: 20000, best: 2000000, label: "Produção de camarão (t)"}
       dha_need_t:                  {sub: sz_volume, weight: 0.50, method: log, worst: 30, best: 10000, label: "Necessidade técnica de DHA (t, derivado)"}
       shr_growth_5y_cagr:          {sub: sz_growth, weight: 0.40, method: linear, worst: -3, best: 12, label: "CAGR 5 anos (%)"}
@@ -90,12 +99,16 @@ niches:
       sz_growth:  {criterion: size_growth, label: "Crescimento", weight: 0.35}
       vl_premium: {criterion: value, label: "Premiumização", weight: 0.55}
       vl_claims:  {criterion: value, label: "Demanda por ômega-3/DHA", weight: 0.45}
-      ac_adopt:   {criterion: access, label: "Adoção documentada de DHA de algas", weight: 0.40}
-      ac_feed:    {criterion: access, label: "Fábricas dos grandes fabricantes", weight: 0.35}
-      ac_rel:     {criterion: access, label: "Relacionamento Corbion/canal", weight: 0.25}
+      ac_adopt:   {criterion: access, label: "Adoção documentada de DHA de algas", weight: 0.30}
+      ac_feed:    {criterion: access, label: "Fábricas dos grandes fabricantes", weight: 0.25}
+      ac_rel:     {criterion: access, label: "Relacionamento Corbion/canal", weight: 0.20}
+      ac_log:     {criterion: access, label: "Logística até o cliente (a partir de Orindiúva)", weight: 0.25}
       rg_tariff:  {criterion: regulatory, label: "Tarifa de importação do ingrediente", weight: 0.50}
       rg_reg:     {criterion: regulatory, label: "Registro do ingrediente", weight: 0.50}
     metrics:
+      pet_transit_days:        {sub: ac_log, weight: 0.50, method: linear, worst: 45, best: 3, label: "Dias porta a porta desde Orindiúva (derivado)"}
+      ma_lpi_score:            {sub: ac_log, weight: 0.30, method: linear, worst: 2.5, best: 4.2, label: "LPI 2023 do destino (1-5)"}
+      ma_lsci:                 {sub: ac_log, weight: 0.20, method: log, worst: 5, best: 150, label: "Conectividade marítima UNCTAD LSCI"}
       pet_food_production_t:   {sub: sz_volume, weight: 0.40, method: log, worst: 100000, best: 10000000, label: "Produção de pet food (t)"}
       pet_market_value_usd_bn: {sub: sz_volume, weight: 0.30, method: log, worst: 0.5, best: 60, label: "Mercado de pet food (US$ bi)"}
       dha_need_t:              {sub: sz_volume, weight: 0.30, method: log, worst: 30, best: 10000, label: "Necessidade técnica de DHA (t, derivado)"}

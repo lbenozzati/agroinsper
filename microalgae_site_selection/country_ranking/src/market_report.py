@@ -25,21 +25,22 @@ def charts(out: dict) -> None:
     C.setup()
     cfg = out["cfg"]
     w = cfg["scenarios"][cfg["base_scenario"]]
+    N = cfg.get("top_n", 10)
     for n, r in out["results"].items():
-        t = r["table"]
-        note = (f"Score = triagem multicritério (0–10). Pesos base 30/20/20/15/15. Fonte: market_ranking_{n}.csv / "
+        t = r["table"].head(N)
+        note = (f"Top {N} de {len(r['table'])} países avaliados. Score = triagem multicritério (0–10). Pesos base 30/20/20/15/15. Fonte: market_ranking_{n}.csv / "
                 "market_inputs_long.csv. Valores ausentes saem da conta (pesos renormalizados), nunca viram zero.")
         C.heatmap(t, CRIT_SHORT, w, OUT / f"market_heatmap_{n}.png",
                   f"Melhores países para expandir o AlgaPrime – {NICHE_PT[n]}",
-                  f"Score por critério (0–10) e score final ponderado · {len(t)} países, {len(r['model'].metrics)} métricas",
+                  f"Top {N} · score por critério (0–10) e score final ponderado · {len(r['model'].metrics)} métricas, inclui logística desde Orindiúva",
                   note, extra_cols={"DHA (t)": t.dha_need_t.map(lambda x: "" if pd.isna(x) else f"{x:,.0f}".replace(",", "."))})
         C.contributions(r["contributions"], {k: v.replace("\n", " ") for k, v in CRIT_SHORT.items()}, list(t.index),
                         OUT / f"market_contributions_{n}.png", f"De onde vem o score – {NICHE_PT[n]}",
                         "Contribuição de cada critério (score × peso)", note)
-    ov = out["overall"]
+    ov = out["overall"].head(N)
     pairs = out["pairs"]
     # overall bar chart coloured by niche contribution
-    fig = C.slide("Ranking geral: onde expandir o AlgaPrime DHA",
+    fig = C.slide(f"Ranking geral: top {N} países para expandir o AlgaPrime DHA",
                   "Score do país = média dos scores por nicho, ponderada pela necessidade técnica de DHA do país em cada nicho",
                   "Fonte: market_ranking_overall.csv. Nichos: salmão, camarão e pet food (ranking próprio em cada um).")
     ax = fig.add_axes([0.20, 0.10, 0.62, 0.72])
@@ -67,12 +68,13 @@ def charts(out: dict) -> None:
         ax.text(11.2, yi, f"{ov.dha_need_total_t[c]:,.0f}".replace(",", "."), fontsize=10, color=C.INK2,
                 ha="center", va="center", clip_on=False)
     C.save(fig, OUT / "market_overall_ranking.png")
-    t = ov.rename(columns={"overall_score": "score", "overall_rank": "rank"})
-    C.bubble_map(t, OUT / "market_map.png", "Melhores países para expandir o AlgaPrime (ranking geral)",
-                 "Área proporcional ao score geral; destaque = 1º lugar",
-                 "Score = triagem multicritério ponderada pela necessidade técnica de DHA por nicho. "
-                 "Fonte: market_ranking_overall.csv. Rótulo nos 12 primeiros.", extent=(-140, 180, -50, 72),
-                 points=POINTS, label_top=12, size_scale=1500)
+    t = out["overall"].rename(columns={"overall_score": "score", "overall_rank": "rank"})
+    side = {c: " + ".join(NICHE_PT[x.split(" ")[0]] for x in t.niches[c].split(", ")) for c in t.index}
+    C.ranked_map(t, OUT / "market_map.png", f"Onde expandir o AlgaPrime DHA: top {N} países",
+                 "Cor = score geral (mais claro = melhor); número = posição; nichos ao lado",
+                 "Score geral = média dos scores por nicho (salmão, camarão, pet food) ponderada pela necessidade técnica de "
+                 "DHA do país. Inclui logística desde Orindiúva. Fonte: market_ranking_overall.csv.",
+                 top_n=N, side_text=side, points=POINTS)
 
 
 def memo(out: dict) -> None:
@@ -81,7 +83,10 @@ def memo(out: dict) -> None:
     tips = pd.read_csv(OUT / "market_tipping_points.csv")
     L = ["# Melhores países para a Corbion expandir o AlgaPrime DHA – salmão, camarão e pet food\n",
          "*Gerado por `python -m src market` · ranking ponderado por nicho (5 critérios: tamanho e crescimento 30%, "
-         "valor 20%, acesso e posição competitiva 20%, regulação 15%, risco 15%) e ranking geral.*\n",
+         "valor 20%, acesso e posição competitiva 20%, regulação 15%, risco 15%) e ranking geral. "
+         "O critério de acesso inclui **logística até o cliente** (25% do critério): dias porta a porta desde "
+         "Orindiúva por rota marítima, LPI 2023 e conectividade marítima (UNCTAD) do destino. "
+         "Mostra o top 10 de cada nicho; todos os países avaliados estão nos CSVs.*\n",
          "> **Natureza do resultado.** Score de triagem 0–10, não receita nem VPL. Fontes públicas, em boa parte lidas "
          "por trechos de busca; cada valor tem fonte, tipo e confiança em `data/processed/market_inputs_long.csv`. "
          "O volume e a receita por mercado continuam no estudo `market_expansion/`.\n",
@@ -102,23 +107,27 @@ def memo(out: dict) -> None:
     L.append("**Consolidar vs. expandir:** países onde a Corbion já tem adoção documentada (score de acesso alto) são "
              "consolidação; países com tamanho/crescimento altos e acesso baixo são expansão. Ver seção 3.\n")
     L.append("## 2. Rankings por nicho\n")
+    N = cfg.get("top_n", 10)
     for n, r in out["results"].items():
-        t = r["table"]
-        L.append(f"### {NICHE_PT[n].capitalize()}\n")
+        t = r["table"].head(N)
+        L.append(f"### {NICHE_PT[n].capitalize()} – top {N} de {len(r['table'])} países avaliados\n")
         L.append("| # | País | Score | Tamanho/cresc. (30%) | Valor (20%) | Acesso (20%) | Regulação (15%) | Risco (15%) | "
-                 "DHA técnico (t) | P(1º) pesos | Cobertura de dados | Lacunas |")
+                 "Dias desde Orindiúva | DHA técnico (t) | P(1º) pesos | Cobertura de dados |")
         L.append("|---|---|---|---|---|---|---|---|---|---|---|---|")
+        pref = {"salmon": "sal", "shrimp": "shr", "pet": "pet"}[n]
+        dd = r["data"]
+        days = {c: fmt(float(v), 0) for c, v in dd[dd.metric_id == f"{pref}_transit_days"].set_index("country").raw_value.items()}
         for c in t.index:
             x = t.loc[c]
             dha = "" if pd.isna(x.dha_need_t) else f"{x.dha_need_t:,.0f}".replace(",", ".")
             L.append(f"| {int(x['rank'])} | {PT.get(c, c)} | **{fmt(x.score, 2)}** | {fmt(x.size_growth)} | {fmt(x.value)} | "
-                     f"{fmt(x.access)} | {fmt(x.regulatory)} | {fmt(x.risk)} | {dha} | {pct(x.p_rank1_weights)} | "
-                     f"{pct(x.data_coverage_of_weight)} | {x.missing_metrics.replace(';', ', ') if x.missing_metrics else '–'} |")
+                     f"{fmt(x.access)} | {fmt(x.regulatory)} | {fmt(x.risk)} | {days.get(c, '')} | {dha} | {pct(x.p_rank1_weights)} | "
+                     f"{pct(x.data_coverage_of_weight)} |")
         L.append("")
-    L.append("## 3. Ranking geral e papel de cada país\n")
+    L.append(f"## 3. Ranking geral – top {N} de {len(ov)} países\n")
     L.append("| # | País | Score geral | DHA técnico total (t/ano) | Nichos (score) | Papel |")
     L.append("|---|---|---|---|---|---|")
-    for c in ov.index:
+    for c in ov.index[:N]:
         x = ov.loc[c]
         n = x.best_niche
         acc = out["results"][n]["table"].access[c]

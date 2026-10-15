@@ -207,3 +207,50 @@ def matrix(df: pd.DataFrame, path: Path, title: str, subtitle: str, note: str, f
     for s in ax.spines.values():
         s.set_visible(False)
     save(fig, path)
+
+
+def ranked_map(tab: pd.DataFrame, path: Path, title: str, subtitle: str, note: str, top_n: int = 10,
+               side_text: dict | None = None, extent=(-130, 165, -48, 72), points: dict | None = None):
+    """Clean choropleth: only the top-N countries are filled (colour = score), each with a numbered badge;
+    a side panel lists rank, country, score and an optional descriptor."""
+    world = gpd.read_file(ASSETS / "geo" / "ne_110m_admin_0_countries.geojson")
+    top = tab.sort_values("rank").head(top_n)
+    fig = slide(title, subtitle, note)
+    ax = fig.add_axes([0.02, 0.07, 0.70, 0.78])
+    world.plot(ax=ax, color="#1a1542", edgecolor="#2a2458", linewidth=0.35)
+    vmin, vmax = float(top.score.min()) - 0.4, float(top.score.max())
+    cmap = LinearSegmentedColormap.from_list("rk", ["#3b2f7a", BLUE, "#bcd3ff"])
+    norm = lambda v: (v - vmin) / (vmax - vmin)  # noqa: E731
+    for c, r in top.iterrows():
+        g = world[world.NAME == c]
+        if not g.empty:
+            g.plot(ax=ax, color=cmap(norm(r.score)), edgecolor="#e9e6ff", linewidth=0.5)
+    for c, r in top.iterrows():
+        if points and c in points:
+            lon, lat = points[c]
+        else:
+            g = world[world.NAME == c]
+            if g.empty:
+                continue
+            pt = g.geometry.iloc[0].representative_point()
+            lon, lat = pt.x, pt.y
+        ax.scatter(lon, lat, s=230, color=SURFACE, edgecolor=INK, linewidth=1.3, zorder=6)
+        ax.text(lon, lat, str(int(r["rank"])), ha="center", va="center", fontsize=9.5, fontweight="bold",
+                color=INK, zorder=7)
+    ax.set_xlim(extent[0], extent[1])
+    ax.set_ylim(extent[2], extent[3])
+    ax.axis("off")
+    # side panel
+    x0, y0, dy = 0.745, 0.80, 0.066
+    fig.text(x0, y0 + 0.035, "Top " + str(top_n), fontsize=13, fontweight="bold", color=INK)
+    for i, (c, r) in enumerate(top.iterrows()):
+        y = y0 - i * dy
+        fig.patches.append(plt.Rectangle((x0, y - 0.022), 0.012, 0.044, transform=fig.transFigure,
+                                         color=cmap(norm(r.score)), zorder=3))
+        fig.text(x0 + 0.02, y + 0.004, f"{int(r['rank'])}. {PT.get(c, c)}", fontsize=12.5, color=INK, va="center",
+                 fontweight="bold" if i == 0 else None)
+        fig.text(0.955, y + 0.004, fmt(r.score, 2), fontsize=12.5, color=INK, va="center", ha="right",
+                 fontweight="bold")
+        if side_text and c in side_text:
+            fig.text(x0 + 0.02, y - 0.020, side_text[c], fontsize=9.5, color=MUTED, va="center")
+    save(fig, path)
