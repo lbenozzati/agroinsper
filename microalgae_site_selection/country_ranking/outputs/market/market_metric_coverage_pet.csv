@@ -1,4 +1,7 @@
 metric_id,coverage,used,niche
+pet_transit_days,1.0,True,pet
+ma_lpi_score,1.0,True,pet
+ma_lsci,1.0,True,pet
 pet_food_production_t,1.0,True,pet
 pet_market_value_usd_bn,1.0,True,pet
 dha_need_t,1.0,True,pet

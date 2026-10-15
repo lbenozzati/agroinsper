@@ -42,7 +42,9 @@ python -m pytest -q tests      # 17 testes
 - **Mesmos 5 critérios em todos os nichos** (scores comparáveis): Tamanho e crescimento 30%, Valor e disposição a
   pagar 20%, Acesso a clientes e posição competitiva 20%, Regulação e acesso comercial 15%, Risco país e biológico 15%.
   Cenários: Consolidação (20/20/35/15/10) e Crescimento (40/20/10/15/15). Métricas por nicho em `config_market.yaml`.
-- **Nichos e países:** salmão (10), camarão (12), pet food (15).
+- **Nichos e países:** salmão (10), camarão (12), pet food (15); gráficos e memo mostram o top 10 de cada nicho e do geral.
+- **Logística até o cliente** (25% do critério Acesso): dias porta a porta desde Orindiúva (Santos → porto do nicho, mesma
+  rota marítima do Prompt 1; portos em `data/raw/ports_market.yaml`), LPI 2023 e conectividade marítima UNCTAD do destino.
 - **Necessidade técnica de DHA** (derivada): ração × g de DHA/kg do estudo de mercado (salmão 5,3; camarão 2,7;
   pet 0,33), com a mesma régua log nos três nichos.
 - **Ranking geral:** média dos scores do país por nicho, ponderada pela necessidade técnica de DHA do país em cada nicho.

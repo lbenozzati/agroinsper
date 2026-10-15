@@ -214,17 +214,22 @@ def ranked_map(tab: pd.DataFrame, path: Path, title: str, subtitle: str, note: s
     """Clean choropleth: only the top-N countries are filled (colour = score), each with a numbered badge;
     a side panel lists rank, country, score and an optional descriptor."""
     world = gpd.read_file(ASSETS / "geo" / "ne_110m_admin_0_countries.geojson")
+    world["NAME"] = world.NAME.replace({"United States of America": "United States"})
     top = tab.sort_values("rank").head(top_n)
     fig = slide(title, subtitle, note)
-    ax = fig.add_axes([0.02, 0.07, 0.70, 0.78])
+    ax = fig.add_axes([0.0, 0.05, 0.73, 0.84])
     world.plot(ax=ax, color="#1a1542", edgecolor="#2a2458", linewidth=0.35)
-    vmin, vmax = float(top.score.min()) - 0.4, float(top.score.max())
+    vmin, vmax = float(top.score.min()) - 0.9, float(top.score.max())
     cmap = LinearSegmentedColormap.from_list("rk", ["#3b2f7a", BLUE, "#bcd3ff"])
     norm = lambda v: (v - vmin) / (vmax - vmin)  # noqa: E731
     for c, r in top.iterrows():
         g = world[world.NAME == c]
         if not g.empty:
-            g.plot(ax=ax, color=cmap(norm(r.score)), edgecolor="#e9e6ff", linewidth=0.5)
+            parts = g.explode(index_parts=False)
+            main = parts.geometry.area.idxmax() if len(parts) == 1 else parts.iloc[[parts.geometry.area.argmax()]]
+            main_c = parts.geometry.iloc[parts.geometry.area.argmax()].centroid
+            parts = parts[parts.geometry.centroid.distance(main_c) < 35]  # drop overseas territories
+            parts.plot(ax=ax, color=cmap(norm(r.score)), edgecolor="#e9e6ff", linewidth=0.5)
     for c, r in top.iterrows():
         if points and c in points:
             lon, lat = points[c]
