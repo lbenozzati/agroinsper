@@ -3,16 +3,20 @@
 *Atualizado em 2026-10-14 · branch `claude/corbion-dha-site-evaluation-e13c6j` · último commit do código `bbb761e`.*
 
 ## 0. Resumo em 30 segundos
-- **Decisão condicional de hoje: não aprovar o FID de nova fermentação; esperar e qualificar demanda.**
-  - Com a demanda bottom-up do estudo de mercado (cenário base, sem contratos públicos), esperar é a melhor política.
-  - VPL em US$ mi: Orindiúva com 1 módulo = −32; Orindiúva adiada 2 anos = −23; Orindiúva + Tailândia já = −227.
-- **Gatilhos que mudam a decisão:**
-  - **Orindiúva** passa a ter VPL ≥ 0 com ≥ **5.125 t/ano firmes**, ou ≥ 1.250 t/ano contando o pipeline ponderado.
-  - **2ª planta na Tailândia** supera ficar só em Orindiúva com ≥ **13.385 t/ano asiáticas contratadas**, ou 9.556 t/ano com preço 40% maior.
-- **Mercado alto:** a melhor política é Orindiúva + Tailândia já (VPL 1.036). Tailândia por gatilho de utilização fica perto (1.019).
-- **Origem:** Orindiúva tem a maior margem por kg de DHA em **todas** as rotas, inclusive camarão asiático.
-- **Diversificação** vale pouco (≤ ~US$ 10 mi nos stresses) e não justifica a Tailândia sozinha.
-- **Lacunas que mais movem a decisão:** mercado capturável, preço líquido, offtake e capex do módulo de Orindiúva (o que os €50 mi compram).
+**Entregáveis principais (escopo confirmado com o usuário em 2026-10-14): dois rankings ponderados de PAÍSES**
+em `country_ranking/`. Os módulos `v3/`, `market_expansion/` e `integrated_strategy/` (seções 4–6) são análises
+complementares de VPL, volume e estratégia feitas antes do esclarecimento do escopo.
+
+- **Prompt 1 – melhor país para a nova fábrica de DHA de microalgas:** **Brasil (7,03)**, Tailândia (6,25), EUA (5,98).
+  O Brasil fica em 1º em 93% dos sorteios de pesos e 95% das simulações de dados; só com métricas quantitativas,
+  1º = EUA e Brasil 2º.
+- **Prompt 2 – melhores países para expandir o mercado do AlgaPrime (top 10 geral):** Noruega 7,60 · EUA 7,20 ·
+  Chile 7,07 · Reino Unido 6,80 · França 6,50 · Alemanha 6,38 · Itália 6,26 · China 6,25 · Ilhas Faroé 6,03 ·
+  Equador 5,96. Por nicho: salmão = Noruega; camarão = China ≈ Tailândia (empate técnico); pet food = EUA.
+- **Papel:** consolidar salmão (Noruega, Chile, Reino Unido) e pet food EUA/Europa (canal IQI); expandir camarão
+  (China, Tailândia, Equador, Vietnã), onde o mercado é grande e o acesso da Corbion ainda é baixo.
+- **Qualidade dos dados:** portais primários bloqueados; quase tudo veio de trechos de busca, com fonte, ano, tipo e
+  confiança por valor. Ver seção 2b.4.
 
 ## 1. Contexto e objetivo
 Apresentação de Private Equity (AgroInsper / Aqua Capital, slide "Investment Thesis: Algae Platform Expansion").
@@ -32,6 +36,7 @@ O produto é o AlgaPrime DHA, DHA de microalgas por fermentação heterotrófica
 ## 2. Mapa do repositório (`microalgae_site_selection/`)
 | Pasta | Etapa | Executar | Testes | Entregáveis principais |
 |---|---|---|---|---|
+| **`country_ranking/`** | **Prompts 1 e 2 (escopo correto): rankings ponderados de países** | `cd country_ranking && python -m src plant` / `python -m src market` | 17 | `outputs/plant/plant_country_memo.md`, `outputs/market/market_country_memo.md`, heatmaps, mapas |
 | raiz | v2: score de países + custo BR × TH | `python microalgae_site_selection.py`, `python brazil_thailand_economics.py` | 14 | `outputs/` (mapas, ranking, MSP) |
 | `v3/` | Prompt 1: localização e retorno | `cd v3 && python -m src run` | 24 (inclui paridade Python × JS) | `investment_memo.md`, `audit_report.md`, `decision_cockpit.html` |
 | `market_expansion/` | Prompt 2: mercados | `cd market_expansion && python -m src run [--publish-v3]` | 13 | `market_memo.md`, `market_explorer.html`, `market_demand_scenarios.csv` |
@@ -47,12 +52,96 @@ O produto é o AlgaPrime DHA, DHA de microalgas por fermentação heterotrófica
 - A v3 consome a demanda do mercado por `v3/data/raw/market_demand_scenarios.csv`. Sem esse arquivo, usa uma premissa rotulada `ASSUMPTION_DEMAND_V3`.
 - O integrado importa os dois motores e não reimplementa nada.
 
+## 2b. Rankings de países (`country_ranking/`) – entregável principal
+
+### 2b.1 Prompt 1 – melhor país para a nova unidade
+- **Pesos mantidos da v2 (decisão do usuário):** Economia de produção 30%, Acesso a mercados 20%, Prontidão Corbion
+  15%, Regulação e incentivos 15%, Risco estratégico 20%. Cenários: Lowest-Cost (40/15/20/10/15) e Asian Market
+  (25/30/10/15/20).
+- **12 países**, cada um avaliado numa **usina de referência** (o site compra açúcar, vapor e energia da usina):
+  Usina Moema/Orindiúva (BR), KTIS Nakhon Sawan (TH), Cargill Blair-NE com dextrose de milho (EUA), Ingenio Pánuco (MX),
+  Ingenio San Carlos (EC), Balrampur (IN), East Asia Sugar/Guangxi (CN), Casa Grande (PE), TTC AgriS Tây Ninh (VN),
+  Iansa San Carlos (CL, refinaria de açúcar importado), PG Djatiroto (ID), Victorias (PH).
+- **34 métricas** (antes 25), por critério:
+  - Economia de produção: preço doméstico do açúcar US$/t, produção e produção/consumo; eletricidade, renováveis,
+    vapor/cogeração da usina; estresse hídrico nacional e **na bacia da usina** (Aqueduct); salário industrial; EPC.
+  - Acesso: **dias porta a porta da usina a 12 mercados por rota marítima** (canais/estreitos/cabos), pesados pelo SAM de
+    DHA 2030; LPI e conectividade UNCTAD; demanda coberta por acordos comerciais; fábricas dos grandes clientes.
+  - Prontidão Corbion: só ativos/pessoas da Corbion (a usina fica em Economia de produção → menos contagem dupla;
+    correlação PE×CR caiu de 0,76 para 0,63); etanol como proxy de base de fermentação.
+  - Regulação: AlgaPrime aprovado para venda; licenciamento; dias de alvará (DB2020); alíquota efetiva 10 anos com
+    incentivos e piso de 15% (Pilar 2); abertura a IED.
+  - Risco: concorrência local de DHA de algas; Special 301 2026; rating S&P, WGI, volatilidade cambial 2020–25, ND-GAIN.
+- **Rubricas do analista:** ~42% do peso (v2: ~66%), justificadas linha a linha em `data/raw/plant_rubrics.csv`.
+
+| # | País | Score | Econ. prod. | Acesso | Prontidão | Regulação | Risco | Gate |
+|---|---|---|---|---|---|---|---|---|
+| 1 | Brasil | **7,03** | 8,9 | 4,7 | 9,3 | 4,3 | 7,0 | Pass |
+| 2 | Tailândia | 6,25 | 6,7 | 3,7 | 7,1 | 7,9 | 6,2 | Pass |
+| 3 | EUA | 5,98 | 4,8 | 5,6 | 8,8 | 6,5 | 5,7 | Pass |
+| 4 | México | 5,47 | 4,9 | 5,8 | 5,0 | 4,4 | 7,1 | Review |
+| 5 | Equador | 5,22 | 5,6 | 6,6 | 0,9 | 4,9 | 6,7 | Review |
+| 6 | Índia | 5,21 | 6,0 | 5,2 | 4,0 | 4,5 | 5,4 | Review |
+| 7 | China | 4,98 | 6,4 | 4,8 | 4,2 | 7,1 | 2,1 | Pass |
+| 8–12 | Peru, Vietnã, Chile, Indonésia, Filipinas | 4,3–4,9 | | | | | | |
+
+- **Robustez:** Brasil 1º nos 3 cenários de peso, com mercados pesados por TAM em vez de SAM e com limites de escala
+  ±25–50%. A Tailândia só passa o Brasil se Regulação e incentivos pesar ≥ 30% (base 15%).
+- **Checagem de custo (fora do score):** custo variável por kg de DHA na usina de referência: Brasil US$ 8,3,
+  Índia 9,4, Vietnã 11,8, Tailândia 11,9, China 12,9, EUA 15,8, Filipinas 18,9.
+
+### 2b.2 Prompt 2 – melhores países para expandir mercado (salmão, camarão, pet food)
+- **Mesmos 5 critérios em todos os nichos** (scores comparáveis): Tamanho e crescimento 30%, Valor e disposição a
+  pagar 20%, Acesso e posição competitiva 20%, Regulação e acesso comercial 15%, Risco país e biológico 15%.
+  Cenários: Consolidação (20/20/35/15/10) e Crescimento (40/20/10/15/15).
+- **Acesso inclui "Logística até o cliente"** (25% do critério): dias porta a porta desde Orindiúva (Santos → porto do
+  nicho), LPI 2023 e conectividade UNCTAD do destino.
+- **Tamanho comparável entre nichos:** necessidade técnica de DHA = ração × g DHA/kg (salmão 5,3; camarão 2,7;
+  pet 0,33), régua log comum.
+- **Ranking geral:** média dos scores do país por nicho, ponderada pela necessidade de DHA em cada nicho.
+- **Regras de cobertura:** métrica com dado em < 40% dos países sai do score do nicho (fora: certificação ASC e tarifa
+  no salmão; pós-larvas no camarão; fábricas das grandes marcas e tarifa em pet food).
+- **Avaliados:** 10 países em salmão, 12 em camarão, 15 em pet food (29 no geral); saídas mostram o top 10.
+
+| Nicho | Top 10 (score) | P(1º) com pesos incertos |
+|---|---|---|
+| Salmão | Noruega 7,60 · Chile 7,07 · Reino Unido 6,96 · Faroé 6,03 · Islândia 5,72 · Austrália 5,68 · Nova Zelândia 5,58 · Canadá 4,98 · EUA 4,80 · Turquia 3,96 | Noruega 91% |
+| Camarão | China 6,36 · Tailândia 6,17 · Equador 5,96 · Vietnã 5,83 · Índia 5,34 · Brasil 5,09 · Indonésia 5,08 · Arábia Saudita 4,82 · México 4,58 · Filipinas 4,11 | China 44% (Tailândia 38%) |
+| Pet food | EUA 7,26 · França 6,50 · Alemanha 6,38 · Itália 6,26 · Reino Unido 6,19 · Austrália 6,16 · Canadá 5,96 · Espanha 5,91 · Brasil 5,55 · Polônia 5,54 | EUA 87% |
+
+**Geral (top 10):** Noruega 7,60 · EUA 7,20 · Chile 7,07 · Reino Unido 6,80 · França 6,50 · Alemanha 6,38 ·
+Itália 6,26 · China 6,25 · Ilhas Faroé 6,03 · Equador 5,96.
+
+### 2b.3 Fontes principais dos rankings
+- **Açúcar e usinas:** USDA FAS (*Sugar: World Markets and Trade*, mai/2026; GAIN), CEPEA, cotações locais;
+  Global Energy Monitor e sites das usinas (cogeração).
+- **Energia, água, trabalho:** GlobalPetrolPrices; Ember/OWID; FAO AQUASTAT; WRI Aqueduct 3.0 (coordenadas das
+  usinas); ILOSTAT, IBGE e institutos nacionais.
+- **Logística e comércio:** Banco Mundial (LPI 2023), UNCTAD LSCI (via WDI), OMC/portais de acordos; rota marítima
+  própria (`src/searoutes.py`, ±10% vs tabelas publicadas).
+- **Regulação e impostos:** KPMG, PwC, Tax Foundation, regimes de incentivo (BOI, CREATE MORE…), Doing Business 2020,
+  comunicados da Corbion (GACC).
+- **Risco:** S&P, WGI (Banco Mundial), Federal Reserve/bancos centrais (câmbio), ND-GAIN, USTR Special 301 2026.
+- **Mercados:** estatísticas oficiais de salmão (Noruega, Sernapesca, Escócia, Islândia, DFO, Tasmânia), FAO
+  GLOBEFISH, IBGE, CONAPESCA, associações de ração/pet (China Feed Industry Assoc., Alltech 2026, FEDIAF, Abinpet,
+  FACCO, CESFAC, Animal Medicines Australia), imprensa setorial (SalmonBusiness, Fish Farming Expert, Petfood
+  Processing) e evidências de clientes do estudo de mercado (BioMar, Thai Union, IQI).
+
+### 2b.4 Qualidade dos dados e lacunas dos rankings
+- **Confiança alta:** LPI, renováveis, produção de açúcar USDA, câmbio do Fed, Special 301, ratings S&P dos principais.
+- **Confiança baixa (estimativas do analista ou do agente de pesquisa):**
+  - preços de salmão de 6 países; produção de pet food de Alemanha, Polônia e Austrália;
+  - WGI qualidade regulatória dos países novos; nº de fábricas de ração;
+  - registro do AlgaPrime fora da China; todas as rubricas.
+- **Lacunas:** preço do açúcar no México, Equador e Chile; frete em US$/t por rota (não há cotação pública);
+  índice OCDE de IED (só 3 países, fora do score); tarifas de importação do ingrediente.
+
 ## 3. v2 (base histórica): score de países e custo Brasil × Tailândia
 - **Ranking:** Brasil 7,15 > Tailândia 6,76 > China 5,58 > Índia 5,55 > Vietnã 5,32 > México 5,11 > Chile 4,96 > Indonésia 4,80.
 - **Custo:** MSP da expansão de Orindiúva ≈ US$ 11,6/kg DHA; Tailândia greenfield com BOI ≈ US$ 14,3/kg DHA.
 - **Status:** a v2 está congelada em `v3/data/raw/frozen_v2/` e é reproduzida exatamente por teste. Detalhes no Apêndice A.
 
-## 4. v3 – Prompt 1: localização e retorno da próxima capacidade (`v3/`)
+## 4. Complementar – v3: VPL por site para a próxima capacidade (`v3/`)
 **O que mudou da v2 para a v3:**
 - A pergunta passa de "melhor país" para "melhor sequência de investimento por site". O score vira só triagem.
 - A capacidade é modular (10 kt nominais, 8.500 t efetivas).
@@ -97,7 +186,7 @@ O produto é o AlgaPrime DHA, DHA de microalgas por fermentação heterotrófica
 
 **Correção feita no Prompt 3:** a alocação por caminhos mínimos sucessivos podia entrar em loop infinito (ciclo de predecessores causado por ruído numérico nas margens). Foi corrigida em `engine.py` e em `cockpit_engine.js`, com teste de regressão. Os outputs foram regenerados.
 
-## 5. Prompt 2: mercados para expansão e consolidação (`market_expansion/`)
+## 5. Complementar – estudo de mercado TAM/SAM/SOM e volumes (`market_expansion/`)
 **Escopo:**
 - É um estudo independente da fábrica.
 - O funil é: ração → TAM (necessidade técnica de DHA) → SAM (espaço servível por DHA de algas) → SOM Corbion → t SKU → receita → contribuição → VPL comercial.
@@ -132,7 +221,7 @@ O produto é o AlgaPrime DHA, DHA de microalgas por fermentação heterotrófica
   - alvo de EPA+DHA na dieta: 46.
 - **Interface com a v3:** exporta `market_demand_scenarios.csv` (+ `_low`, `_high`). O volume contratado é sempre 0, porque não há contrato público.
 
-## 6. Prompt 3: estratégia integrada (`integrated_strategy/`)
+## 6. Complementar – Prompt 3: estratégia integrada (`integrated_strategy/`, não prioritário)
 **Harmonização** (`integration_reconciliation.csv`):
 - DHA de 0,35 por SKU.
 - Preço de mercado líquido de custos comerciais e rebates, com capital de giro na v3.
