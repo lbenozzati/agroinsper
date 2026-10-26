@@ -1,104 +1,114 @@
 niche,criterion,relative_change,entity,floor,rank_floor,rank_best,rank_worst
-salmon,demanda,-0.25,salmon|Norway,4.747,1.0,1.0,8.0
-salmon,demanda,-0.25,salmon|Chile,4.709,2.0,1.0,8.0
-salmon,demanda,-0.25,salmon|United Kingdom,4.256,3.0,1.0,10.0
-salmon,demanda,-0.25,salmon|Faroe Islands,2.501,4.0,1.0,10.0
-salmon,demanda,-0.25,salmon|Iceland,2.295,5.0,1.0,10.0
-salmon,demanda,-0.25,salmon|United States,2.287,6.0,3.0,10.0
-salmon,demanda,-0.25,salmon|Turkey,2.243,7.0,1.0,10.0
-salmon,demanda,-0.25,salmon|Australia,2.172,8.0,1.0,10.0
-salmon,demanda,-0.25,salmon|Canada,2.088,9.0,3.0,10.0
-salmon,demanda,-0.25,salmon|New Zealand,1.627,10.0,1.0,10.0
-salmon,demanda,0.25,salmon|Norway,5.232,1.0,1.0,6.0
-salmon,demanda,0.25,salmon|Chile,5.18,2.0,1.0,6.0
-salmon,demanda,0.25,salmon|United Kingdom,4.434,3.0,1.0,9.0
-salmon,demanda,0.25,salmon|Faroe Islands,2.989,4.0,1.0,10.0
-salmon,demanda,0.25,salmon|Turkey,2.95,5.0,1.0,10.0
-salmon,demanda,0.25,salmon|Iceland,2.922,6.0,1.0,10.0
-salmon,demanda,0.25,salmon|Australia,2.481,7.0,3.0,10.0
-salmon,demanda,0.25,salmon|United States,2.318,8.0,4.0,10.0
-salmon,demanda,0.25,salmon|Canada,2.316,9.0,3.0,10.0
-salmon,demanda,0.25,salmon|New Zealand,1.935,10.0,3.0,10.0
-salmon,acesso,-0.25,salmon|Chile,4.819,1.0,1.0,9.0
-salmon,acesso,-0.25,salmon|Norway,4.806,2.0,1.0,9.0
-salmon,acesso,-0.25,salmon|United Kingdom,4.107,3.0,1.0,10.0
-salmon,acesso,-0.25,salmon|Faroe Islands,2.974,4.0,1.0,10.0
-salmon,acesso,-0.25,salmon|Iceland,2.826,5.0,1.0,10.0
-salmon,acesso,-0.25,salmon|Turkey,2.751,6.0,1.0,10.0
-salmon,acesso,-0.25,salmon|United States,2.432,7.0,3.0,10.0
-salmon,acesso,-0.25,salmon|Australia,2.395,8.0,1.0,10.0
-salmon,acesso,-0.25,salmon|Canada,2.261,9.0,1.0,10.0
-salmon,acesso,-0.25,salmon|New Zealand,1.929,10.0,1.0,10.0
-salmon,acesso,0.25,salmon|Norway,5.174,1.0,1.0,5.0
-salmon,acesso,0.25,salmon|Chile,5.07,2.0,1.0,5.0
-salmon,acesso,0.25,salmon|United Kingdom,4.583,3.0,1.0,7.0
-salmon,acesso,0.25,salmon|Faroe Islands,2.516,4.0,3.0,10.0
-salmon,acesso,0.25,salmon|Turkey,2.443,5.0,1.0,10.0
-salmon,acesso,0.25,salmon|Iceland,2.391,6.0,1.0,10.0
-salmon,acesso,0.25,salmon|Australia,2.258,7.0,3.0,10.0
-salmon,acesso,0.25,salmon|United States,2.173,8.0,4.0,10.0
-salmon,acesso,0.25,salmon|Canada,2.144,9.0,4.0,10.0
-salmon,acesso,0.25,salmon|New Zealand,1.632,10.0,4.0,10.0
-salmon,economia,-0.25,salmon|Norway,5.294,1.0,1.0,5.0
-salmon,economia,-0.25,salmon|Chile,5.146,2.0,1.0,5.0
-salmon,economia,-0.25,salmon|United Kingdom,4.594,3.0,1.0,8.0
-salmon,economia,-0.25,salmon|Faroe Islands,2.864,4.0,3.0,10.0
-salmon,economia,-0.25,salmon|Iceland,2.718,5.0,1.0,10.0
-salmon,economia,-0.25,salmon|Turkey,2.705,6.0,1.0,10.0
-salmon,economia,-0.25,salmon|Australia,2.465,7.0,3.0,10.0
-salmon,economia,-0.25,salmon|Canada,2.321,8.0,4.0,10.0
-salmon,economia,-0.25,salmon|United States,2.289,9.0,4.0,10.0
-salmon,economia,-0.25,salmon|New Zealand,1.857,10.0,3.0,10.0
-salmon,economia,0.25,salmon|Chile,4.743,1.0,1.0,9.0
-salmon,economia,0.25,salmon|Norway,4.686,2.0,1.0,9.0
-salmon,economia,0.25,salmon|United Kingdom,4.097,3.0,1.0,10.0
-salmon,economia,0.25,salmon|Faroe Islands,2.625,4.0,1.0,10.0
-salmon,economia,0.25,salmon|Iceland,2.499,5.0,1.0,10.0
-salmon,economia,0.25,salmon|Turkey,2.489,6.0,1.0,10.0
-salmon,economia,0.25,salmon|United States,2.317,7.0,3.0,10.0
-salmon,economia,0.25,salmon|Australia,2.188,8.0,1.0,10.0
-salmon,economia,0.25,salmon|Canada,2.083,9.0,1.0,10.0
-salmon,economia,0.25,salmon|New Zealand,1.705,10.0,1.0,10.0
-salmon,adequacao,-0.25,salmon|Norway,5.1,1.0,1.0,6.0
-salmon,adequacao,-0.25,salmon|Chile,5.052,2.0,1.0,6.0
-salmon,adequacao,-0.25,salmon|United Kingdom,4.426,3.0,1.0,9.0
-salmon,adequacao,-0.25,salmon|Faroe Islands,2.756,4.0,1.0,10.0
-salmon,adequacao,-0.25,salmon|Iceland,2.613,5.0,1.0,10.0
-salmon,adequacao,-0.25,salmon|Turkey,2.601,6.0,1.0,10.0
-salmon,adequacao,-0.25,salmon|Australia,2.319,7.0,3.0,10.0
-salmon,adequacao,-0.25,salmon|United States,2.294,8.0,4.0,10.0
-salmon,adequacao,-0.25,salmon|Canada,2.189,9.0,3.0,10.0
-salmon,adequacao,-0.25,salmon|New Zealand,1.749,10.0,3.0,10.0
-salmon,adequacao,0.25,salmon|Norway,4.88,1.0,1.0,8.0
-salmon,adequacao,0.25,salmon|Chile,4.837,2.0,1.0,8.0
-salmon,adequacao,0.25,salmon|United Kingdom,4.264,3.0,1.0,9.0
-salmon,adequacao,0.25,salmon|Faroe Islands,2.734,4.0,1.0,10.0
-salmon,adequacao,0.25,salmon|Iceland,2.604,5.0,1.0,10.0
-salmon,adequacao,0.25,salmon|Turkey,2.593,6.0,1.0,10.0
-salmon,adequacao,0.25,salmon|Australia,2.334,7.0,1.0,10.0
-salmon,adequacao,0.25,salmon|United States,2.311,8.0,4.0,10.0
-salmon,adequacao,0.25,salmon|Canada,2.215,9.0,3.0,10.0
-salmon,adequacao,0.25,salmon|New Zealand,1.812,10.0,1.0,10.0
-salmon,risco,-0.25,salmon|Norway,4.988,1.0,1.0,6.0
-salmon,risco,-0.25,salmon|Chile,4.976,2.0,1.0,7.0
-salmon,risco,-0.25,salmon|United Kingdom,4.334,3.0,1.0,9.0
-salmon,risco,-0.25,salmon|Turkey,2.669,4.0,1.0,10.0
-salmon,risco,-0.25,salmon|Faroe Islands,2.647,5.0,1.0,10.0
-salmon,risco,-0.25,salmon|Iceland,2.593,6.0,1.0,10.0
-salmon,risco,-0.25,salmon|Australia,2.289,7.0,2.0,10.0
-salmon,risco,-0.25,salmon|United States,2.228,8.0,4.0,10.0
-salmon,risco,-0.25,salmon|Canada,2.162,9.0,3.0,10.0
-salmon,risco,-0.25,salmon|New Zealand,1.752,10.0,3.0,10.0
-salmon,risco,0.25,salmon|Norway,4.991,1.0,1.0,6.0
-salmon,risco,0.25,salmon|Chile,4.913,2.0,1.0,8.0
-salmon,risco,0.25,salmon|United Kingdom,4.356,3.0,1.0,10.0
-salmon,risco,0.25,salmon|Faroe Islands,2.842,4.0,1.0,10.0
-salmon,risco,0.25,salmon|Iceland,2.625,5.0,1.0,10.0
-salmon,risco,0.25,salmon|Turkey,2.525,6.0,1.0,10.0
-salmon,risco,0.25,salmon|United States,2.378,7.0,3.0,10.0
-salmon,risco,0.25,salmon|Australia,2.364,8.0,2.0,10.0
-salmon,risco,0.25,salmon|Canada,2.243,9.0,3.0,10.0
-salmon,risco,0.25,salmon|New Zealand,1.809,10.0,2.0,10.0
+salmon,demanda,-0.25,salmon|Norway,4.747,1.0,1.0,9.0
+salmon,demanda,-0.25,salmon|Chile,4.709,2.0,1.0,9.0
+salmon,demanda,-0.25,salmon|United Kingdom,4.256,3.0,1.0,11.0
+salmon,demanda,-0.25,salmon|China,3.073,4.0,1.0,11.0
+salmon,demanda,-0.25,salmon|Faroe Islands,2.501,5.0,1.0,11.0
+salmon,demanda,-0.25,salmon|Iceland,2.295,6.0,1.0,11.0
+salmon,demanda,-0.25,salmon|United States,2.287,7.0,3.0,11.0
+salmon,demanda,-0.25,salmon|Turkey,2.243,8.0,1.0,11.0
+salmon,demanda,-0.25,salmon|Australia,2.172,9.0,1.0,11.0
+salmon,demanda,-0.25,salmon|Canada,2.088,10.0,3.0,11.0
+salmon,demanda,-0.25,salmon|New Zealand,1.627,11.0,1.0,11.0
+salmon,demanda,0.25,salmon|Norway,5.232,1.0,1.0,7.0
+salmon,demanda,0.25,salmon|Chile,5.18,2.0,1.0,7.0
+salmon,demanda,0.25,salmon|United Kingdom,4.434,3.0,1.0,10.0
+salmon,demanda,0.25,salmon|China,3.52,4.0,1.0,11.0
+salmon,demanda,0.25,salmon|Faroe Islands,2.989,5.0,1.0,11.0
+salmon,demanda,0.25,salmon|Turkey,2.95,6.0,1.0,11.0
+salmon,demanda,0.25,salmon|Iceland,2.922,7.0,1.0,11.0
+salmon,demanda,0.25,salmon|Australia,2.481,8.0,3.0,11.0
+salmon,demanda,0.25,salmon|United States,2.318,9.0,4.0,11.0
+salmon,demanda,0.25,salmon|Canada,2.316,10.0,3.0,11.0
+salmon,demanda,0.25,salmon|New Zealand,1.935,11.0,3.0,11.0
+salmon,acesso,-0.25,salmon|Chile,4.819,1.0,1.0,10.0
+salmon,acesso,-0.25,salmon|Norway,4.806,2.0,1.0,10.0
+salmon,acesso,-0.25,salmon|United Kingdom,4.107,3.0,1.0,11.0
+salmon,acesso,-0.25,salmon|China,3.334,4.0,1.0,11.0
+salmon,acesso,-0.25,salmon|Faroe Islands,2.974,5.0,1.0,11.0
+salmon,acesso,-0.25,salmon|Iceland,2.826,6.0,1.0,11.0
+salmon,acesso,-0.25,salmon|Turkey,2.751,7.0,1.0,11.0
+salmon,acesso,-0.25,salmon|United States,2.432,8.0,3.0,11.0
+salmon,acesso,-0.25,salmon|Australia,2.395,9.0,1.0,11.0
+salmon,acesso,-0.25,salmon|Canada,2.261,10.0,1.0,11.0
+salmon,acesso,-0.25,salmon|New Zealand,1.929,11.0,1.0,11.0
+salmon,acesso,0.25,salmon|Norway,5.174,1.0,1.0,6.0
+salmon,acesso,0.25,salmon|Chile,5.07,2.0,1.0,6.0
+salmon,acesso,0.25,salmon|United Kingdom,4.583,3.0,1.0,8.0
+salmon,acesso,0.25,salmon|China,3.259,4.0,1.0,11.0
+salmon,acesso,0.25,salmon|Faroe Islands,2.516,5.0,3.0,11.0
+salmon,acesso,0.25,salmon|Turkey,2.443,6.0,1.0,11.0
+salmon,acesso,0.25,salmon|Iceland,2.391,7.0,1.0,11.0
+salmon,acesso,0.25,salmon|Australia,2.258,8.0,3.0,11.0
+salmon,acesso,0.25,salmon|United States,2.173,9.0,4.0,11.0
+salmon,acesso,0.25,salmon|Canada,2.144,10.0,4.0,11.0
+salmon,acesso,0.25,salmon|New Zealand,1.632,11.0,4.0,11.0
+salmon,economia,-0.25,salmon|Norway,5.294,1.0,1.0,6.0
+salmon,economia,-0.25,salmon|Chile,5.146,2.0,1.0,6.0
+salmon,economia,-0.25,salmon|United Kingdom,4.594,3.0,1.0,9.0
+salmon,economia,-0.25,salmon|China,3.452,4.0,1.0,11.0
+salmon,economia,-0.25,salmon|Faroe Islands,2.864,5.0,3.0,11.0
+salmon,economia,-0.25,salmon|Iceland,2.718,6.0,1.0,11.0
+salmon,economia,-0.25,salmon|Turkey,2.705,7.0,1.0,11.0
+salmon,economia,-0.25,salmon|Australia,2.465,8.0,3.0,11.0
+salmon,economia,-0.25,salmon|Canada,2.321,9.0,4.0,11.0
+salmon,economia,-0.25,salmon|United States,2.289,10.0,4.0,11.0
+salmon,economia,-0.25,salmon|New Zealand,1.857,11.0,3.0,11.0
+salmon,economia,0.25,salmon|Chile,4.743,1.0,1.0,10.0
+salmon,economia,0.25,salmon|Norway,4.686,2.0,1.0,10.0
+salmon,economia,0.25,salmon|United Kingdom,4.097,3.0,1.0,11.0
+salmon,economia,0.25,salmon|China,3.141,4.0,1.0,11.0
+salmon,economia,0.25,salmon|Faroe Islands,2.625,5.0,1.0,11.0
+salmon,economia,0.25,salmon|Iceland,2.499,6.0,1.0,11.0
+salmon,economia,0.25,salmon|Turkey,2.489,7.0,1.0,11.0
+salmon,economia,0.25,salmon|United States,2.317,8.0,3.0,11.0
+salmon,economia,0.25,salmon|Australia,2.188,9.0,1.0,11.0
+salmon,economia,0.25,salmon|Canada,2.083,10.0,1.0,11.0
+salmon,economia,0.25,salmon|New Zealand,1.705,11.0,1.0,11.0
+salmon,adequacao,-0.25,salmon|Norway,5.1,1.0,1.0,7.0
+salmon,adequacao,-0.25,salmon|Chile,5.052,2.0,1.0,7.0
+salmon,adequacao,-0.25,salmon|United Kingdom,4.426,3.0,1.0,10.0
+salmon,adequacao,-0.25,salmon|China,3.332,4.0,1.0,11.0
+salmon,adequacao,-0.25,salmon|Faroe Islands,2.756,5.0,1.0,11.0
+salmon,adequacao,-0.25,salmon|Iceland,2.613,6.0,1.0,11.0
+salmon,adequacao,-0.25,salmon|Turkey,2.601,7.0,1.0,11.0
+salmon,adequacao,-0.25,salmon|Australia,2.319,8.0,3.0,11.0
+salmon,adequacao,-0.25,salmon|United States,2.294,9.0,4.0,11.0
+salmon,adequacao,-0.25,salmon|Canada,2.189,10.0,3.0,11.0
+salmon,adequacao,-0.25,salmon|New Zealand,1.749,11.0,3.0,11.0
+salmon,adequacao,0.25,salmon|Norway,4.88,1.0,1.0,9.0
+salmon,adequacao,0.25,salmon|Chile,4.837,2.0,1.0,9.0
+salmon,adequacao,0.25,salmon|United Kingdom,4.264,3.0,1.0,10.0
+salmon,adequacao,0.25,salmon|China,3.261,4.0,1.0,11.0
+salmon,adequacao,0.25,salmon|Faroe Islands,2.734,5.0,1.0,11.0
+salmon,adequacao,0.25,salmon|Iceland,2.604,6.0,1.0,11.0
+salmon,adequacao,0.25,salmon|Turkey,2.593,7.0,1.0,11.0
+salmon,adequacao,0.25,salmon|Australia,2.334,8.0,1.0,11.0
+salmon,adequacao,0.25,salmon|United States,2.311,9.0,4.0,11.0
+salmon,adequacao,0.25,salmon|Canada,2.215,10.0,3.0,11.0
+salmon,adequacao,0.25,salmon|New Zealand,1.812,11.0,1.0,11.0
+salmon,risco,-0.25,salmon|Norway,4.988,1.0,1.0,7.0
+salmon,risco,-0.25,salmon|Chile,4.976,2.0,1.0,8.0
+salmon,risco,-0.25,salmon|United Kingdom,4.334,3.0,1.0,10.0
+salmon,risco,-0.25,salmon|China,3.289,4.0,1.0,11.0
+salmon,risco,-0.25,salmon|Turkey,2.669,5.0,1.0,11.0
+salmon,risco,-0.25,salmon|Faroe Islands,2.647,6.0,1.0,11.0
+salmon,risco,-0.25,salmon|Iceland,2.593,7.0,1.0,11.0
+salmon,risco,-0.25,salmon|Australia,2.289,8.0,2.0,11.0
+salmon,risco,-0.25,salmon|United States,2.228,9.0,4.0,11.0
+salmon,risco,-0.25,salmon|Canada,2.162,10.0,3.0,11.0
+salmon,risco,-0.25,salmon|New Zealand,1.752,11.0,3.0,11.0
+salmon,risco,0.25,salmon|Norway,4.991,1.0,1.0,7.0
+salmon,risco,0.25,salmon|Chile,4.913,2.0,1.0,9.0
+salmon,risco,0.25,salmon|United Kingdom,4.356,3.0,1.0,11.0
+salmon,risco,0.25,salmon|China,3.304,4.0,1.0,11.0
+salmon,risco,0.25,salmon|Faroe Islands,2.842,5.0,1.0,11.0
+salmon,risco,0.25,salmon|Iceland,2.625,6.0,1.0,11.0
+salmon,risco,0.25,salmon|Turkey,2.525,7.0,1.0,11.0
+salmon,risco,0.25,salmon|United States,2.378,8.0,3.0,11.0
+salmon,risco,0.25,salmon|Australia,2.364,9.0,2.0,11.0
+salmon,risco,0.25,salmon|Canada,2.243,10.0,3.0,11.0
+salmon,risco,0.25,salmon|New Zealand,1.809,11.0,2.0,11.0
 shrimp,demanda,-0.25,shrimp|China,4.156,1.0,1.0,12.0
 shrimp,demanda,-0.25,shrimp|Ecuador,4.057,2.0,1.0,12.0
 shrimp,demanda,-0.25,shrimp|Vietnam,3.913,3.0,1.0,12.0

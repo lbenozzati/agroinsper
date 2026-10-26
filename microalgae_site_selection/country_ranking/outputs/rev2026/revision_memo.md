@@ -7,7 +7,7 @@
 - **Retorno incremental (B), só como cenário ASSUMPTION:** VPL do módulo de Orindiúva US$ 80 mi (TIR 23%) em renovação igual; Nakhon Sawan US$ 48 mi; Rayong US$ 23 mi; greenfield BR US$ 22 mi. O valor terminal é 120% do VPL de Orindiúva: sem ele, o VPL fica negativo até 2035. **Com dados públicos, VPL e TIR são 'não estimáveis'.**
 - **A renovação de dez/2026 decide o sinal do VPL:** 6 de 24 combinações site×cenário têm VPL negativo (renovar com preço/volume menor ou perder conta); take-or-pay ou âncora nova tornam todos os sites positivos. Nenhum resultado de renovação estava divulgado em 15/10/2026.
 - **Nenhum nicho sozinho** sustenta um módulo de 10 kt SKU sob as premissas v3 (VPL por nicho isolado de US$ -153 a -39 mi): o módulo depende do portfólio somado.
-- **Mercados (A):** Salmão = Noruega no piso (faixa 1–6); Camarão = China no piso (faixa 1–12); Pet food = EUA no piso (faixa 1–15). Consolidação (adoção histórica documentada) só em salmão Noruega/Chile/Reino Unido e camarão Tailândia; **nenhuma compra 2026 é documentada publicamente**. O preço líquido (25% × 60% do peso) é desconhecido em todos.
+- **Mercados (A):** Salmão = Noruega no piso (faixa 1–7); Camarão = China no piso (faixa 1–12); Pet food = EUA no piso (faixa 1–15). Consolidação (adoção histórica documentada) só em salmão Noruega/Chile/Reino Unido e camarão Tailândia; **nenhuma compra 2026 é documentada publicamente**. O preço líquido (25% × 60% do peso) é desconhecido em todos.
 - **Por que o melhor ranking público pode não ser o melhor investimento:** o ranking mede o que é público e comparável; o VPL depende de quatro números privados (capex do site, rendimento, preço 2027+ e volume contratado). Um site bem colocado pode ter VPL negativo (ex.: greenfield BR em R1/R4), e um mal colocado pode passar à frente no VPL: Nakhon Sawan supera Orindiúva em R3 maior (155 × 151 US$ mi).
 
 ## 2. Lado A – ranking público de sites (pesos propostos 40/25/15/15/5)
@@ -70,17 +70,17 @@ Astaxantina (Corbion–KAS): **não estimável** – desenvolvimento, sem capex,
 ### Salmão
 | # piso | País | Piso | Teto | Faixa | Verificado | Papel | Estágio de evidência | Gate SKU | TAM técnico t DHA |
 |---:|---|---:|---:|---|---:|---|---:|---|---:|
-| 1 | Noruega | 4,99 | 6,86 | 1–6 | 81% | consolidação | 6 | review | 13.091 |
-| 2 | Chile | 4,94 | 7,69 | 1–7 | 69% | consolidação | 6 | unknown | 7.632 |
-| 3 | Reino Unido | 4,35 | 6,97 | 1–9 | 74% | consolidação | 6 | review | 1.272 |
-| 4 | Ilhas Faroé | 2,74 | 5,37 | 1–10 | 66% | expansão | 0 | unknown | 729 |
-| 5 | Islândia | 2,61 | 5,73 | 1–10 | 61% | expansão | 0 | unknown | 389 |
-| 6 | Turquia | 2,60 | 5,72 | 1–10 | 69% | expansão | 0 | unknown | 1.517 |
-| 7 | Austrália | 2,33 | 4,95 | 2–10 | 74% | expansão | 0 | unknown | 492 |
-| 8 | EUA | 2,30 | 4,30 | 4–10 | 72% | expansão | 0 | unknown | 80 |
-| 9 | Canadá | 2,20 | 4,58 | 3–10 | 76% | expansão | 0 | unknown | 729 |
-| 10 | Nova Zelândia | 1,78 | 4,91 | 3–10 | 61% | expansão | 0 | unknown | 86 |
-Consolidar: Noruega, Chile, Reino Unido; expandir (melhores pisos): Ilhas Faroé, Islândia, Turquia, Austrália.
+| 1 | Noruega | 4,99 | 6,86 | 1–7 | 81% | consolidação | 6 | review | 13.091 |
+| 2 | Chile | 4,94 | 7,69 | 1–8 | 69% | consolidação | 6 | unknown | 7.632 |
+| 3 | Reino Unido | 4,35 | 6,97 | 1–10 | 74% | consolidação | 6 | review | 1.272 |
+| 4 | China | 3,30 | 6,18 | 1–11 | 72% | expansão | 3 | review | 344 |
+| 5 | Ilhas Faroé | 2,74 | 5,37 | 1–11 | 66% | expansão | 0 | unknown | 729 |
+| 6 | Islândia | 2,61 | 5,73 | 1–11 | 61% | expansão | 0 | unknown | 389 |
+| 7 | Turquia | 2,60 | 5,72 | 1–11 | 69% | expansão | 0 | unknown | 1.517 |
+| 8 | Austrália | 2,33 | 4,95 | 2–11 | 74% | expansão | 0 | unknown | 492 |
+| 9 | EUA | 2,30 | 4,30 | 4–11 | 72% | expansão | 0 | unknown | 80 |
+| 10 | Canadá | 2,20 | 4,58 | 3–11 | 76% | expansão | 0 | unknown | 729 |
+Consolidar: Noruega, Chile, Reino Unido; expandir (melhores pisos): China, Ilhas Faroé, Islândia, Turquia.
 
 ### Camarão
 | # piso | País | Piso | Teto | Faixa | Verificado | Papel | Estágio de evidência | Gate SKU | TAM técnico t DHA |
@@ -130,7 +130,7 @@ Consolidar: nenhum; expandir (melhores pisos): EUA, Polônia, Itália, Espanha.
 
 ## 8. Auditoria e verificações
 - 21 afirmações auditadas em claims_audit.csv (ex.: tetos da LO ≠ capacidade; cepa S2014 × Schizochytrium; 5 × 6 fermentadores; Aqueduct 0 × Corbion AR 'alto risco' em Orindiúva; nota 10 por 'único produtor' removida; GMI com versões conflitantes; '2/3 em contratos' não confirmado).
-- Fontes: L2_search_digest: 26, L3_prior_session: 11, L1_user_brief: 6, L0_unavailable: 4. **Nenhuma fonte primária pôde ser aberta integralmente neste ambiente** (hosts bloqueados); o que veio do brief está como L1 e o que veio de trechos de busca como L2 – nenhum número foi tratado como lido do documento original.
+- Fontes: L2_search_digest: 29, L3_prior_session: 11, L1_user_brief: 6, L0_unavailable: 4. **Nenhuma fonte primária pôde ser aberta integralmente neste ambiente** (hosts bloqueados); o que veio do brief está como L1 e o que veio de trechos de busca como L2 – nenhum número foi tratado como lido do documento original.
 - Meta de julgamento ≤ 10%: sites 5%; Salmão até 8%; Camarão até 21%; Pet food até 5%. **Camarão não atinge a meta** (contagem de fabricantes, escore de doença e projeção de crescimento vêm de 'conhecimento do analista'); por isso o ranking de camarão não deve ser chamado de robusto.
 - Verificações automáticas (automated_checks.csv): PASS: 25, FAIL: 1.
   - FAIL: julgamento explícito ≤ 10% do peso (meta) – máximo observado 21.2%

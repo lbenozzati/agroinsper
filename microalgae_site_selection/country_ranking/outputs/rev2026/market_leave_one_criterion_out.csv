@@ -2,53 +2,58 @@ niche,without,entity,rank_floor
 salmon,demanda,salmon|Norway,1.0
 salmon,demanda,salmon|Chile,2.0
 salmon,demanda,salmon|United Kingdom,3.0
-salmon,demanda,salmon|United States,4.0
-salmon,demanda,salmon|Faroe Islands,5.0
-salmon,demanda,salmon|Canada,6.0
-salmon,demanda,salmon|Australia,7.0
-salmon,demanda,salmon|Iceland,8.0
-salmon,demanda,salmon|Turkey,9.0
-salmon,demanda,salmon|New Zealand,10.0
+salmon,demanda,salmon|China,4.0
+salmon,demanda,salmon|United States,5.0
+salmon,demanda,salmon|Faroe Islands,6.0
+salmon,demanda,salmon|Canada,7.0
+salmon,demanda,salmon|Australia,8.0
+salmon,demanda,salmon|Iceland,9.0
+salmon,demanda,salmon|Turkey,10.0
+salmon,demanda,salmon|New Zealand,11.0
 salmon,acesso,salmon|Chile,1.0
 salmon,acesso,salmon|Norway,2.0
 salmon,acesso,salmon|Faroe Islands,3.0
 salmon,acesso,salmon|Iceland,4.0
-salmon,acesso,salmon|United Kingdom,5.0
-salmon,acesso,salmon|Turkey,6.0
-salmon,acesso,salmon|United States,7.0
-salmon,acesso,salmon|Australia,8.0
-salmon,acesso,salmon|Canada,9.0
-salmon,acesso,salmon|New Zealand,10.0
+salmon,acesso,salmon|China,5.0
+salmon,acesso,salmon|United Kingdom,6.0
+salmon,acesso,salmon|Turkey,7.0
+salmon,acesso,salmon|United States,8.0
+salmon,acesso,salmon|Australia,9.0
+salmon,acesso,salmon|Canada,10.0
+salmon,acesso,salmon|New Zealand,11.0
 salmon,economia,salmon|Norway,1.0
 salmon,economia,salmon|Chile,2.0
 salmon,economia,salmon|United Kingdom,3.0
-salmon,economia,salmon|Faroe Islands,4.0
-salmon,economia,salmon|Iceland,5.0
-salmon,economia,salmon|Turkey,6.0
-salmon,economia,salmon|Australia,7.0
-salmon,economia,salmon|Canada,8.0
-salmon,economia,salmon|United States,9.0
-salmon,economia,salmon|New Zealand,10.0
+salmon,economia,salmon|China,4.0
+salmon,economia,salmon|Faroe Islands,5.0
+salmon,economia,salmon|Iceland,6.0
+salmon,economia,salmon|Turkey,7.0
+salmon,economia,salmon|Australia,8.0
+salmon,economia,salmon|Canada,9.0
+salmon,economia,salmon|United States,10.0
+salmon,economia,salmon|New Zealand,11.0
 salmon,adequacao,salmon|Norway,1.0
 salmon,adequacao,salmon|Chile,2.0
 salmon,adequacao,salmon|United Kingdom,3.0
-salmon,adequacao,salmon|Faroe Islands,4.0
-salmon,adequacao,salmon|Iceland,5.0
-salmon,adequacao,salmon|Turkey,6.0
-salmon,adequacao,salmon|Australia,7.0
-salmon,adequacao,salmon|United States,8.0
-salmon,adequacao,salmon|Canada,9.0
-salmon,adequacao,salmon|New Zealand,10.0
+salmon,adequacao,salmon|China,4.0
+salmon,adequacao,salmon|Faroe Islands,5.0
+salmon,adequacao,salmon|Iceland,6.0
+salmon,adequacao,salmon|Turkey,7.0
+salmon,adequacao,salmon|Australia,8.0
+salmon,adequacao,salmon|United States,9.0
+salmon,adequacao,salmon|Canada,10.0
+salmon,adequacao,salmon|New Zealand,11.0
 salmon,risco,salmon|Chile,1.0
 salmon,risco,salmon|Norway,2.0
 salmon,risco,salmon|United Kingdom,3.0
-salmon,risco,salmon|Turkey,4.0
-salmon,risco,salmon|Iceland,5.0
-salmon,risco,salmon|Faroe Islands,6.0
-salmon,risco,salmon|Australia,7.0
-salmon,risco,salmon|Canada,8.0
-salmon,risco,salmon|United States,9.0
-salmon,risco,salmon|New Zealand,10.0
+salmon,risco,salmon|China,4.0
+salmon,risco,salmon|Turkey,5.0
+salmon,risco,salmon|Iceland,6.0
+salmon,risco,salmon|Faroe Islands,7.0
+salmon,risco,salmon|Australia,8.0
+salmon,risco,salmon|Canada,9.0
+salmon,risco,salmon|United States,10.0
+salmon,risco,salmon|New Zealand,11.0
 shrimp,demanda,shrimp|Vietnam,1.0
 shrimp,demanda,shrimp|Thailand,2.0
 shrimp,demanda,shrimp|China,3.0

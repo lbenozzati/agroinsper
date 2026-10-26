@@ -142,3 +142,13 @@ def test_economics_labelled_and_public_not_estimable():
     assert low["npv_musd"] < base["npv_musd"]            # lower renewal price/volume lowers NPV
     assert base["online_year"] == 2029                    # module after the 2027 debottleneck headroom
     assert base["utilisation_2035"] <= 1.0
+
+
+def test_china_salmon_domestic_only():
+    from src.rev2026 import markets as MK
+    from src.rev2026.common import load_config
+    c = MK.build_cells(load_config())
+    r = c[(c.entity == "salmon|China") & (c.metric_id == "dm_dha_tech_t")].iloc[0]
+    # só criação doméstica (~40-65 kt salmonídeos), nunca a importação de ~161 kt
+    assert 250 < r.value < 500 and r.value_low < r.value < r.value_high
+    assert set(c[c.entity == "salmon|China"].metric_id) == set(c[c.entity == "salmon|Norway"].metric_id)
