@@ -49,13 +49,21 @@ def test_dha_need_formula(res):
     assert need == pytest.approx(feed * cfg["dha_g_per_kg_feed"]["salmon"] / 1000, rel=1e-3)
 
 
-def test_overall_is_dha_weighted_average(res):
+def test_overall_is_portfolio_weighted(res):
     _, r = res
-    ov, pairs = M.overall(r)
+    cfg = M.load_config()
+    nw, fl = cfg["niche_weights"], cfg["relevance_floor"]
+    ov, pairs = M.overall(r, cfg)
     for c in ["United States", "China", "Norway"]:
         g = pairs[pairs.country == c]
-        w = g.dha_need_t / g.dha_need_t.sum()
-        assert ov.overall_score[c] == pytest.approx(float((g.score * w).sum()))
+        a = g.niche.map(nw) * g.dha_need_t
+        q = float((g.score * a / a.sum()).sum())
+        rel = float((g.niche.map(nw) * g.dha_need_t / g.dha_need_t.sum()).sum() / max(nw.values()))
+        assert ov.quality_score[c] == pytest.approx(q)
+        assert ov.overall_score[c] == pytest.approx(q * (fl + (1 - fl) * rel))
+    # pet-only country is discounted vs. its quality score
+    pet_only = ov[ov.niches.str.startswith("pet") & (ov.n_niches == 1)]
+    assert (pet_only.overall_score < pet_only.quality_score).all()
     assert ov.overall_score.between(0, 10).all()
 
 

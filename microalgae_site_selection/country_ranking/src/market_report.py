@@ -41,7 +41,7 @@ def charts(out: dict) -> None:
     pairs = out["pairs"]
     # overall bar chart coloured by niche contribution
     fig = C.slide(f"Ranking geral: top {N} países para expandir o AlgaPrime DHA",
-                  "Score do país = média dos scores por nicho, ponderada pela necessidade técnica de DHA do país em cada nicho",
+                  "Score = média dos nichos ponderada por peso no portfólio (salmão 45%, camarão 40%, pet 15%) × DHA técnico, ajustada pela relevância",
                   "Fonte: market_ranking_overall.csv. Nichos: salmão, camarão e pet food (ranking próprio em cada um).")
     ax = fig.add_axes([0.20, 0.10, 0.62, 0.72])
     order = list(ov.index)
@@ -72,8 +72,8 @@ def charts(out: dict) -> None:
     side = {c: " + ".join(NICHE_PT[x.split(" ")[0]] for x in t.niches[c].split(", ")) for c in t.index}
     C.ranked_map(t, OUT / "market_map.png", f"Onde expandir o AlgaPrime DHA: top {N} países",
                  "Cor = score geral (mais claro = melhor); número = posição; nichos ao lado",
-                 "Score geral = média dos scores por nicho (salmão, camarão, pet food) ponderada pela necessidade técnica de "
-                 "DHA do país. Inclui logística desde Orindiúva. Fonte: market_ranking_overall.csv.",
+                 "Score geral = média dos nichos ponderada por peso no portfólio Corbion (salmão 45%, camarão 40%, pet 15%) × DHA "
+                 "técnico, × (0,5 + 0,5 × relevância do mix do país). Fonte: market_ranking_overall.csv.",
                  top_n=N, side_text=side, points=POINTS)
 
 

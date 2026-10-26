@@ -207,9 +207,15 @@ def run_niche(cfg: dict, data: pd.DataFrame, niche: str, n_mc: int, n_dir: int) 
                 contributions=crit.mul(pd.Series(base_w)))
 
 
-def overall(results: dict) -> pd.DataFrame:
-    """Country score = sum over niches of niche score x share of the country's technical DHA need in that niche.
-    Niche goalposts for DHA need are common (30–10,000 t), so size is comparable across niches."""
+def overall(results: dict, cfg: dict | None = None) -> pd.DataFrame:
+    """Country score in two steps (rev. 26/10):
+    quality   = Σ niche score × (niche weight × DHA need) / Σ (niche weight × DHA need)  [weights inside the country]
+    relevance = DHA-need-weighted mean niche weight / max niche weight  (1 = all demand in the top niche)
+    overall   = quality × (floor + (1 − floor) × relevance)
+    Niche weights = Corbion portfolio premise (salmon and shrimp dominate, pet food is a minority)."""
+    cfg = cfg or load_config()
+    nw = cfg.get("niche_weights", {"salmon": 1.0, "shrimp": 1.0, "pet": 1.0})
+    floor = cfg.get("relevance_floor", 1.0)
     rows = []
     for niche, r in results.items():
         t = r["table"]
@@ -218,11 +224,17 @@ def overall(results: dict) -> pd.DataFrame:
                              niche_rank=int(t["rank"][c])))
     pairs = pd.DataFrame(rows)
     pairs["dha_need_t"] = pairs.dha_need_t.fillna(0.0)
+    pairs["niche_weight"] = pairs.niche.map(nw)
     out = []
     for c, g in pairs.groupby("country"):
-        w = g.dha_need_t / g.dha_need_t.sum() if g.dha_need_t.sum() > 0 else pd.Series(1 / len(g), index=g.index)
+        a = g.niche_weight * g.dha_need_t
+        w = a / a.sum() if a.sum() > 0 else g.niche_weight / g.niche_weight.sum()
+        need = g.dha_need_t / g.dha_need_t.sum() if g.dha_need_t.sum() > 0 else pd.Series(1 / len(g), index=g.index)
+        rel = float((g.niche_weight * need).sum() / max(nw.values()))
+        q = float((g.score * w).sum())
         best = g.sort_values("score", ascending=False).iloc[0]
-        out.append(dict(country=c, overall_score=float((g.score * w).sum()), dha_need_total_t=g.dha_need_t.sum(),
+        out.append(dict(country=c, overall_score=q * (floor + (1 - floor) * rel), quality_score=q, relevance=rel,
+                        dha_need_total_t=g.dha_need_t.sum(),
                         niches=", ".join(f"{n} ({s:.2f})" for n, s in zip(g.niche, g.score)),
                         best_niche=best.niche, best_niche_score=best.score, n_niches=len(g)))
     ov = pd.DataFrame(out).set_index("country")
@@ -236,7 +248,7 @@ def run_all(n_mc: int | None = None, charts: bool = True) -> dict:
     OUT.mkdir(parents=True, exist_ok=True)
     PROC.mkdir(parents=True, exist_ok=True)
     res = {n: run_niche(cfg, data, n, n_mc or cfg["mc_sims"], cfg["dirichlet_draws"]) for n in cfg["niches"]}
-    ov, pairs = overall(res)
+    ov, pairs = overall(res, cfg)
     pd.concat([r["data"] for r in res.values()]).sort_values(["niche", "country", "metric_id"]) \
         .to_csv(PROC / "market_inputs_long.csv", index=False)
     for n, r in res.items():

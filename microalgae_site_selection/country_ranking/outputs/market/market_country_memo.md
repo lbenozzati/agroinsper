@@ -6,7 +6,7 @@
 
 ## 1. Resposta
 
-**Ranking geral (top 5):** 1. Noruega (7,53, melhor nicho: salmão), 2. EUA (7,18, melhor nicho: pet food), 3. Chile (7,12, melhor nicho: salmão), 4. Reino Unido (6,58, melhor nicho: salmão), 5. França (6,30, melhor nicho: pet food).
+**Ranking geral (top 5):** 1. Noruega (7,53, melhor nicho: salmão), 2. Chile (7,12, melhor nicho: salmão), 3. Reino Unido (6,25, melhor nicho: salmão), 4. Equador (5,80, melhor nicho: camarão), 5. China (5,78, melhor nicho: camarão).
 
 - **Salmão:** 1º Noruega (7,53), 2º Chile (7,12), 3º Reino Unido (6,76). Noruega é 1º em 96% dos sorteios de pesos e em 74% das simulações de dados; só com métricas quantitativas o 1º é Noruega.
 - **Camarão:** 1º China (6,47), 2º Equador (6,14), 3º Vietnã (5,70). China é 1º em 74% dos sorteios de pesos e em 69% das simulações de dados; só com métricas quantitativas o 1º é China.
@@ -66,15 +66,15 @@
 | # | País | Score geral | DHA técnico total (t/ano) | Nichos (score) | Papel |
 |---|---|---|---|---|---|
 | 1 | Noruega | **7.53** | 13.091 | salmão (7.53) | consolidar |
-| 2 | EUA | **7.18** | 3.545 | salmão (4.60), pet (7.24) | consolidar |
-| 3 | Chile | **7.12** | 7.632 | salmão (7.12) | consolidar |
-| 4 | Reino Unido | **6.58** | 1.590 | salmão (6.76), pet (5.88) | consolidar |
-| 5 | França | **6.30** | 609 | pet (6.30) | consolidar |
-| 6 | Alemanha | **6.27** | 528 | pet (6.27) | consolidar |
-| 7 | China | **6.21** | 5.883 | salmão (4.83), camarão (6.47), pet (4.89) | consolidar |
-| 8 | Equador | **6.14** | 6.696 | camarão (6.14) | consolidar |
-| 9 | Itália | **6.12** | 222 | pet (6.12) | consolidar |
-| 10 | Espanha | **5.83** | 353 | pet (5.83) | consolidar |
+| 2 | Chile | **7.12** | 7.632 | salmão (7.12) | consolidar |
+| 3 | Reino Unido | **6.25** | 1.590 | salmão (6.76), pet (5.88) | consolidar |
+| 4 | Equador | **5.80** | 6.696 | camarão (6.14) | consolidar |
+| 5 | China | **5.78** | 5.883 | salmão (4.83), camarão (6.47), pet (4.89) | consolidar |
+| 6 | Vietnã | **5.38** | 3.024 | camarão (5.70) | expandir |
+| 7 | Nova Zelândia | **5.13** | 86 | salmão (5.13) | monitorar |
+| 8 | Ilhas Faroé | **5.13** | 729 | salmão (5.13) | expandir |
+| 9 | Islândia | **5.08** | 389 | salmão (5.08) | expandir |
+| 10 | Austrália | **4.99** | 640 | salmão (5.35), pet (6.02) | expandir |
 
 *Papel:* consolidar = acesso ≥ 5 no melhor nicho; expandir = acesso < 5 e tamanho/crescimento ≥ 5; monitorar = demais.
 

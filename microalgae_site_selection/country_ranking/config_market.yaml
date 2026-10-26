@@ -28,6 +28,11 @@ scenarios:
 # DHA technical need per kg of feed (g), from market_expansion nutrition_requirements.csv:
 # sum(stage share x EPA+DHA target x DHA share). Used for the derived DHA-need metric and the overall weights.
 dha_g_per_kg_feed: {salmon: 5.3, shrimp: 2.7, pet: 0.33}
+# Ranking geral (rev. 26/10): peso de cada nicho no portfólio Corbion (premissa do usuário: salmão e camarão dominam,
+# pet food é minoria). Entra (i) nos pesos entre nichos dentro do país e (ii) no fator de relevância:
+# geral = qualidade × (piso + (1 − piso) × relevância); relevância = peso médio do nicho na demanda do país / peso máximo.
+niche_weights: {salmon: 0.45, shrimp: 0.40, pet: 0.15}
+relevance_floor: 0.5
 risk_common:
   subcriteria:
     rk_country: {criterion: risk, label: "Risco país", weight: 0.65}
