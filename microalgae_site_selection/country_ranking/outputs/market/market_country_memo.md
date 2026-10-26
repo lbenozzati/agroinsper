@@ -8,7 +8,7 @@
 
 **Ranking geral (top 5):** 1. Noruega (7,60, melhor nicho: salmão), 2. EUA (7,20, melhor nicho: pet food), 3. Chile (7,07, melhor nicho: salmão), 4. Reino Unido (6,80, melhor nicho: salmão), 5. França (6,50, melhor nicho: pet food).
 
-- **Salmão:** 1º Noruega (7,60), 2º Chile (7,07), 3º Reino Unido (6,96). Noruega é 1º em 91% dos sorteios de pesos e em 71% das simulações de dados; só com métricas quantitativas o 1º é Noruega.
+- **Salmão:** 1º Noruega (7,60), 2º Chile (7,07), 3º Reino Unido (6,96). Noruega é 1º em 91% dos sorteios de pesos e em 69% das simulações de dados; só com métricas quantitativas o 1º é Noruega.
 - **Camarão:** 1º China (6,36), 2º Tailândia (6,17), 3º Equador (5,96). China é 1º em 44% dos sorteios de pesos e em 57% das simulações de dados; só com métricas quantitativas o 1º é China.
 - **Pet food:** 1º EUA (7,26), 2º França (6,50), 3º Alemanha (6,38). EUA é 1º em 87% dos sorteios de pesos e em 80% das simulações de dados; só com métricas quantitativas o 1º é EUA.
 
@@ -16,7 +16,7 @@
 
 ## 2. Rankings por nicho
 
-### Salmão – top 10 de 10 países avaliados
+### Salmão – top 10 de 11 países avaliados
 
 | # | País | Score | Tamanho/cresc. (30%) | Valor (20%) | Acesso (20%) | Regulação (15%) | Risco (15%) | Dias desde Orindiúva | DHA técnico (t) | P(1º) pesos | Cobertura de dados |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -28,8 +28,8 @@
 | 6 | Austrália | **5,68** | 4,4 | 7,5 | 5,9 | 5,0 | 6,2 | 34 | 492 | 0% | 80% |
 | 7 | Nova Zelândia | **5,58** | 4,2 | 10,0 | 1,2 | 5,0 | 8,9 | 30 | 86 | 2% | 75% |
 | 8 | Canadá | **4,98** | 3,5 | 4,4 | 4,6 | 5,0 | 9,1 | 32 | 729 | 0% | 79% |
-| 9 | EUA | **4,80** | 2,8 | 5,0 | 2,6 | 7,5 | 8,7 | 29 | 80 | 0% | 83% |
-| 10 | Turquia | **3,96** | 7,4 | 1,2 | 2,5 | 5,0 | 1,5 | 23 | 1.517 | 0% | 75% |
+| 9 | China | **4,98** | 6,2 | nan | 2,9 | 5,0 | 5,3 | 35 | 331 | 0% | 71% |
+| 10 | EUA | **4,80** | 2,8 | 5,0 | 2,6 | 7,5 | 8,7 | 29 | 80 | 0% | 83% |
 
 ### Camarão – top 10 de 12 países avaliados
 
@@ -72,7 +72,7 @@
 | 5 | França | **6.50** | 609 | pet (6.50) | consolidar |
 | 6 | Alemanha | **6.38** | 528 | pet (6.38) | consolidar |
 | 7 | Itália | **6.26** | 222 | pet (6.26) | consolidar |
-| 8 | China | **6.25** | 5.552 | camarão (6.36), pet (5.43) | expandir |
+| 8 | China | **6.18** | 5.883 | salmão (4.98), camarão (6.36), pet (5.43) | expandir |
 | 9 | Ilhas Faroé | **6.03** | 729 | salmão (6.03) | expandir |
 | 10 | Equador | **5.96** | 6.696 | camarão (5.96) | consolidar |
 

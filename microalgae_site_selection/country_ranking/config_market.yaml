@@ -32,7 +32,7 @@ risk_common:
 niches:
   salmon:
     label: Salmão
-    countries: [Norway, Chile, United Kingdom, Faroe Islands, Canada, Iceland, Australia, New Zealand, Turkey, United States]
+    countries: [Norway, Chile, United Kingdom, Faroe Islands, Canada, Iceland, Australia, New Zealand, Turkey, United States, China]
     subcriteria:
       sz_volume:  {criterion: size_growth, label: "Volume de produção e necessidade de DHA", weight: 0.65}
       sz_growth:  {criterion: size_growth, label: "Crescimento", weight: 0.35}
