@@ -140,6 +140,17 @@ def build_cells(cfg: dict) -> pd.DataFrame:
             else:
                 add(niche, c, "fc_competitor_documented", np.nan, "UNKNOWN", "1 = sim", "",
                     "Não encontrado ≠ ausente: tratado como desconhecido (sem bônus por falta de dado)")
+    # rubricas por componentes (canal e posição competitiva) com piso/teto; o registro segue como gate
+    for niche in cfg["market"]["niches"]:
+        td = {r["entity"].split("|")[1]: (np.nan, r["value"]) for r in rows
+              if r["niche"] == niche and r["metric_id"] == "ec_transit_days" and pd.notna(r["value"])}
+        rub = M.rubric_components(niche, td)
+        for x in rub.itertuples():
+            mid = {"canal": "ac_channel_rubric", "competicao": "fc_competitive_rubric"}.get(x.rubric)
+            if mid:
+                add(niche, x.country, mid, x.mid, "DERIVED", "0-10 (soma A-D)", "market_rubric_components.csv",
+                    x.detail[:240], formula="soma dos componentes A-D; faixa = componentes não encontrados",
+                    lo=x.lo, hi=x.hi)
     # salmão|China: dados brutos (p2b_salmon.csv) cobrem as métricas; o TAM técnico usa a faixa de produção
     rows = [r for r in rows if not (r["entity"] == "salmon|China" and r["metric_id"] == "dm_dha_tech_t")]
     g = cfg["market"]["dha_g_per_kg_feed"]["salmon"]

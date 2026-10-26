@@ -100,9 +100,15 @@ def test_judgment_share_sites_within_budget(site):
 
 
 def test_unknown_competitor_gets_no_bonus(mkt):
+    # concorrente não encontrado = faixa no componente A (nunca a nota máxima garantida no piso)
+    import pandas as pd
+    from src.plant import RAW
+    d = pd.read_csv(RAW / "market_rubric_components.csv")
+    a = d[(d.rubric == "competicao") & (d.component == "A") & d.evidence.str.contains("não encontrado")]
+    assert len(a) and (a.lo.astype(float) < a.hi.astype(float)).all()
     ev = mkt["evidence"]
-    unk = ev[(ev.metric_id == "fc_competitor_documented") & (ev.status == "UNKNOWN")]
-    assert (unk.score_lo == 0).all() and (unk.score_hi == 10).all()
+    r = ev[ev.metric_id == "fc_competitive_rubric"]
+    assert (r.score_lo <= r.score_hi).all() and (r.score_hi < 10).all()
 
 
 def test_rank_ranges_bracket_floor_rank(site, mkt):
@@ -152,3 +158,13 @@ def test_china_salmon_domestic_only():
     # só criação doméstica (~40-65 kt salmonídeos), nunca a importação de ~161 kt
     assert 250 < r.value < 500 and r.value_low < r.value < r.value_high
     assert set(c[c.entity == "salmon|China"].metric_id) == set(c[c.entity == "salmon|Norway"].metric_id)
+
+
+def test_rubric_components_bounds():
+    from src import market as M
+    caps = {"canal": 10, "registro": 10, "competicao": 10}
+    for n in ("salmon", "shrimp", "pet"):
+        r = M.rubric_components(n, {})
+        assert len(r) and (r.lo <= r.hi).all() and (r.lo >= 0).all()
+        assert all(h <= caps[k] for k, h in zip(r.rubric, r.hi))
+        assert set(r.rubric) == set(caps)

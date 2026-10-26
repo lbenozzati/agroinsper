@@ -8,13 +8,14 @@ soma do conjunto de pesos site/crescimento = 1,PASS,1.0000
 soma do conjunto de pesos site/atuais_mapeados = 1,PASS,1.0000
 soma dos pesos de critério (market) = 1,PASS,1.000000
 soma do conjunto de pesos market/proposto = 1,PASS,1.0000
+soma do conjunto de pesos market/pesos_15_10 = 1,PASS,1.0000
 soma do conjunto de pesos market/consolidacao = 1,PASS,1.0000
 soma do conjunto de pesos market/crescimento = 1,PASS,1.0000
 soma do conjunto de pesos market/custo = 1,PASS,1.0000
 soma do conjunto de pesos market/atuais_mapeados = 1,PASS,1.0000
 cobertura: verificado + julgamento + desconhecido = 1 (sites),PASS,por site
 piso ≤ ceiling em todas as entidades,PASS,
-julgamento explícito ≤ 10% do peso (meta),FAIL,máximo observado 21.2%
+julgamento explícito ≤ 10% do peso (meta),FAIL,máximo observado 19.5%
 nenhuma célula ASSUMPTION no score público,PASS,0 células ASSUMPTION
 toda fonte citada existe no source_registry,PASS,faltando: []
 nenhuma fonte marcada como lida integralmente sem acesso,PASS,

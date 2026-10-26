@@ -7,7 +7,7 @@
 - **Retorno incremental (B), só como cenário ASSUMPTION:** VPL do módulo de Orindiúva US$ 80 mi (TIR 23%) em renovação igual; Nakhon Sawan US$ 48 mi; Rayong US$ 23 mi; greenfield BR US$ 22 mi. O valor terminal é 120% do VPL de Orindiúva: sem ele, o VPL fica negativo até 2035. **Com dados públicos, VPL e TIR são 'não estimáveis'.**
 - **A renovação de dez/2026 decide o sinal do VPL:** 6 de 24 combinações site×cenário têm VPL negativo (renovar com preço/volume menor ou perder conta); take-or-pay ou âncora nova tornam todos os sites positivos. Nenhum resultado de renovação estava divulgado em 15/10/2026.
 - **Nenhum nicho sozinho** sustenta um módulo de 10 kt SKU sob as premissas v3 (VPL por nicho isolado de US$ -153 a -39 mi): o módulo depende do portfólio somado.
-- **Mercados (A):** Salmão = Noruega no piso (faixa 1–7); Camarão = China no piso (faixa 1–12); Pet food = EUA no piso (faixa 1–15). Consolidação (adoção histórica documentada) só em salmão Noruega/Chile/Reino Unido e camarão Tailândia; **nenhuma compra 2026 é documentada publicamente**. O preço líquido (25% × 60% do peso) é desconhecido em todos.
+- **Mercados (A):** Salmão = Chile no piso (faixa 1–3); Camarão = Equador no piso (faixa 1–5); Pet food = Polônia no piso (faixa 1–15). Consolidação (adoção histórica documentada) só em salmão Noruega/Chile/Reino Unido e camarão Tailândia; **nenhuma compra 2026 é documentada publicamente**. O preço líquido (25% × 60% do peso) é desconhecido em todos.
 - **Por que o melhor ranking público pode não ser o melhor investimento:** o ranking mede o que é público e comparável; o VPL depende de quatro números privados (capex do site, rendimento, preço 2027+ e volume contratado). Um site bem colocado pode ter VPL negativo (ex.: greenfield BR em R1/R4), e um mal colocado pode passar à frente no VPL: Nakhon Sawan supera Orindiúva em R3 maior (155 × 151 US$ mi).
 
 ## 2. Lado A – ranking público de sites (pesos propostos 40/25/15/15/5)
@@ -70,56 +70,56 @@ Astaxantina (Corbion–KAS): **não estimável** – desenvolvimento, sem capex,
 ### Salmão
 | # piso | País | Piso | Teto | Faixa | Verificado | Papel | Estágio de evidência | Gate SKU | TAM técnico t DHA |
 |---:|---|---:|---:|---|---:|---|---:|---|---:|
-| 1 | Noruega | 4,99 | 6,86 | 1–7 | 81% | consolidação | 6 | review | 13.091 |
-| 2 | Chile | 4,94 | 7,69 | 1–8 | 69% | consolidação | 6 | unknown | 7.632 |
-| 3 | Reino Unido | 4,35 | 6,97 | 1–10 | 74% | consolidação | 6 | review | 1.272 |
-| 4 | China | 3,30 | 6,18 | 1–11 | 72% | expansão | 3 | review | 344 |
-| 5 | Ilhas Faroé | 2,74 | 5,37 | 1–11 | 66% | expansão | 0 | unknown | 729 |
-| 6 | Islândia | 2,61 | 5,73 | 1–11 | 61% | expansão | 0 | unknown | 389 |
-| 7 | Turquia | 2,60 | 5,72 | 1–11 | 69% | expansão | 0 | unknown | 1.517 |
-| 8 | Austrália | 2,33 | 4,95 | 2–11 | 74% | expansão | 0 | unknown | 492 |
-| 9 | EUA | 2,30 | 4,30 | 4–11 | 72% | expansão | 0 | unknown | 80 |
-| 10 | Canadá | 2,20 | 4,58 | 3–11 | 76% | expansão | 0 | unknown | 729 |
-Consolidar: Noruega, Chile, Reino Unido; expandir (melhores pisos): China, Ilhas Faroé, Islândia, Turquia.
+| 1 | Chile | 5,98 | 8,10 | 1–3 | 80% | consolidação | 6 | unknown | 7.632 |
+| 2 | Noruega | 5,83 | 7,50 | 1–5 | 85% | consolidação | 6 | review | 13.091 |
+| 3 | Reino Unido | 4,78 | 7,31 | 1–8 | 85% | consolidação | 6 | review | 1.272 |
+| 4 | Turquia | 3,41 | 5,84 | 2–11 | 80% | expansão | 0 | unknown | 1.517 |
+| 5 | Ilhas Faroé | 3,27 | 5,27 | 3–11 | 78% | expansão | 0 | unknown | 729 |
+| 6 | Islândia | 3,10 | 5,95 | 2–11 | 73% | expansão | 0 | unknown | 389 |
+| 7 | China | 3,05 | 5,71 | 3–11 | 83% | expansão | 3 | review | 344 |
+| 8 | EUA | 2,60 | 4,30 | 4–11 | 76% | expansão | 0 | unknown | 80 |
+| 9 | Austrália | 2,46 | 4,63 | 4–11 | 85% | expansão | 0 | unknown | 492 |
+| 10 | Nova Zelândia | 2,18 | 4,68 | 4–11 | 73% | expansão | 0 | unknown | 86 |
+Consolidar: Chile, Noruega, Reino Unido; expandir (melhores pisos): Turquia, Ilhas Faroé, Islândia, China.
 
 ### Camarão
 | # piso | País | Piso | Teto | Faixa | Verificado | Papel | Estágio de evidência | Gate SKU | TAM técnico t DHA |
 |---:|---|---:|---:|---|---:|---|---:|---|---:|
-| 1 | China | 4,49 | 6,74 | 1–12 | 65% | expansão | 3 | review | 4.925 |
-| 2 | Equador | 4,43 | 7,05 | 1–12 | 61% | expansão | 0 | unknown | 6.696 |
-| 3 | Vietnã | 4,09 | 6,34 | 1–12 | 65% | expansão | 3 | unknown | 3.024 |
-| 4 | Tailândia | 3,66 | 5,91 | 1–12 | 56% | consolidação | 6 | review | 1.021 |
-| 5 | Brasil | 3,60 | 5,85 | 1–12 | 65% | expansão | 0 | unknown | 555 |
-| 6 | Índia | 3,12 | 5,37 | 1–12 | 65% | expansão | 0 | unknown | 3.969 |
-| 7 | Arábia Saudita | 3,00 | 5,62 | 1–12 | 52% | expansão | 0 | unknown | 245 |
-| 8 | Indonésia | 2,88 | 5,63 | 1–12 | 51% | expansão | 0 | unknown | 1.134 |
-| 9 | México | 2,71 | 5,33 | 1–12 | 61% | expansão | 0 | unknown | 816 |
-| 10 | Filipinas | 2,33 | 4,95 | 1–12 | 52% | expansão | 0 | unknown | 266 |
-Consolidar: Tailândia; expandir (melhores pisos): China, Equador, Vietnã, Brasil.
+| 1 | Equador | 5,82 | 7,92 | 1–5 | 73% | expansão | 0 | unknown | 6.696 |
+| 2 | Vietnã | 4,58 | 6,46 | 1–11 | 76% | expansão | 3 | unknown | 3.024 |
+| 3 | Brasil | 4,39 | 6,09 | 1–12 | 76% | expansão | 0 | unknown | 555 |
+| 4 | China | 4,29 | 5,99 | 1–12 | 76% | expansão | 3 | review | 4.925 |
+| 5 | Tailândia | 4,05 | 5,85 | 1–12 | 68% | consolidação | 6 | review | 1.021 |
+| 6 | Índia | 3,62 | 5,49 | 2–12 | 76% | expansão | 0 | unknown | 3.969 |
+| 7 | Arábia Saudita | 3,52 | 5,27 | 2–12 | 66% | expansão | 0 | unknown | 245 |
+| 8 | Indonésia | 3,38 | 5,75 | 2–12 | 64% | expansão | 0 | unknown | 1.134 |
+| 9 | México | 3,25 | 5,42 | 2–12 | 73% | expansão | 0 | unknown | 816 |
+| 10 | Honduras | 2,99 | 4,99 | 2–12 | 66% | expansão | 0 | unknown | 103 |
+Consolidar: Tailândia; expandir (melhores pisos): Equador, Vietnã, Brasil, China.
 
 ### Pet food
 | # piso | País | Piso | Teto | Faixa | Verificado | Papel | Estágio de evidência | Gate SKU | TAM técnico t DHA |
 |---:|---|---:|---:|---|---:|---|---:|---|---:|
-| 1 | EUA | 3,85 | 6,10 | 1–15 | 72% | expansão | 3 | review | 3.465 |
-| 2 | Polônia | 3,34 | 6,71 | 1–15 | 61% | expansão | 3 | review | 363 |
-| 3 | Itália | 3,29 | 6,67 | 1–15 | 61% | expansão | 3 | review | 222 |
-| 4 | Espanha | 3,28 | 6,66 | 1–15 | 61% | expansão | 3 | review | 353 |
-| 5 | Canadá | 3,11 | 6,48 | 1–15 | 61% | expansão | 3 | review | 287 |
-| 6 | Brasil | 2,89 | 5,89 | 1–15 | 65% | expansão | 0 | unknown | 1.320 |
-| 7 | China | 2,86 | 5,11 | 1–15 | 72% | expansão | 0 | review | 627 |
-| 8 | Alemanha | 2,84 | 6,22 | 1–15 | 61% | expansão | 3 | review | 528 |
-| 9 | França | 2,71 | 6,96 | 1–15 | 52% | expansão | 3 | review | 609 |
-| 10 | Tailândia | 2,60 | 5,98 | 1–15 | 61% | expansão | 0 | unknown | 362 |
-Consolidar: nenhum; expandir (melhores pisos): EUA, Polônia, Itália, Espanha.
+| 1 | Polônia | 4,41 | 7,51 | 1–15 | 73% | expansão | 3 | review | 363 |
+| 2 | Itália | 4,38 | 7,48 | 1–15 | 73% | expansão | 3 | review | 222 |
+| 3 | Espanha | 4,38 | 7,48 | 1–15 | 73% | expansão | 3 | review | 353 |
+| 4 | EUA | 4,37 | 6,92 | 1–15 | 76% | expansão | 3 | review | 3.465 |
+| 5 | Alemanha | 4,02 | 7,12 | 1–15 | 73% | expansão | 3 | review | 528 |
+| 6 | França | 3,92 | 7,72 | 1–15 | 66% | expansão | 3 | review | 609 |
+| 7 | Reino Unido | 3,87 | 7,14 | 1–15 | 73% | expansão | 0 | unknown | 318 |
+| 8 | Brasil | 3,86 | 6,31 | 1–15 | 76% | expansão | 0 | unknown | 1.320 |
+| 9 | Canadá | 3,58 | 6,85 | 1–15 | 73% | expansão | 3 | review | 287 |
+| 10 | Tailândia | 3,38 | 6,13 | 1–15 | 73% | expansão | 0 | unknown | 362 |
+Consolidar: nenhum; expandir (melhores pisos): Polônia, Itália, Espanha, EUA.
 
-**Pares país×nicho (objetivo declarado: escolher os próximos pares a trabalhar; não é média de nichos):** Salmão·Noruega 4,99; Salmão·Chile 4,94; Camarão·China 4,49; Camarão·Equador 4,43; Salmão·Reino Unido 4,35; Camarão·Vietnã 4,09; Pet food·EUA 3,85; Camarão·Tailândia 3,66; Camarão·Brasil 3,60; Pet food·Polônia 3,34.
+**Pares país×nicho (objetivo declarado: escolher os próximos pares a trabalhar; não é média de nichos):** Salmão·Chile 5,98; Salmão·Noruega 5,83; Camarão·Equador 5,82; Salmão·Reino Unido 4,78; Camarão·Vietnã 4,58; Pet food·Polônia 4,41; Camarão·Brasil 4,39; Pet food·Itália 4,38; Pet food·Espanha 4,38; Pet food·EUA 4,37.
 
 **Contas com maior evidência** (sem score composto; potencial técnico ≠ compra): BioMar Norway Myre (historical_adoption, 1.908 t DHA técnicas); BioMar Norway Karmøy (historical_adoption, 1.908 t DHA técnicas); BioMar Chile Pargua (2 plantas) (historical_adoption, 954 t DHA técnicas); BioMar Chile Ercilla (historical_adoption, 636 t DHA técnicas); BioMar Group (grupo; 16 fábricas) (historical_adoption, n/d t DHA técnicas); BioMar UK Grangemouth (Escócia) (historical_adoption, n/d t DHA técnicas).
 
 ## 6. O que poderia inverter as comparações-chave
-- **Salmão: Noruega × Chile** – documento isolado que pode inverter: Concorrente algal documentado no país×nicho (1 = sim), Preço líquido realizável (US$/kg DHA), Volatilidade cambial do destino (%/ano); pesos de virada (piso): acesso a 20%, economia a 28%, risco a 6%.
-- **Camarão: China × Tailândia** – documento isolado que pode inverter: Preço líquido realizável (US$/kg DHA); pesos de virada (piso): demanda a 2%, acesso a 92%, risco a 53%.
-- **Pet food: EUA × França** – documento isolado que pode inverter: Preço líquido realizável (US$/kg DHA); pesos de virada (piso): nenhum entre 0 e 95%.
+- **Salmão: Noruega × Chile** – documento isolado que pode inverter: Canal Corbion: estágio + cobertura + profundidade + presença (0-10), Preço líquido realizável (US$/kg DHA), Tarifa de importação do ingrediente (%); pesos de virada (piso): demanda a 64%, acesso a 38%, economia a 8%, adequacao a 12%, risco a 20%.
+- **Camarão: China × Tailândia** – documento isolado que pode inverter: Canal Corbion: estágio + cobertura + profundidade + presença (0-10), Posição competitiva: concorrência + ajuste + custo entregue + marca (0-10), Preço líquido realizável (US$/kg DHA); pesos de virada (piso): demanda a 14%, acesso a 8%, adequacao a 31%, risco a 29%.
+- **Pet food: EUA × França** – documento isolado que pode inverter: Crescimento esperado (%/ano), Grandes fabricantes com fábrica no país (nº), Posição competitiva: concorrência + ajuste + custo entregue + marca (0-10), Preço líquido realizável (US$/kg DHA); pesos de virada (piso): demanda a 2%, adequacao a 39%.
 - **Brasil × Tailândia (sites):** nenhum documento isolado inverte Orindiúva × Nakhon Sawan/Rayong pelo piso; no VPL (ASSUMPTION): Nakhon Sawan supera Orindiúva em R3 maior (155 × 151 US$ mi). A base da v3 já supõe BOI de 8 anos; sem BOI, o VPL de Nakhon Sawan vai de US$ 48 mi para US$ 47 mi (o top-up de 15% do Pilar Dois neutraliza quase todo o benefício na modelagem v3) – e nenhum certificado BOI existe.
 
 ## 7. Robustez, correlação e circularidade
@@ -131,9 +131,9 @@ Consolidar: nenhum; expandir (melhores pisos): EUA, Polônia, Itália, Espanha.
 ## 8. Auditoria e verificações
 - 21 afirmações auditadas em claims_audit.csv (ex.: tetos da LO ≠ capacidade; cepa S2014 × Schizochytrium; 5 × 6 fermentadores; Aqueduct 0 × Corbion AR 'alto risco' em Orindiúva; nota 10 por 'único produtor' removida; GMI com versões conflitantes; '2/3 em contratos' não confirmado).
 - Fontes: L2_search_digest: 29, L3_prior_session: 11, L1_user_brief: 6, L0_unavailable: 4. **Nenhuma fonte primária pôde ser aberta integralmente neste ambiente** (hosts bloqueados); o que veio do brief está como L1 e o que veio de trechos de busca como L2 – nenhum número foi tratado como lido do documento original.
-- Meta de julgamento ≤ 10%: sites 5%; Salmão até 8%; Camarão até 21%; Pet food até 5%. **Camarão não atinge a meta** (contagem de fabricantes, escore de doença e projeção de crescimento vêm de 'conhecimento do analista'); por isso o ranking de camarão não deve ser chamado de robusto.
-- Verificações automáticas (automated_checks.csv): PASS: 25, FAIL: 1.
-  - FAIL: julgamento explícito ≤ 10% do peso (meta) – máximo observado 21.2%
+- Meta de julgamento ≤ 10%: sites 5%; Salmão até 8%; Camarão até 20%; Pet food até 5%. **Camarão não atinge a meta** (contagem de fabricantes, escore de doença e projeção de crescimento vêm de 'conhecimento do analista'); por isso o ranking de camarão não deve ser chamado de robusto.
+- Verificações automáticas (automated_checks.csv): PASS: 26, FAIL: 1.
+  - FAIL: julgamento explícito ≤ 10% do peso (meta) – máximo observado 19.5%
 
 ## 9. O que mudou em relação a 14/10/2026
 - Ranking de país → ranking de **site** (4 projetos) + gates; regulação e incentivos saíram do score.

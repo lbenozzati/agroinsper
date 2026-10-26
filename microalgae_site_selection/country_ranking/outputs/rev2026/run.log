@@ -1,6 +1,6 @@
-2026-10-26 13:24:22,951 INFO site ranking
-2026-10-26 13:24:23,592 INFO market ranking
-2026-10-26 13:24:25,396 INFO economics (v3 adapter)
-2026-10-26 13:24:42,679 INFO migration / registers
-2026-10-26 13:24:42,797 INFO charts
-2026-10-26 13:24:49,983 INFO done; checks: {'PASS': 25, 'FAIL': 1}
+2026-10-26 14:30:22,662 INFO site ranking
+2026-10-26 14:30:23,211 INFO market ranking
+2026-10-26 14:30:25,350 INFO economics (v3 adapter)
+2026-10-26 14:30:45,210 INFO migration / registers
+2026-10-26 14:30:45,309 INFO charts
+2026-10-26 14:30:52,415 INFO done; checks: {'PASS': 26, 'FAIL': 1}

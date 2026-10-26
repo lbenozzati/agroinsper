@@ -1,6 +1,6 @@
 ,demanda_floor,acesso_floor,economia_floor,adequacao_floor,risco_floor
-demanda_floor,1.0,0.414,0.057,0.2,0.066
-acesso_floor,0.414,1.0,0.114,0.307,-0.033
-economia_floor,0.057,0.114,1.0,-0.06,0.086
-adequacao_floor,0.2,0.307,-0.06,1.0,-0.404
-risco_floor,0.066,-0.033,0.086,-0.404,1.0
+demanda_floor,1.0,0.54,0.057,0.031,0.066
+acesso_floor,0.54,1.0,0.186,0.102,-0.031
+economia_floor,0.057,0.186,1.0,0.202,0.086
+adequacao_floor,0.031,0.102,0.202,1.0,0.372
+risco_floor,0.066,-0.031,0.086,0.372,1.0

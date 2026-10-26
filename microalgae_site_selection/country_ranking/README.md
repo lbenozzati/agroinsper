@@ -130,3 +130,25 @@ Saídas em `outputs/market/`: `market_ranking_{salmon,shrimp,pet}.csv`, `market_
 - Sem preço de açúcar para México, Equador e Chile; OECD FDI Index só existia para 3 países e ficou fora do score.
 - Salários com definições diferentes; Aqueduct 3.0 (portal 4.0 bloqueado); rotas ±10%.
 - `data/raw/market_research_partial/` guarda a primeira tentativa (incompleta) da pesquisa do Prompt 2.
+
+## Rubricas por componentes (rev. 26/10/2026)
+
+As rubricas de degrau único (canal 0/2,5/5/7,5/10 e registro) foram substituídas por notas somadas de componentes,
+cada ponto com evidência e fonte em `data/raw/market_rubric_components.csv` (gerado por
+`data/raw/tools/build_rubric_components.py`). Componente sem evidência entra como faixa (piso–teto); o modelo 14/10
+usa o ponto médio, a revisão 15/10 usa piso e teto.
+
+- **Canal (0-10):** A estágio comercial 0-4 (4 compra recorrente ≤12 meses; 3 compra pontual/adoção histórica; 2 teste;
+  1 canal formal/cliente global com fábrica; evidência >3 anos perde 1); B cobertura do canal na ração do país 0-3
+  (≥50% / 20-50% / <20%); C profundidade 0-2 (nº de clientes independentes); D presença Corbion 0-1.
+- **Registro (0-10):** A status legal 0-4 (4 registro com nº verificado; 3 aprovação anunciada ou uso comercial;
+  2 catálogo genérico; 1 pedido protocolado); B prazo 0-2; C barreiras específicas 0-2; D incentivo regulatório/
+  certificação ao DHA de algas 0-2. Tarifa fica fora (métrica própria).
+- **Posição competitiva (0-10, novo):** A concorrência algal documentada 0-3 (não encontrado = faixa 2-3); B ajuste
+  do produto ao nicho 0-3 (salmão 1: só DHA vs Veramaris EPA+DHA; camarão 2; pet 2); C custo entregue 0-2 (C1 sem
+  produção concorrente local; C2 prazo desde Orindiúva ≤25 dias); D alavanca de marca/sustentabilidade 0-2.
+- **Pesos:** modelo 14/10 – acesso/posição competitiva 20%→30% (dentro: competição 30%, canal 20%, adoção 20%,
+  fábricas 15%, logística 15%); tamanho 30%→25%, valor 20%→15%; cenário "Pesos 14-10" mantém os antigos.
+  Revisão 15/10 – posição competitiva 15%→25%, demanda e economia 25%→20%; conjunto `pesos_15_10` mantém os antigos.
+  Racional: ingrediente B2B vendido a poucas fábricas de ração; a venda é decidida contra Veramaris, óleo de peixe e
+  DHA algal local, não pelo tamanho do país.

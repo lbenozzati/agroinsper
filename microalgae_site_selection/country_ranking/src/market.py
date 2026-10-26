@@ -80,6 +80,33 @@ def transit_days(niche: str) -> dict:
     return out
 
 
+RUBRIC_METRIC = {"canal": "{p}_relationship", "registro": "{p}_registration", "competicao": "{p}_competitive"}
+TRANSIT_OK_DAYS = 25.0
+
+
+def rubric_components(niche: str, transit: dict | None = None) -> pd.DataFrame:
+    """Component rubrics (data/raw/market_rubric_components.csv): one row per country × rubric with the
+    floor/ceiling sum of A-D and the midpoint used as the score. C2 of 'competicao' = 1 if transit ≤ 25 days."""
+    f = RAW / "market_rubric_components.csv"
+    if not f.exists():
+        return pd.DataFrame(columns=["country", "rubric", "lo", "hi", "mid", "detail"])
+    d = pd.read_csv(f)
+    d = d[d.niche == niche].astype({"lo": object, "hi": object, "evidence": object}).copy()
+    for i in d.index[d.lo == "transit"]:
+        days = (transit or {}).get(d.at[i, "country"], (np.nan, np.nan))[1]
+        ok = float(days <= TRANSIT_OK_DAYS) if not np.isnan(days) else np.nan
+        d.loc[i, ["lo", "hi"]] = (0.0, 1.0) if np.isnan(ok) else (ok, ok)
+        d.at[i, "evidence"] = f"prazo desde Orindiúva {days:.0f} dias (limite {TRANSIT_OK_DAYS:.0f})"
+    d[["lo", "hi"]] = d[["lo", "hi"]].astype(float)
+    rows = []
+    for (c, r), g in d.groupby(["country", "rubric"]):
+        lo, hi = g.lo.sum(), g.hi.sum()
+        det = "; ".join(f"{x.component}={x.lo:g}" + (f"-{x.hi:g}" if x.hi != x.lo else "") + f" ({x.evidence})"
+                        for x in g.itertuples())
+        rows.append(dict(country=c, rubric=r, lo=lo, hi=hi, mid=(lo + hi) / 2, detail=det))
+    return pd.DataFrame(rows)
+
+
 def derive(data: pd.DataFrame, cfg: dict, niche: str) -> pd.DataFrame:
     """Per-niche frame: niche metrics + shared country risk + derived DHA need and FX volatility."""
     countries = cfg["niches"][niche]["countries"]
@@ -109,8 +136,16 @@ def derive(data: pd.DataFrame, cfg: dict, niche: str) -> pd.DataFrame:
             ch = np.diff(np.log(fx))
             rows.append(_row(c, "sr_fx_volatility", round(float(np.sqrt(np.mean(ch ** 2)) * 100), 2), "%", "2020-2025",
                              "Derived: RMS of annual log changes of LCU/USD", "", "Medium", "reported"))
+    rub = rubric_components(niche, td)
+    rub_ids = [v.format(p=pref) for v in RUBRIC_METRIC.values()]
+    for x in rub[rub.country.isin(countries)].itertuples():
+        rows.append(_row(x.country, RUBRIC_METRIC[x.rubric].format(p=pref), round(x.mid, 2), "rubric 0-10", "2026",
+                         f"Rubrica por componentes: faixa {x.lo:g}-{x.hi:g}", "", "Medium" if x.hi - x.lo <= 2 else "Low",
+                         "estimate"))
+        rows[-1]["notes"] = x.detail[:900]
     der = pd.DataFrame(rows, columns=COLS)
-    out = pd.concat([d[~d.metric_id.isin(["dha_need_t", "sr_fx_volatility", f"{pref}_transit_days"])], der],
+    drop = ["dha_need_t", "sr_fx_volatility", f"{pref}_transit_days"] + (rub_ids if len(rub) else [])
+    out = pd.concat([d[~d.metric_id.isin(drop)], der],
                     ignore_index=True)
     out["niche"] = niche
     return out

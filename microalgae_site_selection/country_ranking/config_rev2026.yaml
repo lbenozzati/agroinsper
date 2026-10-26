@@ -61,10 +61,12 @@ site:
 market:
   niches: {salmon: "Salmão", shrimp: "Camarão", pet: "Pet food"}
   criteria:
-    demanda:    {label: "Demanda técnica endereçável", weight: 0.25}
-    acesso:     {label: "Acesso comercial comprovado", weight: 0.25}
-    economia:   {label: "Economia para a Corbion", weight: 0.25}
-    adequacao:  {label: "Adequação do produto e concorrência", weight: 0.15}
+    # rev. 26/10: posição competitiva 15% -> 25% (venda B2B decidida contra Veramaris/óleo de peixe/DHA local);
+    # demanda e economia 25% -> 20%. Canal e competição viram rubricas por componentes A-D com piso/teto.
+    demanda:    {label: "Demanda técnica endereçável", weight: 0.20}
+    acesso:     {label: "Acesso e canal comprovados", weight: 0.25}
+    economia:   {label: "Economia para a Corbion", weight: 0.20}
+    adequacao:  {label: "Posição competitiva e adequação do produto", weight: 0.25}
     risco:      {label: "Risco de demanda", weight: 0.10}
   # TAM técnico (t DHA/ano) = ração (t) × EPA+DHA alvo (g/kg) × fração DHA do alvo / 1000  (market_expansion/nutrition_requirements)
   dha_g_per_kg_feed: {salmon: 5.3, shrimp: 2.7, pet: 0.33}
@@ -73,17 +75,17 @@ market:
   metrics:
     dm_dha_tech_t:      {criterion: demanda, weight: 0.65, worst: 30, best: 10000, scale: log, label: "TAM técnico de DHA (t/ano, derivado)"}
     dm_growth:          {criterion: demanda, weight: 0.35, worst: -2, best: 8, scale: linear, label: "Crescimento esperado (%/ano)"}
-    ac_evidence_stage:  {criterion: acesso, weight: 0.70, worst: 0, best: 10, scale: linear, label: "Estágio de evidência da melhor conta (0-10)"}
+    ac_channel_rubric:  {criterion: acesso, weight: 0.70, worst: 0, best: 10, scale: linear, label: "Canal Corbion: estágio + cobertura + profundidade + presença (0-10)"}
     ac_feed_plants:     {criterion: acesso, weight: 0.30, worst: 0, best: 6, scale: linear, label: "Grandes fabricantes com fábrica no país (nº)"}
     ec_net_price:       {criterion: economia, weight: 0.60, worst: 10, best: 30, scale: linear, label: "Preço líquido realizável (US$/kg DHA)"}
     ec_transit_days:    {criterion: economia, weight: 0.25, worst: 45, best: 3, scale: linear, label: "Prazo de entrega desde Orindiúva (dias)"}
     ec_tariff_pct:      {criterion: economia, weight: 0.15, worst: 15, best: 0, scale: linear, label: "Tarifa de importação do ingrediente (%)"}
-    fc_dha_fit:         {criterion: adequacao, weight: 0.50, worst: 0, best: 1, scale: linear, label: "Cobertura do alvo EPA+DHA por produto só-DHA"}
-    fc_competitor_documented: {criterion: adequacao, weight: 0.50, worst: 1, best: 0, scale: linear, label: "Concorrente algal documentado no país×nicho (1 = sim)"}
+    fc_competitive_rubric: {criterion: adequacao, weight: 1.0, worst: 0, best: 10, scale: linear, label: "Posição competitiva: concorrência + ajuste + custo entregue + marca (0-10)"}
     rk_fx_vol:          {criterion: risco, weight: 0.50, worst: 15, best: 0, scale: linear, label: "Volatilidade cambial do destino (%/ano)"}
     rk_bio:             {criterion: risco, weight: 0.50, worst: 10, best: 0, scale: linear, label: "Risco biológico/de canal (0-10, maior = pior)"}
   weight_sets:
-    proposto:     {demanda: 0.25, acesso: 0.25, economia: 0.25, adequacao: 0.15, risco: 0.10}
+    proposto:     {demanda: 0.20, acesso: 0.25, economia: 0.20, adequacao: 0.25, risco: 0.10}
+    pesos_15_10:  {demanda: 0.25, acesso: 0.25, economia: 0.25, adequacao: 0.15, risco: 0.10}
     consolidacao: {demanda: 0.20, acesso: 0.40, economia: 0.20, adequacao: 0.10, risco: 0.10}
     crescimento:  {demanda: 0.40, acesso: 0.10, economia: 0.25, adequacao: 0.15, risco: 0.10}
     custo:        {demanda: 0.20, acesso: 0.20, economia: 0.40, adequacao: 0.10, risco: 0.10}

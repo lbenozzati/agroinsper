@@ -10,11 +10,16 @@ base_scenario: Base Case
 criteria:
   size_growth: Tamanho e crescimento
   value: Valor e disposição a pagar
-  access: Acesso a clientes e posição competitiva
+  access: Acesso, canal e posição competitiva da Corbion
   regulatory: Regulação e acesso comercial
   risk: Risco país e biológico
+# Base Case (rev. 26/10): acesso/posição competitiva sobe de 20% para 30%. Racional: AlgaPrime é ingrediente B2B vendido a
+# poucas fábricas de ração; a venda é decidida contra Veramaris/óleo de peixe/DHA algal local, não pelo tamanho do país.
+# Um mercado grande onde o concorrente já tem o contrato vale menos que um médio com canal e vantagem de custo.
+# Tamanho cai para 25% (já entra em escala log e repete o TAM), valor para 15% (preço do peixe ≠ preço do ingrediente).
 scenarios:
-  Base Case:     {size_growth: 0.30, value: 0.20, access: 0.20, regulatory: 0.15, risk: 0.15}
+  Base Case:     {size_growth: 0.25, value: 0.15, access: 0.30, regulatory: 0.15, risk: 0.15}
+  Pesos 14-10:   {size_growth: 0.30, value: 0.20, access: 0.20, regulatory: 0.15, risk: 0.15}
   Consolidação:  {size_growth: 0.20, value: 0.20, access: 0.35, regulatory: 0.15, risk: 0.10}
   Crescimento:   {size_growth: 0.40, value: 0.20, access: 0.10, regulatory: 0.15, risk: 0.15}
   Mercado e regulação: {size_growth: 0.25, value: 0.25, access: 0.15, regulatory: 0.25, risk: 0.10}
@@ -39,10 +44,11 @@ niches:
       sz_growth:  {criterion: size_growth, label: "Crescimento", weight: 0.35}
       vl_price:   {criterion: value, label: "Valor do produto final", weight: 0.60}
       vl_premium: {criterion: value, label: "Exigência de certificação/sustentabilidade", weight: 0.40}
-      ac_adopt:   {criterion: access, label: "Adoção documentada de DHA de algas", weight: 0.30}
-      ac_feed:    {criterion: access, label: "Fábricas de ração dos grandes clientes", weight: 0.25}
-      ac_rel:     {criterion: access, label: "Relacionamento Corbion/canal", weight: 0.20}
-      ac_log:     {criterion: access, label: "Logística até o cliente (a partir de Orindiúva)", weight: 0.25}
+      ac_adopt:   {criterion: access, label: "Adoção documentada de DHA de algas", weight: 0.20}
+      ac_feed:    {criterion: access, label: "Fábricas de ração dos grandes clientes", weight: 0.15}
+      ac_rel:     {criterion: access, label: "Canal Corbion (rubrica por componentes)", weight: 0.20}
+      ac_comp:    {criterion: access, label: "Posição competitiva da Corbion vs. concorrentes", weight: 0.30}
+      ac_log:     {criterion: access, label: "Logística até o cliente (a partir de Orindiúva)", weight: 0.15}
       rg_tariff:  {criterion: regulatory, label: "Tarifa de importação do ingrediente", weight: 0.50}
       rg_reg:     {criterion: regulatory, label: "Registro do ingrediente", weight: 0.50}
     metrics:
@@ -57,9 +63,10 @@ niches:
       sal_certification_share:  {sub: vl_premium, weight: 1.0, method: linear, worst: 0, best: 80, label: "Produção certificada ASC (%)"}
       sal_algal_dha_adoption:   {sub: ac_adopt, weight: 1.0, method: linear, worst: 0, best: 1, label: "Adoção de DHA de algas (0/0,5/1)"}
       sal_feed_suppliers:       {sub: ac_feed, weight: 1.0, method: linear, worst: 0, best: 4, label: "BioMar/Skretting/Cargill/Mowi com fábrica (nº)"}
-      sal_relationship:         {sub: ac_rel, weight: 1.0, method: rubric, label: "Relacionamento Corbion/canal (rubrica)"}
+      sal_relationship:         {sub: ac_rel, weight: 1.0, method: rubric, label: "Canal Corbion (A estágio + B cobertura + C profundidade + D presença)"}
+      sal_competitive:          {sub: ac_comp, weight: 1.0, method: rubric, label: "Posição competitiva (A concorrência + B ajuste + C custo + D marca)"}
       sal_market_access_tariff: {sub: rg_tariff, weight: 1.0, method: linear, worst: 15, best: 0, label: "Tarifa MFN do ingrediente (%)"}
-      sal_registration:          {sub: rg_reg, weight: 1.0, method: rubric, label: "Facilidade de registro (rubrica)"}
+      sal_registration:          {sub: rg_reg, weight: 1.0, method: rubric, label: "Registro (A status + B prazo + C barreiras + D incentivo)"}
       sal_mortality_pct:        {sub: rk_bio, weight: 1.0, method: linear, worst: 25, best: 5, label: "Mortalidade no mar (%)"}
   shrimp:
     label: Camarão
@@ -69,10 +76,11 @@ niches:
       sz_growth:  {criterion: size_growth, label: "Crescimento", weight: 0.35}
       vl_price:   {criterion: value, label: "Valor do produto final (exportação)", weight: 0.45}
       vl_intens:  {criterion: value, label: "Intensificação e larvicultura (uso de DHA)", weight: 0.55}
-      ac_adopt:   {criterion: access, label: "Adoção documentada de DHA de algas", weight: 0.30}
-      ac_feed:    {criterion: access, label: "Fábricas de ração dos grandes clientes", weight: 0.25}
-      ac_rel:     {criterion: access, label: "Relacionamento Corbion/canal", weight: 0.20}
-      ac_log:     {criterion: access, label: "Logística até o cliente (a partir de Orindiúva)", weight: 0.25}
+      ac_adopt:   {criterion: access, label: "Adoção documentada de DHA de algas", weight: 0.20}
+      ac_feed:    {criterion: access, label: "Fábricas de ração dos grandes clientes", weight: 0.15}
+      ac_rel:     {criterion: access, label: "Canal Corbion (rubrica por componentes)", weight: 0.20}
+      ac_comp:    {criterion: access, label: "Posição competitiva da Corbion vs. concorrentes", weight: 0.30}
+      ac_log:     {criterion: access, label: "Logística até o cliente (a partir de Orindiúva)", weight: 0.15}
       rg_tariff:  {criterion: regulatory, label: "Tarifa de importação do ingrediente", weight: 0.50}
       rg_reg:     {criterion: regulatory, label: "Registro do ingrediente", weight: 0.50}
     metrics:
@@ -88,9 +96,10 @@ niches:
       shr_hatchery_pl_billion:     {sub: vl_intens, weight: 0.50, method: log, worst: 1, best: 300, label: "Pós-larvas (bilhões/ano)"}
       shr_algal_dha_adoption:      {sub: ac_adopt, weight: 1.0, method: linear, worst: 0, best: 1, label: "Adoção de DHA de algas (0/0,5/1)"}
       shr_feed_suppliers:          {sub: ac_feed, weight: 1.0, method: linear, worst: 0, best: 6, label: "Grandes fabricantes de ração com fábrica (nº)"}
-      shr_relationship:            {sub: ac_rel, weight: 1.0, method: rubric, label: "Relacionamento Corbion/canal (rubrica)"}
+      shr_relationship:            {sub: ac_rel, weight: 1.0, method: rubric, label: "Canal Corbion (A estágio + B cobertura + C profundidade + D presença)"}
+      shr_competitive:             {sub: ac_comp, weight: 1.0, method: rubric, label: "Posição competitiva (A concorrência + B ajuste + C custo + D marca)"}
       shr_import_tariff:           {sub: rg_tariff, weight: 1.0, method: linear, worst: 20, best: 0, label: "Tarifa MFN do ingrediente (%)"}
-      shr_feed_ingredient_regulation: {sub: rg_reg, weight: 1.0, method: linear, worst: 0, best: 1, label: "Facilidade de registro (0/0,5/1)"}
+      shr_registration:            {sub: rg_reg, weight: 1.0, method: rubric, label: "Registro (A status + B prazo + C barreiras + D incentivo)"}
       shr_disease_risk:            {sub: rk_bio, weight: 1.0, method: linear, worst: 5, best: 1, label: "Pressão de doenças (1-5)"}
   pet:
     label: Pet food
@@ -100,10 +109,11 @@ niches:
       sz_growth:  {criterion: size_growth, label: "Crescimento", weight: 0.35}
       vl_premium: {criterion: value, label: "Premiumização", weight: 0.55}
       vl_claims:  {criterion: value, label: "Demanda por ômega-3/DHA", weight: 0.45}
-      ac_adopt:   {criterion: access, label: "Adoção documentada de DHA de algas", weight: 0.30}
-      ac_feed:    {criterion: access, label: "Fábricas dos grandes fabricantes", weight: 0.25}
-      ac_rel:     {criterion: access, label: "Relacionamento Corbion/canal", weight: 0.20}
-      ac_log:     {criterion: access, label: "Logística até o cliente (a partir de Orindiúva)", weight: 0.25}
+      ac_adopt:   {criterion: access, label: "Adoção documentada de DHA de algas", weight: 0.20}
+      ac_feed:    {criterion: access, label: "Fábricas dos grandes fabricantes", weight: 0.15}
+      ac_rel:     {criterion: access, label: "Canal Corbion (rubrica por componentes)", weight: 0.20}
+      ac_comp:    {criterion: access, label: "Posição competitiva da Corbion vs. concorrentes", weight: 0.30}
+      ac_log:     {criterion: access, label: "Logística até o cliente (a partir de Orindiúva)", weight: 0.15}
       rg_tariff:  {criterion: regulatory, label: "Tarifa de importação do ingrediente", weight: 0.50}
       rg_reg:     {criterion: regulatory, label: "Registro do ingrediente", weight: 0.50}
     metrics:
@@ -118,7 +128,8 @@ niches:
       pet_omega3_claims:       {sub: vl_claims, weight: 1.0, method: linear, worst: 1, best: 5, label: "Demanda por ômega-3 (1-5)"}
       pet_algal_dha_adoption:  {sub: ac_adopt, weight: 1.0, method: linear, worst: 0, best: 1, label: "Adoção de DHA de algas (0/0,5/1)"}
       pet_manufacturers:       {sub: ac_feed, weight: 1.0, method: linear, worst: 0, best: 20, label: "Fábricas dos grandes fabricantes (nº)"}
-      pet_relationship:        {sub: ac_rel, weight: 1.0, method: rubric, label: "Relacionamento Corbion/canal (rubrica)"}
+      pet_relationship:        {sub: ac_rel, weight: 1.0, method: rubric, label: "Canal Corbion (A estágio + B cobertura + C profundidade + D presença)"}
+      pet_competitive:         {sub: ac_comp, weight: 1.0, method: rubric, label: "Posição competitiva (A concorrência + B ajuste + C custo + D marca)"}
       pet_import_tariff:       {sub: rg_tariff, weight: 1.0, method: linear, worst: 20, best: 0, label: "Tarifa MFN do ingrediente (%)"}
-      pet_ingredient_regulation: {sub: rg_reg, weight: 1.0, method: linear, worst: 0, best: 1, label: "Facilidade de registro (0/0,5/1)"}
+      pet_registration:        {sub: rg_reg, weight: 1.0, method: rubric, label: "Registro (A status + B prazo + C barreiras + D incentivo)"}
       pet_market_risk:      {sub: rk_bio, weight: 1.0, method: rubric, label: "Risco de mercado/recall/canal (rubrica)"}

@@ -11,6 +11,7 @@ sal_certification_share,0.09,False,salmon
 sal_algal_dha_adoption,1.0,True,salmon
 sal_feed_suppliers,1.0,True,salmon
 sal_relationship,1.0,True,salmon
+sal_competitive,1.0,True,salmon
 sal_market_access_tariff,0.27,False,salmon
 sal_registration,1.0,True,salmon
 sal_mortality_pct,0.45,True,salmon
