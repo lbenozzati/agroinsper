@@ -17,6 +17,7 @@ scenarios:
   Base Case:     {size_growth: 0.30, value: 0.20, access: 0.20, regulatory: 0.15, risk: 0.15}
   Consolidação:  {size_growth: 0.20, value: 0.20, access: 0.35, regulatory: 0.15, risk: 0.10}
   Crescimento:   {size_growth: 0.40, value: 0.20, access: 0.10, regulatory: 0.15, risk: 0.15}
+  Mercado e regulação: {size_growth: 0.25, value: 0.25, access: 0.15, regulatory: 0.25, risk: 0.10}
 # DHA technical need per kg of feed (g), from market_expansion nutrition_requirements.csv:
 # sum(stage share x EPA+DHA target x DHA share). Used for the derived DHA-need metric and the overall weights.
 dha_g_per_kg_feed: {salmon: 5.3, shrimp: 2.7, pet: 0.33}

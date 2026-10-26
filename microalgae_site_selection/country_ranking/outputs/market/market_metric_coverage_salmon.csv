@@ -6,7 +6,7 @@ sal_production_t,1.0,True,salmon
 dha_need_t,1.0,True,salmon
 sal_growth_5y_cagr,0.45,True,salmon
 sal_growth_outlook_2030,1.0,True,salmon
-sal_price_usd_kg,0.91,True,salmon
+sal_price_usd_kg,1.0,True,salmon
 sal_certification_share,0.09,False,salmon
 sal_algal_dha_adoption,1.0,True,salmon
 sal_feed_suppliers,1.0,True,salmon
