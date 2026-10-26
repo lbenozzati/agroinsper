@@ -152,3 +152,16 @@ usa o ponto médio, a revisão 15/10 usa piso e teto.
   Revisão 15/10 – posição competitiva 15%→25%, demanda e economia 25%→20%; conjunto `pesos_15_10` mantém os antigos.
   Racional: ingrediente B2B vendido a poucas fábricas de ração; a venda é decidida contra Veramaris, óleo de peixe e
   DHA algal local, não pelo tamanho do país.
+
+### Premissas Corbion aplicadas (26/10/2026, informadas pelo usuário)
+
+1. **Aquicultura vendida só à BioMar.** O canal em salmão e camarão mede a capacidade BioMar no país (B: 3 ≥300 kt,
+   2 150-300 kt, 1 30-150 kt, 0 <30 kt) e o nº de fábricas BioMar (C). Pet food segue pelo distribuidor IQI.
+2. **Preço entregue importa, prazo não.** Logística (prazo) cai para 5% do acesso no modelo 14/10 e para 5% da economia
+   na revisão; tarifa aplicada sobe para 25% da economia. C2 da posição competitiva = tarifa aplicada à origem Brasil ≤5%
+   (China: alíquota provisória aplicada 4%, MFN 6,5%).
+3. **Em salmão e camarão, concorrentes de DHA algal não têm foco em ração aquícola** (exceto Veramaris onde há uso
+   documentado: Noruega, EUA, Canadá). Produtores chineses (CABIO/Runke/Huison) contam como concorrentes só em pet.
+
+As premissas valem para todos os países. Fontes adicionais do usuário devem entrar em `data/rev2026/source_registry.csv`
+e nas linhas de `data/raw/market_rubric_components.csv` que elas sustentam.

@@ -1,30 +1,30 @@
 country,overall_score,dha_need_total_t,niches,best_niche,best_niche_score,n_niches,overall_rank
-Norway,7.44,13091.0,salmon (7.44),salmon,7.44,1,1
-United States,7.203,3545.0,"salmon (4.60), pet (7.26)",pet,7.263,2,2
-Chile,6.99,7632.0,salmon (6.99),salmon,6.99,1,3
-United Kingdom,6.59,1590.0,"salmon (6.75), pet (5.94)",salmon,6.753,2,4
-France,6.361,609.0,pet (6.36),pet,6.361,1,5
-Germany,6.318,528.0,pet (6.32),pet,6.318,1,6
-Italy,6.162,222.0,pet (6.16),pet,6.162,1,7
-Ecuador,6.003,6696.0,shrimp (6.00),shrimp,6.003,1,8
-Spain,5.895,353.0,pet (5.89),pet,5.895,1,9
-Vietnam,5.648,3024.0,shrimp (5.65),shrimp,5.648,1,10
-China,5.623,5883.0,"salmon (4.47), shrimp (5.80), pet (4.84)",shrimp,5.799,3,11
-Poland,5.622,363.0,pet (5.62),pet,5.622,1,12
-Thailand,5.547,1383.0,"shrimp (5.84), pet (4.72)",shrimp,5.842,2,13
-Australia,5.348,640.0,"salmon (5.18), pet (5.91)",pet,5.907,2,14
-Faroe Islands,5.255,729.0,salmon (5.25),salmon,5.255,1,15
-Iceland,5.242,389.0,salmon (5.24),salmon,5.242,1,16
-Canada,5.176,1016.0,"salmon (4.79), pet (6.15)",pet,6.147,2,17
-New Zealand,5.146,86.0,salmon (5.15),salmon,5.146,1,18
-Japan,5.013,187.0,pet (5.01),pet,5.013,1,19
-India,4.871,3969.0,shrimp (4.87),shrimp,4.871,1,20
-Indonesia,4.847,1134.0,shrimp (4.85),shrimp,4.847,1,21
-Brazil,4.841,1875.0,"shrimp (4.96), pet (4.79)",shrimp,4.959,2,22
-Saudi Arabia,4.289,245.0,shrimp (4.29),shrimp,4.289,1,23
-Mexico,4.101,1273.0,"shrimp (4.30), pet (3.75)",shrimp,4.298,2,24
-Philippines,3.751,266.0,shrimp (3.75),shrimp,3.751,1,25
-Turkey,3.729,1517.0,salmon (3.73),salmon,3.729,1,26
-Argentina,3.719,330.0,pet (3.72),pet,3.719,1,27
-Honduras,3.432,103.0,shrimp (3.43),shrimp,3.432,1,28
-Bangladesh,2.929,544.0,shrimp (2.93),shrimp,2.929,1,29
+Norway,7.53,13091.0,salmon (7.53),salmon,7.53,1,1
+United States,7.177,3545.0,"salmon (4.60), pet (7.24)",pet,7.236,2,2
+Chile,7.116,7632.0,salmon (7.12),salmon,7.116,1,3
+United Kingdom,6.584,1590.0,"salmon (6.76), pet (5.88)",salmon,6.76,2,4
+France,6.301,609.0,pet (6.30),pet,6.301,1,5
+Germany,6.272,528.0,pet (6.27),pet,6.272,1,6
+China,6.208,5883.0,"salmon (4.83), shrimp (6.47), pet (4.89)",shrimp,6.469,3,7
+Ecuador,6.141,6696.0,shrimp (6.14),shrimp,6.141,1,8
+Italy,6.115,222.0,pet (6.12),pet,6.115,1,9
+Spain,5.825,353.0,pet (5.83),pet,5.825,1,10
+Vietnam,5.695,3024.0,shrimp (5.70),shrimp,5.695,1,11
+Poland,5.597,363.0,pet (5.60),pet,5.597,1,12
+Australia,5.503,640.0,"salmon (5.35), pet (6.02)",pet,6.016,2,13
+Thailand,5.462,1383.0,"shrimp (5.69), pet (4.83)",shrimp,5.687,2,14
+Canada,5.152,1016.0,"salmon (4.74), pet (6.20)",pet,6.197,2,15
+New Zealand,5.132,86.0,salmon (5.13),salmon,5.132,1,16
+Faroe Islands,5.126,729.0,salmon (5.13),salmon,5.126,1,17
+Japan,5.119,187.0,pet (5.12),pet,5.119,1,18
+Iceland,5.078,389.0,salmon (5.08),salmon,5.078,1,19
+Indonesia,5.033,1134.0,shrimp (5.03),shrimp,5.033,1,20
+India,4.906,3969.0,shrimp (4.91),shrimp,4.906,1,21
+Brazil,4.794,1875.0,"shrimp (4.87), pet (4.76)",shrimp,4.865,2,22
+Saudi Arabia,4.261,245.0,shrimp (4.26),shrimp,4.261,1,23
+Mexico,4.13,1273.0,"shrimp (4.36), pet (3.71)",shrimp,4.363,2,24
+Philippines,3.814,266.0,shrimp (3.81),shrimp,3.814,1,25
+Turkey,3.656,1517.0,salmon (3.66),salmon,3.656,1,26
+Argentina,3.639,330.0,pet (3.64),pet,3.639,1,27
+Honduras,3.388,103.0,shrimp (3.39),shrimp,3.388,1,28
+Bangladesh,3.03,544.0,shrimp (3.03),shrimp,3.03,1,29

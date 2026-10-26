@@ -6,24 +6,27 @@ def add(n, c, rub, comp, lo, hi, ev, src=""):
     R.append([n, c, rub, comp, lo, hi, ev, src])
 U = "não encontrado → faixa"
 # ---------------- CANAL (A estágio 0-4, B cobertura 0-3, C profundidade 0-2, D presença Corbion 0-1)
+# Premissa Corbion (26/10/2026): em salmão e camarão a venda é só à BioMar. B = capacidade BioMar no país
+# (3 ≥300 kt; 2 150-300 kt; 1 30-150 kt; 0 <30 kt ou nenhuma); C = nº de fábricas BioMar (2 = duas ou mais).
+# Pet food segue pelo canal IQI (B = cobertura do distribuidor).
 canal = {
- ("salmon","Norway"): [(3,3,"BioMar usa AlgaPrime em ração de salmão; reconfirmado abr/2025","R15;R44"),(2,2,"BioMar Norway 2 fábricas ~720 kt de ~2,47 Mt (~29%)","R12;R37"),(2,2,"BioMar + Lerøy/Kvarøy","R37"),(0,1,"Presença Corbion na Noruega "+U,"")],
- ("salmon","Chile"): [(2,3,"BioMar Chile/Ventisqueros: adoção histórica, data incerta (envelhecimento)","R12;R37"),(2,2,"BioMar Chile ~300 kt de ~1,44 Mt (~21%)","R12;R37"),(2,2,"BioMar + Ventisqueros","R37"),(1,1,"Equipe Corbion Chile (2020)","R37")],
- ("salmon","United Kingdom"): [(2,3,"BioMar UK (Grangemouth): adoção histórica pré-2022","R37"),(1,2,"Fatia da BioMar na ração escocesa "+U,"R37"),(1,1,"Só BioMar","R37"),(0,1,"Presença Corbion no Reino Unido "+U,"")],
+ ("salmon","Norway"): [(3,3,"BioMar usa AlgaPrime em ração de salmão; reconfirmado abr/2025","R15;R44"),(3,3,"BioMar Noruega ~720 kt (≥300 kt)","R12"),(2,2,"2 fábricas BioMar (Myre, Karmøy)","R12"),(0,1,"Presença Corbion na Noruega "+U,"")],
+ ("salmon","Chile"): [(2,3,"BioMar Chile/Ventisqueros: adoção histórica, data incerta (envelhecimento)","R12;R37"),(3,3,"BioMar Chile ~300 kt (Pargua + Ercilla)","R12"),(2,2,"Fábricas BioMar em Pargua e Ercilla","R12"),(1,1,"Equipe Corbion Chile (2020)","R37")],
+ ("salmon","United Kingdom"): [(2,3,"BioMar UK (Grangemouth): adoção histórica pré-2022","R37"),(1,2,"Capacidade BioMar Grangemouth "+U,"R12"),(1,1,"1 fábrica BioMar","R12"),(0,1,"Presença Corbion no Reino Unido "+U,"")],
  ("salmon","Faroe Islands"): [(0,0,"Ração local (Havsbrún/Bakkafrost); nenhum cliente AlgaPrime","R37"),(0,0,"—",""),(0,0,"—",""),(0,0,"Sem presença","")],
- ("salmon","Canada"): [(0,1,"Cargill/Skretting com fábrica, sem evidência AlgaPrime; Mowi Feed Canadá "+U,"R31;R40"),(0,1,U,""),(0,0,"—",""),(0,1,"Presença Corbion no Canadá "+U,"")],
- ("salmon","Iceland"): [(0,1,"Fornecedor de ração com vínculo BioMar "+U,""),(0,1,U,""),(0,0,"—",""),(0,0,"Sem presença","")],
- ("salmon","Australia"): [(0,0,"Skretting/Ridley; sem evidência AlgaPrime","R37"),(0,0,"—",""),(0,0,"—",""),(0,1,"Presença Corbion APAC "+U,"")],
+ ("salmon","Canada"): [(0,0,"Sem fábrica BioMar no Canadá","R12"),(0,0,"—",""),(0,0,"—",""),(0,1,"Presença Corbion no Canadá "+U,"")],
+ ("salmon","Iceland"): [(0,0,"Sem fábrica BioMar na Islândia","R12"),(0,0,"—",""),(0,0,"—",""),(0,0,"Sem presença","")],
+ ("salmon","Australia"): [(0,1,"BioMar Austrália (Wesley Vale, Tasmânia) – conhecimento prévio, não verificado nesta revisão",""),(0,2,"Capacidade "+U,""),(0,1,U,""),(0,1,"Presença Corbion APAC "+U,"")],
  ("salmon","New Zealand"): [(0,0,"Sem cliente identificado","R37"),(0,0,"—",""),(0,0,"—",""),(0,0,"Sem presença","")],
- ("salmon","Turkey"): [(1,1,"BioMar Turquia (Söke) – cliente global com fábrica","R12"),(0,1,"Fatia em ração de truta "+U,""),(1,1,"Só BioMar","R12"),(0,0,"Sem presença","")],
+ ("salmon","Turkey"): [(1,1,"BioMar Turquia (Söke) – cliente global com fábrica","R12"),(0,2,"Capacidade BioMar Turquia "+U,"R12"),(1,1,"1 fábrica BioMar","R12"),(0,0,"Sem presença","")],
  ("salmon","United States"): [(0,0,"Atlantic Sapphire usa Veramaris; sem cliente AlgaPrime em salmão","R31"),(0,0,"—",""),(0,0,"—",""),(1,1,"Corbion US (operações e escritórios)","R04")],
- ("salmon","China"): [(1,1,"BioMar–Tongwei Wuxi: ração BAP de truta (canal, sem teste)","R48"),(0,2,"Fatia da JV na ração de salmonídeos "+U,"R48"),(1,1,"Só BioMar–Tongwei","R48"),(1,1,"Corbion entrou na China em 2025 com executivos locais","R08")],
- ("shrimp","Ecuador"): [(1,1,"BioMar Ecuador (410 kt) – cliente global com fábrica; uso AlgaPrime não documentado","R12;R13"),(1,2,"~410 kt de ~1,9 Mt (~20%)","R13;R37"),(1,1,"Só BioMar","R13"),(0,1,"Presença Corbion no Equador "+U,"")],
+ ("salmon","China"): [(1,1,"BioMar–Tongwei Wuxi: ração BAP de truta (canal, sem teste)","R48"),(2,2,"BioMar–Tongwei: Haiwei 150 kt + Wuxi 50 kt = 200 kt (Wuxi dobra em 1T2027)","R12;R14"),(2,2,"2 fábricas BioMar (Haiwei, Wuxi)","R12;R14"),(1,1,"Corbion entrou na China em 2025 com executivos locais","R08")],
+ ("shrimp","Ecuador"): [(1,1,"BioMar Ecuador (410 kt) – cliente global com fábrica; uso AlgaPrime não documentado","R12;R13"),(3,3,"BioMar Equador 410 kt (2026)","R13"),(1,1,"1 fábrica BioMar (Durán)","R13"),(0,1,"Presença Corbion no Equador "+U,"")],
  ("shrimp","India"): [(0,0,"Sem cliente identificado","R37"),(0,0,"—",""),(0,0,"—",""),(0,1,"Presença Corbion na Índia "+U,"")],
- ("shrimp","Vietnam"): [(1,1,"BioMar–Viet-Uc JV (Châu Thành)","R12"),(1,1,"~30 kt (<20% da ração de camarão)","R12;R37"),(1,1,"Só BioMar–Viet-Uc","R12"),(0,1,"Presença Corbion no Vietnã "+U,"")],
+ ("shrimp","Vietnam"): [(1,1,"BioMar–Viet-Uc JV (Châu Thành)","R12"),(0,0,"BioMar–Viet-Uc ~30 kt (<30 kt)","R12"),(1,1,"1 fábrica BioMar","R12"),(0,1,"Presença Corbion no Vietnã "+U,"")],
  ("shrimp","Indonesia"): [(0,0,"Sem cliente identificado","R37"),(0,0,"—",""),(0,0,"—",""),(0,1,U,"")],
- ("shrimp","China"): [(1,1,"BioMar–Tongwei (Haiwei, Wuxi) – canal + GACC","R12;R14;R08"),(1,1,"~200 kt de 1,82 Mt (~11%)","R14;R37"),(1,1,"Só BioMar–Tongwei","R14"),(1,1,"Corbion China desde 2025","R08")],
- ("shrimp","Thailand"): [(2,3,"Thai Union Feedmill: adoção 2019-20 (>3 anos; notícias 2025 não reconfirmam uso)","R17;R18"),(1,2,"Fatia da TFM na ração de camarão "+U,"R18"),(1,1,"Só TFM","R17"),(1,1,"Fábrica Corbion em Rayong","R06")],
+ ("shrimp","China"): [(1,1,"BioMar–Tongwei (Haiwei, Wuxi) – canal + GACC","R12;R14;R08"),(2,2,"BioMar–Tongwei 200 kt (→250 kt em 2027)","R12;R14"),(2,2,"2 fábricas BioMar (Haiwei, Wuxi)","R12;R14"),(1,1,"Corbion China desde 2025","R08")],
+ ("shrimp","Thailand"): [(2,3,"Thai Union Feedmill: adoção 2019-20 (>3 anos; notícias 2025 não reconfirmam uso)","R17;R18"),(0,0,"Sem fábrica BioMar na Tailândia (TFM não é BioMar)","R12"),(0,0,"—",""),(1,1,"Fábrica Corbion em Rayong","R06")],
  ("shrimp","Brazil"): [(0,0,"Sem cliente de camarão identificado","R37"),(0,0,"—",""),(0,0,"—",""),(1,1,"Orindiúva (sede da produção)","R34")],
  ("shrimp","Mexico"): [(0,0,"Sem cliente identificado","R37"),(0,0,"—",""),(0,0,"—",""),(0,1,U,"")],
  ("shrimp","Saudi Arabia"): [(0,0,"Sem cliente identificado","R37"),(0,0,"—",""),(0,0,"—",""),(0,0,"Sem presença","")],
@@ -95,14 +98,14 @@ FIT = {"salmon": (1,1,"Só DHA; salmão precisa de EPA+DHA e Veramaris entrega o
        "shrimp": (2,2,"DHA é crítico em larvicultura e reprodutores; EPA também conta","R39"),
        "pet": (2,2,"Alegações de DHA (filhotes/cognição); EPA para articulações vem de outra fonte","R19")}
 LOCAL = {("salmon","United States"):"Veramaris Blair (EUA)",("pet","United States"):"Veramaris Blair (EUA)",
-         ("salmon","Canada"):"Mara Renewables (Canadá)",("shrimp","China"):"CABIO/Runke/Huison (China)",
-         ("pet","China"):"CABIO (China)",("salmon","China"):"CABIO/Runke/Huison (China)"}
+         ("salmon","Canada"):"Mara Renewables (Canadá)",
+         ("pet","China"):"CABIO (China)"}
 compA = {("salmon","Norway"):(1,1,"Veramaris via Skretting (Lingalaks 2018) – uso comercial","R31"),
          ("salmon","United States"):(1,1,"Veramaris na Atlantic Sapphire (2021); Nuseed Aquaterra","R31;R25"),
          ("salmon","Canada"):(1,2,"Veramaris em teste Cargill–Cermaq; Mara Renewables local","R31;R32"),
          ("salmon","Australia"):(1,2,"Nuseed Aquaterra (canola GM) – status não verificado","R25"),
-         ("salmon","China"):(1,2,"DHA algal chinês sem uso documentado em salmonídeos","R22;R37"),
-         ("shrimp","China"):(0,1,"CABIO/Runke/Huison: produção local de DHA algal","R22;R37"),
+         ("salmon","China"):(2,3,"Premissa Corbion: produtores chineses (CABIO/Runke/Huison) focam infantil/pet, sem foco em ração aquícola; nenhum uso aquícola documentado","R22;R37"),
+         ("shrimp","China"):(2,3,"Idem: DHA algal chinês sem foco/uso documentado em ração de camarão","R22;R37"),
          ("shrimp","Thailand"):(1,2,"Mara Renewables tem a Thai Union Ingredients como investidora","R32"),
          ("pet","United States"):(1,1,"Veramaris O3 Max Pure lançado no Petfood Forum (abr/2026)","R21"),
          ("pet","China"):(0,0,"CABIO: DHA algal para pet com produção local","R22")}
@@ -114,13 +117,23 @@ compD = {("salmon","Norway"):(2,2,"Kvarøy Arctic: salmão 'alimentado com algas
          ("pet","United States"):(1,2,"Pet premium com alegações de sustentabilidade",""),("pet","United Kingdom"):(1,2,"Idem",""),
          ("salmon","Turkey"):(0,0,"Nenhuma",""),("shrimp","Saudi Arabia"):(0,0,"Nenhuma",""),("shrimp","Bangladesh"):(0,0,"Nenhuma","")}
 for c in ["Germany","France","Italy","Spain","Poland"]: compD[("pet",c)] = (1,2,"Pet premium com alegações de sustentabilidade","")
+# C2 (rev. 26/10): preço entregue, não prazo. Tarifa aplicada ao produto de origem Brasil (≤5% = 1).
+TARIFF = {("salmon","Chile"):(0,"ACE-35 Mercosul–Chile: 0% para origem Brasil"),("salmon","United States"):(0,"MFN"),
+          ("salmon","China"):(4,"alíquota provisória aplicada 4% (MFN 6,5%)"),("shrimp","China"):(4,"provisória 4%"),
+          ("pet","China"):(4,"provisória 4%"),("shrimp","India"):(17.5,"MFN"),("shrimp","Vietnam"):(7.5,"MFN"),
+          ("shrimp","Indonesia"):(2.5,"MFN"),("shrimp","Thailand"):(10,"MFN"),("shrimp","Brazil"):(0,"produção doméstica"),
+          ("pet","Brazil"):(0,"produção doméstica"),("pet","United States"):(0,"MFN")}
 for (n,c) in list(canal):
     a = compA.get((n,c), (2,3,"Nenhum concorrente algal documentado ("+U+")",""))
     add(n,c,"competicao","A",*a)
     add(n,c,"competicao","B",*FIT[n])
     loc = LOCAL.get((n,c))
     add(n,c,"competicao","C1",0 if loc else 1,0 if loc else 1,("Produção concorrente local: "+loc) if loc else "Sem produção concorrente local documentada","R20;R22;R32" if loc else "")
-    add(n,c,"competicao","C2","transit","transit","1 se prazo desde Orindiúva ≤ 25 dias (calculado)","R37")
+    t = TARIFF.get((n,c))
+    if t is None:
+        add(n,c,"competicao","C2",0,1,"Tarifa aplicada à origem Brasil "+U,"R45")
+    else:
+        add(n,c,"competicao","C2",float(t[0] <= 5),float(t[0] <= 5),f"Tarifa aplicada {t[0]:g}% ({t[1]}); 1 se ≤5%","R45")
     add(n,c,"competicao","D",*compD.get((n,c),(0,1,"Alavanca de marca "+U,"")))
 with open(OUT,"w",newline="") as f:
     w=csv.writer(f); w.writerow(["niche","country","rubric","component","lo","hi","evidence","source_id"]); w.writerows(R)

@@ -13,6 +13,8 @@ criteria:
   access: Acesso, canal e posição competitiva da Corbion
   regulatory: Regulação e acesso comercial
   risk: Risco país e biológico
+# rev. 26/10 (2): prazo pesa pouco (o que importa é o preço entregue): logística 15%→5%, competição 30%→35%,
+# fábricas 15%→20%. Aquicultura vendida só à BioMar (canal = capacidade BioMar no país).
 # Base Case (rev. 26/10): acesso/posição competitiva sobe de 20% para 30%. Racional: AlgaPrime é ingrediente B2B vendido a
 # poucas fábricas de ração; a venda é decidida contra Veramaris/óleo de peixe/DHA algal local, não pelo tamanho do país.
 # Um mercado grande onde o concorrente já tem o contrato vale menos que um médio com canal e vantagem de custo.
@@ -45,10 +47,10 @@ niches:
       vl_price:   {criterion: value, label: "Valor do produto final", weight: 0.60}
       vl_premium: {criterion: value, label: "Exigência de certificação/sustentabilidade", weight: 0.40}
       ac_adopt:   {criterion: access, label: "Adoção documentada de DHA de algas", weight: 0.20}
-      ac_feed:    {criterion: access, label: "Fábricas de ração dos grandes clientes", weight: 0.15}
+      ac_feed:    {criterion: access, label: "Fábricas de ração dos grandes clientes", weight: 0.20}
       ac_rel:     {criterion: access, label: "Canal Corbion (rubrica por componentes)", weight: 0.20}
-      ac_comp:    {criterion: access, label: "Posição competitiva da Corbion vs. concorrentes", weight: 0.30}
-      ac_log:     {criterion: access, label: "Logística até o cliente (a partir de Orindiúva)", weight: 0.15}
+      ac_comp:    {criterion: access, label: "Posição competitiva da Corbion vs. concorrentes", weight: 0.35}
+      ac_log:     {criterion: access, label: "Logística até o cliente (a partir de Orindiúva)", weight: 0.05}
       rg_tariff:  {criterion: regulatory, label: "Tarifa de importação do ingrediente", weight: 0.50}
       rg_reg:     {criterion: regulatory, label: "Registro do ingrediente", weight: 0.50}
     metrics:
@@ -77,10 +79,10 @@ niches:
       vl_price:   {criterion: value, label: "Valor do produto final (exportação)", weight: 0.45}
       vl_intens:  {criterion: value, label: "Intensificação e larvicultura (uso de DHA)", weight: 0.55}
       ac_adopt:   {criterion: access, label: "Adoção documentada de DHA de algas", weight: 0.20}
-      ac_feed:    {criterion: access, label: "Fábricas de ração dos grandes clientes", weight: 0.15}
+      ac_feed:    {criterion: access, label: "Fábricas de ração dos grandes clientes", weight: 0.20}
       ac_rel:     {criterion: access, label: "Canal Corbion (rubrica por componentes)", weight: 0.20}
-      ac_comp:    {criterion: access, label: "Posição competitiva da Corbion vs. concorrentes", weight: 0.30}
-      ac_log:     {criterion: access, label: "Logística até o cliente (a partir de Orindiúva)", weight: 0.15}
+      ac_comp:    {criterion: access, label: "Posição competitiva da Corbion vs. concorrentes", weight: 0.35}
+      ac_log:     {criterion: access, label: "Logística até o cliente (a partir de Orindiúva)", weight: 0.05}
       rg_tariff:  {criterion: regulatory, label: "Tarifa de importação do ingrediente", weight: 0.50}
       rg_reg:     {criterion: regulatory, label: "Registro do ingrediente", weight: 0.50}
     metrics:
@@ -110,10 +112,10 @@ niches:
       vl_premium: {criterion: value, label: "Premiumização", weight: 0.55}
       vl_claims:  {criterion: value, label: "Demanda por ômega-3/DHA", weight: 0.45}
       ac_adopt:   {criterion: access, label: "Adoção documentada de DHA de algas", weight: 0.20}
-      ac_feed:    {criterion: access, label: "Fábricas dos grandes fabricantes", weight: 0.15}
+      ac_feed:    {criterion: access, label: "Fábricas dos grandes fabricantes", weight: 0.20}
       ac_rel:     {criterion: access, label: "Canal Corbion (rubrica por componentes)", weight: 0.20}
-      ac_comp:    {criterion: access, label: "Posição competitiva da Corbion vs. concorrentes", weight: 0.30}
-      ac_log:     {criterion: access, label: "Logística até o cliente (a partir de Orindiúva)", weight: 0.15}
+      ac_comp:    {criterion: access, label: "Posição competitiva da Corbion vs. concorrentes", weight: 0.35}
+      ac_log:     {criterion: access, label: "Logística até o cliente (a partir de Orindiúva)", weight: 0.05}
       rg_tariff:  {criterion: regulatory, label: "Tarifa de importação do ingrediente", weight: 0.50}
       rg_reg:     {criterion: regulatory, label: "Registro do ingrediente", weight: 0.50}
     metrics:

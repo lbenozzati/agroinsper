@@ -1,39 +1,39 @@
 country,niche,score,dha_need_t,niche_rank
-Norway,salmon,7.44,13091.0,1
-United States,pet,7.263,3465.0,1
-Chile,salmon,6.99,7632.0,2
-United Kingdom,salmon,6.753,1272.0,3
-France,pet,6.361,609.0,2
-Germany,pet,6.318,528.0,3
-Italy,pet,6.162,222.0,4
-Canada,pet,6.147,287.0,5
-Ecuador,shrimp,6.003,6696.0,1
-United Kingdom,pet,5.94,318.0,6
-Australia,pet,5.907,148.0,7
-Spain,pet,5.895,353.0,8
-Thailand,shrimp,5.842,1021.0,2
-China,shrimp,5.799,4925.0,3
-Vietnam,shrimp,5.648,3024.0,4
-Poland,pet,5.622,363.0,9
-Faroe Islands,salmon,5.255,729.0,4
-Iceland,salmon,5.242,389.0,5
-Australia,salmon,5.18,492.0,6
-New Zealand,salmon,5.146,86.0,7
-Japan,pet,5.013,187.0,10
-Brazil,shrimp,4.959,555.0,5
-India,shrimp,4.871,3969.0,6
-Indonesia,shrimp,4.847,1134.0,7
-China,pet,4.845,627.0,11
-Canada,salmon,4.794,729.0,8
-Brazil,pet,4.792,1320.0,12
-Thailand,pet,4.716,362.0,13
-United States,salmon,4.597,80.0,9
-China,salmon,4.471,331.0,10
-Mexico,shrimp,4.298,816.0,8
-Saudi Arabia,shrimp,4.289,245.0,9
-Philippines,shrimp,3.751,266.0,10
-Mexico,pet,3.748,457.0,14
-Turkey,salmon,3.729,1517.0,11
-Argentina,pet,3.719,330.0,15
-Honduras,shrimp,3.432,103.0,11
-Bangladesh,shrimp,2.929,544.0,12
+Norway,salmon,7.53,13091.0,1
+United States,pet,7.236,3465.0,1
+Chile,salmon,7.116,7632.0,2
+United Kingdom,salmon,6.76,1272.0,3
+China,shrimp,6.469,4925.0,1
+France,pet,6.301,609.0,2
+Germany,pet,6.272,528.0,3
+Canada,pet,6.197,287.0,4
+Ecuador,shrimp,6.141,6696.0,2
+Italy,pet,6.115,222.0,5
+Australia,pet,6.016,148.0,6
+United Kingdom,pet,5.882,318.0,7
+Spain,pet,5.825,353.0,8
+Vietnam,shrimp,5.695,3024.0,3
+Thailand,shrimp,5.687,1021.0,4
+Poland,pet,5.597,363.0,9
+Australia,salmon,5.349,492.0,4
+New Zealand,salmon,5.132,86.0,5
+Faroe Islands,salmon,5.126,729.0,6
+Japan,pet,5.119,187.0,10
+Iceland,salmon,5.078,389.0,7
+Indonesia,shrimp,5.033,1134.0,5
+India,shrimp,4.906,3969.0,6
+China,pet,4.886,627.0,11
+Brazil,shrimp,4.865,555.0,7
+China,salmon,4.831,331.0,8
+Thailand,pet,4.828,362.0,12
+Brazil,pet,4.764,1320.0,13
+Canada,salmon,4.74,729.0,9
+United States,salmon,4.604,80.0,10
+Mexico,shrimp,4.363,816.0,8
+Saudi Arabia,shrimp,4.261,245.0,9
+Philippines,shrimp,3.814,266.0,10
+Mexico,pet,3.713,457.0,14
+Turkey,salmon,3.656,1517.0,11
+Argentina,pet,3.639,330.0,15
+Honduras,shrimp,3.388,103.0,11
+Bangladesh,shrimp,3.03,544.0,12

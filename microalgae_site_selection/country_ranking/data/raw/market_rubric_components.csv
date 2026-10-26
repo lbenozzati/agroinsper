@@ -1,71 +1,71 @@
 niche,country,rubric,component,lo,hi,evidence,source_id
 salmon,Norway,canal,A,3,3,BioMar usa AlgaPrime em ração de salmão; reconfirmado abr/2025,R15;R44
-salmon,Norway,canal,B,2,2,"BioMar Norway 2 fábricas ~720 kt de ~2,47 Mt (~29%)",R12;R37
-salmon,Norway,canal,C,2,2,BioMar + Lerøy/Kvarøy,R37
+salmon,Norway,canal,B,3,3,BioMar Noruega ~720 kt (≥300 kt),R12
+salmon,Norway,canal,C,2,2,"2 fábricas BioMar (Myre, Karmøy)",R12
 salmon,Norway,canal,D,0,1,Presença Corbion na Noruega não encontrado → faixa,
 salmon,Chile,canal,A,2,3,"BioMar Chile/Ventisqueros: adoção histórica, data incerta (envelhecimento)",R12;R37
-salmon,Chile,canal,B,2,2,"BioMar Chile ~300 kt de ~1,44 Mt (~21%)",R12;R37
-salmon,Chile,canal,C,2,2,BioMar + Ventisqueros,R37
+salmon,Chile,canal,B,3,3,BioMar Chile ~300 kt (Pargua + Ercilla),R12
+salmon,Chile,canal,C,2,2,Fábricas BioMar em Pargua e Ercilla,R12
 salmon,Chile,canal,D,1,1,Equipe Corbion Chile (2020),R37
 salmon,United Kingdom,canal,A,2,3,BioMar UK (Grangemouth): adoção histórica pré-2022,R37
-salmon,United Kingdom,canal,B,1,2,Fatia da BioMar na ração escocesa não encontrado → faixa,R37
-salmon,United Kingdom,canal,C,1,1,Só BioMar,R37
+salmon,United Kingdom,canal,B,1,2,Capacidade BioMar Grangemouth não encontrado → faixa,R12
+salmon,United Kingdom,canal,C,1,1,1 fábrica BioMar,R12
 salmon,United Kingdom,canal,D,0,1,Presença Corbion no Reino Unido não encontrado → faixa,
 salmon,Faroe Islands,canal,A,0,0,Ração local (Havsbrún/Bakkafrost); nenhum cliente AlgaPrime,R37
 salmon,Faroe Islands,canal,B,0,0,—,
 salmon,Faroe Islands,canal,C,0,0,—,
 salmon,Faroe Islands,canal,D,0,0,Sem presença,
-salmon,Canada,canal,A,0,1,"Cargill/Skretting com fábrica, sem evidência AlgaPrime; Mowi Feed Canadá não encontrado → faixa",R31;R40
-salmon,Canada,canal,B,0,1,não encontrado → faixa,
+salmon,Canada,canal,A,0,0,Sem fábrica BioMar no Canadá,R12
+salmon,Canada,canal,B,0,0,—,
 salmon,Canada,canal,C,0,0,—,
 salmon,Canada,canal,D,0,1,Presença Corbion no Canadá não encontrado → faixa,
-salmon,Iceland,canal,A,0,1,Fornecedor de ração com vínculo BioMar não encontrado → faixa,
-salmon,Iceland,canal,B,0,1,não encontrado → faixa,
+salmon,Iceland,canal,A,0,0,Sem fábrica BioMar na Islândia,R12
+salmon,Iceland,canal,B,0,0,—,
 salmon,Iceland,canal,C,0,0,—,
 salmon,Iceland,canal,D,0,0,Sem presença,
-salmon,Australia,canal,A,0,0,Skretting/Ridley; sem evidência AlgaPrime,R37
-salmon,Australia,canal,B,0,0,—,
-salmon,Australia,canal,C,0,0,—,
+salmon,Australia,canal,A,0,1,"BioMar Austrália (Wesley Vale, Tasmânia) – conhecimento prévio, não verificado nesta revisão",
+salmon,Australia,canal,B,0,2,Capacidade não encontrado → faixa,
+salmon,Australia,canal,C,0,1,não encontrado → faixa,
 salmon,Australia,canal,D,0,1,Presença Corbion APAC não encontrado → faixa,
 salmon,New Zealand,canal,A,0,0,Sem cliente identificado,R37
 salmon,New Zealand,canal,B,0,0,—,
 salmon,New Zealand,canal,C,0,0,—,
 salmon,New Zealand,canal,D,0,0,Sem presença,
 salmon,Turkey,canal,A,1,1,BioMar Turquia (Söke) – cliente global com fábrica,R12
-salmon,Turkey,canal,B,0,1,Fatia em ração de truta não encontrado → faixa,
-salmon,Turkey,canal,C,1,1,Só BioMar,R12
+salmon,Turkey,canal,B,0,2,Capacidade BioMar Turquia não encontrado → faixa,R12
+salmon,Turkey,canal,C,1,1,1 fábrica BioMar,R12
 salmon,Turkey,canal,D,0,0,Sem presença,
 salmon,United States,canal,A,0,0,Atlantic Sapphire usa Veramaris; sem cliente AlgaPrime em salmão,R31
 salmon,United States,canal,B,0,0,—,
 salmon,United States,canal,C,0,0,—,
 salmon,United States,canal,D,1,1,Corbion US (operações e escritórios),R04
 salmon,China,canal,A,1,1,"BioMar–Tongwei Wuxi: ração BAP de truta (canal, sem teste)",R48
-salmon,China,canal,B,0,2,Fatia da JV na ração de salmonídeos não encontrado → faixa,R48
-salmon,China,canal,C,1,1,Só BioMar–Tongwei,R48
+salmon,China,canal,B,2,2,BioMar–Tongwei: Haiwei 150 kt + Wuxi 50 kt = 200 kt (Wuxi dobra em 1T2027),R12;R14
+salmon,China,canal,C,2,2,"2 fábricas BioMar (Haiwei, Wuxi)",R12;R14
 salmon,China,canal,D,1,1,Corbion entrou na China em 2025 com executivos locais,R08
 shrimp,Ecuador,canal,A,1,1,BioMar Ecuador (410 kt) – cliente global com fábrica; uso AlgaPrime não documentado,R12;R13
-shrimp,Ecuador,canal,B,1,2,"~410 kt de ~1,9 Mt (~20%)",R13;R37
-shrimp,Ecuador,canal,C,1,1,Só BioMar,R13
+shrimp,Ecuador,canal,B,3,3,BioMar Equador 410 kt (2026),R13
+shrimp,Ecuador,canal,C,1,1,1 fábrica BioMar (Durán),R13
 shrimp,Ecuador,canal,D,0,1,Presença Corbion no Equador não encontrado → faixa,
 shrimp,India,canal,A,0,0,Sem cliente identificado,R37
 shrimp,India,canal,B,0,0,—,
 shrimp,India,canal,C,0,0,—,
 shrimp,India,canal,D,0,1,Presença Corbion na Índia não encontrado → faixa,
 shrimp,Vietnam,canal,A,1,1,BioMar–Viet-Uc JV (Châu Thành),R12
-shrimp,Vietnam,canal,B,1,1,~30 kt (<20% da ração de camarão),R12;R37
-shrimp,Vietnam,canal,C,1,1,Só BioMar–Viet-Uc,R12
+shrimp,Vietnam,canal,B,0,0,BioMar–Viet-Uc ~30 kt (<30 kt),R12
+shrimp,Vietnam,canal,C,1,1,1 fábrica BioMar,R12
 shrimp,Vietnam,canal,D,0,1,Presença Corbion no Vietnã não encontrado → faixa,
 shrimp,Indonesia,canal,A,0,0,Sem cliente identificado,R37
 shrimp,Indonesia,canal,B,0,0,—,
 shrimp,Indonesia,canal,C,0,0,—,
 shrimp,Indonesia,canal,D,0,1,não encontrado → faixa,
 shrimp,China,canal,A,1,1,"BioMar–Tongwei (Haiwei, Wuxi) – canal + GACC",R12;R14;R08
-shrimp,China,canal,B,1,1,"~200 kt de 1,82 Mt (~11%)",R14;R37
-shrimp,China,canal,C,1,1,Só BioMar–Tongwei,R14
+shrimp,China,canal,B,2,2,BioMar–Tongwei 200 kt (→250 kt em 2027),R12;R14
+shrimp,China,canal,C,2,2,"2 fábricas BioMar (Haiwei, Wuxi)",R12;R14
 shrimp,China,canal,D,1,1,Corbion China desde 2025,R08
 shrimp,Thailand,canal,A,2,3,Thai Union Feedmill: adoção 2019-20 (>3 anos; notícias 2025 não reconfirmam uso),R17;R18
-shrimp,Thailand,canal,B,1,2,Fatia da TFM na ração de camarão não encontrado → faixa,R18
-shrimp,Thailand,canal,C,1,1,Só TFM,R17
+shrimp,Thailand,canal,B,0,0,Sem fábrica BioMar na Tailândia (TFM não é BioMar),R12
+shrimp,Thailand,canal,C,0,0,—,
 shrimp,Thailand,canal,D,1,1,Fábrica Corbion em Rayong,R06
 shrimp,Brazil,canal,A,0,0,Sem cliente de camarão identificado,R37
 shrimp,Brazil,canal,B,0,0,—,
@@ -306,190 +306,190 @@ pet,Thailand,registro,D,0,0,Nenhum documentado,
 salmon,Norway,competicao,A,1,1,Veramaris via Skretting (Lingalaks 2018) – uso comercial,R31
 salmon,Norway,competicao,B,1,1,Só DHA; salmão precisa de EPA+DHA e Veramaris entrega os dois,R39;R20
 salmon,Norway,competicao,C1,1,1,Sem produção concorrente local documentada,
-salmon,Norway,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+salmon,Norway,competicao,C2,0,1,Tarifa aplicada à origem Brasil não encontrado → faixa,R45
 salmon,Norway,competicao,D,2,2,Kvarøy Arctic: salmão 'alimentado com algas' no varejo,R37
 salmon,Chile,competicao,A,2,3,Nenhum concorrente algal documentado (não encontrado → faixa),
 salmon,Chile,competicao,B,1,1,Só DHA; salmão precisa de EPA+DHA e Veramaris entrega os dois,R39;R20
 salmon,Chile,competicao,C1,1,1,Sem produção concorrente local documentada,
-salmon,Chile,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+salmon,Chile,competicao,C2,1.0,1.0,Tarifa aplicada 0% (ACE-35 Mercosul–Chile: 0% para origem Brasil); 1 se ≤5%,R45
 salmon,Chile,competicao,D,2,2,Ventisqueros: salmão com DHA de algas,R37
 salmon,United Kingdom,competicao,A,2,3,Nenhum concorrente algal documentado (não encontrado → faixa),
 salmon,United Kingdom,competicao,B,1,1,Só DHA; salmão precisa de EPA+DHA e Veramaris entrega os dois,R39;R20
 salmon,United Kingdom,competicao,C1,1,1,Sem produção concorrente local documentada,
-salmon,United Kingdom,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+salmon,United Kingdom,competicao,C2,0,1,Tarifa aplicada à origem Brasil não encontrado → faixa,R45
 salmon,United Kingdom,competicao,D,1,2,Pressão do varejo britânico por ração sustentável,
 salmon,Faroe Islands,competicao,A,2,3,Nenhum concorrente algal documentado (não encontrado → faixa),
 salmon,Faroe Islands,competicao,B,1,1,Só DHA; salmão precisa de EPA+DHA e Veramaris entrega os dois,R39;R20
 salmon,Faroe Islands,competicao,C1,1,1,Sem produção concorrente local documentada,
-salmon,Faroe Islands,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+salmon,Faroe Islands,competicao,C2,0,1,Tarifa aplicada à origem Brasil não encontrado → faixa,R45
 salmon,Faroe Islands,competicao,D,0,1,Alavanca de marca não encontrado → faixa,
 salmon,Canada,competicao,A,1,2,Veramaris em teste Cargill–Cermaq; Mara Renewables local,R31;R32
 salmon,Canada,competicao,B,1,1,Só DHA; salmão precisa de EPA+DHA e Veramaris entrega os dois,R39;R20
 salmon,Canada,competicao,C1,0,0,Produção concorrente local: Mara Renewables (Canadá),R20;R22;R32
-salmon,Canada,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+salmon,Canada,competicao,C2,0,1,Tarifa aplicada à origem Brasil não encontrado → faixa,R45
 salmon,Canada,competicao,D,0,1,Alavanca de marca não encontrado → faixa,
 salmon,Iceland,competicao,A,2,3,Nenhum concorrente algal documentado (não encontrado → faixa),
 salmon,Iceland,competicao,B,1,1,Só DHA; salmão precisa de EPA+DHA e Veramaris entrega os dois,R39;R20
 salmon,Iceland,competicao,C1,1,1,Sem produção concorrente local documentada,
-salmon,Iceland,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+salmon,Iceland,competicao,C2,0,1,Tarifa aplicada à origem Brasil não encontrado → faixa,R45
 salmon,Iceland,competicao,D,0,1,Alavanca de marca não encontrado → faixa,
 salmon,Australia,competicao,A,1,2,Nuseed Aquaterra (canola GM) – status não verificado,R25
 salmon,Australia,competicao,B,1,1,Só DHA; salmão precisa de EPA+DHA e Veramaris entrega os dois,R39;R20
 salmon,Australia,competicao,C1,1,1,Sem produção concorrente local documentada,
-salmon,Australia,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+salmon,Australia,competicao,C2,0,1,Tarifa aplicada à origem Brasil não encontrado → faixa,R45
 salmon,Australia,competicao,D,0,1,Alavanca de marca não encontrado → faixa,
 salmon,New Zealand,competicao,A,2,3,Nenhum concorrente algal documentado (não encontrado → faixa),
 salmon,New Zealand,competicao,B,1,1,Só DHA; salmão precisa de EPA+DHA e Veramaris entrega os dois,R39;R20
 salmon,New Zealand,competicao,C1,1,1,Sem produção concorrente local documentada,
-salmon,New Zealand,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+salmon,New Zealand,competicao,C2,0,1,Tarifa aplicada à origem Brasil não encontrado → faixa,R45
 salmon,New Zealand,competicao,D,0,1,Alavanca de marca não encontrado → faixa,
 salmon,Turkey,competicao,A,2,3,Nenhum concorrente algal documentado (não encontrado → faixa),
 salmon,Turkey,competicao,B,1,1,Só DHA; salmão precisa de EPA+DHA e Veramaris entrega os dois,R39;R20
 salmon,Turkey,competicao,C1,1,1,Sem produção concorrente local documentada,
-salmon,Turkey,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+salmon,Turkey,competicao,C2,0,1,Tarifa aplicada à origem Brasil não encontrado → faixa,R45
 salmon,Turkey,competicao,D,0,0,Nenhuma,
 salmon,United States,competicao,A,1,1,Veramaris na Atlantic Sapphire (2021); Nuseed Aquaterra,R31;R25
 salmon,United States,competicao,B,1,1,Só DHA; salmão precisa de EPA+DHA e Veramaris entrega os dois,R39;R20
 salmon,United States,competicao,C1,0,0,Produção concorrente local: Veramaris Blair (EUA),R20;R22;R32
-salmon,United States,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+salmon,United States,competicao,C2,1.0,1.0,Tarifa aplicada 0% (MFN); 1 se ≤5%,R45
 salmon,United States,competicao,D,1,1,Kvarøy vendido no varejo dos EUA,R37
-salmon,China,competicao,A,1,2,DHA algal chinês sem uso documentado em salmonídeos,R22;R37
+salmon,China,competicao,A,2,3,"Premissa Corbion: produtores chineses (CABIO/Runke/Huison) focam infantil/pet, sem foco em ração aquícola; nenhum uso aquícola documentado",R22;R37
 salmon,China,competicao,B,1,1,Só DHA; salmão precisa de EPA+DHA e Veramaris entrega os dois,R39;R20
-salmon,China,competicao,C1,0,0,Produção concorrente local: CABIO/Runke/Huison (China),R20;R22;R32
-salmon,China,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+salmon,China,competicao,C1,1,1,Sem produção concorrente local documentada,
+salmon,China,competicao,C2,1.0,1.0,"Tarifa aplicada 4% (alíquota provisória aplicada 4% (MFN 6,5%)); 1 se ≤5%",R45
 salmon,China,competicao,D,0,1,Alavanca de marca não encontrado → faixa,
 shrimp,Ecuador,competicao,A,2,3,Nenhum concorrente algal documentado (não encontrado → faixa),
 shrimp,Ecuador,competicao,B,2,2,DHA é crítico em larvicultura e reprodutores; EPA também conta,R39
 shrimp,Ecuador,competicao,C1,1,1,Sem produção concorrente local documentada,
-shrimp,Ecuador,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+shrimp,Ecuador,competicao,C2,0,1,Tarifa aplicada à origem Brasil não encontrado → faixa,R45
 shrimp,Ecuador,competicao,D,1,1,Sustainable Shrimp Partnership,
 shrimp,India,competicao,A,2,3,Nenhum concorrente algal documentado (não encontrado → faixa),
 shrimp,India,competicao,B,2,2,DHA é crítico em larvicultura e reprodutores; EPA também conta,R39
 shrimp,India,competicao,C1,1,1,Sem produção concorrente local documentada,
-shrimp,India,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+shrimp,India,competicao,C2,0.0,0.0,Tarifa aplicada 17.5% (MFN); 1 se ≤5%,R45
 shrimp,India,competicao,D,0,1,Alavanca de marca não encontrado → faixa,
 shrimp,Vietnam,competicao,A,2,3,Nenhum concorrente algal documentado (não encontrado → faixa),
 shrimp,Vietnam,competicao,B,2,2,DHA é crítico em larvicultura e reprodutores; EPA também conta,R39
 shrimp,Vietnam,competicao,C1,1,1,Sem produção concorrente local documentada,
-shrimp,Vietnam,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+shrimp,Vietnam,competicao,C2,0.0,0.0,Tarifa aplicada 7.5% (MFN); 1 se ≤5%,R45
 shrimp,Vietnam,competicao,D,0,1,Alavanca de marca não encontrado → faixa,
 shrimp,Indonesia,competicao,A,2,3,Nenhum concorrente algal documentado (não encontrado → faixa),
 shrimp,Indonesia,competicao,B,2,2,DHA é crítico em larvicultura e reprodutores; EPA também conta,R39
 shrimp,Indonesia,competicao,C1,1,1,Sem produção concorrente local documentada,
-shrimp,Indonesia,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+shrimp,Indonesia,competicao,C2,1.0,1.0,Tarifa aplicada 2.5% (MFN); 1 se ≤5%,R45
 shrimp,Indonesia,competicao,D,0,1,Alavanca de marca não encontrado → faixa,
-shrimp,China,competicao,A,0,1,CABIO/Runke/Huison: produção local de DHA algal,R22;R37
+shrimp,China,competicao,A,2,3,Idem: DHA algal chinês sem foco/uso documentado em ração de camarão,R22;R37
 shrimp,China,competicao,B,2,2,DHA é crítico em larvicultura e reprodutores; EPA também conta,R39
-shrimp,China,competicao,C1,0,0,Produção concorrente local: CABIO/Runke/Huison (China),R20;R22;R32
-shrimp,China,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+shrimp,China,competicao,C1,1,1,Sem produção concorrente local documentada,
+shrimp,China,competicao,C2,1.0,1.0,Tarifa aplicada 4% (provisória 4%); 1 se ≤5%,R45
 shrimp,China,competicao,D,0,1,Alavanca de marca não encontrado → faixa,
 shrimp,Thailand,competicao,A,1,2,Mara Renewables tem a Thai Union Ingredients como investidora,R32
 shrimp,Thailand,competicao,B,2,2,DHA é crítico em larvicultura e reprodutores; EPA também conta,R39
 shrimp,Thailand,competicao,C1,1,1,Sem produção concorrente local documentada,
-shrimp,Thailand,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+shrimp,Thailand,competicao,C2,0.0,0.0,Tarifa aplicada 10% (MFN); 1 se ≤5%,R45
 shrimp,Thailand,competicao,D,1,1,SeaChange (Thai Union),R18
 shrimp,Brazil,competicao,A,2,3,Nenhum concorrente algal documentado (não encontrado → faixa),
 shrimp,Brazil,competicao,B,2,2,DHA é crítico em larvicultura e reprodutores; EPA também conta,R39
 shrimp,Brazil,competicao,C1,1,1,Sem produção concorrente local documentada,
-shrimp,Brazil,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+shrimp,Brazil,competicao,C2,1.0,1.0,Tarifa aplicada 0% (produção doméstica); 1 se ≤5%,R45
 shrimp,Brazil,competicao,D,0,1,Alavanca de marca não encontrado → faixa,
 shrimp,Mexico,competicao,A,2,3,Nenhum concorrente algal documentado (não encontrado → faixa),
 shrimp,Mexico,competicao,B,2,2,DHA é crítico em larvicultura e reprodutores; EPA também conta,R39
 shrimp,Mexico,competicao,C1,1,1,Sem produção concorrente local documentada,
-shrimp,Mexico,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+shrimp,Mexico,competicao,C2,0,1,Tarifa aplicada à origem Brasil não encontrado → faixa,R45
 shrimp,Mexico,competicao,D,0,1,Alavanca de marca não encontrado → faixa,
 shrimp,Saudi Arabia,competicao,A,2,3,Nenhum concorrente algal documentado (não encontrado → faixa),
 shrimp,Saudi Arabia,competicao,B,2,2,DHA é crítico em larvicultura e reprodutores; EPA também conta,R39
 shrimp,Saudi Arabia,competicao,C1,1,1,Sem produção concorrente local documentada,
-shrimp,Saudi Arabia,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+shrimp,Saudi Arabia,competicao,C2,0,1,Tarifa aplicada à origem Brasil não encontrado → faixa,R45
 shrimp,Saudi Arabia,competicao,D,0,0,Nenhuma,
 shrimp,Philippines,competicao,A,2,3,Nenhum concorrente algal documentado (não encontrado → faixa),
 shrimp,Philippines,competicao,B,2,2,DHA é crítico em larvicultura e reprodutores; EPA também conta,R39
 shrimp,Philippines,competicao,C1,1,1,Sem produção concorrente local documentada,
-shrimp,Philippines,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+shrimp,Philippines,competicao,C2,0,1,Tarifa aplicada à origem Brasil não encontrado → faixa,R45
 shrimp,Philippines,competicao,D,0,1,Alavanca de marca não encontrado → faixa,
 shrimp,Bangladesh,competicao,A,2,3,Nenhum concorrente algal documentado (não encontrado → faixa),
 shrimp,Bangladesh,competicao,B,2,2,DHA é crítico em larvicultura e reprodutores; EPA também conta,R39
 shrimp,Bangladesh,competicao,C1,1,1,Sem produção concorrente local documentada,
-shrimp,Bangladesh,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+shrimp,Bangladesh,competicao,C2,0,1,Tarifa aplicada à origem Brasil não encontrado → faixa,R45
 shrimp,Bangladesh,competicao,D,0,0,Nenhuma,
 shrimp,Honduras,competicao,A,2,3,Nenhum concorrente algal documentado (não encontrado → faixa),
 shrimp,Honduras,competicao,B,2,2,DHA é crítico em larvicultura e reprodutores; EPA também conta,R39
 shrimp,Honduras,competicao,C1,1,1,Sem produção concorrente local documentada,
-shrimp,Honduras,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+shrimp,Honduras,competicao,C2,0,1,Tarifa aplicada à origem Brasil não encontrado → faixa,R45
 shrimp,Honduras,competicao,D,0,1,Alavanca de marca não encontrado → faixa,
 pet,Germany,competicao,A,2,3,Nenhum concorrente algal documentado (não encontrado → faixa),
 pet,Germany,competicao,B,2,2,Alegações de DHA (filhotes/cognição); EPA para articulações vem de outra fonte,R19
 pet,Germany,competicao,C1,1,1,Sem produção concorrente local documentada,
-pet,Germany,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+pet,Germany,competicao,C2,0,1,Tarifa aplicada à origem Brasil não encontrado → faixa,R45
 pet,Germany,competicao,D,1,2,Pet premium com alegações de sustentabilidade,
 pet,France,competicao,A,2,3,Nenhum concorrente algal documentado (não encontrado → faixa),
 pet,France,competicao,B,2,2,Alegações de DHA (filhotes/cognição); EPA para articulações vem de outra fonte,R19
 pet,France,competicao,C1,1,1,Sem produção concorrente local documentada,
-pet,France,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+pet,France,competicao,C2,0,1,Tarifa aplicada à origem Brasil não encontrado → faixa,R45
 pet,France,competicao,D,1,2,Pet premium com alegações de sustentabilidade,
 pet,Italy,competicao,A,2,3,Nenhum concorrente algal documentado (não encontrado → faixa),
 pet,Italy,competicao,B,2,2,Alegações de DHA (filhotes/cognição); EPA para articulações vem de outra fonte,R19
 pet,Italy,competicao,C1,1,1,Sem produção concorrente local documentada,
-pet,Italy,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+pet,Italy,competicao,C2,0,1,Tarifa aplicada à origem Brasil não encontrado → faixa,R45
 pet,Italy,competicao,D,1,2,Pet premium com alegações de sustentabilidade,
 pet,Spain,competicao,A,2,3,Nenhum concorrente algal documentado (não encontrado → faixa),
 pet,Spain,competicao,B,2,2,Alegações de DHA (filhotes/cognição); EPA para articulações vem de outra fonte,R19
 pet,Spain,competicao,C1,1,1,Sem produção concorrente local documentada,
-pet,Spain,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+pet,Spain,competicao,C2,0,1,Tarifa aplicada à origem Brasil não encontrado → faixa,R45
 pet,Spain,competicao,D,1,2,Pet premium com alegações de sustentabilidade,
 pet,Poland,competicao,A,2,3,Nenhum concorrente algal documentado (não encontrado → faixa),
 pet,Poland,competicao,B,2,2,Alegações de DHA (filhotes/cognição); EPA para articulações vem de outra fonte,R19
 pet,Poland,competicao,C1,1,1,Sem produção concorrente local documentada,
-pet,Poland,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+pet,Poland,competicao,C2,0,1,Tarifa aplicada à origem Brasil não encontrado → faixa,R45
 pet,Poland,competicao,D,1,2,Pet premium com alegações de sustentabilidade,
 pet,United States,competicao,A,1,1,Veramaris O3 Max Pure lançado no Petfood Forum (abr/2026),R21
 pet,United States,competicao,B,2,2,Alegações de DHA (filhotes/cognição); EPA para articulações vem de outra fonte,R19
 pet,United States,competicao,C1,0,0,Produção concorrente local: Veramaris Blair (EUA),R20;R22;R32
-pet,United States,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+pet,United States,competicao,C2,1.0,1.0,Tarifa aplicada 0% (MFN); 1 se ≤5%,R45
 pet,United States,competicao,D,1,2,Pet premium com alegações de sustentabilidade,
 pet,Canada,competicao,A,2,3,Nenhum concorrente algal documentado (não encontrado → faixa),
 pet,Canada,competicao,B,2,2,Alegações de DHA (filhotes/cognição); EPA para articulações vem de outra fonte,R19
 pet,Canada,competicao,C1,1,1,Sem produção concorrente local documentada,
-pet,Canada,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+pet,Canada,competicao,C2,0,1,Tarifa aplicada à origem Brasil não encontrado → faixa,R45
 pet,Canada,competicao,D,0,1,Alavanca de marca não encontrado → faixa,
 pet,United Kingdom,competicao,A,2,3,Nenhum concorrente algal documentado (não encontrado → faixa),
 pet,United Kingdom,competicao,B,2,2,Alegações de DHA (filhotes/cognição); EPA para articulações vem de outra fonte,R19
 pet,United Kingdom,competicao,C1,1,1,Sem produção concorrente local documentada,
-pet,United Kingdom,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+pet,United Kingdom,competicao,C2,0,1,Tarifa aplicada à origem Brasil não encontrado → faixa,R45
 pet,United Kingdom,competicao,D,1,2,Idem,
 pet,Brazil,competicao,A,2,3,Nenhum concorrente algal documentado (não encontrado → faixa),
 pet,Brazil,competicao,B,2,2,Alegações de DHA (filhotes/cognição); EPA para articulações vem de outra fonte,R19
 pet,Brazil,competicao,C1,1,1,Sem produção concorrente local documentada,
-pet,Brazil,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+pet,Brazil,competicao,C2,1.0,1.0,Tarifa aplicada 0% (produção doméstica); 1 se ≤5%,R45
 pet,Brazil,competicao,D,0,1,Alavanca de marca não encontrado → faixa,
 pet,China,competicao,A,0,0,CABIO: DHA algal para pet com produção local,R22
 pet,China,competicao,B,2,2,Alegações de DHA (filhotes/cognição); EPA para articulações vem de outra fonte,R19
 pet,China,competicao,C1,0,0,Produção concorrente local: CABIO (China),R20;R22;R32
-pet,China,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+pet,China,competicao,C2,1.0,1.0,Tarifa aplicada 4% (provisória 4%); 1 se ≤5%,R45
 pet,China,competicao,D,0,1,Alavanca de marca não encontrado → faixa,
 pet,Japan,competicao,A,2,3,Nenhum concorrente algal documentado (não encontrado → faixa),
 pet,Japan,competicao,B,2,2,Alegações de DHA (filhotes/cognição); EPA para articulações vem de outra fonte,R19
 pet,Japan,competicao,C1,1,1,Sem produção concorrente local documentada,
-pet,Japan,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+pet,Japan,competicao,C2,0,1,Tarifa aplicada à origem Brasil não encontrado → faixa,R45
 pet,Japan,competicao,D,0,1,Alavanca de marca não encontrado → faixa,
 pet,Mexico,competicao,A,2,3,Nenhum concorrente algal documentado (não encontrado → faixa),
 pet,Mexico,competicao,B,2,2,Alegações de DHA (filhotes/cognição); EPA para articulações vem de outra fonte,R19
 pet,Mexico,competicao,C1,1,1,Sem produção concorrente local documentada,
-pet,Mexico,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+pet,Mexico,competicao,C2,0,1,Tarifa aplicada à origem Brasil não encontrado → faixa,R45
 pet,Mexico,competicao,D,0,1,Alavanca de marca não encontrado → faixa,
 pet,Argentina,competicao,A,2,3,Nenhum concorrente algal documentado (não encontrado → faixa),
 pet,Argentina,competicao,B,2,2,Alegações de DHA (filhotes/cognição); EPA para articulações vem de outra fonte,R19
 pet,Argentina,competicao,C1,1,1,Sem produção concorrente local documentada,
-pet,Argentina,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+pet,Argentina,competicao,C2,0,1,Tarifa aplicada à origem Brasil não encontrado → faixa,R45
 pet,Argentina,competicao,D,0,1,Alavanca de marca não encontrado → faixa,
 pet,Australia,competicao,A,2,3,Nenhum concorrente algal documentado (não encontrado → faixa),
 pet,Australia,competicao,B,2,2,Alegações de DHA (filhotes/cognição); EPA para articulações vem de outra fonte,R19
 pet,Australia,competicao,C1,1,1,Sem produção concorrente local documentada,
-pet,Australia,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+pet,Australia,competicao,C2,0,1,Tarifa aplicada à origem Brasil não encontrado → faixa,R45
 pet,Australia,competicao,D,0,1,Alavanca de marca não encontrado → faixa,
 pet,Thailand,competicao,A,2,3,Nenhum concorrente algal documentado (não encontrado → faixa),
 pet,Thailand,competicao,B,2,2,Alegações de DHA (filhotes/cognição); EPA para articulações vem de outra fonte,R19
 pet,Thailand,competicao,C1,1,1,Sem produção concorrente local documentada,
-pet,Thailand,competicao,C2,transit,transit,1 se prazo desde Orindiúva ≤ 25 dias (calculado),R37
+pet,Thailand,competicao,C2,0,1,Tarifa aplicada à origem Brasil não encontrado → faixa,R45
 pet,Thailand,competicao,D,0,1,Alavanca de marca não encontrado → faixa,

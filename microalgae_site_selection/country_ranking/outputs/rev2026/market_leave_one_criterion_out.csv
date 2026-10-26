@@ -1,148 +1,148 @@
 niche,without,entity,rank_floor
 salmon,demanda,salmon|Chile,1.0
 salmon,demanda,salmon|Norway,2.0
-salmon,demanda,salmon|United Kingdom,3.0
-salmon,demanda,salmon|Faroe Islands,4.0
+salmon,demanda,salmon|China,3.0
+salmon,demanda,salmon|United Kingdom,4.0
 salmon,demanda,salmon|United States,5.0
-salmon,demanda,salmon|Turkey,6.0
-salmon,demanda,salmon|China,7.0
-salmon,demanda,salmon|Iceland,8.0
-salmon,demanda,salmon|Australia,9.0
+salmon,demanda,salmon|Faroe Islands,6.0
+salmon,demanda,salmon|Turkey,7.0
+salmon,demanda,salmon|Australia,8.0
+salmon,demanda,salmon|Iceland,9.0
 salmon,demanda,salmon|New Zealand,10.0
 salmon,demanda,salmon|Canada,11.0
 salmon,acesso,salmon|Chile,1.0
 salmon,acesso,salmon|Norway,2.0
-salmon,acesso,salmon|United Kingdom,3.0
-salmon,acesso,salmon|Faroe Islands,4.0
-salmon,acesso,salmon|Iceland,5.0
-salmon,acesso,salmon|Turkey,6.0
-salmon,acesso,salmon|China,7.0
-salmon,acesso,salmon|United States,8.0
+salmon,acesso,salmon|China,3.0
+salmon,acesso,salmon|United Kingdom,4.0
+salmon,acesso,salmon|Faroe Islands,5.0
+salmon,acesso,salmon|Iceland,6.0
+salmon,acesso,salmon|United States,7.0
+salmon,acesso,salmon|Turkey,8.0
 salmon,acesso,salmon|New Zealand,9.0
 salmon,acesso,salmon|Australia,10.0
 salmon,acesso,salmon|Canada,11.0
-salmon,economia,salmon|Norway,1.0
-salmon,economia,salmon|Chile,2.0
+salmon,economia,salmon|Chile,1.0
+salmon,economia,salmon|Norway,2.0
 salmon,economia,salmon|United Kingdom,3.0
-salmon,economia,salmon|Turkey,4.0
-salmon,economia,salmon|Faroe Islands,5.0
-salmon,economia,salmon|Iceland,6.0
-salmon,economia,salmon|China,7.0
-salmon,economia,salmon|Australia,8.0
-salmon,economia,salmon|United States,9.0
+salmon,economia,salmon|China,4.0
+salmon,economia,salmon|Turkey,5.0
+salmon,economia,salmon|Faroe Islands,6.0
+salmon,economia,salmon|Iceland,7.0
+salmon,economia,salmon|United States,8.0
+salmon,economia,salmon|Australia,9.0
 salmon,economia,salmon|New Zealand,10.0
 salmon,economia,salmon|Canada,11.0
 salmon,adequacao,salmon|Norway,1.0
 salmon,adequacao,salmon|Chile,2.0
-salmon,adequacao,salmon|United Kingdom,3.0
-salmon,adequacao,salmon|China,4.0
+salmon,adequacao,salmon|China,3.0
+salmon,adequacao,salmon|United Kingdom,4.0
 salmon,adequacao,salmon|Turkey,5.0
-salmon,adequacao,salmon|Faroe Islands,6.0
-salmon,adequacao,salmon|United States,7.0
+salmon,adequacao,salmon|United States,6.0
+salmon,adequacao,salmon|Faroe Islands,7.0
 salmon,adequacao,salmon|Iceland,8.0
 salmon,adequacao,salmon|Australia,9.0
 salmon,adequacao,salmon|Canada,10.0
 salmon,adequacao,salmon|New Zealand,11.0
 salmon,risco,salmon|Chile,1.0
 salmon,risco,salmon|Norway,2.0
-salmon,risco,salmon|United Kingdom,3.0
-salmon,risco,salmon|Turkey,4.0
-salmon,risco,salmon|Iceland,5.0
-salmon,risco,salmon|China,6.0
-salmon,risco,salmon|Faroe Islands,7.0
-salmon,risco,salmon|United States,8.0
+salmon,risco,salmon|China,3.0
+salmon,risco,salmon|United Kingdom,4.0
+salmon,risco,salmon|Turkey,5.0
+salmon,risco,salmon|United States,6.0
+salmon,risco,salmon|Iceland,7.0
+salmon,risco,salmon|Faroe Islands,8.0
 salmon,risco,salmon|Australia,9.0
 salmon,risco,salmon|New Zealand,10.0
 salmon,risco,salmon|Canada,11.0
-shrimp,demanda,shrimp|Ecuador,1.0
-shrimp,demanda,shrimp|Vietnam,2.0
-shrimp,demanda,shrimp|Thailand,3.0
+shrimp,demanda,shrimp|China,1.0
+shrimp,demanda,shrimp|Ecuador,2.0
+shrimp,demanda,shrimp|Vietnam,3.0
 shrimp,demanda,shrimp|Brazil,4.0
-shrimp,demanda,shrimp|China,5.0
-shrimp,demanda,shrimp|Honduras,6.0
+shrimp,demanda,shrimp|Thailand,5.0
+shrimp,demanda,shrimp|Indonesia,6.0
 shrimp,demanda,shrimp|Saudi Arabia,7.0
-shrimp,demanda,shrimp|Indonesia,8.0
-shrimp,demanda,shrimp|India,9.0
+shrimp,demanda,shrimp|India,8.0
+shrimp,demanda,shrimp|Honduras,9.0
 shrimp,demanda,shrimp|Mexico,10.0
 shrimp,demanda,shrimp|Philippines,11.0
 shrimp,demanda,shrimp|Bangladesh,12.0
 shrimp,acesso,shrimp|Ecuador,1.0
-shrimp,acesso,shrimp|Brazil,2.0
-shrimp,acesso,shrimp|Saudi Arabia,3.0
-shrimp,acesso,shrimp|Vietnam,4.0
-shrimp,acesso,shrimp|India,5.0
-shrimp,acesso,shrimp|Mexico,6.0
-shrimp,acesso,shrimp|Thailand,7.0
-shrimp,acesso,shrimp|Indonesia,8.0
-shrimp,acesso,shrimp|Honduras,9.0
-shrimp,acesso,shrimp|China,10.0
-shrimp,acesso,shrimp|Philippines,11.0
-shrimp,acesso,shrimp|Bangladesh,12.0
+shrimp,acesso,shrimp|China,2.0
+shrimp,acesso,shrimp|Brazil,3.0
+shrimp,acesso,shrimp|Saudi Arabia,4.0
+shrimp,acesso,shrimp|Vietnam,5.0
+shrimp,acesso,shrimp|Indonesia,6.0
+shrimp,acesso,shrimp|India,7.0
+shrimp,acesso,shrimp|Thailand,8.0
+shrimp,acesso,shrimp|Mexico,9.0
+shrimp,acesso,shrimp|Philippines,10.0
+shrimp,acesso,shrimp|Bangladesh,11.0
+shrimp,acesso,shrimp|Honduras,12.0
 shrimp,economia,shrimp|Ecuador,1.0
-shrimp,economia,shrimp|Vietnam,2.0
-shrimp,economia,shrimp|China,3.0
-shrimp,economia,shrimp|Thailand,4.0
-shrimp,economia,shrimp|Brazil,5.0
-shrimp,economia,shrimp|India,6.0
+shrimp,economia,shrimp|China,2.0
+shrimp,economia,shrimp|Vietnam,3.0
+shrimp,economia,shrimp|Brazil,4.0
+shrimp,economia,shrimp|India,5.0
+shrimp,economia,shrimp|Thailand,6.0
 shrimp,economia,shrimp|Saudi Arabia,7.0
-shrimp,economia,shrimp|Mexico,8.0
-shrimp,economia,shrimp|Indonesia,9.0
+shrimp,economia,shrimp|Indonesia,8.0
+shrimp,economia,shrimp|Mexico,9.0
 shrimp,economia,shrimp|Philippines,10.0
-shrimp,economia,shrimp|Honduras,11.0
-shrimp,economia,shrimp|Bangladesh,12.0
-shrimp,adequacao,shrimp|Ecuador,1.0
-shrimp,adequacao,shrimp|China,2.0
+shrimp,economia,shrimp|Bangladesh,11.0
+shrimp,economia,shrimp|Honduras,12.0
+shrimp,adequacao,shrimp|China,1.0
+shrimp,adequacao,shrimp|Ecuador,2.0
 shrimp,adequacao,shrimp|Vietnam,3.0
 shrimp,adequacao,shrimp|Brazil,4.0
 shrimp,adequacao,shrimp|Thailand,5.0
 shrimp,adequacao,shrimp|India,6.0
-shrimp,adequacao,shrimp|Saudi Arabia,7.0
-shrimp,adequacao,shrimp|Indonesia,8.0
+shrimp,adequacao,shrimp|Indonesia,7.0
+shrimp,adequacao,shrimp|Saudi Arabia,8.0
 shrimp,adequacao,shrimp|Mexico,9.0
 shrimp,adequacao,shrimp|Philippines,10.0
-shrimp,adequacao,shrimp|Honduras,11.0
-shrimp,adequacao,shrimp|Bangladesh,12.0
-shrimp,risco,shrimp|Ecuador,1.0
-shrimp,risco,shrimp|Vietnam,2.0
-shrimp,risco,shrimp|China,3.0
-shrimp,risco,shrimp|Brazil,4.0
-shrimp,risco,shrimp|Thailand,5.0
-shrimp,risco,shrimp|Indonesia,6.0
+shrimp,adequacao,shrimp|Bangladesh,11.0
+shrimp,adequacao,shrimp|Honduras,12.0
+shrimp,risco,shrimp|China,1.0
+shrimp,risco,shrimp|Ecuador,2.0
+shrimp,risco,shrimp|Vietnam,3.0
+shrimp,risco,shrimp|Indonesia,4.0
+shrimp,risco,shrimp|Brazil,5.0
+shrimp,risco,shrimp|Thailand,6.0
 shrimp,risco,shrimp|India,7.0
 shrimp,risco,shrimp|Mexico,8.0
 shrimp,risco,shrimp|Saudi Arabia,9.0
 shrimp,risco,shrimp|Bangladesh,10.0
 shrimp,risco,shrimp|Philippines,11.0
 shrimp,risco,shrimp|Honduras,12.0
-pet,demanda,pet|Spain,1.0
-pet,demanda,pet|France,2.0
-pet,demanda,pet|Italy,3.0
-pet,demanda,pet|Germany,4.0
-pet,demanda,pet|United States,5.0
+pet,demanda,pet|United States,1.0
+pet,demanda,pet|Spain,2.0
+pet,demanda,pet|France,3.0
+pet,demanda,pet|Italy,4.0
+pet,demanda,pet|Germany,5.0
 pet,demanda,pet|Poland,6.0
 pet,demanda,pet|Brazil,7.0
 pet,demanda,pet|United Kingdom,8.0
 pet,demanda,pet|Canada,9.0
-pet,demanda,pet|Mexico,10.0
-pet,demanda,pet|Thailand,11.0
-pet,demanda,pet|Australia,12.0
-pet,demanda,pet|Argentina,13.0
-pet,demanda,pet|Japan,14.0
-pet,demanda,pet|China,15.0
-pet,acesso,pet|Poland,1.0
-pet,acesso,pet|Italy,2.0
-pet,acesso,pet|Spain,3.0
-pet,acesso,pet|United States,4.0
-pet,acesso,pet|United Kingdom,5.0
-pet,acesso,pet|Brazil,6.0
-pet,acesso,pet|Germany,7.0
-pet,acesso,pet|France,8.0
-pet,acesso,pet|Canada,9.0
-pet,acesso,pet|Thailand,10.0
-pet,acesso,pet|Mexico,11.0
-pet,acesso,pet|Australia,12.0
+pet,demanda,pet|Thailand,10.0
+pet,demanda,pet|Australia,11.0
+pet,demanda,pet|Mexico,12.0
+pet,demanda,pet|Japan,13.0
+pet,demanda,pet|China,14.0
+pet,demanda,pet|Argentina,15.0
+pet,acesso,pet|United States,1.0
+pet,acesso,pet|Poland,2.0
+pet,acesso,pet|Brazil,3.0
+pet,acesso,pet|Italy,4.0
+pet,acesso,pet|Spain,5.0
+pet,acesso,pet|United Kingdom,6.0
+pet,acesso,pet|Thailand,7.0
+pet,acesso,pet|Canada,8.0
+pet,acesso,pet|Germany,9.0
+pet,acesso,pet|Australia,10.0
+pet,acesso,pet|China,11.0
+pet,acesso,pet|France,12.0
 pet,acesso,pet|Japan,13.0
-pet,acesso,pet|China,14.0
+pet,acesso,pet|Mexico,14.0
 pet,acesso,pet|Argentina,15.0
 pet,economia,pet|Poland,1.0
 pet,economia,pet|Italy,2.0
@@ -150,42 +150,42 @@ pet,economia,pet|Spain,3.0
 pet,economia,pet|United States,4.0
 pet,economia,pet|Germany,5.0
 pet,economia,pet|France,6.0
-pet,economia,pet|United Kingdom,7.0
-pet,economia,pet|Canada,8.0
+pet,economia,pet|Canada,7.0
+pet,economia,pet|United Kingdom,8.0
 pet,economia,pet|Thailand,9.0
 pet,economia,pet|Brazil,10.0
 pet,economia,pet|Australia,11.0
-pet,economia,pet|Mexico,12.0
+pet,economia,pet|China,12.0
 pet,economia,pet|Japan,13.0
-pet,economia,pet|China,14.0
+pet,economia,pet|Mexico,14.0
 pet,economia,pet|Argentina,15.0
 pet,adequacao,pet|United States,1.0
 pet,adequacao,pet|Poland,2.0
-pet,adequacao,pet|Italy,3.0
-pet,adequacao,pet|Spain,4.0
-pet,adequacao,pet|Brazil,5.0
+pet,adequacao,pet|China,3.0
+pet,adequacao,pet|Italy,4.0
+pet,adequacao,pet|Spain,5.0
 pet,adequacao,pet|Canada,6.0
-pet,adequacao,pet|China,7.0
+pet,adequacao,pet|Brazil,7.0
 pet,adequacao,pet|Germany,8.0
-pet,adequacao,pet|France,9.0
-pet,adequacao,pet|Thailand,10.0
+pet,adequacao,pet|Thailand,9.0
+pet,adequacao,pet|France,10.0
 pet,adequacao,pet|United Kingdom,11.0
 pet,adequacao,pet|Australia,12.0
-pet,adequacao,pet|Mexico,13.0
-pet,adequacao,pet|Japan,14.0
+pet,adequacao,pet|Japan,13.0
+pet,adequacao,pet|Mexico,14.0
 pet,adequacao,pet|Argentina,15.0
-pet,risco,pet|Poland,1.0
-pet,risco,pet|Italy,2.0
-pet,risco,pet|Spain,3.0
-pet,risco,pet|United States,4.0
-pet,risco,pet|Germany,5.0
-pet,risco,pet|Brazil,6.0
+pet,risco,pet|United States,1.0
+pet,risco,pet|Poland,2.0
+pet,risco,pet|Italy,3.0
+pet,risco,pet|Spain,4.0
+pet,risco,pet|Brazil,5.0
+pet,risco,pet|Germany,6.0
 pet,risco,pet|France,7.0
 pet,risco,pet|United Kingdom,8.0
-pet,risco,pet|Canada,9.0
-pet,risco,pet|Thailand,10.0
-pet,risco,pet|Mexico,11.0
+pet,risco,pet|Thailand,9.0
+pet,risco,pet|China,10.0
+pet,risco,pet|Canada,11.0
 pet,risco,pet|Australia,12.0
-pet,risco,pet|Argentina,13.0
-pet,risco,pet|China,14.0
-pet,risco,pet|Japan,15.0
+pet,risco,pet|Japan,13.0
+pet,risco,pet|Mexico,14.0
+pet,risco,pet|Argentina,15.0

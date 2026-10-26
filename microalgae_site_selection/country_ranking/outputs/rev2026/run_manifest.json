@@ -1,7 +1,7 @@
 {
   "revision_date": "2026-10-15",
-  "git_commit": "19e9695",
-  "run_utc": "2026-10-26T14:30:52+00:00",
+  "git_commit": "f5ad727",
+  "run_utc": "2026-10-26T14:47:59+00:00",
   "seed": 42,
   "mc_sims": 1000,
   "v3_demand_origin": "default_premises",
@@ -12,6 +12,6 @@
     "product_regulatory_matrix.csv": "1951aea2b072d73c",
     "site_cells.csv": "f1af0debb9078079",
     "source_registry.csv": "c665068d1eeecdc5",
-    "config_rev2026.yaml": "b13662abf3a71000"
+    "config_rev2026.yaml": "de2ae1183f83bfc2"
   }
 }
