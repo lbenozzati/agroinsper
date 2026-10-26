@@ -1,7 +1,7 @@
 {
   "revision_date": "2026-10-15",
-  "git_commit": "be07e6d",
-  "run_utc": "2026-10-26T13:16:54+00:00",
+  "git_commit": "91c4b54",
+  "run_utc": "2026-10-26T13:24:49+00:00",
   "seed": 42,
   "mc_sims": 1000,
   "v3_demand_origin": "default_premises",

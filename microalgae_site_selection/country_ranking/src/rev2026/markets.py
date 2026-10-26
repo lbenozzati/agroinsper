@@ -140,31 +140,14 @@ def build_cells(cfg: dict) -> pd.DataFrame:
             else:
                 add(niche, c, "fc_competitor_documented", np.nan, "UNKNOWN", "1 = sim", "",
                     "Não encontrado ≠ ausente: tratado como desconhecido (sem bônus por falta de dado)")
-    if "China" not in mc["niches"]["salmon"]["countries"]:
-        g = cfg["market"]["dha_g_per_kg_feed"]["salmon"]
-        lo, mid, hi = (x * SALMONID_EFCR * g / 1e3 for x in CN_SALMON_T)
-        add("salmon", "China", "dm_dha_tech_t", round(mid, 1), "DERIVED", "t DHA/ano (TAM técnico)", "R46;R47;R39",
-            "Só criação doméstica; importação (161 kt em 2025) excluída para não contar duas vezes",
-            formula=f"produção doméstica {CN_SALMON_T} t × eFCR {SALMONID_EFCR} × {g} g DHA/kg / 1e3",
-            lo=round(lo, 1), hi=round(hi, 1))
-        add("salmon", "China", "dm_growth", 12.0, "DERIVED", "%/ano", "R47",
-            "Xinjiang +30% a/a (1S2025) e novos navios offshore; 12%/ano conservador (acima do teto de 8%)")
-        add("salmon", "China", "ac_feed_plants", 1.0, "OBSERVED", "nº", "R48", "BioMar–Tongwei Wuxi (ração BAP truta)")
-        shr = [r for r in rows if r["entity"] == "shrimp|China"
-               and r["metric_id"] in ("ec_tariff_pct", "rk_fx_vol", "ec_transit_days")]
-        for r in shr:
-            rows.append({**r, "entity": "salmon|China", "niche": "salmon",
-                         "notes": f"mesmo valor de camarão|China (mesmo HS, destino e moeda): {r['notes']}"[:240]})
-        add("salmon", "China", "rk_bio", np.nan, "UNKNOWN", "0-10 (10 = pior)", "", "mortalidade de salmonídeos na China ausente")
-        a = acc[(acc.country == "China") & (acc.niche == "salmon")]
-        best = a.assign(s=a.evidence_stage.map(stage_score).fillna(0)).sort_values("s").iloc[-1]
-        add("salmon", "China", "ac_evidence_stage", float(best.s), "OBSERVED", "0-10", str(best.source_id),
-            f"{best.customer} / {best.plant}: {best.evidence_stage} ({best.evidence_date})")
-        add("salmon", "China", "ec_net_price", np.nan, "UNKNOWN", "US$/kg DHA", "R29", "Preço líquido por destino não é público")
-        add("salmon", "China", "fc_dha_fit", cfg["market"]["dha_fit"]["salmon"], "DERIVED", "fração", "R39",
-            "market_expansion/nutrition_requirements.csv (dha_share_of_target)")
-        add("salmon", "China", "fc_competitor_documented", np.nan, "UNKNOWN", "1 = sim", "",
-            "Não encontrado ≠ ausente: tratado como desconhecido")
+    # salmão|China: dados brutos (p2b_salmon.csv) cobrem as métricas; o TAM técnico usa a faixa de produção
+    rows = [r for r in rows if not (r["entity"] == "salmon|China" and r["metric_id"] == "dm_dha_tech_t")]
+    g = cfg["market"]["dha_g_per_kg_feed"]["salmon"]
+    lo, mid, hi = (x * SALMONID_EFCR * g / 1e3 for x in CN_SALMON_T)
+    add("salmon", "China", "dm_dha_tech_t", round(mid, 1), "DERIVED", "t DHA/ano (TAM técnico)", "R46;R47;R39",
+        "Só criação doméstica; importação (161 kt em 2025) excluída para não contar duas vezes",
+        formula=f"produção doméstica {CN_SALMON_T} t × eFCR {SALMONID_EFCR} × {g} g DHA/kg / 1e3",
+        lo=round(lo, 1), hi=round(hi, 1))
     out = pd.DataFrame(rows)
     return out[CELL_COLS]
 
