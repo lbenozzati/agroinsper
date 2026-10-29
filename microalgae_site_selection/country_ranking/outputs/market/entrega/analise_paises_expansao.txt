@@ -1,0 +1,174 @@
+ANÁLISE DE PAÍSES PARA EXPANSÃO DO ALGAPRIME DHA (CORBION) – METODOLOGIA, RESULTADOS E FONTES
+
+1. PERGUNTA E ESCOPO
+
+A pergunta foi: em quais países a Corbion deve entrar ou crescer com o AlgaPrime DHA, nos nichos de salmão, camarão e pet food.
+
+Cada país foi avaliado separadamente em cada nicho em que tem mercado relevante. No salmão entraram 11 países: Noruega, Chile, Reino Unido, Ilhas Faroé, Canadá, Islândia, Austrália, Nova Zelândia, Turquia, EUA e China. No camarão entraram 12: Equador, Índia, Vietnã, Indonésia, China, Tailândia, Brasil, México, Arábia Saudita, Filipinas, Bangladesh e Honduras. Em pet food entraram 15: EUA, Brasil, China, Alemanha, França, Reino Unido, Itália, Espanha, Polônia, Japão, Canadá, México, Argentina, Austrália e Tailândia.
+
+Para aquicultura conta onde o peixe ou o camarão é criado, porque é ali que a ração é comprada. Por isso a China entrou no salmão só pela criação doméstica de salmonídeos. O salmão importado pela China foi alimentado no país de origem e já está contado lá.
+
+"Expansão" significa país sem uso documentado de AlgaPrime. Noruega, Chile e Reino Unido no salmão, e Tailândia no camarão, são "consolidação" e ficaram fora da lista de expansão.
+
+
+2. COLETA DE DADOS
+
+Para cada país e nicho foram levantadas métricas de volume e crescimento, valor do produto final, acesso a clientes, regulação e tarifa, e risco. Cada valor foi registrado com fonte, link, data, tipo (reportado, estimado, aproximado ou faltante) e grau de confiança. Os arquivos estão em data/raw/market_research/, um por nicho, e em data/raw/market_rubric_components.csv.
+
+Limitação importante: nenhum documento primário foi aberto na íntegra, porque o ambiente bloqueou o acesso direto aos sites. Os valores vêm de trechos de busca, e cada um está marcado com esse nível de verificação.
+
+
+3. COMO CADA DADO VIRA NOTA DE 0 A 10
+
+Dados numéricos usam uma régua linear entre um "pior" e um "melhor" fixos, iguais para todos os países. Exemplos: na tarifa, 20% vale 0 e 0% vale 10; no preço do salmão, US$ 4 por kg vale 0 e US$ 12 por kg vale 10; no prazo de entrega, 45 dias vale 0 e 3 dias vale 10.
+
+Tamanhos usam régua logarítmica, para que um país gigante não esmague os demais. A produção de camarão, por exemplo, vai de 20 mil toneladas (nota 0) a 2 milhões de toneladas (nota 10).
+
+A demanda técnica de DHA de cada país é a ração do nicho multiplicada pela dose de DHA por kg de ração e dividida por 1.000. As doses são 5,3 g por kg no salmão, 2,7 g no camarão e 0,33 g em pet food. Quando faltava o volume de ração, ele foi estimado pela produção multiplicada pela conversão alimentar: 1,25 a 1,3 no salmão e 1,4 no camarão.
+
+O que não tem número é pontuado por rubricas com componentes. Cada ponto precisa de evidência e fonte. Componente sem evidência vira faixa, com piso e teto, e a nota usa o ponto médio. São três rubricas.
+
+Canal Corbion, de 0 a 10, tem quatro componentes:
+- Estágio comercial, de 0 a 4. Vale 4 para compra recorrente nos últimos 12 meses, 3 para adoção histórica, 2 para teste e 1 para canal formal ou cliente global com fábrica no país. Evidência com mais de 3 anos perde 1 ponto.
+- Capacidade da BioMar no país, de 0 a 3. Vale 3 para 300 mil t ou mais, 2 para 150 mil a 300 mil t e 1 para 30 mil a 150 mil t.
+- Número de fábricas da BioMar, de 0 a 2.
+- Presença local da Corbion, de 0 a 1.
+
+Registro, de 0 a 10, tem quatro componentes:
+- Situação legal, de 0 a 4. Vale 4 para registro com número verificado, 3 para aprovação anunciada ou uso comercial, 2 para permissão pelo catálogo genérico de ingredientes e 1 para pedido protocolado.
+- Prazo para regularizar, de 0 a 2.
+- Barreiras específicas, de 0 a 2.
+- Incentivo regulatório ou de certificação ao DHA de algas, como a certificação ASC, de 0 a 2.
+
+Posição competitiva da Corbion, de 0 a 10, tem quatro componentes:
+- Concorrente de DHA de algas documentado no país, de 0 a 3. Quando não se encontra concorrente, o componente entra como faixa de 2 a 3, nunca como 3 garantido.
+- Adequação do produto ao nicho, de 0 a 3. O salmão tira 1, porque precisa de EPA e DHA e a Veramaris entrega os dois. Camarão e pet food tiram 2.
+- Custo de entrega, de 0 a 2. Ganha 1 ponto se não houver concorrente produzindo no país e 1 ponto se a tarifa aplicada ao produto de origem Brasil for de até 5%.
+- Apelo de marca ou sustentabilidade documentado, de 0 a 2, como Kvarøy na Noruega e Ventisqueros no Chile.
+
+Regras para dado faltante:
+- A métrica sem dado sai da conta, e o peso dela vai para as outras do mesmo grupo.
+- Uma métrica com dado para menos de 40% dos países do nicho é descartada.
+- Um país com menos de 50% do peso coberto por dados recebe o aviso "dados insuficientes".
+
+
+4. CRITÉRIOS E PESOS DENTRO DE CADA NICHO (MODELO DE 14/10, CENÁRIO BASE)
+
+Tamanho e crescimento pesam 25%. Dentro desse critério, o volume pesa 65% (metade produção, metade demanda de DHA) e o crescimento pesa 35% (histórico de 5 anos e projeção até 2030).
+
+Valor pesa 15%. No salmão entram o preço do peixe e a fatia de produção certificada pela ASC. No camarão entram o preço de exportação, o grau de intensificação e a produção de pós-larvas. Em pet food entram o gasto por animal e a demanda por ômega-3.
+
+Acesso, canal e posição competitiva pesam 30%. Dentro desse critério, a competição pesa 35%, a adoção documentada 20%, o canal 20%, as fábricas dos grandes clientes 20% e a logística 5%.
+
+Regulação pesa 15%: metade tarifa, metade registro.
+
+Risco pesa 15%. O risco-país vale 65% do critério e combina rating soberano, estabilidade política e qualidade regulatória medidas pelo Banco Mundial, e volatilidade cambial. O risco biológico vale 35%: mortalidade no salmão, doenças no camarão e risco de canal em pet food.
+
+Justificativa dos pesos: o AlgaPrime é um ingrediente vendido a poucas fábricas de ração. A venda é decidida na disputa contra Veramaris, óleo de peixe e DHA de algas local, e não pelo tamanho do país. Por isso acesso e competição subiram de 20% para 30%. Tamanho e valor caíram porque o tamanho já aparece na demanda de DHA, e o preço do peixe não é o preço do ingrediente.
+
+
+5. PREMISSAS DA CORBION APLICADAS (INFORMADAS PELO USUÁRIO, VÁLIDAS PARA TODOS OS PAÍSES)
+
+Primeira: em salmão e camarão, a Corbion vende só para a BioMar. Por isso o canal mede a capacidade e o número de fábricas da BioMar em cada país.
+
+Segunda: o que importa é o preço entregue, e não o prazo. A logística caiu para 5% do critério de acesso, e o custo passou a ser medido pela tarifa aplicada. Na China foi usada a alíquota provisória de 4%, e não a tarifa padrão de 6,5%.
+
+Terceira: os produtores chineses de DHA de algas (CABIO, Runke, Huison) não têm foco em ração aquícola e contam como concorrentes só em pet food. A Veramaris conta onde há uso documentado: Noruega, EUA e Canadá.
+
+
+6. RANKING GERAL
+
+A nota de qualidade do país é a média das notas dos nichos em que ele aparece. O peso de cada nicho é o peso no portfólio (salmão 45%, camarão 40%, pet food 15%) multiplicado pela demanda de DHA do país naquele nicho.
+
+A relevância mede quanto da demanda de DHA do país está nos nichos que mais pesam. Vale 1 se a demanda for toda de salmão, 0,89 se for toda de camarão e 0,33 se for toda de pet food.
+
+A nota geral é a qualidade multiplicada por (0,5 + 0,5 × relevância). Com isso, países fortes só em pet food, como EUA e França, caem no ranking geral.
+
+
+7. TESTES DE ROBUSTEZ
+
+Foram rodados cenários de pesos alternativos: os pesos antigos de 14/10, consolidação (acesso a 35%), crescimento (tamanho a 40%) e mercado e regulação.
+
+Foram sorteados 4.000 conjuntos aleatórios de pesos para medir quantas vezes cada país fica em 1º. Foram feitas 600 simulações de Monte Carlo variando os dados conforme o grau de confiança de cada um.
+
+Também foram calculadas três notas de comparação: uma só com métricas numéricas, sem rubricas; uma com todo dado faltante valendo 0; e uma com todo dado faltante valendo 10.
+
+A revisão de 15/10 serve de conferência. Ela usa pesos de 20% demanda, 25% acesso, 20% economia, 25% posição competitiva e 10% risco. A nota vem com piso e teto em vez de ponto médio. O registro funciona como filtro de aprovação, e não como nota. E há controle de quanto da nota depende de julgamento sem documento.
+
+
+8. RESULTADO PARA EXPANSÃO
+
+No camarão, pelo modelo de 14/10, a ordem é: China 6,47, Equador 6,14, Vietnã 5,70, Tailândia 5,69 (consolidação) e Indonésia 5,03. Na revisão de 15/10, camarão na China é o 2º de 38 pares de país e nicho, e camarão no Equador é o 3º.
+
+A recomendação é priorizar China e Equador no camarão.
+
+China: a BioMar–Tongwei tem 200 mil t de capacidade e chega a 250 mil t em 2027. O AlgaPrime foi aprovado pela alfândega chinesa (GACC) em 2025. A tarifa aplicada é de 4%. A demanda técnica de DHA soma cerca de 5.900 t por ano nos três nichos. O próximo passo é um teste de alimentação com AlgaPrime nas fábricas de Haiwei ou Wuxi.
+
+Equador: tem a maior demanda de DHA em camarão, cerca de 6.700 t por ano. A BioMar tem lá uma fábrica de 410 mil t. O próximo passo é confirmar o registro na Agrocalidad, a agência sanitária equatoriana, e propor um teste à BioMar Equador.
+
+O Vietnã fica como segunda onda. A joint venture BioMar–Viet-Uc é pequena, cerca de 30 mil t, e a tarifa é de 7,5%.
+
+No salmão, a recomendação é consolidar Noruega, Chile e Reino Unido. Os demais países de salmão não têm fábrica da BioMar. A Austrália só entra se for confirmada a fábrica da BioMar na Tasmânia.
+
+Em pet food, a entrada nos EUA é oportunista, pelo distribuidor IQI.
+
+Ficam para depois: Índia (tarifa de 17,5% e sem BioMar), Arábia Saudita, Bangladesh e Filipinas.
+
+
+9. FONTES PRINCIPAIS
+
+BioMar (canal e capacidade):
+- Prospecto do IPO de 2026, com capacidade por fábrica: https://investors.biomar.com/files/documents/prospectus_2026.pdf
+- Anúncio do IPO, 16 fábricas: https://www.globenewswire.com/news-release/2026/05/01/3285661/0/en/schouw-co-announces-intention-to-pursue-an-initial-public-offering-of-its-portfolio-business-biomar-on-nasdaq-copenhagen.html
+- Equador, controle total da fábrica e expansão para 410 mil t: https://www.undercurrentnews.com/2026/02/06/biomar-takes-full-ownership-of-ecuador-unit-plans-major-capacity-expansion/
+- China, duplicação de Wuxi: https://www.seafoodsource.com/news/processing-equipment/biomar-doubling-its-production-capacity-in-wuxi-china
+- China, ração certificada para truta: https://www.globalseafood.org/blog/biomar-tongwei/
+- AlgaPrime na BioMar: https://www.biomar.com/insights/insights-hub/algaprime-unexpected-algae-heroes
+- Cerca de 350 mil t de ração com AlgaPrime: https://www.salmonbusiness.com/350000-tonnes-of-algae-based-feed-one-of-the-new-tools-in-the-toolbox/
+
+Corbion (regulação e adoção):
+- Aprovação da alfândega chinesa (GACC), 2025: https://aquafeed.com/regions/asia/corbion-secures-regulatory-approvals-to-launch-algae-based-omega-3-dha-in-china
+- Mesma aprovação, outra cobertura: https://www.fishfarmingexpert.com/algae-derived-china-corbion/china-opens-the-door-to-corbions-algae-derived-omega-3-dha/1964694
+- Thai Union, camarão: https://aquafeed.com/regions/asia/thai-union-corbion-expand-partnership-in-shrimp-feed
+- Noruega: https://www.worldfishing.net/algaprime-dha-boosts-salmons-omega-3/1150584.article
+- Chile: https://feednavigator.com/Article/2017/04/29/Algae-based-DHA-offers-Chilean-salmon-producer-way-to-boost-susta
+
+Concorrência:
+- Veramaris, fábrica nos EUA: https://www.veramaris.com/media-resources-detail/veramaris-opens-us200m-facility-for-epa-dha-omega-3-algal-oil-to-support-sustainable-growth-in-aquaculture
+- dsm-firmenich, produto para pet (2026): https://www.dsm-firmenich.com/en/businesses/taste-texture-health/news-events/press-releases/dsm-firmenich-launches-veramaris-o3-max-pure-seamless-fish-oil-replacement-at-petfood-forum-2026.html
+- Teste de óleo de algas no Canadá: https://www.globalseafood.org/advocate/canadian-salmon-farmer-to-test-algal-oil-in-its-feed/
+- Mara Renewables: https://www.seafoodsource.com/news/business-finance/mara-renewables-commercializing-algal-omega-3-dha-with-s2g-s-usd-9-1-million-investment
+- CABIO: https://www.cabio.com/business/animal-nutrition/pet-nutrition
+
+Produção, ração e crescimento:
+- Produção de camarão, FAO GLOBEFISH (fev/2026): https://openknowledge.fao.org/server/api/core/bitstreams/3f097d03-d084-49be-9f44-98ca30177446/content
+- Ração de camarão na China: https://www.undercurrentnews.com/2024/07/08/chinas-shrimp-feed-output-jumps-as-market-consolidates/
+- Ração no Equador: https://avinews.com/ecuador-alcanza-cifras-historicas-en-alimentos-balanceados-y-proteina-animal-en-2025/
+- Projeção para o camarão, Rabobank: https://www.globalseafood.org/advocate/rabobank-global-shrimp-industry-faces-tariffs-large-inventories-and-a-wildcard-performer/
+- Conversão alimentar, IFFO: https://www.iffo.com/efcr-data
+- Salmão na Noruega: https://www.fishfarmermagazine.com/news/norway-salmon-hits-new-export-record-in-2025-despite-tariffs-and-low-prices
+- Ração na Noruega, USDA: https://www.fas.usda.gov/data/norway-norwegian-fish-feed-ingredient-market
+- Salmão no Chile, Sernapesca: https://www.salmonbusiness.com/sernapesca-chiles-overall-salmon-mortality-falls-in-2025-but-tenacibaculosis-rises/
+- Salmonídeos na China: https://www.salmonbusiness.com/xinjiang-farms-target-12000-tonnes-annual-output-of-trout/
+- Camarão no Vietnã, VASEP: https://seafood.vasep.com.vn/key-seafood-sectors/shrimp/news/vietnam-s-shrimp-farming-output-reaches-1-106-9-t
+
+Preço e tarifa:
+- Tarifa na China: https://treayo.com/en/hs/china/23099090
+- Preço da truta na China: https://dir.tridge.com/prices/fresh-trout/CN
+- Exportação de salmão do Chile: https://www.seafoodsource.com/news/supply-trade/chile-s-salmon-exports-surpass-usd-6-5-billion-in-2025
+- Regras de ração no Vietnã: https://www.tilleke.com/insights/new-regulations-on-animal-feed-in-vietnam/26/
+
+Risco e logística:
+- Rating soberano, S&P: https://www.spglobal.com/ratings/en/sector/governments/sovereigns
+- Indicadores de governança, Banco Mundial: https://www.worldbank.org/en/publication/worldwide-governance-indicators
+- Índice de desempenho logístico, Banco Mundial: https://lpi.worldbank.org/international/global
+- Câmbio, FRED: https://raw.githubusercontent.com/datasets/exchange-rates/main/data/annual.csv
+- Prazos desde Orindiúva: calculados por rota marítima no próprio modelo, em data/raw/ports_market.yaml.
+
+
+10. LIMITAÇÕES E PRÓXIMOS PASSOS
+
+- Os trechos de busca precisam ser conferidos nos documentos originais antes da apresentação à banca.
+- O preço líquido por destino não é público, e é o dado que mais muda o valor econômico.
+- As três premissas da Corbion e os pesos de portfólio (45/40/15) são premissas de negócio. O ideal é mostrar o resultado com e sem elas.
+- As fontes adicionais que você mencionou devem entrar no registro de fontes, para transformar premissa em evidência. As mais úteis são as que documentem o contrato ou a exclusividade com a BioMar, a ausência de concorrentes em ração aquícola e o preço entregue na China.
